@@ -21,11 +21,14 @@ class CreateUsuariosTable extends Migration
             $table->string('foto',300);
             $table->string('rfc',30);
             $table->string('curp',30);
-            $table->string('elector',50);
             $table->string('correo_inst',50);
             $table->string('correo_per',50);
             $table->string('tel_casa',15);
             $table->string('tel_cel',15);
+            $table->string('calle',15);
+            $table->string('numero',15);
+
+
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
