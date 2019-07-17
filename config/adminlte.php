@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'green-light',
+    'skin' => 'yellow-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -117,7 +117,7 @@ return [
         ],
 
         [
-            'text' => 'Usuarios',
+            'text' => 'Admin Usuarios',
             'url'  => 'admin/user',
             'icon' => 'users',
             'permission'  => 'read-user',
@@ -132,6 +132,29 @@ return [
                     'text' => 'Crear',
                     'url'  => 'admin/user/create',
                     'permission'  => 'create-user',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        //Panel de usuarios
+
+        [
+            'text' => 'Carnet',
+            'url'  => 'admin/usuarios',
+            'icon' => 'users',
+            'permission'  => 'read-usuarios',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/usuarios',
+                    'permission'  => 'read-usuarios',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/usuarios/create',
+                    'permission'  => 'create-usuarios',
                     'icon' => 'plus-circle'
                 ],
             ],

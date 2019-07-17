@@ -13,6 +13,7 @@ return [
             'user' => 'c,r,u,d',
             'role' => 'c,r,u,d',
             'permission' => 'c,r,u,d',
+            'usuarios' => 'c,r,u,d',
         ],
         'administrator' => [
             'customers' => 'c,r,u',
@@ -24,6 +25,7 @@ return [
             'user' => 'c,r,u',
             'role' => 'c,r,u',
             'permission' => 'c,r,u',
+            'usuarios' => 'c,r,u,d',
         ],
         'normaluser' => [
             'customers' => 'r',
@@ -35,6 +37,7 @@ return [
             'user' => 'r',
             'role' => 'r',
             'permission' => 'r',
+            'usuarios' => 'r',
         ],
     ],
     'permission_structure' => [
