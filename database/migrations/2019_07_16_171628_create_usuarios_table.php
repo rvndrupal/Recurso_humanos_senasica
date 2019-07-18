@@ -29,6 +29,9 @@ class CreateUsuariosTable extends Migration
             $table->string('numero',15);
 
 
+            $table->unsignedBigInteger('pais_id');
+            $table->foreign('pais_id')->references('id')->on('pais');
+
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

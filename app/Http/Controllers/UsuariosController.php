@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Usuarios;
+use App\Pais;
+use App\Estados;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
@@ -27,6 +29,18 @@ class UsuariosController extends Controller
         }
     }
 
+    //mostrar los paises
+    public function estados(Request $request, $id){
+
+        if (request()->ajax()) {
+
+        $estados=Estados::orderBy('nombre_estado','ASC')->select('id','nombre_estado')->where('pais_id','=',$id)->get();
+
+         return response()->json($estados);
+
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -36,8 +50,10 @@ class UsuariosController extends Controller
     {
         $title = __('Crear Carnet');
         $usuarios = new Usuarios;
-        //dd($category);
-        return view('usuarios.form', compact('usuarios', 'title'));
+
+       $pais=Pais::orderBy('nombre_pais','ASC')->select('id','nombre_pais')->where('condicion','=','1')->get();
+        //dd($pais);
+        return view('usuarios.form', compact('usuarios', 'title','pais'));
     }
 
     /**

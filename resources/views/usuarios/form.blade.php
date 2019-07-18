@@ -54,6 +54,7 @@
         <link href="{{ asset('assets/css/demo.css') }}" rel="stylesheet" />
     </head>
 
+    <?php //dd($pais) ?>
     <body>
     <div class="image-container set-full-height">
         <div class="image-container set-full-height" style="background-image: url('{{ asset('assets/img/fondo_tres.jpeg') }}')">
@@ -215,17 +216,10 @@
                                         <div class="col-sm-3">
                                                 <div class="form-group">
                                                    <label>País</label><br>
-                                                    <select name="pais" class="form-control">
-                                                           <option value="Mexico"> México </option>
-                                                       <option value="Afghanistan"> Afghanistan </option>
-                                                       <option value="Albania"> Albania </option>
-                                                       <option value="Algeria"> Algeria </option>
-                                                       <option value="American Samoa"> American Samoa </option>
-                                                       <option value="Andorra"> Andorra </option>
-                                                       <option value="Angola"> Angola </option>
-                                                       <option value="Anguilla"> Anguilla </option>
-                                                       <option value="Antarctica"> Antarctica </option>
-                                                       <option value="...">...</option>
+                                                    <select name="pais" class="form-control" id="pais">
+                                                    @foreach($pais as $p)
+                                                     <option value="{{ $p->id }}">{{ $p->nombre_pais }}</option>
+                                                    @endforeach
                                                    </select>
                                                  </div>
                                            </div>
@@ -234,12 +228,9 @@
                                            <div class="col-sm-3">
                                                 <div class="form-group">
                                                    <label>Estado</label><br>
-                                                    <select name="estado" class="form-control">
-                                                           <option value="cdmx"> CDMX </option>
-                                                       <option value="sonora"> sonora </option>
-                                                       <option value="sinaloa"> sinaloa </option>
-                                                       <option value="veracruz"> Veracruz </option>
-                                                       <option value="...">...</option>
+                                                    <select name="estado" class="form-control" id="estado">
+                                                        <option value="">Selecciona un estado</option>
+
                                                    </select>
                                                  </div>
                                            </div>
@@ -299,3 +290,41 @@
 
 
 {{--  @stop  --}}
+
+
+<script>
+    $(document).ready(function(){
+
+        $("#pais").change(function(e){
+
+            var id=e.target.value;
+            console.log(id);
+
+            if(id=="selected"){
+                $("#estado").append("<option value=''>Selecciona un estado</option>");
+                console.log("nada");
+            }
+            else{
+
+                $.get("estados/" + id, function(data){
+
+                    $("#estado").empty();
+
+                    for(i=0; i<data.length ;i++)
+                        {
+                            $("#estado").append("<option value='" +data[i].id+"'>"+data[i].nombre_estado+"</option>");
+                        }
+
+                });
+            }
+
+
+
+
+        });
+
+
+    });
+
+
+    </script>

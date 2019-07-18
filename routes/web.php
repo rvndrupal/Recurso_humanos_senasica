@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     $routes = [
         ['module' => 'customers', 'controller' => 'CustomerController'],
@@ -44,8 +46,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             Route::get('/edit/{id}', "{$route['controller']}@edit")->middleware("permission:update-{$route['module']}")->name("{$route['module']}.edit");
             Route::put('/{id}', "{$route['controller']}@update")->middleware("permission:update-{$route['module']}")->name("{$route['module']}.update");
             Route::delete('/{id}', "{$route['controller']}@destroy")->middleware("permission:delete-{$route['module']}")->name("{$route['module']}.destroy");
+            //estados
+            Route::get('/estados/{id}', 'UsuariosController@estados');
         });
     }
 
     Route::get('/charts', 'ChartController@index')->middleware('permission:read-charts');
 });
+
+

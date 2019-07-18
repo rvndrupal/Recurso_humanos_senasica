@@ -25,59 +25,59 @@ $(document).ready(function(){
 
     // Code for the Validator
     var $validator = $('.wizard-card form').validate({
-		  rules: {
-		    nom: {
-		      required: true,
-              minlength: 4,
-              maxlength: 20
+	// 	 rules: {
+	// 	    nom: {
+	// 	      required: true,
+    //           minlength: 4,
+    //           maxlength: 20
 
-		    },
-		    ap: {
-		      required: true,
-		      minlength: 3
-            },
-            am: {
-                required: true,
-                minlength: 3
-            },
+	// 	    },
+	// 	    ap: {
+	// 	      required: true,
+	// 	      minlength: 3
+    //         },
+    //         am: {
+    //             required: true,
+    //             minlength: 3
+    //         },
 
-            tel_cel: {
-                required: true,
-                minlength: 3
-            },
-            tel_casa: {
-                required: true,
-                minlength: 3
-            },
+    //         tel_cel: {
+    //             required: true,
+    //             minlength: 3
+    //         },
+    //         tel_casa: {
+    //             required: true,
+    //             minlength: 3
+    //         },
 
-            correo_inst: {
-                required: true,
-                minlength: 3
-            },
+    //         correo_inst: {
+    //             required: true,
+    //             minlength: 3
+    //         },
 
-            correo_per: {
-                required: true,
-                minlength: 3
-            },
+    //         correo_per: {
+    //             required: true,
+    //             minlength: 3
+    //         },
 
-		    email: {
-		      required: true,
-		      minlength: 3,
-            },
+	// 	    email: {
+	// 	      required: true,
+	// 	      minlength: 3,
+    //         },
 
-            rfc: {
-                required: true,
-                minlength: 3,
-            },
+    //         rfc: {
+    //             required: true,
+    //             minlength: 3,
+    //         },
 
-            curp: {
-                required: true,
-                minlength: 3,
-            },
+    //         curp: {
+    //             required: true,
+    //             minlength: 3,
+    //         },
 
 
 
-        }
+    //    }
 
 	});
 
