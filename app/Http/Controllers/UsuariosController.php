@@ -6,6 +6,8 @@ use App\Usuarios;
 use App\Pais;
 use App\Estados;
 use Illuminate\Http\Request;
+use Validator;
+use Illuminate\Support\Facades\Storage;
 
 class UsuariosController extends Controller
 {
@@ -64,7 +66,70 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+            'nom'       =>  'required',
+            'ap'      =>  'required',
+            'am'   =>  'required',
+            'curp'   =>  'required',
+            'rfc'   =>  'required',
+            'foto'  => 'required'
+        );
+
+        $error = Validator::make($request->all(), $rules);
+
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+
+        $form_data = array(
+            'nom'        =>  $request->nom,
+            'ap'         =>  $request->ap,
+            'am'             =>  $request->am,
+            'curp'             =>  $request->curp,
+            'rfc'             =>  $request->rfc,
+            'condicion'  => '1',
+        );
+
+        $usuario = Usuarios::create($request->all());
+
+
+
+         //Handle File Upload
+         if($request->hasFile('foto')){
+
+            //Get filename with the extension
+            $filenamewithExt = $request->file('foto')->getClientOriginalName();
+
+            //Get just filename
+            $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
+
+            //Get just ext
+            $extension = $request->file('foto')->guessClientExtension();
+
+            //FileName to store
+            $fileNameToStore = time().'.'.$extension;
+
+            //Upload Image
+            $path = $request->file('foto')->storeAs('Fotos/Usuarios',$fileNameToStore);
+
+            $usuario->foto=$fileNameToStore;
+         }
+
+         $usuario->save();
+
+
+        // //IMAGE
+        // if($request->file('foto')){
+        //     $path = Storage::disk('public')->put('FotoUsuarios',  $request->file('foto'));
+        //     $foto->fill(['file' => asset($path)])->save();
+        // }
+
+
+
+        return response()->json(['success' => 'Dato guardado correctamente.']);
+
     }
 
     /**
@@ -84,9 +149,13 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuarios $usuarios)
+    public function edit(Usuarios $usuarios, $id)
     {
-        //
+        $datos=Usuarios::where('id','=',$id)->get();
+
+        //dd($datos);
+
+        return view('usuarios.editar',compact('datos'));
     }
 
     /**
@@ -96,10 +165,22 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuarios $usuarios)
+    public function update(Request $request, Usuarios $usuarios, $id)
     {
-        //
+        //dd($id);
+        $usuario = Usuarios::find($id);
+
+        $usuario->fill($request->all())->save();
+
+        $usuario->condicion='1';
+
+        $usuario->save();
+
+        return view('usuarios.editar');
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

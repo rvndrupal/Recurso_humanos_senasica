@@ -17,10 +17,8 @@
                                     <th>{{ __("Nombre") }}</th>
                                     <th>{{ __("Apellido paterno") }}</th>
                                     <th>{{ __("Apellido materno") }}</th>
-                                    <th>{{ __("Correo institucional") }}</th>
-                                    <th>{{ __("Celular") }}</th>
+                                    <th>{{ __("Curp") }}</th>
                                     <th>{{ __("Rfc") }}</th>
-                                    <th>{{ __("Foto") }}</th>
                                     <th width="60">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
@@ -51,10 +49,8 @@
                     { data: 'nom' },
                     { data: 'ap' },
                     { data: 'am' },
-                    { data: 'correo_inst' },
-                    { data: 'tel_cel' },
+                    { data: 'curp' },
                     { data: 'rfc' },
-                    { data: 'foto' },
                     { data: 'actions' }
                 ]
             })
