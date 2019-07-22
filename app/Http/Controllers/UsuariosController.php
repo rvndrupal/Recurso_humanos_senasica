@@ -8,6 +8,7 @@ use App\Estados;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class UsuariosController extends Controller
 {
@@ -132,15 +133,93 @@ class UsuariosController extends Controller
 
     }
 
+
+    public function cards()
+    {
+        $title = __('Carnets');
+        return view('usuarios.cards2',compact('title'));
+    }
+
+
+    public function cardsAction(Request $request)
+    {
+        if($request->ajax())
+        {
+            $output = '';
+            $query = $request->get('query');
+            if($query != '')
+            {
+            $data = DB::table('usuarios')
+                ->where('nom', 'like', '%'.$query.'%')
+                ->orWhere('ap', 'like', '%'.$query.'%')
+                ->orWhere('am', 'like', '%'.$query.'%')
+                ->orWhere('rfc', 'like', '%'.$query.'%')
+                ->orWhere('curp', 'like', '%'.$query.'%')
+                ->orderBy('nom', 'desc')
+                ->get();
+
+            }
+            else
+            {
+            $data = DB::table('tbl_usuarios')
+                ->orderBy('nom', 'desc')
+                ->get();
+            }
+                $total_row = $data->count();
+                if($total_row > 0)
+                {
+                   $uri ='/recursos/public/Fotos/Usuarios/';
+                    foreach($data as $row)
+
+                    {
+                        $output .= '
+                            <div class="card bg-secondary text-white text-left ">
+                                <a href="./show/?id='.$row->id.'">
+                                    <img src="'.$uri.$row->foto.'"  class="card-img-top" alt="'.$row->nom.'">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre: '.$row->nom.'</h5>
+                                    <p class="card-text">Apellido paterno:  '.$row->ap.'</p>
+                                    <p class="card-text">ID:  '.$row->id.'</p>
+                                    <p class="card-text">Fecha de creación:  '.$row->created_at.'</p>
+                                </div>
+
+                            </div>
+                        ';
+                    }
+                }
+                else
+                {
+                    $output = '
+
+                      <h2>  No hay resultados</h2>
+
+                ';
+                }
+            $data = array(
+            'table_data'  => $output,
+            'total_data'  => $total_row
+            );
+
+            echo json_encode($data);
+        }
+    }//cards
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuarios $usuarios)
+    public function show(Request $request, Usuarios $usuarios, $id)
     {
-        //
+        $title = __('Usuario');
+
+        $usuario= Usuarios::findOrFail($id);
+
+        //dd($usuario);
+
+        return view('usuarios.show', compact('usuario','title'));
     }
 
     /**

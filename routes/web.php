@@ -47,6 +47,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             Route::put('/update/{id}', "{$route['controller']}@update")->middleware("permission:update-{$route['module']}")->name("{$route['module']}.update");
             Route::delete('/{id}', "{$route['controller']}@destroy")->middleware("permission:delete-{$route['module']}")->name("{$route['module']}.destroy");
 
+
+            Route::get('/cards', 'UsuariosController@cards')->name('cards');
+            Route::get('/card/action', 'UsuariosController@cardsAction')->name('card.action');
+            // Route::get('/show/{id}', 'UsuariosController@show')->name('show');
+            Route::get('/show/{id}', "{$route['controller']}@show")->middleware("permission:show-{$route['module']}")->name("{$route['module']}.show");
+
+
             //estados
             Route::get('/estados/{id}', 'UsuariosController@estados');
         });

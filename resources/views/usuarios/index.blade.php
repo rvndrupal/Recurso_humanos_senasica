@@ -19,7 +19,7 @@
                                     <th>{{ __("Apellido materno") }}</th>
                                     <th>{{ __("Curp") }}</th>
                                     <th>{{ __("Rfc") }}</th>
-                                    <th width="60">{{ __("Acciones") }}</th>
+                                    <th width="100">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
                         </table>

@@ -151,6 +151,21 @@ return [
                     'permission'  => 'read-usuarios',
                     'icon' => 'list'
                 ],
+
+                // [
+                //     'text' => 'Cards',
+                //     'url'  => 'admin/usuarios/cards',
+                //     'permission'  => 'read-card',
+                //     'icon' => 'list'
+                // ],
+
+                [
+                    'text' => 'Cards',
+                    'url'  => 'admin/usuarios/cards',
+                    'permission'  => 'read-card',
+                    'icon' => 'list'
+                ],
+
                 [
                     'text' => 'Crear',
                     'url'  => 'admin/usuarios/create',
