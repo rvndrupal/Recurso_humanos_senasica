@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use Illuminate\Support\Facades\Redirect;
 
 class UsuariosController extends Controller
 {
@@ -172,22 +173,19 @@ class UsuariosController extends Controller
 
             $data = DB::table('usuarios')
 
-                ->where('condicion','=','1')
-
                 ->orwhere('nom', 'like', '%'.$query.'%')
-                // ->orWhere('ap', 'like', '%'.$query.'%')
-                // ->orWhere('am', 'like', '%'.$query.'%')
-                // ->orWhere('rfc', 'like', '%'.$query.'%')
-                // ->orWhere('curp', 'like', '%'.$query.'%')
+                ->orWhere('ap', 'like', '%'.$query.'%')
+                ->orWhere('am', 'like', '%'.$query.'%')
+                ->orWhere('rfc', 'like', '%'.$query.'%')
+                ->orWhere('curp', 'like', '%'.$query.'%')
                 ->orderBy('nom', 'desc')
                 ->get();
 
             }
             else
             {
-            $data = DB::table('rusuarios')
+            $data = DB::table('usuarios')
                 ->orderBy('nom', 'desc')
-                ->union(condicion)
                 ->get();
             }
 
@@ -203,7 +201,7 @@ class UsuariosController extends Controller
                     {
                         $output .= '
                             <div class="card bg-secondary text-white text-left ">
-                                <a href="./show/?id='.$row->id.'">
+                                <a href="./show/'.$row->id.'">
                                     <img src="'.$uri.$row->foto.'"  class="card-img-top" alt="'.$row->nom.'">
                                 </a>
                                 <div class="card-body">
@@ -307,7 +305,8 @@ class UsuariosController extends Controller
         $usuario->condicion='0';
         $usuario->save();
         $title = __('Usuarios');
-        return view('usuarios.index',compact('title'));
+        // return view('usuarios.index',compact('title'));
+        return Redirect::back();
     }
 
     public function activar($id)
@@ -316,6 +315,7 @@ class UsuariosController extends Controller
         $usuario->condicion='1';
         $usuario->save();
         $title = __('Usuarios');
-        return view('usuarios.index',compact('title'));
+        // return view('usuarios.index',compact('title'));
+        return Redirect::back();
     }
 }
