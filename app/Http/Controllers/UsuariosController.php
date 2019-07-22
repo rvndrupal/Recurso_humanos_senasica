@@ -26,11 +26,28 @@ class UsuariosController extends Controller
     public function json () {
         if (request()->ajax()) {
             $actions = 'usuarios.datatables.index';
+            // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
             return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
                 ->rawColumns(['actions'])
                 ->toJson();
         }
     }
+
+    public function listaAdmin(){
+        $title = __('Usuarios');
+        return view('usuarios.indexAdmin', compact('title'));
+    }
+
+    public function jsonAdmin () {
+        if (request()->ajax()) {
+            $actions = 'usuarios.datatables.indexAdminAction';
+            return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions)
+            // return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
+                ->rawColumns(['actions'])
+                ->toJson();
+        }
+    }
+
 
     //mostrar los paises
     public function estados(Request $request, $id){
@@ -149,22 +166,34 @@ class UsuariosController extends Controller
             $query = $request->get('query');
             if($query != '')
             {
+
+
+
+
             $data = DB::table('usuarios')
-                ->where('nom', 'like', '%'.$query.'%')
-                ->orWhere('ap', 'like', '%'.$query.'%')
-                ->orWhere('am', 'like', '%'.$query.'%')
-                ->orWhere('rfc', 'like', '%'.$query.'%')
-                ->orWhere('curp', 'like', '%'.$query.'%')
+
+                ->where('condicion','=','1')
+
+                ->orwhere('nom', 'like', '%'.$query.'%')
+                // ->orWhere('ap', 'like', '%'.$query.'%')
+                // ->orWhere('am', 'like', '%'.$query.'%')
+                // ->orWhere('rfc', 'like', '%'.$query.'%')
+                // ->orWhere('curp', 'like', '%'.$query.'%')
                 ->orderBy('nom', 'desc')
                 ->get();
 
             }
             else
             {
-            $data = DB::table('tbl_usuarios')
+            $data = DB::table('rusuarios')
                 ->orderBy('nom', 'desc')
+                ->union(condicion)
                 ->get();
             }
+
+
+
+
                 $total_row = $data->count();
                 if($total_row > 0)
                 {
@@ -267,8 +296,26 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuarios $usuarios)
+    public function destroy(Usuarios $usuarios,  $id)
     {
-        //
+        dd($id);
+    }
+
+    public function desactivar($id)
+    {
+        $usuario= Usuarios::findOrFail($id);
+        $usuario->condicion='0';
+        $usuario->save();
+        $title = __('Usuarios');
+        return view('usuarios.index',compact('title'));
+    }
+
+    public function activar($id)
+    {
+        $usuario= Usuarios::findOrFail($id);
+        $usuario->condicion='1';
+        $usuario->save();
+        $title = __('Usuarios');
+        return view('usuarios.index',compact('title'));
     }
 }

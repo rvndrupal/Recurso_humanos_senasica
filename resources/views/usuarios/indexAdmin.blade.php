@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@permission('read-usuariosSuper')
+@permission('read-usuariosAdmin')
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -18,7 +18,6 @@
                                     <th>{{ __("Apellido paterno") }}</th>
                                     <th>{{ __("Apellido materno") }}</th>
                                     <th>{{ __("Curp") }}</th>
-                                    <th>{{ __("Estado") }}</th>
                                     <th width="130">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
@@ -40,7 +39,7 @@
                 lengthMenu: [5, 10, 25, 50, 75, 100, 250, 500],
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('usuarios.json') }}',
+                ajax: '{{ route('usuarios.jsonAdmin') }}',
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
@@ -50,7 +49,6 @@
                     { data: 'ap' },
                     { data: 'am' },
                     { data: 'curp' },
-                    { data: 'condicion'},
                     { data: 'actions' }
                 ]
             })

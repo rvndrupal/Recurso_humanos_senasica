@@ -40,18 +40,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     foreach ($routes as $route) {
         Route::group(['prefix' => $route['module']], function () use ($route) {
             Route::get('/', "{$route['controller']}@index")->middleware("permission:read-{$route['module']}")->name("{$route['module']}.index");
+            Route::get('/lista', "{$route['controller']}@listaAdmin")->middleware("permission:read-usuariosAdmin")->name("{$route['module']}.indexLista");
             Route::get('/json', "{$route['controller']}@json")->middleware("permission:read-{$route['module']}")->name("{$route['module']}.json");
+            Route::get('/json/admin', "{$route['controller']}@jsonAdmin")->middleware("permission:read-usuariosAdmin")->name("{$route['module']}.jsonAdmin");
             Route::get('/create', "{$route['controller']}@create")->middleware("permission:create-{$route['module']}")->name("{$route['module']}.create");
             Route::post('/store', "{$route['controller']}@store")->middleware("permission:create-{$route['module']}")->name("{$route['module']}.store");
             Route::get('/edit/{id}', "{$route['controller']}@edit")->middleware("permission:update-{$route['module']}")->name("{$route['module']}.edit");
             Route::put('/update/{id}', "{$route['controller']}@update")->middleware("permission:update-{$route['module']}")->name("{$route['module']}.update");
-            Route::delete('/{id}', "{$route['controller']}@destroy")->middleware("permission:delete-{$route['module']}")->name("{$route['module']}.destroy");
+            Route::delete('/destroy/{id}', "{$route['controller']}@destroy")->middleware("permission:delete-{$route['module']}")->name("{$route['module']}.destroy");
 
 
             Route::get('/cards', 'UsuariosController@cards')->name('cards');
             Route::get('/card/action', 'UsuariosController@cardsAction')->name('card.action');
             // Route::get('/show/{id}', 'UsuariosController@show')->name('show');
             Route::get('/show/{id}', "{$route['controller']}@show")->middleware("permission:show-{$route['module']}")->name("{$route['module']}.show");
+            Route::get('/desactivar/{id}', "{$route['controller']}@desactivar")->middleware("permission:desactivar-{$route['module']}")->name("{$route['module']}.desactivar");
+            Route::get('/activar/{id}', "{$route['controller']}@activar")->middleware("permission:activar-{$route['module']}")->name("{$route['module']}.activar");
 
 
             //estados

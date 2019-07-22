@@ -143,12 +143,19 @@ return [
             'text' => 'Carnet',
             'url'  => 'admin/usuarios',
             'icon' => 'users',
-            'permission'  => 'read-usuarios',
+            'permission'  => 'read-carnet',
             'submenu' => [
                 [
-                    'text' => 'Listado',
+                    'text' => 'ListadoSuper',
                     'url'  => 'admin/usuarios',
                     'permission'  => 'read-usuarios',
+                    'icon' => 'list'
+                ],
+
+                [
+                    'text' => 'ListadoAdmin',
+                    'url'  => 'admin/usuarios/lista',
+                    'permission'  => 'read-usuariosAdmin',
                     'icon' => 'list'
                 ],
 
