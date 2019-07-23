@@ -13,4 +13,11 @@ class Pais extends Model
     {
         return $this->hasMany('App\Estados');
     }
+
+    public function usuario()
+    {
+        return $this->belongsToMany('App\Usuarios');
+    }
+
+
 }

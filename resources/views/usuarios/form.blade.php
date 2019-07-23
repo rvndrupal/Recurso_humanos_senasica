@@ -10,7 +10,7 @@
 </head>
 <body>
 
-       <form id="msform" action="" class="formulario" enctype="multipart/form-data">
+       <form id="msform" action="{{ route('usuarios.store') }}" method="POST" class="formulario" enctype="multipart/form-data">
             @csrf
         <!-- progressbar -->
         <ul id="progressbar">
@@ -20,7 +20,6 @@
             <li>Paso 4</li>
             <li>Final</li>
         </ul>
-        <h4>Nuevo Usuario</h4>
         <!-- fieldsets -->
         <fieldset>
             <h2 class="fs-title">Datos Personales</h2>
@@ -37,9 +36,18 @@
                     <div class="col-md-4">
                             <input type="text" name="am" id="am" placeholder="Apellido Materno ..." />
                     </div>
+
+                    <div class="col-md-6">
+                            <input type="text" name="curp" id="curp" placeholder="Curp ..." />
+                    </div>
+
+                    <div class="col-md-6">
+                            <input type="text" name="rfc" id="rfc" placeholder="Rfc ..." />
+                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <select class="form-control" name="pais" placeholder="Pais" id="pais">
+                            <select class="form-control" name="pais_id" placeholder="Pais" id="pais">
+                                    <option value="">Selecciona un Pais</option>
                                 @foreach ($pais as $item)
                                 <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
                                 @endforeach
@@ -50,7 +58,7 @@
 
                     <div class="col-md-4">
                             <div class="form-group">
-                                <select class="form-control" name="estado" placeholder="Estado" id="estado">
+                                <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
                                     <option value=""></option>
                                 </select>
 
@@ -66,8 +74,29 @@
                             </div>
                     </div>
 
+                    <div class="col-md-2">
+                            <div class="form-group">
+                                <select class="form-control" name="codigo" placeholder="codigo" id="codigo">
+                                    <option value=""></option>
+                                </select>
 
-                    <div class="col-md-12">
+                            </div>
+                    </div>
+
+                    <div class="col-md-8">
+                            <input type="text" name="calle" id="calle" placeholder="Calle ..." />
+                    </div>
+
+                    <div class="col-md-2">
+                            <input type="text" name="numero" id="numero" placeholder="Numero ..." />
+                    </div>
+
+                    <div class="col-md-6">
+                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Rfc ..." />
+                    </div>
+
+
+                    <div class="col-md-6">
                             <input type="file" name="foto" id="foto" placeholder="Foto ..."  />
                     </div>
             </div>
@@ -105,7 +134,7 @@
                 <h3 class="fs-subtitle">Demo cuatro</h3>
                 <div class="row">
                     <div class="col-md-4">
-                        <input type="text" name="curp" id="curp" placeholder="Curp ..." />
+
                     </div>
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
@@ -121,7 +150,7 @@
             <h3 class="fs-subtitle">Final</h3>
             <div class="row">
                 <div class="col-md-4">
-                    <input type="text" name="rfc" id="rfc" placeholder="Rfc ..." />
+
                 </div>
             </div>
 
@@ -198,48 +227,39 @@ $(document).ready(function(){
         });//estados
 
 
+        $("#colonia").change(function(e){
 
+            var id=e.target.value;
+            console.log(id);
 
+            if(id=="selected"){
+                $("#codigo").append("<option value=''>Selecciona un código</option>");
+                console.log("nada");
+            }
+            else{
 
-        $('#guardar').click(function()
-        {
+                $.get("codigos/" + id, function(data){
 
-            $('.formulario').on('submit', function(event){
-                event.preventDefault();
-                    $.ajax({
-                    url:"{{ route('usuarios.store') }}",
-                    method:"POST",
-                    data: new FormData(this),
-                    contentType: false,
-                    cache:false,
-                    processData: false,
-                    dataType:"json",
-                    success:function(data)
-                    {
-                    var html = '';
-                    if(data.errors)
-                    {
-                        html = '<div class="alert alert-danger">';
-                        for(var count = 0; count < data.errors.length; count++)
+                    $("#codigo").empty();
+
+                    for(i=0; i<data.length ;i++)
                         {
-                        html += '<p>' + data.errors[count] + '</p>';
+                            $("#codigo").append("<option value='" +data[i].id+"'>"+data[i].codigo+"</option>");
                         }
-                        html += '</div>';
-                    }
-                    if(data.success)
-                    {
-                        html = '<div class="alert alert-success">' + data.success + '</div>';
-                        window.location.replace("http://localhost/recursos/public/admin/usuarios");
-                    }
-                    $('#resultado').append(html);
 
-                    }
-                    })
-             });
+                });
+            }
+        });//colonia
 
 
 
-        });  //guardar
+
+
+
+
+
+
+
 
 
 

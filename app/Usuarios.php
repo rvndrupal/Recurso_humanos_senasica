@@ -11,13 +11,19 @@ class Usuarios extends Model
 
     // ];
 
-    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id'
+    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id','calle','numero','estados_id'
 
     ];
 
     public function pais()
     {
-        return $this->hasOne('App\Pais');
+        return $this->belongsTo('App\Pais');
     }
+
+    public function estados()
+    {
+        return $this->belongsTo('App\Estados');
+    }
+
 
 }

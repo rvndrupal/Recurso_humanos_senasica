@@ -2,12 +2,11 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Estados;
+use App\Codigos;
 use Faker\Generator as Faker;
 
-$factory->define(Estados::class, function (Faker $faker) {
+$factory->define(Codigos::class, function (Faker $faker) {
     return [
-
-
+        //
     ];
 });

@@ -28,8 +28,10 @@ class CreateUsuariosTable extends Migration
             // $table->string('correo_per',50);
             // $table->string('tel_casa',15);
             // $table->string('tel_cel',15);
-            // $table->string('calle',15);
-            // $table->string('numero',15);
+            $table->string('calle',200);
+            $table->string('numero',50);
+            // $table->string('estado',50);
+
             // $table->string('colonia',15);
             // $table->string('cp',15);
 
@@ -37,6 +39,14 @@ class CreateUsuariosTable extends Migration
 
             $table->unsignedBigInteger('pais_id');
             $table->foreign('pais_id')->references('id')->on('pais');
+
+            $table->unsignedBigInteger('estados_id');
+            $table->foreign('estados_id')->references('id')->on('estados');
+
+
+
+
+
 
             $table->boolean('condicion')->default(1);
             $table->timestamps();

@@ -15,6 +15,9 @@ $factory->define(Usuarios::class, function (Faker $faker) {
         'foto' 	=> $faker->image('public/Fotos/Usuarios',200, 200, 'people', false),
         'fecha_nacimiento' => $faker->date('Y-m-d', 'now'),
         'pais_id' 		=> rand(1,4),
+        'calle' => $faker->text(20),
+        'numero' => $faker->text(5),
+        'estado' => $faker->text(5),
         // 'ife' => $faker->fileExtension('public/Ife','pdf'),
     ];
 });

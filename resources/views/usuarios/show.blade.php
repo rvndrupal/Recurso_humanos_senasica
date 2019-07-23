@@ -21,19 +21,29 @@
                                         <h5 class="card-title">Nombre: {{ $usuario->nom }}</h5>
                                         <p class="card-text">Apellido paterno: {{ $usuario->ap }}</p>
                                         <p class="card-text">Apellido materno: {{ $usuario->ap }}</p>
+                                        <p class="card-text">Fecha de Nacimiento: {{ $usuario->fecha_nacimiento }}</p>
                                         <p class="card-text"><small class="text-muted">Fecha de Alta: {{ $usuario->created_at }}</small></p>
+
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="card-footer">
 
+
+                                <div class="col-md-3">
+                                    <div class="card-footer">
                                         <h5 class="card-title">RFC: {{ $usuario->rfc }}</h5>
                                         <p class="card-text">CURP: {{ $usuario->curp }}</p>
+                                    </div>
+                                </div>
 
+                                <div class="col-md-4">
+                                        <div class="card-footer">
+                                            <h5 class="card-title">Pais: {{ $usuario->pais->nombre_pais }}</h5>
+                                            <h5 class="card-title">Estado: {{ $usuario->estados->nombre_estado }}</h5>
+                                            {{--  <p class="card-text">Estado: {{ $usuario->pais }}</p>  --}}
+                                        </div>
                                     </div>
 
-                                </div>
 
                             </div>
                         </div>

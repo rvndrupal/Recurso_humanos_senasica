@@ -10,3 +10,49 @@ read-carnet
 read-usuariosAdmin
 read-card
 read-usuariosSuper
+
+show-usuarios
+update-usuarios
+desactivar-usuarios
+activar-usuarios
+
+
+
+ {{--  $('#guardar').click(function()
+        {
+
+            $('.formulario').on('submit', function(event){
+                event.preventDefault();
+                    $.ajax({
+                    url:"{{ route('usuarios.store') }}",
+                    method:"POST",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache:false,
+                    processData: false,
+                    dataType:"json",
+                    success:function(data)
+                    {
+                    var html = '';
+                    if(data.errors)
+                    {
+                        html = '<div class="alert alert-danger">';
+                        for(var count = 0; count < data.errors.length; count++)
+                        {
+                        html += '<p>' + data.errors[count] + '</p>';
+                        }
+                        html += '</div>';
+                    }
+                    if(data.success)
+                    {
+                        html = '<div class="alert alert-success">' + data.success + '</div>';
+                        window.location.replace("http://localhost/recursos/public/admin/usuarios");
+                    }
+                    $('#resultado').append(html);
+
+                    }
+                    })
+             });
+
+
+  });  //guardar  --}}

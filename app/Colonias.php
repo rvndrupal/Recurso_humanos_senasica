@@ -13,4 +13,9 @@ class Colonias extends Model
     {
         return $this->belongsTo('App\Estados');
     }
+
+    public function codigos()
+    {
+        return $this->hasMany('App\Codigos');
+    }
 }

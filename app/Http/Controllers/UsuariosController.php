@@ -6,10 +6,12 @@ use App\Usuarios;
 use App\Pais;
 use App\Estados;
 use App\Colonias;
+use App\Codigos;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
 use DB;
+
 use Illuminate\Support\Facades\Redirect;
 
 class UsuariosController extends Controller
@@ -65,7 +67,7 @@ class UsuariosController extends Controller
     }
 
 
-     //mostrar los paises
+     //mostrar los colonias
      public function colonias(Request $request, $id){
 
         if (request()->ajax()) {
@@ -73,6 +75,18 @@ class UsuariosController extends Controller
         $colonias=Colonias::orderBy('colonia','ASC')->select('id','colonia')->where('estados_id','=',$id)->get();
 
          return response()->json($colonias);
+
+        }
+    }
+
+      //mostrar los codigos postales
+      public function codigos(Request $request, $id){
+
+        if (request()->ajax()) {
+
+        $codigos=Codigos::orderBy('codigo','ASC')->select('id','codigo')->where('colonias_id','=',$id)->get();
+
+         return response()->json($codigos);
 
         }
     }
@@ -100,34 +114,49 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'nom'       =>  'required',
-            'ap'      =>  'required',
-            'am'   =>  'required',
-            'curp'   =>  'required',
-            'rfc'   =>  'required',
-            'foto'  => 'required'
-        );
+        // $rules = array(
+        //     'nom'       =>  'required',
+        //     'ap'      =>  'required',
+        //     'am'   =>  'required',
+        //     'curp'   =>  'required',
+        //     'rfc'   =>  'required',
+        //     'foto'  => 'required',
+        //     'fecha_nacimiento' => 'required',
+        //     'calle'  => 'required',
+        //     'numero'  => 'required',
+        //     'pais' => 'requerid'
 
-        $error = Validator::make($request->all(), $rules);
+        // );
 
-        if($error->fails())
-        {
-            return response()->json(['errors' => $error->errors()->all()]);
-        }
+        // $error = Validator::make($request->all(), $rules);
+
+        // if($error->fails())
+        // {
+        //     return response()->json(['errors' => $error->errors()->all()]);
+        // }
 
 
-        $form_data = array(
-            'nom'        =>  $request->nom,
-            'ap'         =>  $request->ap,
-            'am'             =>  $request->am,
-            'curp'             =>  $request->curp,
-            'rfc'             =>  $request->rfc,
-            'condicion'  => '1',
-        );
+
+
+        // $form_data = array(
+        //     'nom'        =>  $request->nom,
+        //     'ap'         =>  $request->ap,
+        //     'am'             =>  $request->am,
+        //     'curp'             =>  $request->curp,
+        //     'rfc'             =>  $request->rfc,
+        //     'fecha_nacimiento'  => $request->fecha_nacimiento,
+        //     'calle'  => $request->calle,
+        //     'numero'  => $request->numero,
+        //     'condicion'  => '1',
+        // );
+
 
         $usuario = Usuarios::create($request->all());
 
+        //guardando pais
+
+         //TAGS
+        //  $usuario->pais()->attach($request->get('pais'));
 
 
          //Handle File Upload
@@ -153,16 +182,13 @@ class UsuariosController extends Controller
 
          $usuario->save();
 
+         $title = __('Usuarios');
 
-        // //IMAGE
-        // if($request->file('foto')){
-        //     $path = Storage::disk('public')->put('FotoUsuarios',  $request->file('foto'));
-        //     $foto->fill(['file' => asset($path)])->save();
-        // }
+       return view('usuarios.index',compact('title'));
 
 
 
-        return response()->json(['success' => 'Dato guardado correctamente.']);
+        // return response()->json(['success' => 'Dato guardado correctamente.']);
 
     }
 
@@ -256,7 +282,13 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario);
+        // $idEstado=$usuario->estado;
+        // $idPais=$usuario->pais->id;
+
+        //$pais=Estados::where('pais_id','=',$idPais)->get();
+        //dd($usuario->estados);
+
+
 
         return view('usuarios.show', compact('usuario','title'));
     }
