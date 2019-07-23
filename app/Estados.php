@@ -13,4 +13,9 @@ class Estados extends Model
     {
         return $this->belongsTo('App\Pais');
     }
+
+    public function colonias()
+    {
+        return $this->hasMany('App\Colonias');
+    }
 }

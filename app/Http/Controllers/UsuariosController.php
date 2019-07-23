@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Usuarios;
 use App\Pais;
 use App\Estados;
+use App\Colonias;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -30,6 +31,7 @@ class UsuariosController extends Controller
             // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
             return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
                 ->rawColumns(['actions'])
+                // ->orderBy('nom','ASC')
                 ->toJson();
         }
     }
@@ -58,6 +60,19 @@ class UsuariosController extends Controller
         $estados=Estados::orderBy('nombre_estado','ASC')->select('id','nombre_estado')->where('pais_id','=',$id)->get();
 
          return response()->json($estados);
+
+        }
+    }
+
+
+     //mostrar los paises
+     public function colonias(Request $request, $id){
+
+        if (request()->ajax()) {
+
+        $colonias=Colonias::orderBy('colonia','ASC')->select('id','colonia')->where('estados_id','=',$id)->get();
+
+         return response()->json($colonias);
 
         }
     }
@@ -167,9 +182,6 @@ class UsuariosController extends Controller
             $query = $request->get('query');
             if($query != '')
             {
-
-
-
 
             $data = DB::table('usuarios')
 

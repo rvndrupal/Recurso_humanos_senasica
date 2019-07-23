@@ -3,3 +3,10 @@ Navegacion.
 1.-config->adminlte
 
 2.-Archivo muy importante hooks--> app->helpers->hooks
+
+
+3.-Permisos a Crear
+read-carnet
+read-usuariosAdmin
+read-card
+read-usuariosSuper

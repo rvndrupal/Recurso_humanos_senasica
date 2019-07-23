@@ -18,6 +18,9 @@ class CreateUsuariosTable extends Migration
             $table->string('nom',30);
             $table->string('ap',50);
             $table->string('am',50);
+            $table->date('fecha_nacimiento');
+            // $table->string('ife',100);
+
             $table->string('foto',300);
             $table->string('rfc',30);
             $table->string('curp',30);
@@ -32,8 +35,8 @@ class CreateUsuariosTable extends Migration
 
 
 
-            // $table->unsignedBigInteger('pais_id');
-            // $table->foreign('pais_id')->references('id')->on('pais');
+            $table->unsignedBigInteger('pais_id');
+            $table->foreign('pais_id')->references('id')->on('pais');
 
             $table->boolean('condicion')->default(1);
             $table->timestamps();

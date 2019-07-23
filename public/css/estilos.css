@@ -9,11 +9,11 @@ html {
 	/*Image only BG fallback*/
 	/* background: url('http://thecodeplayer.com/uploads/media/gs.png'); */
 	/*background = gradient + image pattern combo*/
-	background: 
-		/* linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), 
+	background:
+		/* linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),
         url('http://thecodeplayer.com/uploads/media/gs.png'); */
         rgba(226, 226, 226, 0.25);
-       
+
 }
 
 body {
@@ -33,11 +33,11 @@ body {
 	border-radius: 3px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
 	padding: 20px 30px;
-	
+
 	box-sizing: border-box;
 	width: 80%;
 	margin: 0 10%;
-	
+
 	/*stacking fieldsets above each other*/
 	position: absolute;
 }
@@ -47,7 +47,7 @@ body {
 }
 /*inputs*/
 #msform input, #msform textarea {
-	padding: 15px;
+	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	margin-bottom: 10px;
@@ -127,7 +127,7 @@ body {
 }
 #progressbar li:first-child:after {
 	/*connector not needed before the first step*/
-	content: none; 
+	content: none;
 }
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/

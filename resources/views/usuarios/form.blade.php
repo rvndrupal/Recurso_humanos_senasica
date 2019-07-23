@@ -23,17 +23,55 @@
         <h4>Nuevo Usuario</h4>
         <!-- fieldsets -->
         <fieldset>
-            <h2 class="fs-title">Paso uno</h2>
-            <h3 class="fs-subtitle">Paso uno</h3>
+            <h2 class="fs-title">Datos Personales</h2>
+            <h3 class="fs-subtitle">Registro</h3>
             <div class="row">
-                <div class="col-md-3">
-                    <input type="text" name="nom" id="nom" placeholder="Nombre ..." required />
-                </div>
 
-                <div class="col-md-5">
-                    <input type="file" name="foto" id="foto" placeholder="Foto ..."  />
-                </div>
+                    <div class="col-md-4">
+                            <input type="text" name="nom" id="nom" placeholder="Nombre ..." required />
+                    </div>
+
+                    <div class="col-md-4">
+                            <input type="text" name="ap" id="ap" placeholder="Apellido Paterno ..." />
+                        </div>
+                    <div class="col-md-4">
+                            <input type="text" name="am" id="am" placeholder="Apellido Materno ..." />
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" name="pais" placeholder="Pais" id="pais">
+                                @foreach ($pais as $item)
+                                <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" name="estado" placeholder="Estado" id="estado">
+                                    <option value=""></option>
+                                </select>
+
+                            </div>
+                    </div>
+
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" name="colonia" placeholder="Colonia" id="colonia">
+                                    <option value=""></option>
+                                </select>
+
+                            </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                            <input type="file" name="foto" id="foto" placeholder="Foto ..."  />
+                    </div>
             </div>
+
 
 
             <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -43,9 +81,9 @@
             <h2 class="fs-title">Demo dos</h2>
             <h3 class="fs-subtitle">Demo dos</h3>
             <div class="row">
-                <div class="col-md-4">
-                    <input type="text" name="ap" id="ap" placeholder="Apellido Paterno ..." />
-                </div>
+
+
+
             </div>
             <input type="button" name="previous" class="previous action-button" value="Previous" />
             <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -56,9 +94,7 @@
                 <h2 class="fs-title">Demo tres</h2>
                 <h3 class="fs-subtitle">Demo tres</h3>
                 <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" name="am" id="am" placeholder="Apellido Materno ..." />
-                    </div>
+
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -135,6 +171,31 @@ $(document).ready(function(){
                 });
             }
         });//pais
+
+
+        $("#estado").change(function(e){
+
+            var id=e.target.value;
+            console.log(id);
+
+            if(id=="selected"){
+                $("#colonia").append("<option value=''>Selecciona un estado</option>");
+                console.log("nada");
+            }
+            else{
+
+                $.get("colonias/" + id, function(data){
+
+                    $("#colonia").empty();
+
+                    for(i=0; i<data.length ;i++)
+                        {
+                            $("#colonia").append("<option value='" +data[i].id+"'>"+data[i].colonia+"</option>");
+                        }
+
+                });
+            }
+        });//estados
 
 
 

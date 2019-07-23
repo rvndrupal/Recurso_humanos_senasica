@@ -148,7 +148,7 @@ return [
                 [
                     'text' => 'ListadoSuper',
                     'url'  => 'admin/usuarios',
-                    'permission'  => 'read-usuarios',
+                    'permission'  => 'read-usuariosSuper',
                     'icon' => 'list'
                 ],
 

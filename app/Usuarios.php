@@ -11,7 +11,7 @@ class Usuarios extends Model
 
     // ];
 
-    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto'
+    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id'
 
     ];
 

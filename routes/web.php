@@ -60,6 +60,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
             //estados
             Route::get('/estados/{id}', 'UsuariosController@estados');
+             //colonias
+             Route::get('/colonias/{id}', 'UsuariosController@colonias');
         });
     }
 
