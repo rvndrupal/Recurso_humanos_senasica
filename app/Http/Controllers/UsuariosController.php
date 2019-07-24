@@ -282,11 +282,7 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        // $idEstado=$usuario->estado;
-        // $idPais=$usuario->pais->id;
-
-        //$pais=Estados::where('pais_id','=',$idPais)->get();
-        //dd($usuario->estados);
+        //dd($usuario->colonias);
 
 
 

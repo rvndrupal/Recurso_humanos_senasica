@@ -18,4 +18,9 @@ class Colonias extends Model
     {
         return $this->hasMany('App\Codigos');
     }
+
+    public function usuario()
+    {
+        return $this->belongsToMany('App\Usuarios');
+    }
 }

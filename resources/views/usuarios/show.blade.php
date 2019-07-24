@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@permission('read-categories')
+@permission('show-usuarios') //verificar cual le toca bien
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -40,6 +40,8 @@
                                         <div class="card-footer">
                                             <h5 class="card-title">Pais: {{ $usuario->pais->nombre_pais }}</h5>
                                             <h5 class="card-title">Estado: {{ $usuario->estados->nombre_estado }}</h5>
+                                            <h5 class="card-title">Colonia: {{ $usuario->colonias->colonia }}</h5>
+                                            <h5 class="card-title">Código Postal: {{ $usuario->codigos->codigo }}</h5>
                                             {{--  <p class="card-text">Estado: {{ $usuario->pais }}</p>  --}}
                                         </div>
                                     </div>

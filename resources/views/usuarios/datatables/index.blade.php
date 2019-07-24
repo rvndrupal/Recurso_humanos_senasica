@@ -1,3 +1,4 @@
+
 @permission('show-usuarios')
 <a
     href="{{ route('usuarios.show', ['id' => $id]) }}"
@@ -22,7 +23,8 @@
     </a>
 @endpermission
 
-@permission('desactivar-usuarios')
+@permission('read-usuarios')
+{{--  @permission('desactivar-usuarios')  --}}
 <a
     href="{{ route('usuarios.desactivar', ['id' => $id]) }}"
     title="{{ __('Eliminar carnet') }}"
@@ -34,7 +36,8 @@
 @endpermission
 
 
-@permission('activar-usuarios')
+@permission('read-usuarios')
+{{--  @permission('activar-usuarios')  --}}
 <a
     href="{{ route('usuarios.activar', ['id' => $id]) }}"
     title="{{ __('Activar carnet') }}"

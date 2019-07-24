@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
-@permission('read-usuariosAdmin')
+@permission('read-usuarios')
+{{--  @permission('read-usuariosAdmin')  --}}
 @section('content')
     <div class="box">
         <div class="box-header">

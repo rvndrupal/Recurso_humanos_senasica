@@ -143,19 +143,22 @@ return [
             'text' => 'Carnet',
             'url'  => 'admin/usuarios',
             'icon' => 'users',
-            'permission'  => 'read-carnet',
+            'permission'  => 'read-usuarios',
+            // 'permission'  => 'read-carnet',
             'submenu' => [
                 [
                     'text' => 'ListadoSuper',
                     'url'  => 'admin/usuarios',
-                    'permission'  => 'read-usuariosSuper',
+                    'permission'  => 'read-usuarios',
+                    // 'permission'  => 'read-usuariosSuper',
                     'icon' => 'list'
                 ],
 
                 [
                     'text' => 'ListadoAdmin',
                     'url'  => 'admin/usuarios/lista',
-                    'permission'  => 'read-usuariosAdmin',
+                    'permission'  => 'read-usuarios',
+                    // 'permission'  => 'read-usuariosAdmin',
                     'icon' => 'list'
                 ],
 
@@ -169,7 +172,8 @@ return [
                 [
                     'text' => 'Cards',
                     'url'  => 'admin/usuarios/cards',
-                    'permission'  => 'read-card',
+                    'permission'  => 'read-usuarios',
+                    // 'permission'  => 'read-card',
                     'icon' => 'list'
                 ],
 

@@ -11,7 +11,8 @@ class Usuarios extends Model
 
     // ];
 
-    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id','calle','numero','estados_id'
+    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id','calle','numero','estados_id',
+    'colonias_id','codigos_id'
 
     ];
 
@@ -23,6 +24,16 @@ class Usuarios extends Model
     public function estados()
     {
         return $this->belongsTo('App\Estados');
+    }
+
+    public function colonias()
+    {
+        return $this->belongsTo('App\Colonias');
+    }
+
+    public function codigos()
+    {
+        return $this->belongsTo('App\Codigos');
     }
 
 

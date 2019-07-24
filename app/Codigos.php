@@ -13,4 +13,9 @@ class Codigos extends Model
     {
         return $this->belongsTo('App\Colonias');
     }
+
+    public function usuario()
+    {
+        return $this->belongsToMany('App\Usuarios');
+    }
 }

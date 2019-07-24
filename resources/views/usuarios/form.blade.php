@@ -67,7 +67,7 @@
 
                     <div class="col-md-4">
                             <div class="form-group">
-                                <select class="form-control" name="colonia" placeholder="Colonia" id="colonia">
+                                <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
                                     <option value=""></option>
                                 </select>
 
@@ -76,7 +76,7 @@
 
                     <div class="col-md-2">
                             <div class="form-group">
-                                <select class="form-control" name="codigo" placeholder="codigo" id="codigo">
+                                <select class="form-control" name="codigos_id" placeholder="codigo" id="codigo">
                                     <option value=""></option>
                                 </select>
 

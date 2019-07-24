@@ -39,9 +39,13 @@ class CreateUsuariosTable extends Migration
 
             $table->unsignedBigInteger('pais_id');
             $table->foreign('pais_id')->references('id')->on('pais');
-
             $table->unsignedBigInteger('estados_id');
             $table->foreign('estados_id')->references('id')->on('estados');
+            $table->unsignedBigInteger('colonias_id');
+            $table->foreign('colonias_id')->references('id')->on('colonias');
+            $table->unsignedBigInteger('codigos_id');
+            $table->foreign('codigos_id')->references('id')->on('codigos');
+
 
 
 
