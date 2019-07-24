@@ -152,13 +152,7 @@ class UsuariosController extends Controller
 
 
         $usuario = Usuarios::create($request->all());
-
-        //guardando pais
-
-         //TAGS
         //  $usuario->pais()->attach($request->get('pais'));
-
-
          //Handle File Upload
          if($request->hasFile('foto')){
 
@@ -178,6 +172,25 @@ class UsuariosController extends Controller
             $path = $request->file('foto')->storeAs('Fotos/Usuarios',$fileNameToStore);
 
             $usuario->foto=$fileNameToStore;
+         }
+
+         if ($request->hasfile('carga_rfc')) {
+
+            $filenamewithExt = $request->file('carga_rfc')->getClientOriginalName();
+
+            $usuario->carga_rfc=$request->carga_rfc->storeAs('RFC',$filenamewithExt);
+
+         }
+
+         if ($request->hasfile('carga_curp')) {
+            $filenamewithExt = $request->file('carga_curp')->getClientOriginalName();
+            $usuario->carga_curp=$request->carga_curp->storeAs('CURP',$filenamewithExt);
+         }
+
+
+         if ($request->hasfile('carga_ife')) {
+            $filenamewithExt = $request->file('carga_ife')->getClientOriginalName();
+            $usuario->carga_ife=$request->carga_ife->storeAs('IFE',$filenamewithExt);
          }
 
          $usuario->save();

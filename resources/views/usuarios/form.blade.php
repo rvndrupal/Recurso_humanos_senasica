@@ -37,59 +37,48 @@
                             <input type="text" name="am" id="am" placeholder="Apellido Materno ..." />
                     </div>
 
+
+
+                    <div class="col-md-6">
+                            <input type="text" name="rfc" id="rfc" placeholder="Rfc ..." />
+                    </div>
+                    <div class="col-md-6">
+                            <input type="file" name="carga_rfc" id="carga_rfc" placeholder="RFC ..."  />
+                    </div>
+
                     <div class="col-md-6">
                             <input type="text" name="curp" id="curp" placeholder="Curp ..." />
                     </div>
 
                     <div class="col-md-6">
-                            <input type="text" name="rfc" id="rfc" placeholder="Rfc ..." />
+                            <input type="file" name="carga_curp" id="carga_curp" placeholder="RFC ..."  />
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <select class="form-control" name="pais_id" placeholder="Pais" id="pais">
-                                    <option value="">Selecciona un Pais</option>
-                                @foreach ($pais as $item)
-                                <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
-                                @endforeach
-                            </select>
 
-                        </div>
+                    <div class="col-md-12">
+                            <input type="file" name="carga_ife" id="carga_ife" placeholder="RFC ..."  />
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <input type="text" name="correo_per" id="correo_per" placeholder="Corre Personal ..." />
                     </div>
 
                     <div class="col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
-                                    <option value=""></option>
-                                </select>
-
-                            </div>
+                        <input type="text" name="correo_ins" id="correo_ins" placeholder="Corre Intitucional ..." />
                     </div>
 
                     <div class="col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
-                                    <option value=""></option>
-                                </select>
-
-                            </div>
+                        <input type="text" name="tel_casa" id="tel_casa" placeholder="Telefono casa ..." />
                     </div>
 
-                    <div class="col-md-2">
-                            <div class="form-group">
-                                <select class="form-control" name="codigos_id" placeholder="codigo" id="codigo">
-                                    <option value=""></option>
-                                </select>
-
-                            </div>
+                    <div class="col-md-4">
+                        <input type="text" name="tel_movil" id="tel_movil" placeholder="Telefono movil ..." />
                     </div>
 
-                    <div class="col-md-8">
-                            <input type="text" name="calle" id="calle" placeholder="Calle ..." />
-                    </div>
 
-                    <div class="col-md-2">
-                            <input type="text" name="numero" id="numero" placeholder="Numero ..." />
-                    </div>
+
+
+
 
                     <div class="col-md-6">
                             <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Rfc ..." />
@@ -99,6 +88,8 @@
                     <div class="col-md-6">
                             <input type="file" name="foto" id="foto" placeholder="Foto ..."  />
                     </div>
+
+
             </div>
 
 
@@ -107,9 +98,63 @@
 
         </fieldset>
         <fieldset>
-            <h2 class="fs-title">Demo dos</h2>
-            <h3 class="fs-subtitle">Demo dos</h3>
+            <h2 class="fs-title">DOMICILIO PARTICULAR</h2>
+            <h3 class="fs-subtitle">Datos Particulares</h3>
             <div class="row">
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" name="pais_id" placeholder="Pais" id="pais">
+                                        <option value="">Selecciona un Pais</option>
+                                    @foreach ($pais as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
+                                        <option value=""></option>
+                                    </select>
+
+                                </div>
+                        </div>
+
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
+                                        <option value=""></option>
+                                    </select>
+
+                                </div>
+                        </div>
+
+                        <div class="col-md-2">
+                                <div class="form-group">
+                                    <select class="form-control" name="codigos_id" placeholder="codigo" id="codigo">
+                                        <option value=""></option>
+                                    </select>
+
+                                </div>
+                        </div>
+
+                        <div class="col-md-8">
+                                <input type="text" name="calle" id="calle" placeholder="Calle ..." />
+                        </div>
+
+                        <div class="col-md-2">
+                                <input type="text" name="numero" id="numero" placeholder="Numero ..." />
+                        </div>
+
+                        <div class="col-md-4">
+                                <input type="text" name="municipio" id="municipio" placeholder="Municipio ..." />
+                        </div>
+
+                        <div class="col-md-4">
+                                <input type="date" name="fecha_domicilio" id="fecha_domicilio" placeholder="Fecha domicilio ..." />
+                        </div>
 
 
 

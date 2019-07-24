@@ -19,21 +19,25 @@ class CreateUsuariosTable extends Migration
             $table->string('ap',50);
             $table->string('am',50);
             $table->date('fecha_nacimiento');
-            // $table->string('ife',100);
+            $table->date('fecha_domicilio');
+            $table->string('carga_rfc',300);
+            $table->string('carga_curp',300);
+            $table->string('carga_ife',300);
 
             $table->string('foto',300);
             $table->string('rfc',30);
             $table->string('curp',30);
-            // $table->string('correo_inst',50);
-            // $table->string('correo_per',50);
-            // $table->string('tel_casa',15);
-            // $table->string('tel_cel',15);
+            $table->string('municipio',100);
+
             $table->string('calle',200);
             $table->string('numero',50);
-            // $table->string('estado',50);
+            $table->string('correo_per',50);
+            $table->string('correo_ins',50);
+            $table->string('tel_casa',50);
+            $table->string('tel_movil',50);
 
-            // $table->string('colonia',15);
-            // $table->string('cp',15);
+
+
 
 
 
