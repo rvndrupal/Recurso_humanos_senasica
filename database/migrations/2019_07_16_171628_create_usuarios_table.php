@@ -23,6 +23,8 @@ class CreateUsuariosTable extends Migration
             $table->string('carga_rfc',300);
             $table->string('carga_curp',300);
             $table->string('carga_ife',300);
+            $table->string('carga_domicilio',300);
+
 
             $table->string('foto',300);
             $table->string('rfc',30);

@@ -193,6 +193,11 @@ class UsuariosController extends Controller
             $usuario->carga_ife=$request->carga_ife->storeAs('IFE',$filenamewithExt);
          }
 
+         if ($request->hasfile('carga_domicilio')) {
+            $filenamewithExt = $request->file('carga_domicilio')->getClientOriginalName();
+            $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
+         }
+
          $usuario->save();
 
          $title = __('Usuarios');

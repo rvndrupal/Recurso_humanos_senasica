@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" />
     <title>Document</title>
 </head>
@@ -27,66 +28,141 @@
             <div class="row">
 
                     <div class="col-md-4">
-                            <input type="text" name="nom" id="nom" placeholder="Nombre ..." required />
+                       <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Nom</span>
+                                </div>
+                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
 
                     <div class="col-md-4">
-                            <input type="text" name="ap" id="ap" placeholder="Apellido Paterno ..." />
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Ap</span>
+                                </div>
+                                <input type="text" class="form-control" name="ap" id="ap" placeholder="Apellido Paterno" aria-label="Apellido Paterno" aria-describedby="addon-wrapping">
+                            </div>
                         </div>
                     <div class="col-md-4">
-                            <input type="text" name="am" id="am" placeholder="Apellido Materno ..." />
-                    </div>
-
-
-
-                    <div class="col-md-6">
-                            <input type="text" name="rfc" id="rfc" placeholder="Rfc ..." />
-                    </div>
-                    <div class="col-md-6">
-                            <input type="file" name="carga_rfc" id="carga_rfc" placeholder="RFC ..."  />
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Am</span>
+                                </div>
+                                <input type="text" class="form-control" name="am" id="am" placeholder="Apellido Materno" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
+                            </div>
                     </div>
 
                     <div class="col-md-6">
-                            <input type="text" name="curp" id="curp" placeholder="Curp ..." />
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Rfc</span>
+                            </div>
+                            <input type="text" class="form-control" name="rfc" id="rfc" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
 
                     <div class="col-md-6">
-                            <input type="file" name="carga_curp" id="carga_curp" placeholder="RFC ..."  />
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Rfc</span>
+                                </div>
+                                <div class="custom-file">
+                                <input type="file" class="custom-file-input"  id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_rfc" >
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Curp</span>
+                                </div>
+                                <input type="text" class="form-control" name="curp" id="curp" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
 
-                    <div class="col-md-12">
-                            <input type="file" name="carga_ife" id="carga_ife" placeholder="RFC ..."  />
+                    <div class="col-md-6">
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
+                                </div>
+                                <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="carga_curp" id="carga_curp"  aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Ife</span>
+                                    </div>
+                                    <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="carga_ife" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">@</span>
+                            </div>
+                            <input type="text" class="form-control"  name="correo_per" id="correo_per" placeholder="Correo Personal" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="correo_per" id="correo_per" placeholder="Corre Personal ..." />
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">@</span>
+                            </div>
+                            <input type="text" class="form-control"  name="correo_ins" id="correo_ins" placeholder="Correo Institucional" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="correo_ins" id="correo_ins" placeholder="Corre Intitucional ..." />
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Casa</span>
+                            </div>
+                            <input type="text" class="form-control" name="tel_casa" id="tel_casa" placeholder="Telefono de casa" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
 
                     <div class="col-md-4">
-                        <input type="text" name="tel_casa" id="tel_casa" placeholder="Telefono casa ..." />
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Movil</span>
+                                </div>
+                                <input type="text" class="form-control" name="tel_movil" id="tel_movil" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <input type="text" name="tel_movil" id="tel_movil" placeholder="Telefono movil ..." />
+                    <div class="col-md-6">
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
+                                </div>
+                                <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
+                            </div>
                     </div>
-
-
-
-
 
 
                     <div class="col-md-6">
-                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Rfc ..." />
-                    </div>
-
-
-                    <div class="col-md-6">
-                            <input type="file" name="foto" id="foto" placeholder="Foto ..."  />
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Foto</span>
+                                    </div>
+                                    <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="foto" id="foto"  aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                        </div>
                     </div>
 
 
@@ -102,58 +178,98 @@
             <h3 class="fs-subtitle">Datos Particulares</h3>
             <div class="row">
                     <div class="col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" name="pais_id" placeholder="Pais" id="pais">
-                                        <option value="">Selecciona un Pais</option>
-                                    @foreach ($pais as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Pais</span>
+                            </div>
+                            <select class="form-control" name="pais_id" placeholder="Pais" id="pais">
+                                    <option value="">Selecciona un Pais</option>
+                                @foreach ($pais as $item)
+                                <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
+                        <div class="col-md-4">
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">Estado</span>
+                                    </div>
+                                    <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
+                                            <option value=""></option>
+                                        </select>
+                                </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">Colonia</span>
+                                    </div>
+                                    <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
+                                            <option value=""></option>
+                                    </select>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                                <div class="form-group">
-                                    <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
-                                        <option value=""></option>
-                                    </select>
-
-                                </div>
-                        </div>
-
-                        <div class="col-md-4">
-                                <div class="form-group">
-                                    <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
-                                        <option value=""></option>
-                                    </select>
-
-                                </div>
-                        </div>
-
                         <div class="col-md-2">
-                                <div class="form-group">
+                            <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">CP</span>
+                                    </div>
                                     <select class="form-control" name="codigos_id" placeholder="codigo" id="codigo">
-                                        <option value=""></option>
+                                            <option value=""></option>
                                     </select>
-
-                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-8">
-                                <input type="text" name="calle" id="calle" placeholder="Calle ..." />
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">Calle</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
+                                </div>
                         </div>
 
                         <div class="col-md-2">
-                                <input type="text" name="numero" id="numero" placeholder="Numero ..." />
+                            <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">'#'</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="numero" id="numero" placeholder="Num" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
+                            </div>
                         </div>
 
-                        <div class="col-md-4">
-                                <input type="text" name="municipio" id="municipio" placeholder="Municipio ..." />
+                        <div class="col-md-6">
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Municipio</span>
+                                </div>
+                                <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
+                            </div>
                         </div>
 
-                        <div class="col-md-4">
-                                <input type="date" name="fecha_domicilio" id="fecha_domicilio" placeholder="Fecha domicilio ..." />
+                        <div class="col-md-6">
+                                <div class="input-group flex-nowrap">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">Domicilio</span>
+                                            </div>
+                                            <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="carga_domicilio" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                </div>
+                            </div>
+
+                        <div class="col-md-7">
+                            <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">Fecha Domicilio</span>
+                                    </div>
+                                    <input type="date" class="form-control" name="fecha_domicilio" id="fecha_domicilio" placeholder="Fecha" aria-label="Nombre" aria-describedby="addon-wrapping">
+                            </div>
                         </div>
 
 
@@ -206,6 +322,8 @@
 
     <!-- jQuery -->
     <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- jQuery easing plugin -->
     <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
     <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>

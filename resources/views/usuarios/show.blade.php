@@ -20,7 +20,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Nombre: {{ $usuario->nom }}</h5>
                                         <p class="card-text">Apellido paterno: {{ $usuario->ap }}</p>
-                                        <p class="card-text">Apellido materno: {{ $usuario->ap }}</p>
+                                        <p class="card-text">Apellido materno: {{ $usuario->am }}</p>
                                         <p class="card-text">Fecha de Nacimiento: {{ $usuario->fecha_nacimiento }}</p>
                                         <p class="card-text"><small class="text-muted">Fecha de Alta: {{ $usuario->created_at }}</small></p>
 
@@ -60,6 +60,11 @@
                                         <h5>Credencial de elector</h5>
                                         <a href="http://localhost/recursos/public/{{ $usuario->carga_ife }} " download="{{ $usuario->carga_ife }}">
                                         <i class="glyphicon glyphicon-download">IFE</i>
+                                        </a>
+
+                                         <h5>Comprobante Domicilio</h5>
+                                        <a href="http://localhost/recursos/public/{{ $usuario->carga_domicilio }} " download="{{ $usuario->carga_domicilio }}">
+                                        <i class="glyphicon glyphicon-download">Comprobante</i>
                                         </a>
 
                                 </div>
