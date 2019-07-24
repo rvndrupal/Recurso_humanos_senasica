@@ -142,3 +142,8 @@ body {
     margin: 0 0 14px 0px;
 }
 
+
+#soltero, #casado, #viudo {
+    display:none;
+}
+

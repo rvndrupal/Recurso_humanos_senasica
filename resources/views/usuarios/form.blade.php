@@ -281,11 +281,99 @@
         </fieldset>
 
         <fieldset>
-                <h2 class="fs-title">Demo tres</h2>
-                <h3 class="fs-subtitle">Demo tres</h3>
+                <h2 class="fs-title">ESTADO CIVIL</h2>
+                <h3 class="fs-subtitle">Datos Personales</h3>
                 <div class="row">
-
+                    <div class="col-md-12">
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Selecciona una opción</span>
+                                </div>
+                                <select class="form-control" name="" id="estado_civil" placeholder="Estado civil" >
+                                    <option value="">Estado civil</option>
+                                    <option value="soltero">Soltero</option>
+                                    <option value="casado">Casado</option>
+                                    <option value="viudo">Viudo (a)</option>
+                                </select>
+                        </div>
+                    </div>
                 </div>
+
+
+
+                    <div class="elementos_estado">
+
+                        <div id="soltero">
+                            <div class="col-md-4" >
+                                    <div class="input-group flex-nowrap">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="addon-wrapping">Hijos</span>
+                                            </div>
+                                            <select class="form-control" name="" id="hijos" placeholder="Hijos" >
+                                                <option value="">Tienes Hijos</option>
+                                                <option value="si">Si</option>
+                                                <option value="no">No</option>
+                                            </select>
+                                    </div>
+                            </div>
+
+                            <div id="conHijos">
+                                <div class="col-md-12">
+
+                                    <table class="table table-bordered" id="dynamic_field">
+                                            <tr>
+                                                    <td>
+                                                            <div class="input-group flex-nowrap">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="hijo[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                                            </div>
+                                                    </td>
+                                                    <td>
+                                                            <div class="input-group flex-nowrap">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="addon-wrapping">Edad</span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="edad[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                                            </div>
+                                                    </td>
+                                                    <td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>
+                                            </tr>
+                                    </table>
+
+                                </div>
+
+                            </div>{{-- Con hijos --}}
+
+
+
+
+                            <div id="sinHijos">
+                                <h1>Sin hijos</h1>
+                            </div>
+
+
+
+
+                         </div>{{-- Soltero --}}
+
+                         <div id="casado">
+                                <div class="col-md-4" >
+                                    <h1>casado</h1>
+                                </div>
+                         </div>
+
+                         <div id="viudo">
+                                <div class="col-md-4" >
+                                    <h1>Viudo</h1>
+                                </div>
+                         </div>
+
+                     </div>
+
+
+
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
@@ -413,6 +501,83 @@ $(document).ready(function(){
                 });
             }
         });//colonia
+
+
+        //estado civil ocultar
+        $('#estado_civil').change(function(){
+
+            var seleccion=$(this).val();
+
+            if(seleccion=='soltero')
+            {
+                $('#soltero').show(1200);
+                $('#casado').hide();
+                $('#viudo').hide();
+                $('#conHijos').hide();
+                $('#sinHijos').hide();
+            }
+            if(seleccion=='casado'){
+                $('#soltero').hide();
+                $('#casado').show(1200);
+                $('#viudo').hide();
+            }
+
+            if(seleccion=='viudo'){
+                $('#soltero').hide();
+                $('#casado').hide();
+                $('#viudo').show(1200);
+            }
+
+        });
+
+        //soltero
+        $('#hijos').change(function(){
+
+            var seleccion=$(this).val();
+
+
+            if(seleccion=='si')
+            {
+                $('#conHijos').show(1200);
+                $('#sinHijos').hide();
+            }
+            if(seleccion=='no'){
+                $('#conHijos').hide();
+                $('#sinHijos').show(1200);
+            }
+        });
+
+        //multiples campos hijos
+        var i=1;
+        $('#add').click(function(){
+             i++;
+             $('#dynamic_field').append('<tr id="row'+i+'">'+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="hijo[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                  '</td>'+
+                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        });
+        $(document).on('click', '.btn_remove', function(){
+             var button_id = $(this).attr("id");
+             $('#row'+button_id+'').remove();
+        });
+        $('#submit').click(function(){
+             $.ajax({
+                  url:"name.php",
+                  method:"POST",
+                  data:$('#add_name').serialize(),
+                  success:function(data)
+                  {
+                       alert(data);
+                       $('#add_name')[0].reset();
+                  }
+             });
+        });
 
 
 
