@@ -13,7 +13,7 @@ class Usuarios extends Model
 
     protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id','calle','numero','estados_id',
     'colonias_id','codigos_id','municipio','fecha_domicilio','carga_rfc','carga_curp','carga_ife',
-    'correo_per','correo_ins','tel_casa','tel_movil','carga_domicilio'
+    'correo_per','correo_ins','tel_casa','tel_movil','carga_domicilio','estado_civils_id'
 
     ];
 
@@ -35,6 +35,16 @@ class Usuarios extends Model
     public function codigos()
     {
         return $this->belongsTo('App\Codigos');
+    }
+
+    public function estadoCivil()
+    {
+        return $this->belongsTo('App\EstadoCivil','estado_civils_id'); //el nombre del id de la tabla
+    }
+
+    public function solteros()
+    {
+        return $this->hasMany('App\Solteros');
     }
 
 

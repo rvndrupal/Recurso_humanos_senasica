@@ -7,6 +7,8 @@ use App\Pais;
 use App\Estados;
 use App\Colonias;
 use App\Codigos;
+use App\EstadoCivil;
+use App\Solteros;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -91,6 +93,8 @@ class UsuariosController extends Controller
         }
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -102,8 +106,10 @@ class UsuariosController extends Controller
         $usuarios = new Usuarios;
 
        $pais=Pais::orderBy('nombre_pais','ASC')->select('id','nombre_pais')->where('condicion','=','1')->get();
+       $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+
         //dd($pais);
-        return view('usuarios.form', compact('usuarios', 'title','pais'));
+        return view('usuarios.form', compact('usuarios', 'title','pais','estadoCivil'));
     }
 
     /**
@@ -198,6 +204,15 @@ class UsuariosController extends Controller
             $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
          }
 
+         foreach($request->nombre as $item=>$v)
+            {
+                $usuario->solteros()->create([
+                'nombre'=>$request->nombre[$item],
+                'edad'=>$request->edad[$item]
+                ]);
+
+            }
+
          $usuario->save();
 
          $title = __('Usuarios');
@@ -244,9 +259,6 @@ class UsuariosController extends Controller
                 ->orderBy('nom', 'desc')
                 ->get();
             }
-
-
-
 
                 $total_row = $data->count();
                 if($total_row > 0)
@@ -300,7 +312,7 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario->colonias);
+        //dd($usuario->solteros);
 
 
 

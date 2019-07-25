@@ -75,6 +75,18 @@
                                         <h5 class="card-title">Correo Personal: {{ $usuario->correo_per }}</h5>
                                         <h5 class="card-title">Telefono casa: {{ $usuario->tel_casa }}</h5>
                                         <h5 class="card-title">Télefono movil: {{ $usuario->tel_movil }}</h5>
+
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h1>Estado Civil</h1>
+                                    <h5 class="card-title">Estado civil: {{ $usuario->estadoCivil->nombre }}</h5>
+                                    <h2>Hijos</h2>
+                                    @foreach ($usuario->solteros as $item)
+                                    <h5 class="card-title">{{ $item->nombre }} -> Edad: {{ $item->edad }}</h5>
+                                    @endforeach
+
                                 </div>
 
 

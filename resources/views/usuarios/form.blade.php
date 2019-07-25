@@ -197,7 +197,7 @@
                                         <span class="input-group-text" id="addon-wrapping">Estado</span>
                                     </div>
                                     <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
-                                            <option value=""></option>
+                                            <option value="">Estado</option>
                                         </select>
                                 </div>
                         </div>
@@ -208,7 +208,7 @@
                                         <span class="input-group-text" id="addon-wrapping">Colonia</span>
                                     </div>
                                     <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
-                                            <option value=""></option>
+                                            <option value="">Colonia</option>
                                     </select>
                             </div>
                         </div>
@@ -219,7 +219,7 @@
                                         <span class="input-group-text" id="addon-wrapping">CP</span>
                                     </div>
                                     <select class="form-control" name="codigos_id" placeholder="codigo" id="codigo">
-                                            <option value=""></option>
+                                            <option value="">CP</option>
                                     </select>
                             </div>
                         </div>
@@ -289,11 +289,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Selecciona una opción</span>
                                 </div>
-                                <select class="form-control" name="" id="estado_civil" placeholder="Estado civil" >
+                                <select class="form-control" name="estado_civils_id" id="estado_civil" placeholder="Estado civil" >
                                     <option value="">Estado civil</option>
-                                    <option value="soltero">Soltero</option>
-                                    <option value="casado">Casado</option>
-                                    <option value="viudo">Viudo (a)</option>
+                                    @foreach ($estadoCivil as $item)
+                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    @endforeach
+
                                 </select>
                         </div>
                     </div>
@@ -327,7 +328,7 @@
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" name="hijo[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                                                    <input type="text" class="form-control" name="nombre[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
                                                             </div>
                                                     </td>
                                                     <td>
@@ -508,24 +509,24 @@ $(document).ready(function(){
 
             var seleccion=$(this).val();
 
-            if(seleccion=='soltero')
+            if(seleccion=='1')
             {
-                $('#soltero').show(1200);
+                $('#soltero').show(500);
                 $('#casado').hide();
                 $('#viudo').hide();
                 $('#conHijos').hide();
                 $('#sinHijos').hide();
             }
-            if(seleccion=='casado'){
+            if(seleccion=='2'){
                 $('#soltero').hide();
-                $('#casado').show(1200);
+                $('#casado').show(500);
                 $('#viudo').hide();
             }
 
-            if(seleccion=='viudo'){
+            if(seleccion=='3'){
                 $('#soltero').hide();
                 $('#casado').hide();
-                $('#viudo').show(1200);
+                $('#viudo').show(500);
             }
 
         });
@@ -538,12 +539,12 @@ $(document).ready(function(){
 
             if(seleccion=='si')
             {
-                $('#conHijos').show(1200);
+                $('#conHijos').show(500);
                 $('#sinHijos').hide();
             }
             if(seleccion=='no'){
                 $('#conHijos').hide();
-                $('#sinHijos').show(1200);
+                $('#sinHijos').show(500);
             }
         });
 
@@ -557,9 +558,17 @@ $(document).ready(function(){
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="hijo[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" name="nombre[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                   '</td>'+
+                  '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="edad[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                 '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
         });
         $(document).on('click', '.btn_remove', function(){

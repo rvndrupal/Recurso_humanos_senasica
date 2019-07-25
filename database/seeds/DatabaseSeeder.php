@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderSeeder::class);
         $this->call(ProductTagSeeder::class);
 
-         factory(App\Pais::class, 4)->create();
+
 
         // factory(App\Usuarios::class, 3)->create();
     }
