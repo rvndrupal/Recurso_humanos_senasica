@@ -206,9 +206,26 @@ class UsuariosController extends Controller
 
          foreach($request->nombre as $item=>$v)
             {
+
+                $nom=$request->nombre[$item];
+                $edad=$request->edad[$item];
+
+                if($nom=="0"){
+                $nom=0;
+                }else{
+                $nom=$request->nombre[$item];
+                }
+
+                if($edad=="0")
+                {
+                $edad=0;
+                }else{
+                $edad=$request->edad[$item];
+                }
+
                 $usuario->solteros()->create([
-                'nombre'=>$request->nombre[$item],
-                'edad'=>$request->edad[$item]
+                'nombre'=>$nom,
+                'edad'=>$edad
                 ]);
 
             }

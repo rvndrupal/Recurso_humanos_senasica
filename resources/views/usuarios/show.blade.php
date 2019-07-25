@@ -82,9 +82,13 @@
                                 <div class="col-md-4">
                                     <h1>Estado Civil</h1>
                                     <h5 class="card-title">Estado civil: {{ $usuario->estadoCivil->nombre }}</h5>
-                                    <h2>Hijos</h2>
-                                    @foreach ($usuario->solteros as $item)
-                                    <h5 class="card-title">{{ $item->nombre }} -> Edad: {{ $item->edad }}</h5>
+                                    <h2>Familia</h2>
+                                    @foreach($usuario->solteros as $item)
+                                        @if($item->nombre == '0')
+                                        <h3>No tiene Hijos</h3>
+                                        @else
+                                        <h5 class="card-title">{{ $item->nombre }} -> Edad: {{ $item->edad }}</h5>
+                                        @endif
                                     @endforeach
 
                                 </div>

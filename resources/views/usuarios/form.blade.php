@@ -351,8 +351,7 @@
 
 
                             <div id="sinHijos">
-                                <h1>Sin hijos</h1>
-                            </div>
+                            </div>{{-- -Sin hijos --}}
 
 
 
@@ -545,6 +544,32 @@ $(document).ready(function(){
             if(seleccion=='no'){
                 $('#conHijos').hide();
                 $('#sinHijos').show(500);
+
+                $('#conHijos').html(""); //limpiar con hijos
+
+                $('#sinHijos').html('<table class="table table-bordered" id="dynamic_field">'+
+                        '<tr>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                                '</div>'+
+                                                '<input type="text" class="form-control" name="nombre[]" id="hijo" readonly value="0" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                '</td>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
+                                                '</div>'+
+                                               '<input type="text" class="form-control" name="edad[]" id="edad"  readonly value="0" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                '</td>'+
+
+                        '</tr>'+
+
+                '</table>');
+
             }
         });
 
