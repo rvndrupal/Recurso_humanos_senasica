@@ -7,18 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Estados extends Model
 {
 
-    protected $fillable = ['nombre_estado','pais_id'];
+    protected $fillable = ['nombre'];
 
-    public function pais()
+
+    public function municipios()
     {
-        return $this->belongsTo('App\Pais');
-    }
-
-
-
-    public function colonias()
-    {
-        return $this->hasMany('App\Colonias');
+        return $this->hasMany('App\Municipios');
     }
 
     public function usuario()

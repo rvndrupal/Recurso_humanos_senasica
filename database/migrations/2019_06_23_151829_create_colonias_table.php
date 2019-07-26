@@ -15,9 +15,10 @@ class CreateColoniasTable extends Migration
     {
         Schema::create('colonias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('colonia',300);
-            $table->unsignedBigInteger('estados_id');
-            $table->foreign('estados_id')->references('id')->on('estados');
+            $table->string('nombre_col',300);
+            $table->string('codigo_postal',300);
+            $table->unsignedBigInteger('municipios_id');
+            $table->foreign('municipios_id')->references('id')->on('municipios');
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

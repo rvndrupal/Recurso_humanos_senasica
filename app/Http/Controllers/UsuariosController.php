@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Usuarios;
 use App\Pais;
 use App\Estados;
+use App\Municipios;
 use App\Colonias;
 use App\Codigos;
 use App\EstadoCivil;
@@ -56,42 +57,46 @@ class UsuariosController extends Controller
     }
 
 
-    //mostrar los paises
-    public function estados(Request $request, $id){
+
+     //mostrar los municipios
+     public function municipios(Request $request, $id){
 
         if (request()->ajax()) {
 
-        $estados=Estados::orderBy('nombre_estado','ASC')->select('id','nombre_estado')->where('pais_id','=',$id)->get();
+        $municipios=Municipios::orderBy('nombre_mun','ASC')->select('id','nombre_mun')->where('estados_id','=',$id)->get();
 
-         return response()->json($estados);
+         return response()->json($municipios);
 
         }
     }
 
-
-     //mostrar los colonias
-     public function colonias(Request $request, $id){
+      //mostrar colonias
+      public function colonias(Request $request, $id){
 
         if (request()->ajax()) {
 
-        $colonias=Colonias::orderBy('colonia','ASC')->select('id','colonia')->where('estados_id','=',$id)->get();
+        $colonias=Colonias::orderBy('nombre_col','ASC')->select('id','nombre_col','codigo_postal')->where('municipios_id','=',$id)->get();
 
          return response()->json($colonias);
 
         }
     }
 
-      //mostrar los codigos postales
-      public function codigos(Request $request, $id){
+
+    //mostrar cp
+    public function cp(Request $request, $id){
 
         if (request()->ajax()) {
 
-        $codigos=Codigos::orderBy('codigo','ASC')->select('id','codigo')->where('colonias_id','=',$id)->get();
+        $cp=Colonias::orderBy('codigo_postal','ASC')->select('codigo_postal')->where('id','=',$id)->get();
 
-         return response()->json($codigos);
+         return response()->json($cp);
 
         }
     }
+
+
+
 
 
 
@@ -105,11 +110,13 @@ class UsuariosController extends Controller
         $title = __('Crear Carnet');
         $usuarios = new Usuarios;
 
-       $pais=Pais::orderBy('nombre_pais','ASC')->select('id','nombre_pais')->where('condicion','=','1')->get();
+       //$pais=Pais::orderBy('nombre_pais','ASC')->select('id','nombre_pais')->where('condicion','=','1')->get();
+       $estados=Estados::orderBy('nombre','ASC')->select('id','nombre')->where('condicion','=','1')->get();
+
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
 
         //dd($pais);
-        return view('usuarios.form', compact('usuarios', 'title','pais','estadoCivil'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil'));
     }
 
     /**

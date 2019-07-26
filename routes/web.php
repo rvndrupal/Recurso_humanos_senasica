@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImportarController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -61,13 +62,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             //estados
             Route::get('/estados/{id}', 'UsuariosController@estados');
              //colonias
+             Route::get('/municipios/{id}', 'UsuariosController@municipios');
              Route::get('/colonias/{id}', 'UsuariosController@colonias');
-             Route::get('/codigos/{id}', 'UsuariosController@codigos');
+             Route::get('/cp/{id}', 'UsuariosController@cp');
+
+
+
 
         });
     }
 
+
     Route::get('/charts', 'ChartController@index')->middleware('permission:read-charts');
+
+    //importar
+    Route::get('/importar','ImportarController@importar');
 });
 
 

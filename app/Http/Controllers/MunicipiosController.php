@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Pais;
+use App\Municipios;
 use Illuminate\Http\Request;
 
-class PaisController extends Controller
+class MunicipiosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PaisController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pais  $pais
+     * @param  \App\Municipios  $municipios
      * @return \Illuminate\Http\Response
      */
-    public function show(Pais $pais)
+    public function show(Municipios $municipios)
     {
         //
     }
@@ -52,10 +52,10 @@ class PaisController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pais  $pais
+     * @param  \App\Municipios  $municipios
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pais $pais)
+    public function edit(Municipios $municipios)
     {
         //
     }
@@ -64,10 +64,10 @@ class PaisController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pais  $pais
+     * @param  \App\Municipios  $municipios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pais $pais)
+    public function update(Request $request, Municipios $municipios)
     {
         //
     }
@@ -75,10 +75,10 @@ class PaisController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pais  $pais
+     * @param  \App\Municipios  $municipios
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pais $pais)
+    public function destroy(Municipios $municipios)
     {
         //
     }

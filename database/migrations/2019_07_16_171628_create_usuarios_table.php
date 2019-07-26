@@ -18,39 +18,39 @@ class CreateUsuariosTable extends Migration
             $table->string('nom',30);
             $table->string('ap',50);
             $table->string('am',50);
-            $table->date('fecha_nacimiento');
-            $table->date('fecha_domicilio');
-            $table->string('carga_rfc',300);
-            $table->string('carga_curp',300);
-            $table->string('carga_ife',300);
-            $table->string('carga_domicilio',300);
+            $table->date('fecha_nacimiento')->nullable();
+            $table->date('fecha_domicilio')->nullable();
+            $table->string('carga_rfc',300)->nullable();
+            $table->string('carga_curp',300)->nullable();
+            $table->string('carga_ife',300)->nullable();
+            $table->string('carga_domicilio',300)->nullable();
+            $table->string('pais',300)->default('México')->nullable();
 
 
             $table->string('foto',300);
-            $table->string('rfc',30);
-            $table->string('curp',30);
-            $table->string('municipio',100);
+            $table->string('rfc',30)->nullable();
+            $table->string('curp',30)->nullable();
 
-            $table->string('calle',200);
-            $table->string('numero',50);
-            $table->string('correo_per',50);
-            $table->string('correo_ins',50);
-            $table->string('tel_casa',50);
-            $table->string('tel_movil',50);
-
+            $table->string('calle',200)->nullable();
+            $table->string('numero',50)->nullable();
+            $table->string('correo_per',50)->nullable();
+            $table->string('correo_ins',50)->nullable();
+            $table->string('tel_casa',50)->nullable();
+            $table->string('tel_movil',50)->nullable();
 
 
 
 
 
-            $table->unsignedBigInteger('pais_id');
-            $table->foreign('pais_id')->references('id')->on('pais');
+
+
             $table->unsignedBigInteger('estados_id');
             $table->foreign('estados_id')->references('id')->on('estados');
             $table->unsignedBigInteger('colonias_id');
             $table->foreign('colonias_id')->references('id')->on('colonias');
-            $table->unsignedBigInteger('codigos_id');
-            $table->foreign('codigos_id')->references('id')->on('codigos');
+            $table->unsignedBigInteger('municipios_id');
+            $table->foreign('municipios_id')->references('id')->on('municipios');
+
             $table->unsignedBigInteger('estado_civils_id');
             $table->foreign('estado_civils_id')->references('id')->on('estado_civils');
 

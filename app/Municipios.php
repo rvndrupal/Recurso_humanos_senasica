@@ -4,26 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Colonias extends Model
+class Municipios extends Model
 {
-    protected $fillable = ['nombre_col','municipios_id','codigo_postal'];
-
+    protected $fillable = ['nombre','estados_id'];
 
     public function estado()
     {
         return $this->belongsTo('App\Estados');
     }
 
-
-
     public function usuario()
     {
         return $this->belongsToMany('App\Usuarios');
     }
 
-    public function municipio()
+    public function colonias()
     {
-        return $this->belongsTo('App\Municipios');
+        return $this->hasMany('App\Colonias');
     }
-
 }

@@ -53,7 +53,16 @@
                             </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                            <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Ap</span>
+                                </div>
+                                <input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" aria-label="Pais"  aria-describedby="addon-wrapping">
+                            </div>
+                        </div>
+
+                    <div class="col-md-4">
                         <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Rfc</span>
@@ -62,7 +71,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroupFileAddon01">Rfc</span>
@@ -177,19 +186,6 @@
             <h2 class="fs-title">DOMICILIO PARTICULAR</h2>
             <h3 class="fs-subtitle">Datos Particulares</h3>
             <div class="row">
-                    <div class="col-md-4">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Pais</span>
-                            </div>
-                            <select class="form-control" name="pais_id" placeholder="Pais" id="pais">
-                                    <option value="">Selecciona un Pais</option>
-                                @foreach ($pais as $item)
-                                <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
 
                         <div class="col-md-4">
                                 <div class="input-group flex-nowrap">
@@ -198,6 +194,9 @@
                                     </div>
                                     <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
                                             <option value="">Estado</option>
+                                            @foreach ($estados as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                            @endforeach
                                         </select>
                                 </div>
                         </div>
@@ -205,24 +204,34 @@
                         <div class="col-md-4">
                             <div class="input-group flex-nowrap">
                                     <div class="input-group-prepend">
+                                        <span class="input-group-text" id="addon-wrapping">Municipio</span>
+                                    </div>
+                                    <select class="form-control" name="municipios_id" placeholder="Colonia" id="municipios">
+                                            <option value="">Municipio</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
                                         <span class="input-group-text" id="addon-wrapping">Colonia</span>
                                     </div>
-                                    <select class="form-control" name="colonias_id" placeholder="Colonia" id="colonia">
+                                    <select class="form-control" name="colonias_id" placeholder="codigo" id="colonias">
                                             <option value="">Colonia</option>
                                     </select>
                             </div>
                         </div>
 
                         <div class="col-md-2">
-                            <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend" id="colonias_cp">
                                         <span class="input-group-text" id="addon-wrapping">CP</span>
                                     </div>
-                                    <select class="form-control" name="codigos_id" placeholder="codigo" id="codigo">
-                                            <option value="">CP</option>
-                                    </select>
-                            </div>
+                                    {{--  <input type="text" class="form-control" name="codigo_postal" placeholder="Codigo postal">  --}}
+                                </div>
                         </div>
+
 
                         <div class="col-md-8">
                                 <div class="input-group flex-nowrap">
@@ -242,14 +251,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Municipio</span>
-                                </div>
-                                <input type="text" class="form-control" name="municipio" id="municipio" placeholder="Municipio" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
+
 
                         <div class="col-md-6">
                                 <div class="input-group flex-nowrap">
@@ -323,6 +325,7 @@
 
                                     <table class="table table-bordered" id="dynamic_field">
                                             <tr>
+
                                                     <td>
                                                             <div class="input-group flex-nowrap">
                                                                     <div class="input-group-prepend">
@@ -339,6 +342,7 @@
                                                                     <input type="text" class="form-control" name="edad[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
                                                             </div>
                                                     </td>
+
                                                     <td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>
                                             </tr>
                                     </table>
@@ -428,79 +432,86 @@
 <script>
 $(document).ready(function(){
 
-        $("#pais").change(function(e){
-
-            var id=e.target.value;
-            console.log(id);
-
-            if(id=="selected"){
-                $("#estado").append("<option value=''>Selecciona un estado</option>");
-                console.log("nada");
-            }
-            else{
-
-                $.get("estados/" + id, function(data){
-
-                    $("#estado").empty();
-
-                    for(i=0; i<data.length ;i++)
-                        {
-                            $("#estado").append("<option value='" +data[i].id+"'>"+data[i].nombre_estado+"</option>");
-                        }
-
-                });
-            }
-        });//pais
-
-
+        //mostrar estado
         $("#estado").change(function(e){
 
             var id=e.target.value;
             console.log(id);
 
             if(id=="selected"){
-                $("#colonia").append("<option value=''>Selecciona un estado</option>");
+                $("#municipios").append("<option value=''>Selecciona un estado</option>");
                 console.log("nada");
             }
             else{
 
-                $.get("colonias/" + id, function(data){
+                $.get("municipios/" + id, function(data){
 
-                    $("#colonia").empty();
+                    $("#municipios").empty();
 
                     for(i=0; i<data.length ;i++)
                         {
-                            $("#colonia").append("<option value='" +data[i].id+"'>"+data[i].colonia+"</option>");
+                            $("#municipios").append("<option value='" +data[i].id+"'>"+data[i].nombre_mun+"</option>");
                         }
 
                 });
             }
         });//estados
 
-
-        $("#colonia").change(function(e){
+        //mostrar las colonias
+        $("#municipios").change(function(e){
 
             var id=e.target.value;
             console.log(id);
 
             if(id=="selected"){
-                $("#codigo").append("<option value=''>Selecciona un código</option>");
+                $("#colonia").append("<option value=''>Selecciona un código</option>");
                 console.log("nada");
             }
             else{
 
-                $.get("codigos/" + id, function(data){
+                $.get("colonias/" + id, function(data){
 
-                    $("#codigo").empty();
+                    $("#colonias").empty();
 
                     for(i=0; i<data.length ;i++)
                         {
-                            $("#codigo").append("<option value='" +data[i].id+"'>"+data[i].codigo+"</option>");
+                            $("#colonias").append("<option value='" +data[i].id+"'>"+data[i].nombre_col+"</option>");
+
                         }
 
                 });
             }
-        });//colonia
+        });
+
+
+        //mostrar las cp
+        $("#colonias").change(function(e){
+
+            var id=e.target.value;
+            console.log(id);
+
+            if(id=="selected"){
+                $("#colonia").append("<option value=''>Selecciona un código</option>");
+                console.log("nada");
+            }
+            else{
+
+                $.get("cp/" + id, function(data){
+
+                    $("#colonias_cp").empty();
+
+                    for(i=0; i<data.length ;i++)
+                        {
+                            $("#colonias_cp").append(" <div class='input-group-prepend' id='colonias_cp'><span class='input-group-text' id='addon-wrapping'>CP</span></div><input type='text' name='codigo_postal' readonly value="+data[i].codigo_postal+" class='form-control'> ");
+                        }
+
+                });
+            }
+        });
+
+
+
+
 
 
         //estado civil ocultar
@@ -540,12 +551,16 @@ $(document).ready(function(){
             {
                 $('#conHijos').show(500);
                 $('#sinHijos').hide();
+
+
+
             }
             if(seleccion=='no'){
                 $('#conHijos').hide();
                 $('#sinHijos').show(500);
 
-                $('#conHijos').html(""); //limpiar con hijos
+                $('#conHijos').html("");
+
 
                 $('#sinHijos').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<tr>'+
@@ -600,7 +615,7 @@ $(document).ready(function(){
              var button_id = $(this).attr("id");
              $('#row'+button_id+'').remove();
         });
-        $('#submit').click(function(){
+        {{--  $('#submit').click(function(){
              $.ajax({
                   url:"name.php",
                   method:"POST",
@@ -611,7 +626,7 @@ $(document).ready(function(){
                        $('#add_name')[0].reset();
                   }
              });
-        });
+        });  --}}
 
 
 

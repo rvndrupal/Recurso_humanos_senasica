@@ -11,8 +11,8 @@ class Usuarios extends Model
 
     // ];
 
-    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais_id','calle','numero','estados_id',
-    'colonias_id','codigos_id','municipio','fecha_domicilio','carga_rfc','carga_curp','carga_ife',
+    protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','pais','calle','numero','estados_id',
+    'colonias_id','municipios_id','fecha_domicilio','carga_rfc','carga_curp','carga_ife',
     'correo_per','correo_ins','tel_casa','tel_movil','carga_domicilio','estado_civils_id'
 
     ];
@@ -32,9 +32,9 @@ class Usuarios extends Model
         return $this->belongsTo('App\Colonias');
     }
 
-    public function codigos()
+    public function municipio()
     {
-        return $this->belongsTo('App\Codigos');
+        return $this->belongsTo('App\Municipios');
     }
 
     public function estadoCivil()
