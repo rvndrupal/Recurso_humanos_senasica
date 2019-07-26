@@ -47,5 +47,10 @@ class Usuarios extends Model
         return $this->hasMany('App\Solteros');
     }
 
+    public function conyuges()
+    {
+        return $this->belongsTo('App\Conyuges');
+    }
+
 
 }

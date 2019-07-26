@@ -1,5 +1,7 @@
 Navegacion.
 
+Clave del superusuarios es --> password
+
 1.-config->adminlte
 
 2.-Archivo muy importante hooks--> app->helpers->hooks
