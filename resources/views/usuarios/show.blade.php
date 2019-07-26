@@ -29,8 +29,8 @@
           </ul>
           <div id="tabs-1">
               <div class="row">
-                    <div class="col-md-4">
-                            <img src="/recursos/public/Fotos/Usuarios/{{ $usuario->foto }}" class="card-img" alt="..." style="width:100% ">
+                    <div class="col-md-3">
+                            <img src="/recursos/public/Fotos/Usuarios/{{ $usuario->foto }}" class="card-img" alt="..." style="width:250px; height:250px ">
                     </div>
                     <div class="col-md-6">
                         <h5 class="card-title">Nombre: {{ $usuario->nom }}</h5>

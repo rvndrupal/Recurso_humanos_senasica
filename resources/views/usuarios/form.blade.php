@@ -330,47 +330,15 @@
                                     </div>
                             </div>
 
-                            <div id="conHijos">
-                                <div class="col-md-12">
-
-                                    <table class="table table-bordered" id="dynamic_field">
-                                            <tr>
-
-                                                    <td>
-                                                            <div class="input-group flex-nowrap">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" name="nombre[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-                                                            </div>
-                                                    </td>
-                                                    <td>
-                                                            <div class="input-group flex-nowrap">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="addon-wrapping">Edad</span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" name="edad[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-                                                            </div>
-                                                    </td>
-
-                                                    <td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>
-                                            </tr>
-                                    </table>
-
-                                </div>
-
-                            </div>{{-- Con hijos --}}
+                            <div id="bh">
+                            </div>
 
 
 
 
-                            <div id="sinHijos">
-                            </div>{{-- -Sin hijos --}}
 
 
-
-
-                         </div>{{-- Soltero --}}
+                        </div>
 
                          <div id="casado">
                                 <div class="col-md-4" >
@@ -537,8 +505,7 @@ $(document).ready(function(){
                 $('#soltero').show(500);
                 $('#casado').hide();
                 $('#viudo').hide();
-                $('#conHijos').hide();
-                $('#sinHijos').hide();
+
             }
             if(seleccion=='2'){
                 $('#soltero').hide();
@@ -560,22 +527,37 @@ $(document).ready(function(){
             var seleccion=$(this).val();
 
 
+
             if(seleccion=='si')
             {
-                $('#conHijos').show(500);
-                $('#sinHijos').hide();
 
+                $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
+                        '<tr>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                                '</div>'+
+                                                '<input type="text" class="form-control" name="nombre[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                '</td>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
+                                                '</div>'+
+                                               '<input type="text" class="form-control" name="edad[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                '</td>'+
+                                '<td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>'+
 
+                        '</tr>'+
 
+                '</table>');
             }
             if(seleccion=='no'){
-                $('#conHijos').hide();
-                $('#sinHijos').show(500);
 
-                $('#conHijos').html("");
-
-
-                $('#sinHijos').html('<table class="table table-bordered" id="dynamic_field">'+
+                $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<tr>'+
                                 '<td>'+
                                         '<div class="input-group flex-nowrap">'+
@@ -598,12 +580,18 @@ $(document).ready(function(){
 
                 '</table>');
 
+
+
             }
         });
 
         //multiples campos hijos
+
+        //$('.estados_select').chosen();
+
         var i=1;
-        $('#add').click(function(){
+        {{--  $('#add').click(function(){  --}}
+        $(document).on('click', '#add', function(){
              i++;
              $('#dynamic_field').append('<tr id="row'+i+'">'+
                  '<td>'+
@@ -628,9 +616,6 @@ $(document).ready(function(){
              var button_id = $(this).attr("id");
              $('#row'+button_id+'').remove();
         });
-
-
-        //$('.estados_select').chosen();
 
 
 
