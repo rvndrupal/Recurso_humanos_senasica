@@ -57,13 +57,20 @@
                     </div>
 
                     <div class="col-md-4">
-                            <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Ap</span>
-                                </div>
-                                <input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" aria-label="Pais"  aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
+
+                                    <div class="input-group flex-nowrap">
+                                         <div class="input-group-prepend">
+                                            <span class="input-group-text" id="addon-wrapping">Pais</span>
+                                        </div>
+                                        <select  name="paises_id" class="estados_select" placeholder="Pais">
+                                                <option value="">Pais</option>
+                                                @foreach ($pais as $item)
+                                                <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
+                                                @endforeach
+                                        </select>
+                                    </div>
+
+                    </div>
 
                     <div class="col-md-4">
                         <div class="input-group flex-nowrap">

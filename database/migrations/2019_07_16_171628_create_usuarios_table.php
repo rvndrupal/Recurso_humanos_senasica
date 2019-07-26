@@ -24,7 +24,6 @@ class CreateUsuariosTable extends Migration
             $table->string('carga_curp',300)->nullable();
             $table->string('carga_ife',300)->nullable();
             $table->string('carga_domicilio',300)->nullable();
-            $table->string('pais',300)->default('México')->nullable();
 
 
             $table->string('foto',300);
@@ -42,7 +41,8 @@ class CreateUsuariosTable extends Migration
 
 
 
-
+            $table->unsignedBigInteger('paises_id');
+            $table->foreign('paises_id')->references('id')->on('paises');
 
             $table->unsignedBigInteger('estados_id');
             $table->foreign('estados_id')->references('id')->on('estados');

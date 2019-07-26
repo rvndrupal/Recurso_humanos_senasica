@@ -94,6 +94,7 @@
                                   <thead class="thead-dark">
                                     <tr>
                                       <th scope="col">#</th>
+                                      <th scope="col">PAIS</th>
                                       <th scope="col">ESTADO</th>
                                       <th scope="col">MUNICIPIO</th>
                                       <th scope="col">COLONIA</th>
@@ -108,6 +109,7 @@
                                   <tbody>
                                     <tr>
                                       <th scope="row">1</th>
+                                      <td>{{ $usuario->paises->nombre_pais }}</td>
                                       <td>{{ $usuario->estados->nombre }}</td>
                                       <td>{{ $usuario->municipios->nombre_mun }}</td>
                                       <td> {{ $usuario->colonias->nombre_col }}</td>

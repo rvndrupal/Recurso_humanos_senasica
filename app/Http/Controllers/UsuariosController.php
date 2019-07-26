@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Usuarios;
-use App\Pais;
+use App\Paises;
 use App\Estados;
 use App\Municipios;
 use App\Colonias;
@@ -110,14 +110,14 @@ class UsuariosController extends Controller
         $title = __('Crear Carnet');
         $usuarios = new Usuarios;
 
-       //$pais=Pais::orderBy('nombre_pais','ASC')->select('id','nombre_pais')->where('condicion','=','1')->get();
+       $pais=Paises::orderBy('id','ASC')->select('id','nombre_pais')->get();
        $estados=Estados::orderBy('nombre','ASC')->select('id','nombre')->where('condicion','=','1')->get();
 
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
 
         //dd($usuarios);
 
-        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais'));
     }
 
     /**
@@ -341,7 +341,7 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario->estados);
+        //dd($usuario->paises);
 
 
 
