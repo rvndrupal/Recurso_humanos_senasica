@@ -115,7 +115,8 @@ class UsuariosController extends Controller
 
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
 
-        //dd($pais);
+        //dd($usuarios);
+
         return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil'));
     }
 
@@ -241,7 +242,11 @@ class UsuariosController extends Controller
 
          $title = __('Usuarios');
 
-       return view('usuarios.index',compact('title'));
+    //    return view('usuarios.index',compact('title'));
+
+      return redirect(route('usuarios.index'))->with('message', [
+        'success', __("Usuario creado con Exito")
+        ]);
 
 
 
@@ -336,7 +341,7 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario->solteros);
+        //dd($usuario->estados);
 
 
 

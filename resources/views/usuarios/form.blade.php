@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/chosen.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body>
@@ -189,16 +192,16 @@
 
                         <div class="col-md-4">
                                 <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
+                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="addon-wrapping">Estado</span>
                                     </div>
-                                    <select class="form-control" name="estados_id" placeholder="Estado" id="estado">
+                                    <select  name="estados_id" class="estados_select" placeholder="Estado" id="estado">
                                             <option value="">Estado</option>
                                             @foreach ($estados as $item)
                                             <option value="{{ $item->id }}">{{ $item->nombre }}</option>
                                             @endforeach
-                                        </select>
-                                </div>
+                                    </select>
+                                   </div>
                         </div>
 
                         <div class="col-md-4">
@@ -206,7 +209,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="addon-wrapping">Municipio</span>
                                     </div>
-                                    <select class="form-control" name="municipios_id" placeholder="Colonia" id="municipios">
+                                    <select class="form-control" name="municipios_id" class="municipios_select" placeholder="Colonia" id="municipios">
                                             <option value="">Municipio</option>
                                     </select>
                             </div>
@@ -420,6 +423,9 @@
     <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
     <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
+
+
 
 
 
@@ -615,18 +621,10 @@ $(document).ready(function(){
              var button_id = $(this).attr("id");
              $('#row'+button_id+'').remove();
         });
-        {{--  $('#submit').click(function(){
-             $.ajax({
-                  url:"name.php",
-                  method:"POST",
-                  data:$('#add_name').serialize(),
-                  success:function(data)
-                  {
-                       alert(data);
-                       $('#add_name')[0].reset();
-                  }
-             });
-        });  --}}
+
+
+        //$('.estados_select').chosen();
+
 
 
 

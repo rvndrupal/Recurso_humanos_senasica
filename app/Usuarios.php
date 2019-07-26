@@ -32,7 +32,7 @@ class Usuarios extends Model
         return $this->belongsTo('App\Colonias');
     }
 
-    public function municipio()
+    public function municipios()
     {
         return $this->belongsTo('App\Municipios');
     }
