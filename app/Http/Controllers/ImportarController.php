@@ -5,6 +5,7 @@ use App\Pais;
 use App\Estados;
 use App\Colonias;
 use App\Codigos;
+use App\Municipios;
 
 use Illuminate\Http\Request;
 
@@ -12,53 +13,55 @@ class ImportarController extends Controller
 {
     public function importar()
     {
-        $path=public_path('Base/datos_completa.csv');
+        $path=public_path('Base/datos_completa_prueba.csv');
         $lineas=file($path); //crear las lineas del arreglo
         $utf8=array_map('utf8_encode',$lineas); //lo pasamos a utf8
         $datos= array_map('str_getcsv', $utf8); //con esto se regresa todo en lineas separadas
 
         //dd($datos);
 
-        //lógica
+       //lógica
         for($i=1; $i<sizeof($datos); $i++)
         {
-            $codigos=new Codigos();
-            $codigos->codigo=$datos[$i][3]; //le pasamos su valor dem arreglo
-            $codigos->municipio_id=getColoniaId($array[$i][0], $array[$i][1], $array[$i][2]);  //el id de la relacion importante
+            $colonia=new Colonias();
+            $colonia->nombre_col=$datos[$i][2]; //le pasamos su valor dem arreglo
+            $colonia->codigo_postal=$datos[$i][3];
+
+            $colonia->municipios_id=$this->getMunicipioId($datos[$i][0], $datos[$i][1]);  //el id de la relacion importante
             //esta funcion espera el nombre de la region y el del municipio
 
-            $codigos->save();
-
-
+            $colonia->save();
         }
     }
 
-    public function getMunicipioId($paisName, $estadoName, $coloniaName)
+
+
+    public function getMunicipioId($estadosName, $MunicipioName)
     {
 
-        $colonia=Colonias::where('colonia', $coloniaName)->first();
+        $municipio=Municipios::where('nombre_mun', $MunicipioName)->first();
 
-        if($colonia)//si se encuentra
+        if($municipio)//si se encuentra
         {
-            return $colonia->id;
+            return $municipio->id;
         }
 
-        $colonia=new Colonias();
-        $colonia->colonia=$coloniaName;
+        $municipio=new Municipios();
+        $municipio->nombre_mun=$MunicipioName;
 
         $estado=Estados::firstOrCreate([
-            'nombre_estado' => $estadoName
+            'nombre' => $estadosName
         ]);
 
 
-        $estado->estados_id= $region->id ;
+        $municipio->estados_id= $estado->id ;
 
-        $estado->save();
+        $municipio->save();
 
         return $municipio->id;
-
-
-
-
     }
+
+
 }
+
+
