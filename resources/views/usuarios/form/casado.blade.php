@@ -53,12 +53,66 @@
 </div>
 
 
+<div class="row">
+        <table class="table table-bordered" id="dynamic_hijos">
+                <tr>
+                        <td>
+                                <div class="input-group flex-nowrap">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="nombre_hijo_coy[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                </div>
+                        </td>
+                        <td>
+                                <div class="input-group flex-nowrap">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="addon-wrapping">Edad</span>
+                                        </div>
+                                       <input type="text" class="form-control" name="edad_hijo_coy[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                </div>
+                        </td>
+                        <td><button type="button" name="addHijos" id="addHijos" class="btn btn-success">+</button></td>
+
+                </tr>
+
+        </table>
+</div>
+
 
 
 
 
 <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script>
+
+
+        var i=1;
+        $(document).on('click', '#addHijos', function(){
+             i++;
+             $('#dynamic_hijos').append('<tr id="row'+i+'">'+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="nombre_hijo_coy[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                  '</td>'+
+                  '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="edad_hijo_coy[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                 '</td>'+
+                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        });
+        $(document).on('click', '.btn_remove', function(){
+             var button_id = $(this).attr("id");
+             $('#row'+button_id+'').remove();
+        });
 
 
 </script>

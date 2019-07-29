@@ -85,7 +85,7 @@
                              @include('usuarios/form/casado')
 
                              <div id="ec">
-                                <table class="table table-bordered" id="dynamic_casado">
+                                <table class="table table-bordered" id="dynamic_hijos">
 
                                 </table>
 

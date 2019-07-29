@@ -243,7 +243,6 @@ class UsuariosController extends Controller
 
         if(isset($request->nombres_coy))
         {
-
                 $nom=$request->nombres_coy;
                 $primero=$request->primero_coy;
                 $segundo=$request->segundo_coy;
@@ -271,9 +270,38 @@ class UsuariosController extends Controller
                     'carga_curp_coy'=>$curp_carga
 
                 ]);
-
-
          }
+
+         if(isset($request->nombre_hijo_coy))
+         {
+                foreach($request->nombre_hijo_coy as $item=>$v)
+                {
+
+                    $nom=$request->nombre_hijo_coy[$item];
+                    $edad=$request->edad_hijo_coy[$item];
+
+                    //dd($edad);
+
+                    if($nom=="0" || $nom==""){
+                    $nom=0;
+                    }else{
+                    $nom=$request->nombre_hijo_coy[$item];
+                    }
+
+                    if($edad=="0" || $edad=="")
+                    {
+                    $edad=0;
+                    }else{
+                    $edad=$request->edad_hijo_coy[$item];
+                    }
+
+                    $usuario->HijosConyuges()->create([
+                    'nombre_hijo_coy'=>$nom,
+                    'edad_hijo_coy'=>$edad
+                    ]);
+
+                }
+        }
 
          $usuario->save();
 
@@ -378,7 +406,7 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario->paises);
+        //dd($usuario->conyuges);
 
 
 

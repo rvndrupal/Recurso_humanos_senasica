@@ -140,10 +140,8 @@
                                           <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">ESTADO CIVIL</th>
+                                            <th scope="col">CONYUGE</th>
                                             <th scope="col">HIJOS</th>
-
-
-
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -151,17 +149,36 @@
                                             <th scope="row">1</th>
                                             <td>{{ $usuario->estadoCivil->nombre }}</td>
                                             <td>
-                                                @foreach($usuario->solteros as $item)
-                                                    @if($item->nombre == '0')
-                                                    <h3>No tiene Hijos</h3>
-                                                    @else
-                                                    <h5 class="card-title">{{ $item->nombre }}  Edad: {{ $item->edad }}</h5>
-                                                    @endif
-                                                @endforeach
+                                            @foreach($usuario->conyuges as $item)
+                                            <h5 class="card-title">{{ $item->nombres_coy }} {{ $item->primero_coy }} {{ $item->segundo_coy }}</h5>
+                                            <h5 class="card-title">Curp: {{ $item->curp_coy }}</h5>
+                                            <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
+                                                <i class="glyphicon glyphicon-download">Curp</i>
+                                            </a>
+                                            @endforeach
                                             </td>
+                                            <td>
+                                                @if($usuario->soltero)
+                                                    @foreach($usuario->solteros as $item)
+                                                        @if($item->nombre == '0')
+                                                        <h3>No tiene Hijos</h3>
+                                                        @else
+                                                        <h5 class="card-title">{{ $item->nombre }}  Edad: {{ $item->edad }}</h5>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
 
+                                                @if($usuario->HijosConyuges)
+                                                    @foreach($usuario->HijosConyuges as $item)
+                                                        @if($item->nombre == '0')
+                                                        <h3>No tiene Hijos</h3>
+                                                        @else
+                                                        <h5 class="card-title">{{ $item->nombre_hijo_coy }}  Edad: {{ $item->edad_hijo_coy }}</h5>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </td>
                                           </tr>
-
                                         </tbody>
                                 </table>
                         </div>
