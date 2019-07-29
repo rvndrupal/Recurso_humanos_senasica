@@ -30,166 +30,7 @@
             <h3 class="fs-subtitle">Registro</h3>
             <div class="row">
 
-                    <div class="col-md-4">
-                       <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Nom</span>
-                                </div>
-                                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                            <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Ap</span>
-                                </div>
-                                <input type="text" class="form-control" name="ap" id="ap" placeholder="Apellido Paterno" aria-label="Apellido Paterno" aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
-                    <div class="col-md-4">
-                            <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Am</span>
-                                </div>
-                                <input type="text" class="form-control" name="am" id="am" placeholder="Apellido Materno" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
-                            </div>
-                    </div>
-
-                    <div class="col-md-4">
-
-                                    <div class="input-group flex-nowrap">
-                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id="addon-wrapping">Pais</span>
-                                        </div>
-                                        <select  name="paises_id" class="estados_select" placeholder="Pais">
-                                                <option value="">Pais</option>
-                                                @foreach ($pais as $item)
-                                                <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
-                                                @endforeach
-                                        </select>
-                                    </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Rfc</span>
-                            </div>
-                            <input type="text" class="form-control" name="rfc" id="rfc" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupFileAddon01">Rfc</span>
-                                </div>
-                                <div class="custom-file">
-                                <input type="file" class="custom-file-input"  id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_rfc" >
-                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
-                        </div>
-                     </div>
-
-                    <div class="col-md-6">
-                        <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Curp</span>
-                                </div>
-                                <input type="text" class="form-control" name="curp" id="curp" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
-                                </div>
-                                <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="carga_curp" id="carga_curp"  aria-describedby="inputGroupFileAddon01">
-                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01">Ife</span>
-                                    </div>
-                                    <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="carga_ife" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">@</span>
-                            </div>
-                            <input type="text" class="form-control"  name="correo_per" id="correo_per" placeholder="Correo Personal" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">@</span>
-                            </div>
-                            <input type="text" class="form-control"  name="correo_ins" id="correo_ins" placeholder="Correo Institucional" aria-label="Username" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Casa</span>
-                            </div>
-                            <input type="text" class="form-control" name="tel_casa" id="tel_casa" placeholder="Telefono de casa" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Movil</span>
-                                </div>
-                                <input type="text" class="form-control" name="tel_movil" id="tel_movil" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                            <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
-                                </div>
-                                <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
-                            </div>
-                    </div>
-
-
-                    <div class="col-md-6">
-                        <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01">Foto</span>
-                                    </div>
-                                    <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="foto" id="foto"  aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                        </div>
-                    </div>
-
-
-            </div>
-
-
-
-            <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
+                  @include('usuarios/form/fase_uno')
 
         </fieldset>
         <fieldset>
@@ -197,98 +38,7 @@
             <h3 class="fs-subtitle">Datos Particulares</h3>
             <div class="row">
 
-                        <div class="col-md-4">
-                                <div class="input-group flex-nowrap">
-                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-wrapping">Estado</span>
-                                    </div>
-                                    <select  name="estados_id" class="estados_select" placeholder="Estado" id="estado">
-                                            <option value="">Estado</option>
-                                            @foreach ($estados as $item)
-                                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                                            @endforeach
-                                    </select>
-                                   </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-wrapping">Municipio</span>
-                                    </div>
-                                    <select class="form-control" name="municipios_id" class="municipios_select" placeholder="Colonia" id="municipios">
-                                            <option value="">Municipio</option>
-                                    </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-wrapping">Colonia</span>
-                                    </div>
-                                    <select class="form-control" name="colonias_id" placeholder="codigo" id="colonias">
-                                            <option value="">Colonia</option>
-                                    </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                                <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend" id="colonias_cp">
-                                        <span class="input-group-text" id="addon-wrapping">CP</span>
-                                    </div>
-                                    {{--  <input type="text" class="form-control" name="codigo_postal" placeholder="Codigo postal">  --}}
-                                </div>
-                        </div>
-
-
-                        <div class="col-md-8">
-                                <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-wrapping">Calle</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
-                                </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-wrapping">'#'</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="numero" id="numero" placeholder="Num" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
-
-
-
-                        <div class="col-md-6">
-                                <div class="input-group flex-nowrap">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroupFileAddon01">Domicilio</span>
-                                            </div>
-                                            <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="carga_domicilio" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                </div>
-                            </div>
-
-                        <div class="col-md-7">
-                            <div class="input-group flex-nowrap">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="addon-wrapping">Fecha Domicilio</span>
-                                    </div>
-                                    <input type="date" class="form-control" name="fecha_domicilio" id="fecha_domicilio" placeholder="Fecha" aria-label="Nombre" aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
-
-
-
-            </div>
-            <input type="button" name="previous" class="previous action-button" value="Previous" />
-            <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
+                @include('usuarios/form/fase_dos')
 
         </fieldset>
 
@@ -311,9 +61,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
                     <div class="elementos_estado">
 
                         <div id="soltero">
@@ -336,6 +83,13 @@
 
                          <div id="casado">
                              @include('usuarios/form/casado')
+
+                             <div id="ec">
+                                <table class="table table-bordered" id="dynamic_casado">
+
+                                </table>
+
+                             </div>
 
                          </div>{{-- casados --}}
 
@@ -365,10 +119,6 @@
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
 
-
-
-
-
         <fieldset>
             <h2 class="fs-title">Final</h2>
             <h3 class="fs-subtitle">Final</h3>
@@ -392,10 +142,6 @@
     <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
-
-
-
-
 
 </body>
 </html>
@@ -498,12 +244,14 @@ $(document).ready(function(){
                 $('#soltero').show(500);
                 $('#casado').hide();
                 $('#viudo').hide();
+                $('#ec').empty();
 
             }
             if(seleccion=='2'){
                 $('#soltero').hide();
                 $('#casado').show(500);
                 $('#viudo').hide();
+                $('#bh').empty();
             }
 
             if(seleccion=='3'){
@@ -578,12 +326,8 @@ $(document).ready(function(){
             }
         });
 
-        //multiples campos hijos
-
-        //$('.estados_select').chosen();
 
         var i=1;
-        {{--  $('#add').click(function(){  --}}
         $(document).on('click', '#add', function(){
              i++;
              $('#dynamic_field').append('<tr id="row'+i+'">'+
@@ -609,22 +353,6 @@ $(document).ready(function(){
              var button_id = $(this).attr("id");
              $('#row'+button_id+'').remove();
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });//inicio

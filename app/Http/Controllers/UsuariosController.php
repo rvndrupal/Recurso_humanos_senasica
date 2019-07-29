@@ -212,31 +212,68 @@ class UsuariosController extends Controller
             $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
          }
 
-         foreach($request->nombre as $item=>$v)
-            {
-
-                $nom=$request->nombre[$item];
-                $edad=$request->edad[$item];
-
-                if($nom=="0"){
-                $nom=0;
-                }else{
-                $nom=$request->nombre[$item];
-                }
-
-                if($edad=="0")
+         if(isset($request->nombre))
+         {
+                foreach($request->nombre as $item=>$v)
                 {
-                $edad=0;
-                }else{
-                $edad=$request->edad[$item];
+
+                    $nom=$request->nombre[$item];
+                    $edad=$request->edad[$item];
+
+                    if($nom=="0" || $nom==""){
+                    $nom=0;
+                    }else{
+                    $nom=$request->nombre[$item];
+                    }
+
+                    if($edad=="0" || $edad=="")
+                    {
+                    $edad=0;
+                    }else{
+                    $edad=$request->edad[$item];
+                    }
+
+                    $usuario->solteros()->create([
+                    'nombre'=>$nom,
+                    'edad'=>$edad
+                    ]);
+
+                }
+        }
+
+        if(isset($request->nombres_coy))
+        {
+
+                $nom=$request->nombres_coy;
+                $primero=$request->primero_coy;
+                $segundo=$request->segundo_coy;
+                $curp=$request->curp_coy;
+                $curp_carga=$request->carga_curp_coy;
+
+                //dd($curp_carga);
+
+                if($nom==""){$nom=0;}else{$nom=$request->nombres_coy;}
+                if($primero==""){$primero=0;}else{$primero=$request->primero_coy;}
+                if($segundo==""){$segundo=0;}else{$segundo=$request->segundo_coy;}
+                if($curp==""){$curp=0;}else{$curp=$request->curp_coy;}
+                if($curp_carga==""){$curp_carga=0;}else{
+                $filenamewithExt =$curp_carga->getClientOriginalName();
+                $curp_carga=$request->carga_curp_coy->storeAs('CURPCONYUGES',$filenamewithExt);
                 }
 
-                $usuario->solteros()->create([
-                'nombre'=>$nom,
-                'edad'=>$edad
+
+
+                $usuario->conyuges()->create([
+                    'nombres_coy'=>$nom,
+                    'primero_coy'=>$primero,
+                    'segundo_coy'=>$segundo,
+                    'curp_coy'=>$curp,
+                    'carga_curp_coy'=>$curp_carga
+
                 ]);
 
-            }
+
+         }
 
          $usuario->save();
 

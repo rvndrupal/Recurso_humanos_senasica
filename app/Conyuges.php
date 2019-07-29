@@ -10,6 +10,6 @@ class Conyuges extends Model
 
     public function usuario()
     {
-        return $this->belongsToMany('App\Usuarios');
+        return $this->belongsTo('App\Usuarios');
     }
 }

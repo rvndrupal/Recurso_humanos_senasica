@@ -54,14 +54,6 @@ class CreateUsuariosTable extends Migration
             $table->unsignedBigInteger('estado_civils_id');
             $table->foreign('estado_civils_id')->references('id')->on('estado_civils');
 
-            $table->unsignedBigInteger('conyuges_id');
-            $table->foreign('conyuges_id')->references('id')->on('conyuges');
-
-
-
-
-
-
 
 
 

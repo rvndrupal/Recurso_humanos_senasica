@@ -19,7 +19,9 @@ class CreateConyugesTable extends Migration
             $table->string('primero_coy',80);
             $table->string('segundo_coy',80);
             $table->string('curp_coy',80);
-            $table->string('carga_curp_coy',80);
+            $table->string('carga_curp_coy',300);
+            $table->unsignedBigInteger('usuarios_id');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->timestamps();
         });
     }

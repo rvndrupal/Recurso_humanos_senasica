@@ -49,7 +49,7 @@ class Usuarios extends Model
 
     public function conyuges()
     {
-        return $this->belongsTo('App\Conyuges');
+        return $this->hasMany('App\Conyuges');
     }
 
 

@@ -10,6 +10,6 @@ class Solteros extends Model
 
     public function usuario()
     {
-        return $this->belongsTos('App\Usuarios');
+        return $this->belongsTo('App\Usuarios');
     }
 }
