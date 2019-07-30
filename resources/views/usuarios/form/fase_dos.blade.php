@@ -74,7 +74,7 @@
         </div>
     </div>
 
-<div class="col-md-7">
+<div class="col-md-6">
     <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Fecha Domicilio</span>

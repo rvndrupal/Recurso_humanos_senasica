@@ -24,6 +24,8 @@
             <li>Paso 2</li>
             <li>Paso 3</li>
             <li>Paso 4</li>
+            <li>Paso 5</li>
+            <li>Paso 6</li>
             <li>Final</li>
         </ul>
         <!-- fieldsets -->
@@ -98,7 +100,7 @@
 
                              <div id="ifc">
 
-                                </div>
+                             </div>
 
                          </div>{{-- casados --}}
 
@@ -123,6 +125,32 @@
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
+
+        <fieldset>
+                <h2 class="fs-title">Demo cinco</h2>
+                <h3 class="fs-subtitle">Demo cinco</h3>
+                <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
+        </fieldset>
+
+
+        <fieldset>
+                <h2 class="fs-title">Demo seis</h2>
+                <h3 class="fs-subtitle">Demo seis</h3>
+                <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button" value="Previous" />
+                <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
+        </fieldset>
+
 
         <fieldset>
             <h2 class="fs-title">Final</h2>
@@ -248,10 +276,8 @@ $(document).ready(function(){
             {
                 $('#soltero').show(500);
                 $('#casado').hide();
-                $('#viudo').hide();
                 $('#ec').empty();
                 $('dynamic_hijos').empty();
-                $('#ifc').empty();
 
             }
             if(seleccion=='2'){

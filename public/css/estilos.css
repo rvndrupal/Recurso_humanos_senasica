@@ -35,8 +35,8 @@ body {
 	padding: 20px 30px;
 
 	box-sizing: border-box;
-	width: 80%;
-	margin: 0 10%;
+    width: 95%;
+    margin: 0 3%;
 
 	/*stacking fieldsets above each other*/
 	position: absolute;
@@ -87,7 +87,7 @@ body {
 }
 /*progressbar*/
 #progressbar {
-    margin: 0 0 23px 60px;
+    margin: -26px 0 16px 47px;
     width: 100%;
 	overflow: hidden;
 	/*CSS counters to number the steps*/
@@ -98,7 +98,7 @@ body {
 	color: rgb(31, 30, 30);
 	text-transform: uppercase;
 	font-size: 14px;
-	width: 18%;
+	width: 13.3%;
 	float: left;
 	position: relative;
 }

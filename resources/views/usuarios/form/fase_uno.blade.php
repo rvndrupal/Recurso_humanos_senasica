@@ -39,7 +39,7 @@
              </select>
          </div>
      </div>
-     <div class="col-md-4">
+     <div class="col-md-3">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
                  <span class="input-group-text" id="addon-wrapping">Rfc</span>
@@ -47,7 +47,7 @@
              <input type="text" class="form-control" name="rfc" id="rfc" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
          </div>
      </div>
-     <div class="col-md-4">
+     <div class="col-md-5">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
                  <span class="input-group-text" id="inputGroupFileAddon01">Rfc</span>
@@ -58,7 +58,7 @@
              </div>
          </div>
       </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
          <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="addon-wrapping">Curp</span>
@@ -66,7 +66,7 @@
                  <input type="text" class="form-control" name="curp" id="curp" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
          </div>
      </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
                  <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
@@ -77,7 +77,7 @@
              </div>
          </div>
      </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
          <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="inputGroupFileAddon01">Ife</span>
@@ -88,7 +88,7 @@
                  </div>
          </div>
      </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
                  <span class="input-group-text" id="addon-wrapping">@</span>
@@ -120,7 +120,7 @@
                  <input type="text" class="form-control" name="tel_movil" id="tel_movil" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
          </div>
      </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
              <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
@@ -128,7 +128,7 @@
                  <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
              </div>
      </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
          <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="inputGroupFileAddon01">Foto</span>
