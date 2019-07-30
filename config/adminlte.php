@@ -208,6 +208,27 @@ return [
         ],
 
         [
+            'text' => 'Carreras',
+            'url'  => 'admin/carreras',
+            'icon' => 'users',
+            'permission'  => 'read-carreras',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/carreras',
+                    'permission'  => 'read-carreras',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/carreras/create',
+                    'permission'  => 'create-carreras',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
             'text' => 'Roles',
             'url'  => 'admin/role',
             'icon' => 'user-tag',

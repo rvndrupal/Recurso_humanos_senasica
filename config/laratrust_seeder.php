@@ -15,6 +15,7 @@ return [
             'permission' => 'c,r,u,d',
             'usuarios' => 'c,r,u,d',
             'grados' => 'c,r,u,d',
+            'carreras' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -29,6 +30,7 @@ return [
             'permission' => 'c,r,u',
             'usuarios' => 'c,r,u,d',
             'grados' => 'c,r,u',
+            'carreras' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -43,6 +45,7 @@ return [
             'permission' => 'r',
             'usuarios' => 'r',
             'grados' => 'r',
+            'carreras' => 'r',
 
         ],
     ],
