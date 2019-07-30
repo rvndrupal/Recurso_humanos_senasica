@@ -158,29 +158,49 @@
                                             @endforeach
                                             </td>
                                             <td>
-                                                @if($usuario->soltero)
+                                            @if($usuario->estadoCivil->nombre=="Soltero(a)")
+
                                                     @foreach($usuario->solteros as $item)
-                                                        @if($item->nombre == '0')
+                                                        @if($item->nombre == '0' and $item->edad=='0')
                                                         <h3>No tiene Hijos</h3>
                                                         @else
                                                         <h5 class="card-title">{{ $item->nombre }}  Edad: {{ $item->edad }}</h5>
                                                         @endif
                                                     @endforeach
-                                                @endif
 
+                                            @else
                                                 @if($usuario->HijosConyuges)
                                                     @foreach($usuario->HijosConyuges as $item)
-                                                        @if($item->nombre == '0')
+                                                        @if($item->nombre_hijo_coy == '0')
                                                         <h3>No tiene Hijos</h3>
                                                         @else
                                                         <h5 class="card-title">{{ $item->nombre_hijo_coy }}  Edad: {{ $item->edad_hijo_coy }}</h5>
                                                         @endif
                                                     @endforeach
                                                 @endif
+                                            @endif
                                             </td>
                                           </tr>
                                         </tbody>
                                 </table>
+                        </div>
+                    </div>
+
+
+                    {{-- dESCENDIENTES --}}
+                    <div class="row">
+                        <div class="col-md-12">
+                        <h3>Familiares Descendientes</h3>
+                        <ul>
+                            @foreach($usuario->Descensientes as $item)
+                            @if($item->nombre_des=="0")
+
+                            @else
+                            <li>{{ $item->nombre_des }} {{ $item->ap_des }} {{ $item->am_des }}</li>
+                            @endif
+                            @endforeach
+                        </ul>
+
                         </div>
                     </div>
 

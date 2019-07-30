@@ -1,5 +1,5 @@
 Navegacion.
-
+Usuario--> superadministrator@app.com
 Clave del superusuarios es --> password
 
 1.-config->adminlte

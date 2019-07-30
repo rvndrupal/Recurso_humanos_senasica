@@ -10,6 +10,8 @@
     <link href="{{ asset('css/chosen.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/errores.css') }}" rel="stylesheet" />
+
     <title>Document</title>
 </head>
 <body>
@@ -79,6 +81,9 @@
 
                             <div id="bh">
                             </div>
+                            <div id="if">
+
+                            </div>
                         </div>{{-- -soltero --}}
 
                          <div id="casado">
@@ -91,13 +96,13 @@
 
                              </div>
 
+                             <div id="ifc">
+
+                                </div>
+
                          </div>{{-- casados --}}
 
-                         <div id="viudo">
-                                <div class="col-md-4" >
-                                    <h1>Viudo</h1>
-                                </div>
-                         </div>
+
 
                      </div>
 
@@ -245,6 +250,8 @@ $(document).ready(function(){
                 $('#casado').hide();
                 $('#viudo').hide();
                 $('#ec').empty();
+                $('dynamic_hijos').empty();
+                $('#ifc').empty();
 
             }
             if(seleccion=='2'){
@@ -252,13 +259,10 @@ $(document).ready(function(){
                 $('#casado').show(500);
                 $('#viudo').hide();
                 $('#bh').empty();
+                $('#if').empty();
             }
 
-            if(seleccion=='3'){
-                $('#soltero').hide();
-                $('#casado').hide();
-                $('#viudo').show(500);
-            }
+
 
         });
 
@@ -295,6 +299,45 @@ $(document).ready(function(){
                         '</tr>'+
 
                 '</table>');
+
+
+
+                $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
+                        '<hr>'+
+                        '<h4>Familiares Descendientes</h4>'+
+                        '<tr>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                                '</div>'+
+                                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                '</td>'+
+                                '<td>'+
+                                    '<div class="input-group flex-nowrap">'+
+                                            '<div class="input-group-prepend">'+
+                                                '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                            '</div>'+
+                                            '<input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                    '</div>'+
+                                '</td>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                                '</div>'+
+                                                '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                    '</td>'+
+                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+
+
+                        '</tr>'+
+
+                '</table>');
+
+
+
             }
             if(seleccion=='no'){
 
@@ -316,6 +359,40 @@ $(document).ready(function(){
                                                '<input type="text" class="form-control" name="edad[]" id="edad"  readonly value="0" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
                                 '</td>'+
+
+                        '</tr>'+
+
+                '</table>');
+
+                $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
+                        '<hr>'+
+                        '<h4>Familiares Descendientes</h4>'+
+                        '<tr>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                                '</div>'+
+                                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                '</td>'+
+                                '<td>'+
+                                    '<div class="input-group flex-nowrap">'+
+                                            '<div class="input-group-prepend">'+
+                                                '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                            '</div>'+
+                                            '<input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                    '</div>'+
+                                '</td>'+
+                                '<td>'+
+                                        '<div class="input-group flex-nowrap">'+
+                                                '<div class="input-group-prepend">'+
+                                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                                '</div>'+
+                                                '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                        '</div>'+
+                                    '</td>'+
+                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+
 
                         '</tr>'+
 
@@ -355,7 +432,46 @@ $(document).ready(function(){
         });
 
 
+        var i=1;
+        $(document).on('click', '#addViudo', function(){
+             i++;
+             $('#if').append('<tr id="row'+i+'">'+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                  '</td>'+
+                  '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                 '</td>'+
+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                 '</td>'+
+                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        });
+        $(document).on('click', '.btn_remove', function(){
+             var button_id = $(this).attr("id");
+             $('#row'+button_id+'').remove();
+        });
+
+
 });//inicio
 
 
 </script>
+
+

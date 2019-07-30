@@ -57,5 +57,10 @@ class Usuarios extends Model
         return $this->hasMany('App\HijosConyuge');
     }
 
+    public function Descensientes()
+    {
+        return $this->hasMany('App\Descensientes');
+    }
+
 
 }

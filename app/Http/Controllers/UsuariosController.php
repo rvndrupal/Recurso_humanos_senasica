@@ -303,6 +303,30 @@ class UsuariosController extends Controller
                 }
         }
 
+        if(isset($request->nombre_des))
+         {
+                foreach($request->nombre_des as $item=>$v)
+                {
+
+                    $nom=$request->nombre_des[$item];
+                    $ap=$request->ap_des[$item];
+                    $am=$request->am_des[$item];
+
+                    //dd($edad);
+
+                    if($nom==""){$nom=0;}else{$nom=$request->nombre_des[$item];}
+                    if($ap==""){$ap=0;}else{$ap=$request->ap_des[$item];}
+                    if($am==""){$am=0;}else{$am=$request->am_des[$item];}
+
+                    $usuario->Descensientes()->create([
+                    'nombre_des'=>$nom,
+                    'ap_des'=>$ap,
+                    'am_des'=>$am
+                    ]);
+
+                }
+        }
+
          $usuario->save();
 
          $title = __('Usuarios');
@@ -406,7 +430,7 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario->conyuges);
+        //dd($usuario->Descensientes);
 
 
 
