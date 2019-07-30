@@ -68,8 +68,8 @@
                     <span class="input-group-text" id="inputGroupFileAddon01">Domicilio</span>
                     </div>
                     <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="carga_domicilio" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    <input type="file" class="custom-file-input"  data-name="domm" name="carga_domicilio" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" id="domm" for="inputGroupFile01">Choose file</label>
                 </div>
         </div>
     </div>

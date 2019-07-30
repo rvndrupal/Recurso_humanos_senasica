@@ -495,6 +495,21 @@ $(document).ready(function(){
         });
 
 
+
+            $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+
+                var nom=$(this).data("name");
+                $("#"+nom).html(fileName);
+            });
+
+            $('input[type="text"]').change(function(){
+                $(this).css('background','rgb(234, 234, 234)');
+                $(this).css('color','black');
+            });
+
+
+
 });//inicio
 
 

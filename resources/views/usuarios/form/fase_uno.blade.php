@@ -53,8 +53,8 @@
                  <span class="input-group-text" id="inputGroupFileAddon01">Rfc</span>
                  </div>
                  <div class="custom-file">
-                 <input type="file" class="custom-file-input"  id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_rfc" >
-                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                 <input type="file" class="custom-file-input" data-name="rfcc" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_rfc" >
+                 <label class="custom-file-label" id="rfcc" for="inputGroupFile01">Choose file</label>
              </div>
          </div>
       </div>
@@ -72,8 +72,8 @@
                  <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
                  </div>
                  <div class="custom-file">
-                 <input type="file" class="custom-file-input" name="carga_curp" id="carga_curp"  aria-describedby="inputGroupFileAddon01">
-                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                 <input type="file" class="custom-file-input" data-name="curpp" name="carga_curp" id="carga_curp"  aria-describedby="inputGroupFileAddon01">
+                 <label class="custom-file-label" id="curpp" for="inputGroupFile01">Choose file</label>
              </div>
          </div>
      </div>
@@ -83,8 +83,8 @@
                      <span class="input-group-text" id="inputGroupFileAddon01">Ife</span>
                      </div>
                      <div class="custom-file">
-                     <input type="file" class="custom-file-input" name="carga_ife" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
-                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                     <input type="file" class="custom-file-input" data-name="ifee" name="carga_ife" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
+                     <label class="custom-file-label" id="ifee" for="inputGroupFile01">Choose file</label>
                  </div>
          </div>
      </div>
@@ -134,10 +134,13 @@
                      <span class="input-group-text" id="inputGroupFileAddon01">Foto</span>
                      </div>
                      <div class="custom-file">
-                     <input type="file" class="custom-file-input" name="foto" id="foto"  aria-describedby="inputGroupFileAddon01">
-                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                     <input type="file" class="custom-file-input" data-name="fotos" name="foto" id="foto"  aria-describedby="inputGroupFileAddon01">
+                     <label class="custom-file-label" id="fotos" for="inputGroupFile01">Choose file</label>
                  </div>
          </div>
      </div>
 </div>
+
+
+
 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />

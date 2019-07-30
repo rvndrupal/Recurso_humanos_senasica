@@ -20,7 +20,8 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    @endpush
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
+@endpush
 
 
 @yield('scripts')

@@ -187,6 +187,27 @@ return [
         ],
 
         [
+            'text' => 'Grados',
+            'url'  => 'admin/grados',
+            'icon' => 'users',
+            'permission'  => 'read-grados',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/grados',
+                    'permission'  => 'read-grados',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/grados/create',
+                    'permission'  => 'create-grados',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
             'text' => 'Roles',
             'url'  => 'admin/role',
             'icon' => 'user-tag',

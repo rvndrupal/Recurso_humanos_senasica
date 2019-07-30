@@ -44,8 +44,8 @@
                     <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
                     </div>
                     <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="carga_curp_coy" id="carga_curp_coy"  aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    <input type="file" class="custom-file-input" data-name="cur_cas" name="carga_curp_coy" id="carga_curp_coy"  aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" id="cur_cas" for="inputGroupFile01">Choose file</label>
                     </div>
             </div>
         </div>

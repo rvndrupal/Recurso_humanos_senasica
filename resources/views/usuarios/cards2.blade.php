@@ -2,7 +2,7 @@
 
 @permission('read-usuarios')
 {{--  @permission('read-card')  --}}
-@section('content')
+ @section('content')
 
 
 <!DOCTYPE html>
@@ -10,13 +10,15 @@
  <head>
   <title>Live search in laravel using AJAX</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
 
  </head>
  <body>
   <br />
 
-  <div class="container box">
+  <div class="box">
     <h3 align="center">Carnet de Usuarios.</h3><br />
     <div class="panel panel-default">
     <div class="panel-heading">Buscar registro</div>
