@@ -334,6 +334,27 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Dirección por Área',
+            'url'  => 'admin/direccionesareas',
+            'icon' => 'users',
+            'permission'  => 'read-direccionesareas',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/direccionesareas',
+                    'permission'  => 'read-direccionesareas',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/direccionesareas/create',
+                    'permission'  => 'create-direccionesareas',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
 
         [
             'text' => 'Roles',

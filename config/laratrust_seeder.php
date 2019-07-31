@@ -21,6 +21,7 @@ return [
             'titulos' => 'c,r,u,d',
             'idiomas' => 'c,r,u,d',
             'direccionesgenerales' => 'c,r,u,d',
+            'direccionesareas' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -41,6 +42,7 @@ return [
             'titulos' => 'c,r,u',
             'idiomas' => 'c,r,u',
             'direccionesgenerales' => 'c,r,u',
+            'direccionesareas' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -61,6 +63,7 @@ return [
             'titulos' => 'r',
             'idiomas' => 'r',
             'direccionesgenerales' => 'r',
+            'direccionesareas' => 'r',
 
         ],
     ],
