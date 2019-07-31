@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class PaisesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $title = __('Pais');
+        return view('paises.index', compact('title'));
+    }
+
+    public function json () {
+        if (request()->ajax()) {
+            $actions = 'paises.datatables.index';
+            return datatables()->of(Paises::query())->addColumn('actions', $actions)
+                ->rawColumns(['actions'])
+                ->toJson();
+        }
     }
 
     /**
@@ -24,7 +29,10 @@ class PaisesController extends Controller
      */
     public function create()
     {
-        //
+        $title = __('Crear nuevo Pais');
+        $paises = new Paises;
+        //dd($category);
+        return view('paises.form', compact('paises', 'title'));
     }
 
     /**
@@ -35,16 +43,20 @@ class PaisesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paises = Paises::create($request->input());
+
+        return redirect(route('paises.create'))->with('message', [
+            'success', __("Nuevo pais creado correctamente")
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Paises  $paises
+     * @param  \App\Grados  $grados
      * @return \Illuminate\Http\Response
      */
-    public function show(Paises $paises)
+    public function show(Grados $grados)
     {
         //
     }
@@ -52,34 +64,48 @@ class PaisesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Paises  $paises
+     * @param  \App\Grados  $grados
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paises $paises)
+    public function edit($id)
     {
-        //
+        $title = __('Actualizar País');
+        $paises = Paises::find($id);
+        return view('paises.form', compact('paises', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Paises  $paises
+     * @param  \App\Grados  $grados
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paises $paises)
+    public function update(Request $request, $id)
     {
+        $paises = Paises::findOrFail($id);
+
+        $paises->fill($request->input())->save();
+
+        return redirect(route('paises.index'))->with('message', [
+            'success', __("País actualizado correctamente")
+        ]);
         //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Paises  $paises
+     * @param  \App\Grados  $grados
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Paises $paises)
+    public function destroy($id)
     {
-        //
+        //dd($id);
+        $pais = Paises::find($id);
+        $pais->delete();
+        return redirect(route('paises.index'))->with('message', [
+            'success', __("Pais borrada correctamente")
+        ]);
     }
 }

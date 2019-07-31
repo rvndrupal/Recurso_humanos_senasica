@@ -187,6 +187,27 @@ return [
         ],
 
         [
+            'text' => 'Pais',
+            'url'  => 'admin/paises',
+            'icon' => 'users',
+            'permission'  => 'read-paises',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/paises',
+                    'permission'  => 'read-paises',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/paises/create',
+                    'permission'  => 'create-paises',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
             'text' => 'Grados',
             'url'  => 'admin/grados',
             'icon' => 'users',
