@@ -20,6 +20,7 @@ return [
             'escuelas' => 'c,r,u,d',
             'titulos' => 'c,r,u,d',
             'idiomas' => 'c,r,u,d',
+            'direccionesgenerales' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -39,6 +40,7 @@ return [
             'escuelas' => 'c,r,u',
             'titulos' => 'c,r,u',
             'idiomas' => 'c,r,u',
+            'direccionesgenerales' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -58,6 +60,7 @@ return [
             'escuelas' => 'r',
             'titulos' => 'r',
             'idiomas' => 'r',
+            'direccionesgenerales' => 'r',
 
         ],
     ],

@@ -313,6 +313,27 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Dirección General',
+            'url'  => 'admin/direccionesgenerales',
+            'icon' => 'users',
+            'permission'  => 'read-direccionesgenerales',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/direccionesgenerales',
+                    'permission'  => 'read-direccionesgenerales',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/direccionesgenerales/create',
+                    'permission'  => 'create-direccionesgenerales',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
 
         [
             'text' => 'Roles',
