@@ -18,6 +18,7 @@ return [
             'carreras' => 'c,r,u,d',
             'paises' => 'c,r,u,d',
             'escuelas' => 'c,r,u,d',
+            'titulos' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -35,6 +36,7 @@ return [
             'carreras' => 'c,r,u',
             'paises' => 'c,r,u',
             'escuelas' => 'c,r,u',
+            'titulos' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -52,6 +54,7 @@ return [
             'carreras' => 'r',
             'paises' => 'r',
             'escuelas' => 'r',
+            'titulos' => 'r',
 
         ],
     ],

@@ -270,6 +270,28 @@ return [
             ],
         ],
 
+
+        [
+            'text' => 'Títulos',
+            'url'  => 'admin/titulos',
+            'icon' => 'users',
+            'permission'  => 'read-titulos',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/titulos',
+                    'permission'  => 'read-titulos',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/titulos/create',
+                    'permission'  => 'create-titulos',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
         [
             'text' => 'Roles',
             'url'  => 'admin/role',
