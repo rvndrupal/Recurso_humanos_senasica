@@ -17,6 +17,7 @@ return [
             'grados' => 'c,r,u,d',
             'carreras' => 'c,r,u,d',
             'paises' => 'c,r,u,d',
+            'escuelas' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -33,6 +34,7 @@ return [
             'grados' => 'c,r,u',
             'carreras' => 'c,r,u',
             'paises' => 'c,r,u',
+            'escuelas' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -49,6 +51,7 @@ return [
             'grados' => 'r',
             'carreras' => 'r',
             'paises' => 'r',
+            'escuelas' => 'r',
 
         ],
     ],

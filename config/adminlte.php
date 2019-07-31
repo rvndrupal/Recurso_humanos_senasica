@@ -208,6 +208,27 @@ return [
         ],
 
         [
+            'text' => 'Escuela',
+            'url'  => 'admin/escuelas',
+            'icon' => 'users',
+            'permission'  => 'read-escuelas',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/escuelas',
+                    'permission'  => 'read-escuelas',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/escuelas/create',
+                    'permission'  => 'create-escuelas',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
             'text' => 'Grados',
             'url'  => 'admin/grados',
             'icon' => 'users',
