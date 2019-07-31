@@ -50,7 +50,7 @@ class CarrerasController extends Controller
     {
         $carrera = Carreras::create($request->input());
 
-        return redirect(route('carreras.index'))->with('message', [
+        return redirect(route('carreras.create'))->with('message', [
             'success', __("Nuevo carrera creada correctamente")
         ]);
     }

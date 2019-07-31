@@ -10,6 +10,10 @@ use App\Colonias;
 use App\Codigos;
 use App\EstadoCivil;
 use App\Solteros;
+use App\Escuelas;
+use App\Titulos;
+use App\Carreras;
+use App\Grados;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -112,12 +116,17 @@ class UsuariosController extends Controller
 
        $pais=Paises::orderBy('id','ASC')->select('id','nombre_pais')->get();
        $estados=Estados::orderBy('nombre','ASC')->select('id','nombre')->where('condicion','=','1')->get();
+       $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
+       $titulos=Titulos::orderBy('id','ASC')->select('id','nombre_titulo')->get();
+       $grados=Grados::orderBy('id','ASC')->select('id','nom_gra')->get();
+       $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
+       $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
 
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
 
         //dd($usuarios);
 
-        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas'));
     }
 
     /**
@@ -327,6 +336,15 @@ class UsuariosController extends Controller
                 }
         }
 
+        //Escolaridad
+        $usuario->DetalleEscolaridades()->create([
+            'titulos_id'=>$request->titulos_id,
+            'carreras_id'=>$request->carreras_id,
+            'escuelas_id'=>$request->escuelas_id,
+            'grados_id'=>$request->grados_id,
+            'cedula'=>$request->cedula
+            ]);
+
          $usuario->save();
 
          $title = __('Usuarios');
@@ -430,11 +448,28 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        //dd($usuario->Descensientes);
+        $id_titulo=$usuario->DetalleEscolaridades[0]->titulos_id;
+        $nom_titulo=Titulos::select('nombre_titulo')->where('id','=',$id_titulo)->get();
+        $nt=$nom_titulo[0]->nombre_titulo;
+
+        $id_car=$usuario->DetalleEscolaridades[0]->carreras_id;
+        $nom_car=Carreras::select('nom_car')->where('id','=',$id_car)->get();
+        $nc=$nom_car[0]->nom_car;
+
+        $id_esc=$usuario->DetalleEscolaridades[0]->escuelas_id;
+        $nom_esc=Escuelas::select('nombre_escuela')->where('id','=',$id_esc)->get();
+        $ne=$nom_esc[0]->nombre_escuela;
+
+        $id_gra=$usuario->DetalleEscolaridades[0]->grados_id;
+        $nom_gra=Grados::select('nom_gra')->where('id','=',$id_gra)->get();
+        $ng=$nom_gra[0]->nom_gra;
+
+        //dd($ne);
 
 
 
-        return view('usuarios.show', compact('usuario','title'));
+
+        return view('usuarios.show', compact('usuario','title','nt','nc','ne','ng'));
     }
 
     /**

@@ -57,6 +57,8 @@ class CreateUsuariosTable extends Migration
 
 
 
+
+
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

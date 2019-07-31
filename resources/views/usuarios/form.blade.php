@@ -115,12 +115,10 @@
         </fieldset>
 
         <fieldset>
-                <h2 class="fs-title">Demo cuatro</h2>
-                <h3 class="fs-subtitle">Demo cuatro</h3>
+                <h2 class="fs-title">Escolaridad</h2>
+                <h3 class="fs-subtitle">Información del nivel Académico</h3>
                 <div class="row">
-                    <div class="col-md-4">
-
-                    </div>
+                        @include('usuarios/form/escolaridad')
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
