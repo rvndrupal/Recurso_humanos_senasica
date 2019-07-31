@@ -19,6 +19,7 @@ return [
             'paises' => 'c,r,u,d',
             'escuelas' => 'c,r,u,d',
             'titulos' => 'c,r,u,d',
+            'idiomas' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -37,6 +38,7 @@ return [
             'paises' => 'c,r,u',
             'escuelas' => 'c,r,u',
             'titulos' => 'c,r,u',
+            'idiomas' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -55,6 +57,7 @@ return [
             'paises' => 'r',
             'escuelas' => 'r',
             'titulos' => 'r',
+            'idiomas' => 'r',
 
         ],
     ],

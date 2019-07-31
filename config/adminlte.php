@@ -293,6 +293,28 @@ return [
         ],
 
         [
+            'text' => 'Idiomas',
+            'url'  => 'admin/idiomas',
+            'icon' => 'users',
+            'permission'  => 'read-idiomas',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/idiomas',
+                    'permission'  => 'read-idiomas',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/idiomas/create',
+                    'permission'  => 'create-idiomas',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+
+        [
             'text' => 'Roles',
             'url'  => 'admin/role',
             'icon' => 'user-tag',
