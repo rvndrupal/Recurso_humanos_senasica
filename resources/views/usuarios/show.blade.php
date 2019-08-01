@@ -210,14 +210,70 @@
 
 
           <div id="tabs-4">
-            Grado escolar: {{ $ng }}<p></p>
-            Carrera: {{ $nc }}<p></p>
-            Cedula:{{ $usuario->DetalleEscolaridades[0]->cedula }}<p></p>
+            {{--  Grado escolar: {{ $ng }}<p></p>  --}}
+            {{--  Carrera: {{ $carrera['nom_car'] }}<p></p>  --}}
+            {{--  Cedula:{{ $usuario->DetalleEscolaridades[0]->cedula }}<p></p>
             Escuela: {{ $ne }}<p></p>
-            Título: {{ $nt }}<p></p>
+            Título: {{ $nt }}<p></p>  --}}
 
 
-          </div>
+            <table class="table" style="margin: 14px 0 0 0;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">ESTUDIOS</th>
+                        <th scope="col">GRADOS</th>
+                        <th scope="col">CARRERAS</th>
+                        <th scope="col">CEDULA</th>
+                        <th scope="col">ESCUELA</th>
+                        <th scope="col">TÍTULO</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr>
+                        <th scope="row">
+                           @for($i=1; $i<=$total; $i++)
+                            {{ $i }}<p></p>
+                           @endfor
+                        </th>
+                        <td>
+                            @foreach($ng as $item)
+                            {{ $item }}<p></p>
+                            @endforeach
+                        </td>
+                        <td>
+                            @foreach($nc as $item)
+                            {{ $item }}<p></p>
+                            @endforeach
+                        </td>
+                        <td>
+                            @for($i=0; $i<$total; $i++)
+                            {{ $usuario->DetalleEscolaridades[$i]->cedula }}<p></p>
+                            @endfor
+                        </td>
+                        <td>
+                            @foreach($ne as $item)
+                            {{ $item }}<p></p>
+                            @endforeach
+                        </td>
+
+                        <td>
+                            @foreach($nt as $item)
+                            {{ $item }}<p></p>
+                            @endforeach
+                        </td>
+
+                      </tr>
+                    </tbody>
+            </table>
+
+
+
+
+
+
+          </div>{{-- Escolaridad --}}
 
 
         </div>{{-- tabs --}}

@@ -336,14 +336,22 @@ class UsuariosController extends Controller
                 }
         }
 
+
+
+        if(isset($request->grados_id))
+        {
         //Escolaridad
-        $usuario->DetalleEscolaridades()->create([
-            'titulos_id'=>$request->titulos_id,
-            'carreras_id'=>$request->carreras_id,
-            'escuelas_id'=>$request->escuelas_id,
-            'grados_id'=>$request->grados_id,
-            'cedula'=>$request->cedula
-            ]);
+            foreach($request->grados_id as $item=>$v)
+            {
+                $usuario->DetalleEscolaridades()->create([
+                    'titulos_id'=>$request->titulos_id[$item],
+                    'carreras_id'=>$request->carreras_id[$item],
+                    'escuelas_id'=>$request->escuelas_id[$item],
+                    'grados_id'=>$request->grados_id[$item],
+                    'cedula'=>$request->cedula[$item]
+                    ]);
+            }
+        }
 
          $usuario->save();
 
@@ -448,28 +456,56 @@ class UsuariosController extends Controller
 
         $usuario= Usuarios::findOrFail($id);
 
-        $id_titulo=$usuario->DetalleEscolaridades[0]->titulos_id;
-        $nom_titulo=Titulos::select('nombre_titulo')->where('id','=',$id_titulo)->get();
-        $nt=$nom_titulo[0]->nombre_titulo;
+        // $total=count($usuario->DetalleEscolaridades);
+        //dd($total);
 
-        $id_car=$usuario->DetalleEscolaridades[0]->carreras_id;
-        $nom_car=Carreras::select('nom_car')->where('id','=',$id_car)->get();
-        $nc=$nom_car[0]->nom_car;
+            $nt=[];//Los valores en array pasados
+            $nc=[];
+            $ne=[];
+            $ng=[];
 
-        $id_esc=$usuario->DetalleEscolaridades[0]->escuelas_id;
-        $nom_esc=Escuelas::select('nombre_escuela')->where('id','=',$id_esc)->get();
-        $ne=$nom_esc[0]->nombre_escuela;
-
-        $id_gra=$usuario->DetalleEscolaridades[0]->grados_id;
-        $nom_gra=Grados::select('nom_gra')->where('id','=',$id_gra)->get();
-        $ng=$nom_gra[0]->nom_gra;
-
-        //dd($ne);
+            foreach($usuario->DetalleEscolaridades as $item=>$v)
+            {
+               // var_dump($item);
 
 
+                $id_titulo=$usuario->DetalleEscolaridades[$item]->titulos_id;
+                $nom_titulo=Titulos::select('nombre_titulo')->where('id','=',$id_titulo)->get();
+                $ntv=$nom_titulo[0]->nombre_titulo;
+                array_push($nt, $ntv);
 
 
-        return view('usuarios.show', compact('usuario','title','nt','nc','ne','ng'));
+
+                $id_car=$usuario->DetalleEscolaridades[$item]->carreras_id;
+                $nom_car=Carreras::select('nom_car')->where('id','=',$id_car)->get();
+                $ncv=$nom_car[0]->nom_car;
+                array_push($nc, $ncv);
+
+                $id_esc=$usuario->DetalleEscolaridades[$item]->escuelas_id;
+                $nom_esc=Escuelas::select('nombre_escuela')->where('id','=',$id_esc)->get();
+                $nev=$nom_esc[0]->nombre_escuela;
+                array_push($ne, $nev);
+
+                $id_gra=$usuario->DetalleEscolaridades[$item]->grados_id;
+                $nom_gra=Grados::select('nom_gra')->where('id','=',$id_gra)->get();
+                $ngv=$nom_gra[0]->nom_gra;
+                array_push($ng, $ngv);
+
+
+
+            }
+
+            $total=count($ng);
+
+           // dd($total);
+
+
+        //dd($usuario->DetalleEscolaridades);
+
+
+
+
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt'));
     }
 
     /**
