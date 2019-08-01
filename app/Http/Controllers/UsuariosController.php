@@ -14,6 +14,7 @@ use App\Escuelas;
 use App\Titulos;
 use App\Carreras;
 use App\Grados;
+use App\Idiomas;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -121,12 +122,13 @@ class UsuariosController extends Controller
        $grados=Grados::orderBy('id','ASC')->select('id','nom_gra')->get();
        $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
        $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
+       $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
 
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
 
         //dd($usuarios);
 
-        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas'));
     }
 
     /**
