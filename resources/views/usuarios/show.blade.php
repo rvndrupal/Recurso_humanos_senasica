@@ -225,7 +225,9 @@
                         <th scope="col">CARRERAS</th>
                         <th scope="col">CEDULA</th>
                         <th scope="col">ESCUELA</th>
+                        <th scope="col">CONSTANCIA</th>
                         <th scope="col">TÍTULO</th>
+                        <th scope="col">CEDULA</th>
 
                       </tr>
                     </thead>
@@ -263,6 +265,25 @@
                             {{ $item }}<p></p>
                             @endforeach
                         </td>
+                        <td>
+                            @for($i=0; $i<$total; $i++)
+                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }}">
+                                <i class="glyphicon glyphicon-download">TÍTULO</i>
+                            </a><p></p>
+                            @endfor
+                        </td>
+
+                        <td>
+                            @for($i=0; $i<$total; $i++)
+                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }}">
+                                <i class="glyphicon glyphicon-download">CEDULA</i>
+                            </a><p></p>
+                            @endfor
+                        </td>
+
+
+
+
 
                       </tr>
                     </tbody>

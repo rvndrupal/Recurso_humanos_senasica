@@ -26,6 +26,8 @@ class CreateDetalleEscolaridadesTable extends Migration
             $table->foreign('escuelas_id')->references('id')->on('escuelas');
             $table->unsignedBigInteger('titulos_id');
             $table->foreign('titulos_id')->references('id')->on('titulos');
+            $table->string('carga_titulo',250)->nullable();
+            $table->string('carga_cedula',250)->nullable();
             $table->timestamps();
         });
     }

@@ -343,15 +343,27 @@ class UsuariosController extends Controller
         //Escolaridad
             foreach($request->grados_id as $item=>$v)
             {
+                  //dd($request->carga_titulo);
+                  $filenamewithExt = $request->carga_titulo[$item]->getClientOriginalName();
+                  $filenameCed = $request->carga_cedula[$item]->getClientOriginalName();
                 $usuario->DetalleEscolaridades()->create([
                     'titulos_id'=>$request->titulos_id[$item],
                     'carreras_id'=>$request->carreras_id[$item],
                     'escuelas_id'=>$request->escuelas_id[$item],
                     'grados_id'=>$request->grados_id[$item],
-                    'cedula'=>$request->cedula[$item]
+                    'cedula'=>$request->cedula[$item],
+                    'carga_titulo'=>$request->carga_titulo[$item]->storeAs('TITULOPROFESIONAL',$filenamewithExt),
+                    'carga_cedula'=>$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed),
                     ]);
+
             }
         }
+
+
+
+
+
+
 
          $usuario->save();
 
@@ -466,10 +478,7 @@ class UsuariosController extends Controller
 
             foreach($usuario->DetalleEscolaridades as $item=>$v)
             {
-               // var_dump($item);
-
-
-                $id_titulo=$usuario->DetalleEscolaridades[$item]->titulos_id;
+                 $id_titulo=$usuario->DetalleEscolaridades[$item]->titulos_id;
                 $nom_titulo=Titulos::select('nombre_titulo')->where('id','=',$id_titulo)->get();
                 $ntv=$nom_titulo[0]->nombre_titulo;
                 array_push($nt, $ntv);
@@ -490,9 +499,6 @@ class UsuariosController extends Controller
                 $nom_gra=Grados::select('nom_gra')->where('id','=',$id_gra)->get();
                 $ngv=$nom_gra[0]->nom_gra;
                 array_push($ng, $ngv);
-
-
-
             }
 
             $total=count($ng);

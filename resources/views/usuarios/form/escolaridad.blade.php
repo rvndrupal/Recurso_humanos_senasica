@@ -71,6 +71,29 @@
                     </select>
                 </div>
             </div>
+            <div class="col">
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Título</span>
+                            </div>
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" data-name="titulol" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_titulo[]" >
+                            <label class="custom-file-label" id="titulol" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col">
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Cédula</span>
+                            </div>
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" data-name="cedulal" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_cedula[]" >
+                            <label class="custom-file-label" id="cedulal" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+            </div>
 
 
         </div>{{-- row --}}
@@ -153,9 +176,38 @@
                            ' <option value="{{ $item->id }}">{{ $item->nombre_titulo }}</option>'+
                            ' @endforeach'+
                    ' </select>'+
-              '  </div>'+
+                 '</div>'+
             '</div>'+
+
+
+
+        '<div class="col">'+
+                '<div class="input-group flex-nowrap">'+
+                   '<div class="input-group-prepend">'+
+                        '<span class="input-group-text" id="inputGroupFileAddon01">Título</span>'+
+                        '</div>'+
+                       ' <div class="custom-file">'+
+                        '<input type="file" class="custom-file-input" data-name="titulol" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_titulo[]" >'+
+                       ' <label class="custom-file-label" id="titulol" for="inputGroupFile01">Choose file</label>'+
+                   ' </div>'+
+               ' </div>'+
         '</div>'+
+
+        '<div class="col">'+
+                '<div class="input-group flex-nowrap">'+
+                    '<div class="input-group-prepend">'+
+                       ' <span class="input-group-text" id="inputGroupFileAddon01">Cédula</span>'+
+                        '</div>'+
+                        '<div class="custom-file">'+
+                        '<input type="file" class="custom-file-input" data-name="cedulal" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_cedula[]" >'+
+                        '<label class="custom-file-label" id="cedulal" for="inputGroupFile01">Choose file</label>'+
+                    '</div>'+
+               ' </div>'+
+       ' </div>'+
+
+
+
+       '</div>'+
         '<a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>'+
         '</div>'+
 
