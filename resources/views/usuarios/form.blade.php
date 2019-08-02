@@ -11,13 +11,41 @@
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/errores.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet" />
 
     <title>Document</title>
 </head>
 <body>
 
+    {{-- EMPIEZA EL MENU --}}
+
+    <div class="d-flex toggled" id="wrapper">
+
+
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+              <div class="sidebar-heading">ADMINISTRACIÓN</div>
+              <div class="list-group list-group-flush">
+                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">INICIO</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">DOS</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">TRES</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">CUATRO</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">CINCO</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">SEIS</a>
+              </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+
+
+
        <form id="msform" action="{{ route('usuarios.store') }}" method="POST" class="formulario" enctype="multipart/form-data">
             @csrf
+
+       {{-- -menu --}}
+
+       <button class="btn btn-primary" id="menu-toggle" style="margin: -72px +91% 0 7px; background-color: #27ae60; border-color: #686869;">Menú</button>
+       {{-- -menu --}}
         <!-- progressbar -->
         <ul id="progressbar">
             <li class="active">PERSONALES</li>
@@ -162,6 +190,11 @@
         </fieldset>
     </form>
 
+
+
+</div>{{-- DEL MENU WRAPER --}}
+
+
     <!-- jQuery -->
     <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -171,6 +204,7 @@
     <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
 
 </body>
 </html>
@@ -503,6 +537,14 @@ $(document).ready(function(){
                 $(this).css('background','rgb(234, 234, 234)');
                 $(this).css('color','black');
             });
+
+            {{-- DEL MENU --}}
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+              });
+
+            {{-- DEL MENU --}}
 
 
 
