@@ -210,11 +210,6 @@
 
 
           <div id="tabs-4">
-            {{--  Grado escolar: {{ $ng }}<p></p>  --}}
-            {{--  Carrera: {{ $carrera['nom_car'] }}<p></p>  --}}
-            {{--  Cedula:{{ $usuario->DetalleEscolaridades[0]->cedula }}<p></p>
-            Escuela: {{ $ne }}<p></p>
-            Título: {{ $nt }}<p></p>  --}}
 
 
             <table class="table" style="margin: 14px 0 0 0;">
@@ -289,12 +284,56 @@
                     </tbody>
             </table>
 
+            {{-- idiomas --}}
+            <table class="table" style="margin: 14px 0 0 0;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">'#'</th>
+                        <th scope="col">IDIOMA</th>
+                        <th scope="col">NIVEL</th>
+                        <th scope="col">CERTIFICADO</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
+                      <tr>
+                        <th scope="row">
+                           @for($i=1; $i<=$totalidi; $i++)
+                            {{ $i }}<p></p>
+                           @endfor
+                        </th>
+                        <td>
+                            @foreach($idi as $item)
+                            {{ $item }}<p></p>
+                            @endforeach
+                        </td>
 
+                        <td>
+                            @for($i=0; $i<$totalidi; $i++)
+                            {{ $usuario->DetalleIdiomas[$i]->nivel_ingles }}<p></p>
+                            @endfor
+                        </td>
 
-
+                        <td>
+                            @for($i=0; $i<$totalidi; $i++)
+                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleIdiomas[$i]->carga_certificado }} " download="{{ $usuario->DetalleIdiomas[$i]->carga_certificado }}">
+                                <i class="glyphicon glyphicon-download">CERTIFICADO</i>
+                            </a><p></p>
+                            @endfor
+                        </td>
+                      </tr>
+                    </tbody>
+            </table>
 
           </div>{{-- Escolaridad --}}
+
+
+
+
+
+
+
+
 
 
         </div>{{-- tabs --}}

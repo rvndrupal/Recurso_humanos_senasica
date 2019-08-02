@@ -123,7 +123,6 @@ class UsuariosController extends Controller
        $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
        $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
        $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
-
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
 
         //dd($usuarios);
@@ -357,6 +356,20 @@ class UsuariosController extends Controller
                     'carga_titulo'=>$request->carga_titulo[$item]->storeAs('TITULOPROFESIONAL',$filenamewithExt),
                     'carga_cedula'=>$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed),
                     ]);
+            }
+        }
+
+        if(isset($request->idiomas_id))
+        {
+        //ingles
+            foreach($request->idiomas_id as $item=>$v)
+            {
+                $filenameCce = $request->carga_certificado[$item]->getClientOriginalName();
+                $usuario->DetalleIdiomas()->create([
+                    'idiomas_id'=>$request->idiomas_id[$item],
+                    'carga_certificado'=>$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filenameCce),
+                    'nivel_ingles'=>$request->nivel_ingles[$item],
+                    ]);
 
             }
         }
@@ -505,15 +518,23 @@ class UsuariosController extends Controller
 
             $total=count($ng);
 
+            //idiomas
+            $idi=[];
+            foreach($usuario->DetalleIdiomas as $item=>$v)
+            {
+                $id_idiomas=$usuario->DetalleIdiomas[$item]->idiomas_id;
+                $nom_idi=Idiomas::select('nombre_idioma')->where('id','=',$id_idiomas)->get();
+                $nid=$nom_idi[0]->nombre_idioma;
+                array_push($idi, $nid);
+            }
+            $totalidi=count($idi);
+
            // dd($total);
 
 
         //dd($usuario->DetalleEscolaridades);
 
-
-
-
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt'));
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi'));
     }
 
     /**

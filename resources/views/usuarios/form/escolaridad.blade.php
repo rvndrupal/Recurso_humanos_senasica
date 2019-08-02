@@ -133,40 +133,40 @@
                 </div>
             </div>
 
-            <h5 style="margin: 23px 0 0 -79%;">Dominio del Idioma</h5>
+            <h5 style=" margin: 5px 0 0 -82%;">Dominio del Idioma</h5>
                 <div class="row">
                     <div class="col-md-2">
 
                         <div class="form-check">
-                                <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="radio" name="nivel_ingles[]" id="nivel_ingles1" value="option1">
+                                <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="0%">
                                 <label class="form-check-label" for="nivel_ingles">
                                 0%
                                 </label>
                         </div>
 
                         <div class="form-check">
-                                <input class="form-check-input" type="radio" name="nivel_ingles[]" id="nivel_ingles1" value="option1">
+                                <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="25%">
                                 <label class="form-check-label" for="nivel_ingles">
                                 25%
                                 </label>
                         </div>
 
                         <div class="form-check">
-                                <input class="form-check-input" type="radio" name="nivel_ingles[]" id="nivel_ingles" value="option1">
+                                <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="50%">
                                 <label class="form-check-label" for="nivel_ingles">
                                 50%
                                 </label>
                         </div>
 
                         <div class="form-check">
-                                <input class="form-check-input" type="radio" name="nivel_ingles[]" id="nivel_ingles" value="option1" checked>
+                                <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="75%">
                                 <label class="form-check-label" for="nivel_ingles">
                                 75%
                                 </label>
                         </div>
 
                         <div class="form-check">
-                                <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="radio" name="nivel_ingles[]" id="nivel_ingles" value="option1">
+                                <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="100%">
                                 <label class="form-check-label" for="nivel_ingles">
                                 100%
                                 </label>
@@ -356,35 +356,35 @@
                   '<div class="col-md-2">'+
 
                       '<div class="form-check">'+
-                             ' <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="radio" name="nivel_ingles[]" id="nivel_ingles1" value="option1">'+
+                             ' <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="0%">'+
                             '  <label class="form-check-label" for="nivel_ingles">'+
                             '  0%'+
                              ' </label>'+
                       '</div>'+
 
                       '<div class="form-check">'+
-                            '  <input class="form-check-input" type="radio" name="nivel_ingles[]" id="nivel_ingles1" value="option1">'+
+                            '  <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="25%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                              ' 25%'+
                              ' </label>'+
                      ' </div>'+
 
                      ' <div class="form-check">'+
-                              '<input class="form-check-input" type="radio" name="nivel_ingles[]" id="nivel_ingles" value="option1">'+
+                              '<input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="50%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                               '50%'+
                              ' </label>'+
                      ' </div>'+
 
                       '<div class="form-check">'+
-                             ' <input class="form-check-input" type="radio" name="nivel_ingles[]" id="nivel_ingles" value="option1" checked>'+
+                             ' <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="75%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                              ' 75%'+
                               '</label>'+
                       '</div>'+
 
                      ' <div class="form-check">'+
-                             ' <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="radio" name="nivel_ingles[]" id="nivel_ingles" value="option1">'+
+                             ' <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="100%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                              ' 100%'+
                              ' </label>'+

@@ -67,5 +67,10 @@ class Usuarios extends Model
         return $this->hasMany('App\DetalleEscolaridades');
     }
 
+    public function DetalleIdiomas()
+    {
+        return $this->hasMany('App\DetalleIdiomas');
+    }
+
 
 }
