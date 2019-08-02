@@ -20,13 +20,13 @@
             @csrf
         <!-- progressbar -->
         <ul id="progressbar">
-            <li class="active">Paso 1</li>
-            <li>Paso 2</li>
-            <li>Paso 3</li>
-            <li>Paso 4</li>
-            <li>Paso 5</li>
-            <li>Paso 6</li>
-            <li>Final</li>
+            <li class="active">PERSONALES</li>
+            <li>DOMICILIO PARTICULAR</li>
+            <li>ESTADO CIVIL</li>
+            <li>ESCOLARIDAD</li>
+            <li>DATOS LABORALES</li>
+            <li>EXPERIENCIA LABORAL</li>
+            <li>SEGURO SOCIAL</li>
         </ul>
         <!-- fieldsets -->
         <fieldset>
@@ -125,13 +125,11 @@
         </fieldset>
 
         <fieldset>
-                <h2 class="fs-title">Demo cinco</h2>
-                <h3 class="fs-subtitle">Demo cinco</h3>
-                <div class="row">
-                    <div class="col-md-4">
+                <h2 class="fs-title">Datos Laborales</h2>
 
-                    </div>
-                </div>
+                @include('usuarios/form/laborales')
+
+
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>

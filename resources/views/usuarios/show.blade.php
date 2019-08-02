@@ -26,6 +26,7 @@
             <li><a href="#tabs-2">Domicilio</a></li>
             <li><a href="#tabs-3">Estado Civil</a></li>
             <li><a href="#tabs-4">Escolaridad</a></li>
+            <li><a href="#tabs-5">Datos Laborales</a></li>
           </ul>
           <div id="tabs-1">
               <div class="row">
@@ -329,6 +330,109 @@
 
 
 
+          {{-- Datos Laborales --}}
+
+          <div id="tabs-5">
+
+            <div class="table-responsive-sm">
+                <table class="table" style="margin: 14px 0 0 0;">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">PUESTO</th>
+                            <th scope="col">CÓDIGO PUESTO</th>
+                            <th scope="col">GRADO</th>
+                            <th scope="col">DIRECCIÓN GENERAL</th>
+                            <th scope="col">DIRECCIÓN ÁREA</th>
+                            <th scope="col">FECHA ULTIMO</th>
+                            <th scope="col">FECHA SENASICA</th>
+                            <th scope="col">ESTADO</th>
+                            <th scope="col">MUNICIPIO</th>
+                            <th scope="col">COLONIA</th>
+                            <th scope="col">CP</th>
+                            <th scope="col">CALLE</th>
+                            <th scope="col">NUMERO</th>
+                            <th scope="col">FECHA GOBIERNO</th>
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr>
+                            <th scope="row">
+                               1
+                            </th>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->puesto_actual }}<p></p>
+                            </td>
+
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->codigo_puesto }}<p></p>
+                            </td>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->grado_nivel }}<p></p>
+                            </td>
+                            <td>
+                                @foreach($dge as $item)
+                                {{ $item }}<p></p>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($dga as $item)
+                                {{ $item }}<p></p>
+                                @endforeach
+                            </td>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->fecha_ultimo }}<p></p>
+                            </td>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->fecha_senasica }}<p></p>
+                            </td>
+                            <td>
+                                @foreach($estl as $item)
+                                {{ $item }}<p></p>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($munl as $item)
+                                {{ $item }}<p></p>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($coll as $item)
+                                {{ $item }}<p></p>
+                                @endforeach
+                            </td>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->cod_lab }}<p></p>
+                            </td>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->calle_lab }}<p></p>
+                            </td>
+                             <td>
+                            {{ $usuario->DetalleLaborales[0]->num_lab }}<p></p>
+                            </td>
+                            <td>
+                            {{ $usuario->DetalleLaborales[0]->fecha_gobierno }}<p></p>
+                            </td>
+
+
+
+
+
+
+
+
+
+                          </tr>
+                        </tbody>
+                </table>
+            </div>{{-- tabla responsive --}}
+
+
+
+        </div>{{-- Datos Laborales --}}
 
 
 

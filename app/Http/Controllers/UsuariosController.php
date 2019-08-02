@@ -15,6 +15,10 @@ use App\Titulos;
 use App\Carreras;
 use App\Grados;
 use App\Idiomas;
+use App\DireccionesGenerales;
+use App\DireccionesAreas;
+use App\DetalleLaborales;
+
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -124,10 +128,13 @@ class UsuariosController extends Controller
        $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
        $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+       $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+       $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
+       $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
 
         //dd($usuarios);
 
-        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas','dg','da'));
     }
 
     /**
@@ -375,6 +382,25 @@ class UsuariosController extends Controller
         }
 
 
+        //laborales
+        $usuario->DetalleLaborales()->create([
+            'puesto_actual'=>$request->puesto_actual,
+            'codigo_puesto'=>$request->codigo_puesto,
+            'grado_nivel'=>$request->grado_nivel,
+            'direcciones_generales_id'=>$request->direcciones_generales_id,
+            'direcciones_areas_id'=>$request->direcciones_areas_id,
+            'fecha_ultimo'=>$request->fecha_ultimo,
+            'fecha_senasica'=>$request->fecha_senasica,
+            'calle_lab'=>$request->calle_lab,
+            'num_lab'=>$request->num_lab,
+            'col_lab'=>$request->col_lab,
+            'fecha_gobierno'=>$request->fecha_gobierno,
+            'mun_lab'=>$request->mun_lab,
+            'est_lab'=>$request->est_lab,
+            'cod_lab'=>$request->cod_lab,
+            ]);
+
+
 
 
 
@@ -529,12 +555,56 @@ class UsuariosController extends Controller
             }
             $totalidi=count($idi);
 
-           // dd($total);
+
+            // DATOS LABORALES
+            $dge=[];
+            $dga=[];
+            $estl=[];
+            $munl=[];
+            $coll=[];
 
 
-        //dd($usuario->DetalleEscolaridades);
+                $id_dge=$usuario->DetalleLaborales[0]->direcciones_generales_id;
+                $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
+                $ndge=$nom_dge[0]->nombre_dir_gen;
+                array_push($dge, $ndge);
 
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi'));
+                $id_dga=$usuario->DetalleLaborales[0]->direcciones_areas_id;
+                $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
+                $ndga=$nom_dga[0]->nombre_dir_are;
+                array_push($dga, $ndga);
+
+                $id_estl=$usuario->DetalleLaborales[0]->est_lab;
+                $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
+                $nestl=$nom_estl[0]->nombre;
+                array_push($estl, $nestl);
+
+                $id_munl=$usuario->DetalleLaborales[0]->mun_lab;
+                $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
+                $nmunl=$nom_munl[0]->nombre_mun;
+                array_push($munl, $nmunl);
+
+                $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+                $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
+                $ncoll=$nom_coll[0]->nombre_col;
+                array_push($coll, $ncoll);
+
+
+
+
+
+
+
+
+
+           // dd($ndge);
+
+            //dd($usuario->DetalleLaborales);
+
+
+
+
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll'));
     }
 
     /**
