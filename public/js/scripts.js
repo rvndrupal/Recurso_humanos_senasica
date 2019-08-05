@@ -5,27 +5,27 @@ var animating; //flag to prevent quick multi-click glitches
 
 $(".next").click(function(){
 
-    $nom=$('#nom').val();
-    $ap=$('#ap').val();
 
-    if($nom=="")
-    {
-        $('#error_nom').fadeIn();
-        return false;
-    }else{
-    $('#error_nom').fadeOut();
-    }
+    var form= $("#msform");
 
-    if($ap=="")
-    {
-        $('#error_ap').fadeIn();
-        return false;
-    }
+    form.validate({
 
-    else{
-        $('#error_ap').fadeOut();
+        rules:{
+            nom:{required:true,minlength:3},
+            ap:{required:true,minlength:3},
+            am:{required:true,minlength:3},
+        },
+
+        messages:{
+            nom:{required:"Es obligatorio",minlength:"Minimo 3 caracteres"},
+            ap:{required:"Es obligatorio",minlength:"Minimo 3 caracteres"},
+            am:{required:"Es obligatorio",minlength:"Minimo 3 caracteres"},
+        },
+
+    });
 
 
+    if (form.valid() == true){
 
             if(animating) return false;
             animating = true;
@@ -60,9 +60,7 @@ $(".next").click(function(){
                 easing: 'easeInOutBack'
             });
 
-            return true;
-
-        }
+    }
 
 
 

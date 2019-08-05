@@ -27,7 +27,7 @@
               <div class="sidebar-heading">ADMINISTRACIÓN</div>
               <div class="list-group list-group-flush">
                 <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">INICIO</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">DOS</a>
+                <a href="{{ route('cards') }}" class="list-group-item list-group-item-action bg-light">CARDS</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">TRES</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">CUATRO</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">CINCO</a>
@@ -198,6 +198,7 @@
     <script src="{{ asset('js/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/validando.js') }}" type="text/javascript"></script>
 
 </body>
 </html>
@@ -539,6 +540,26 @@ $(document).ready(function(){
 
             {{-- DEL MENU --}}
 
+
+            {{-- Magia para los campos de validación --}}
+
+            jQuery.validator.setDefaults({
+                highlight: function(element) {
+                    jQuery(element).closest('.form-control').addClass('is-invalid');
+                },
+                unhighlight: function(element) {
+                    jQuery(element).closest('.form-control').removeClass('is-invalid');
+                },
+                errorElement: 'span',
+                errorClass: 'label label-danger',
+                errorPlacement: function(error, element) {
+                    if(element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
 
 
 });//inicio

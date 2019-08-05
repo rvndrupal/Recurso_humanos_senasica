@@ -5,10 +5,24 @@
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="addon-wrapping">Nom</span>
                  </div>
-                 <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                 <input type="text"  name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
          </div>
-         <span id="error_nom" class="error">Falta el nombre</span>
+
+
      </div>
+
+
+    <div class="col-md-4">
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                </div>
+                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+            </div>
+            <span id="error_ap" class="error">Falta el Apellido</span>
+   </div>
+
+
      <div class="col-md-4">
              <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
@@ -17,7 +31,9 @@
                  <input type="text" class="form-control" name="ap" id="ap" placeholder="Apellido Paterno" aria-label="Apellido Paterno" aria-describedby="addon-wrapping">
              </div>
              <span id="error_ap" class="error">Falta el Apellido</span>
-         </div>
+    </div>
+
+
      <div class="col-md-4">
              <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
