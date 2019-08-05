@@ -28,6 +28,7 @@
             <li><a href="#tabs-4">Escolaridad</a></li>
             <li><a href="#tabs-5">Datos Laborales</a></li>
             <li><a href="#tabs-6">Experiencia Laboral</a></li>
+            <li><a href="#tabs-7">Seguro Social</a></li>
           </ul>
           <div id="tabs-1">
               <div class="row">
@@ -440,7 +441,7 @@
 
           {{-- Experiencia  Laborales --}}
 
-          <div id="tabs-5">
+          <div id="tabs-6">
 
             <div class="table-responsive-sm">
                 <table class="table" style="margin: 14px 0 0 0;">
@@ -522,6 +523,138 @@
 
 
         </div>{{-- Experiencia Laborales --}}
+
+
+
+          {{-- SEGURO SOCIAL --}}
+
+          <div id="tabs-7">
+
+                <div class="table-responsive-sm">
+                    <table class="table" style="margin: 14px 0 0 0;">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">NUMERO SEGURO</th>
+                                <th scope="col">ENFERMEDAD</th>
+                                <th scope="col">CUAL</th>
+                                <th scope="col">TIPO DE SANGRE</th>
+                                <th scope="col">DISCAPACIDAD</th>
+                                <th scope="col">CUAL</th>
+
+
+
+
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <tr>
+                                <th scope="row">
+                                1
+                                </th>
+                                <td>
+                                    {{ $usuario->Seguros[0]->num_seg }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->Seguros[0]->enf_seg }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->Seguros[0]->cual_enf_seg }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->Seguros[0]->tipo_seg }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->Seguros[0]->dis_seg }}
+                                </td>
+
+                                <td>
+                                    {{ $usuario->Seguros[0]->cual_dis_seg }}
+                                </td>
+
+
+
+
+
+
+
+                              </tr>
+                            </tbody>
+                    </table>
+                </div>{{-- tabla responsive --}}
+
+                <div class="table-responsive-sm">
+                    <h2>CONTACTO DE EMERGENCIA</h2>
+                        <table class="table" style="margin: 14px 0 0 0;">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">NOMBRE</th>
+                                    <th scope="col">APELLIDO PATERNO</th>
+                                    <th scope="col">APELLIDO MATERNO</th>
+                                    <th scope="col">PARENTESCO</th>
+                                    <th scope="col">CORREO</th>
+                                    <th scope="col">TEL: CASA</th>
+                                    <th scope="col">TEL: MOVIL</th>
+
+
+
+                                  </tr>
+                                </thead>
+                                <tbody>
+
+                                  <tr>
+                                    <th scope="row">
+                                    1
+                                    </th>
+                                    <td>
+                                        {{ $usuario->Seguros[0]->nom_seg }}
+                                    </td>
+
+                                    <td>
+                                        {{ $usuario->Seguros[0]->pri_seg }}
+                                    </td>
+
+                                    <td>
+                                        {{ $usuario->Seguros[0]->seg_seg }}
+                                    </td>
+
+                                    <td>
+                                        {{ $usuario->Seguros[0]->par_seg }}
+                                    </td>
+
+                                    <td>
+                                        {{ $usuario->Seguros[0]->email_seg }}
+                                    </td>
+
+                                    <td>
+                                        {{ $usuario->Seguros[0]->tel_seg }}
+                                    </td>
+
+                                    <td>
+                                        {{ $usuario->Seguros[0]->mov_seg }}
+                                    </td>
+
+
+
+
+
+
+
+                                  </tr>
+                                </tbody>
+                        </table>
+                    </div>{{-- tabla responsive --}}
+
+
+
+            </div>
+            {{-- SEGURO SOCIAL --}}
 
 
 

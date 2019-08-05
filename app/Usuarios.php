@@ -82,4 +82,9 @@ class Usuarios extends Model
         return $this->hasMany('App\ExpLaborales');
     }
 
+    public function Seguros()
+    {
+        return $this->hasMany('App\Seguros');
+    }
+
 }

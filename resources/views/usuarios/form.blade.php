@@ -174,13 +174,9 @@
 
 
         <fieldset>
-            <h2 class="fs-title">Final</h2>
-            <h3 class="fs-subtitle">Final</h3>
-            <div class="row">
-                <div class="col-md-4">
+            <h2 class="fs-title">DATOS SEGURO SOCIAL</h2>
 
-                </div>
-            </div>
+            @include('usuarios/form/seguros')
 
             <input type="button" name="previous" class="previous action-button" value="Previous" />
             <input type="submit" name="submit"  class="submit action-button" id="guardar"  value="Guardar" />

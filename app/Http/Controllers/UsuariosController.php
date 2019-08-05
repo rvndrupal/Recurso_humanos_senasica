@@ -421,6 +421,31 @@ class UsuariosController extends Controller
             }
         }
 
+        //seguro social
+        $cual_enf=$request->cual_enf_seg;
+        $cual_dis=$request->cual_dis_seg;
+
+        if($cual_enf==""){$cual_enf="Ninguna Enfermedad";}else{$cual_enf;}
+        if($cual_dis==""){$cual_dis="Ninguna Discapacidad";}else{$cual_dis;}
+
+
+
+        $usuario->Seguros()->create([
+            'num_seg'=>$request->num_seg,
+            'enf_seg'=>$request->enf_seg,
+            'cual_enf_seg'=>$cual_enf,
+            'tipo_seg'=>$request->tipo_seg,
+            'dis_seg'=>$request->dis_seg,
+            'cual_dis_seg'=>$cual_dis,
+            'nom_seg'=>$request->nom_seg,
+            'pri_seg'=>$request->pri_seg,
+            'seg_seg'=>$request->seg_seg,
+            'par_seg'=>$request->par_seg,
+            'email_seg'=>$request->email_seg,
+            'tel_seg'=>$request->tel_seg,
+            'mov_seg'=>$request->mov_seg,
+            ]);
+
 
 
 
