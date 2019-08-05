@@ -35,7 +35,7 @@
 
             </div>
 
-            <div class="col">
+            <div class="col-md-4">
                 <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Cedula</span>
@@ -237,7 +237,7 @@
                    ' </div>'+
            ' </div>'+
 
-           '<div class="col">'+
+           '<div class="col-md-4">'+
                 '<div class="input-group flex-nowrap">'+
                         '<div class="input-group-prepend">'+
                             '<span class="input-group-text" id="addon-wrapping">Cedula</span>'+

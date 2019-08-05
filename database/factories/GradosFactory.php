@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Grados::class, function (Faker $faker) {
     return [
-        //
+        'nom_gra'=> $faker->randomElement(['Primaria', 'Secundaria','Preparatoria','Licanciatura','Posgrado'])
     ];
 });

@@ -164,13 +164,10 @@
 
 
         <fieldset>
-                <h2 class="fs-title">Demo seis</h2>
-                <h3 class="fs-subtitle">Demo seis</h3>
-                <div class="row">
-                    <div class="col-md-4">
+                <h2 class="fs-title">Experiencia Laboral</h2>
 
-                    </div>
-                </div>
+                @include('usuarios/form/exp_laboral')
+
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>

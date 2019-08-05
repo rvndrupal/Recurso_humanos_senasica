@@ -27,6 +27,7 @@
             <li><a href="#tabs-3">Estado Civil</a></li>
             <li><a href="#tabs-4">Escolaridad</a></li>
             <li><a href="#tabs-5">Datos Laborales</a></li>
+            <li><a href="#tabs-6">Experiencia Laboral</a></li>
           </ul>
           <div id="tabs-1">
               <div class="row">
@@ -433,6 +434,94 @@
 
 
         </div>{{-- Datos Laborales --}}
+
+
+
+
+          {{-- Experiencia  Laborales --}}
+
+          <div id="tabs-5">
+
+            <div class="table-responsive-sm">
+                <table class="table" style="margin: 14px 0 0 0;">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">PUESTO</th>
+                            <th scope="col">INSTITUTO Ó EMPRESA</th>
+                            <th scope="col">ÁREA DE EXPERIENCIA</th>
+                            <th scope="col">AÑOS DE EXPERIENCIA</th>
+                            <th scope="col">FECHA DE INGRESO</th>
+                            <th scope="col">FECHA DE BAJA</th>
+                            <th scope="col">ARCHIVO</th>
+
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr>
+                            <th scope="row">
+                            @for($i=1; $i<=$total_Exp; $i++)
+                            {{ $i }}<p></p>
+                            @endfor
+                            </th>
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            {{ $item->den_puesto }}<p></p>
+                            @endforeach
+                            </td>
+
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            {{ $item->ins_puesto }}<p></p>
+                            @endforeach
+                            </td>
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            {{ $item->area_puesto }}<p></p>
+                            @endforeach
+                            </td>
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            {{ $item->anos_puesto }}<p></p>
+                            @endforeach
+                            </td>
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            {{ $item->fecha_ing_puesto }}<p></p>
+                            @endforeach
+                            </td>
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            {{ $item->fecha_baj_puesto }}<p></p>
+                            @endforeach
+                            </td>
+
+                            <td>
+                            @foreach($usuario->ExpLaborales as $item)
+                            <a href="http://localhost/recursos/public/{{ $item->doc_puesto }} " download="{{ $item->doc_puesto }}">
+                                <i class="glyphicon glyphicon-download">Arhivos</i><p></p>
+                            </a>
+                            @endforeach
+                            </td>
+
+
+
+
+
+
+
+
+                          </tr>
+                        </tbody>
+                </table>
+            </div>{{-- tabla responsive --}}
+
+
+
+        </div>{{-- Experiencia Laborales --}}
 
 
 

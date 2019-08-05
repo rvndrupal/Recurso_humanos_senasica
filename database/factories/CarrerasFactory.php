@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Carreras::class, function (Faker $faker) {
     return [
-        //
+        'nom_car'=> $faker->randomElement(['Sistemas', 'Administración','Contabilida','Derecho'])
     ];
 });

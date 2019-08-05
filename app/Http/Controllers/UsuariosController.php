@@ -18,6 +18,7 @@ use App\Idiomas;
 use App\DireccionesGenerales;
 use App\DireccionesAreas;
 use App\DetalleLaborales;
+use App\ExpLaborales;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -401,6 +402,26 @@ class UsuariosController extends Controller
             ]);
 
 
+        if(isset($request->den_puesto))
+        {
+        //Exp Laboral
+            foreach($request->den_puesto as $item=>$v)
+            {
+                    //dd($request->carga_titulo);
+                    $fileDocPuesto = $request->doc_puesto[$item]->getClientOriginalName();
+                $usuario->ExpLaborales()->create([
+                    'den_puesto'=>$request->den_puesto[$item],
+                    'ins_puesto'=>$request->ins_puesto[$item],
+                    'area_puesto'=>$request->area_puesto[$item],
+                    'anos_puesto'=>$request->anos_puesto[$item],
+                    'fecha_ing_puesto'=>$request->fecha_ing_puesto[$item],
+                    'fecha_baj_puesto'=>$request->fecha_baj_puesto[$item],
+                    'doc_puesto'=>$request->doc_puesto[$item]->storeAs('DOCPUESTO',$fileDocPuesto),
+                    ]);
+            }
+        }
+
+
 
 
 
@@ -591,6 +612,11 @@ class UsuariosController extends Controller
 
 
 
+            //esperiencia laboral
+
+            $total_Exp=count($usuario->ExpLaborales);
+
+
 
 
 
@@ -599,12 +625,12 @@ class UsuariosController extends Controller
 
            // dd($ndge);
 
-            //dd($usuario->DetalleLaborales);
+           //dd($usuario->ExpLaborales);
 
 
 
 
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll'));
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp'));
     }
 
     /**
