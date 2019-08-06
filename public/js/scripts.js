@@ -8,21 +8,83 @@ $(".next").click(function(){
 
     var form= $("#msform");
 
+    jQuery.validator.addMethod("texto", function(value, element) {
+    return this.optional(element) ||  /^[a-z]+$/i.test(value);
+    }, "Solo se permite texto");
+
+    jQuery.validator.addMethod("email", function(value, element) {
+    return this.optional(element) ||  /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/.test(value);
+    }, "Introduce un correo Valido");
+
+    jQuery.validator.addMethod("numeros", function(value, element) {
+    return this.optional(element) ||  /^[0-9]+$/.test(value);
+    }, "Solo números");
+
+    jQuery.validator.addMethod("imagen", function(value, element) {
+    return this.optional(element) ||  /(.jpg|.jpeg|.png)$/i.test(value);
+    }, "Formato no valido solo jpg,jpeg,png");
+
+    jQuery.validator.addMethod("pdf", function(value, element) {
+    return this.optional(element) ||  /(.pdf)$/i.test(value);
+    }, "Formato no valido solo (PDF)");
+
     form.validate({
 
         rules:{
-            nom:{required:true,minlength:3},
-            ap:{required:true,minlength:3},
-            am:{required:true,minlength:3},
+            // nom:{required:true,minlength:3,maxlength:20,texto: true},
+            // ap:{required:true,minlength:3,maxlength:20,texto: true},
+            // am:{required:true,minlength:3,maxlength:20,texto: true},
+            // paises_id:{required:true},
+            // rfc:{required:true,minlength:12,maxlength:13},
+            // curp:{required:true,minlength:18,maxlength:18},
+            // correo_per:{required:true,email:true},
+            // correo_ins:{required:true,email:true},
+            // tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
+            // tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
+            // fecha_nacimiento:{required:true},
+            // foto:{required:true,imagen:true},
+            // carga_rfc:{required:true,imagen:true},
+            // carga_curp:{required:true,imagen:true},
+            // carga_ife:{required:true,imagen:true},
+            // estados_id:{required:true},
+            // municipios_id:{required:true},
+            // colonias_id:{required:true},
+            // calle:{required:true,minlength:5,maxlength:100},
+            // numero:{required:true,minlength:2,maxlength:5,numeros:true},
+            // carga_domicilio:{required:true,imagen:true},
+            // fecha_domicilio:{required:true},
+
+
         },
 
         messages:{
-            nom:{required:"Es obligatorio",minlength:"Minimo 3 caracteres"},
-            ap:{required:"Es obligatorio",minlength:"Minimo 3 caracteres"},
-            am:{required:"Es obligatorio",minlength:"Minimo 3 caracteres"},
+            nom:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            ap:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            am:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            paises_id:{required:"Es obligatorio"},
+            rfc:{required:"Es obligatorio",minlength:"Mínimo 12 caracteres",maxlength:"Máximo 13 caracteres"},
+            curp:{required:"Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo 18 caracteres"},
+            correo_per:{required:"Es obligatorio"},
+            correo_ins:{required:"Es obligatorio"},
+            tel_casa:{required:"Es obligatorio",minlength:"Mínimo 8 caracteres",maxlength:"Máximo 30 caracteres"},
+            tel_movil:{required:"Es obligatorio",minlength:"Mínimo 10 caracteres",maxlength:"Máximo 30 caracteres"},
+            fecha_nacimiento:{required:"Es obligatorio"},
+            foto:{required:"Es obligatorio"},
+            carga_rfc:{required:"Es obligatorio"},
+            carga_curp:{required:"Es obligatorio"},
+            carga_ife:{required:"Es obligatorio"},
+            estados_id:{required:"Es obligatorio"},
+            municipios_id:{required:"Es obligatorio"},
+            colonias_id:{required:"Es obligatorio"},
+            calle:{required:"Es obligatorio",minlength:"Mínimo 5 caracteres",maxlength:"Máximo 100 caracteres"},
+            numero:{required:"Es obligatorio",minlength:"Mínimo 2 caracteres",maxlength:"Máximo 5 caracteres"},
+            carga_domicilio:{required:"Es obligatorio"},
+            fecha_domicilio:{required:"Es obligatorio"},
+
+
         },
 
-    });
+    });//validación de los campos
 
 
     if (form.valid() == true){

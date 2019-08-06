@@ -1,27 +1,29 @@
-<div class="col-md-4">
+    <div class="row foto">
+            <div class="col-md-2">
+                <div id="pre" class="load">
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                    <label class="foto_tex">FOTO</label>
+            </div>
+            <div class="col-md-5">
+                    <input type="file" class="form-control"  name="foto" id="previo" >
+            </div>
+
+    </div>
+
+<div class="row">
+    <div class="col-md-4">
 
         <div class="input-group flex-nowrap">
 
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="addon-wrapping">Nom</span>
                  </div>
-                 <input type="text"  name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                 <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
          </div>
-
-
      </div>
-
-
-    <div class="col-md-4">
-            <div class="input-group flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                </div>
-                <input type="text" class="form-control" name="nom" id="nom" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-            </div>
-            <span id="error_ap" class="error">Falta el Apellido</span>
-   </div>
-
 
      <div class="col-md-4">
              <div class="input-group flex-nowrap">
@@ -55,7 +57,7 @@
              </select>
          </div>
      </div>
-     <div class="col-md-3">
+     <div class="col-md-4">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
                  <span class="input-group-text" id="addon-wrapping">Rfc</span>
@@ -63,17 +65,7 @@
              <input type="text" class="form-control" name="rfc" id="rfc" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
          </div>
      </div>
-     <div class="col-md-5">
-         <div class="input-group flex-nowrap">
-             <div class="input-group-prepend">
-                 <span class="input-group-text" id="inputGroupFileAddon01">Rfc</span>
-                 </div>
-                 <div class="custom-file">
-                 <input type="file" class="custom-file-input" data-name="rfcc" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_rfc" >
-                 <label class="custom-file-label" id="rfcc" for="inputGroupFile01">Choose file</label>
-             </div>
-         </div>
-      </div>
+
      <div class="col-md-4">
          <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
@@ -82,26 +74,14 @@
                  <input type="text" class="form-control" name="curp" id="curp" placeholder="Rfc" aria-label="Apellido Materno" aria-describedby="addon-wrapping">
          </div>
      </div>
+
+
      <div class="col-md-4">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
-                 <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
-                 </div>
-                 <div class="custom-file">
-                 <input type="file" class="custom-file-input" data-name="curpp" name="carga_curp" id="carga_curp"  aria-describedby="inputGroupFileAddon01">
-                 <label class="custom-file-label" id="curpp" for="inputGroupFile01">Choose file</label>
+                 <span class="input-group-text" id="addon-wrapping">@</span>
              </div>
-         </div>
-     </div>
-     <div class="col-md-4">
-         <div class="input-group flex-nowrap">
-                 <div class="input-group-prepend">
-                     <span class="input-group-text" id="inputGroupFileAddon01">Ife</span>
-                     </div>
-                     <div class="custom-file">
-                     <input type="file" class="custom-file-input" data-name="ifee" name="carga_ife" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
-                     <label class="custom-file-label" id="ifee" for="inputGroupFile01">Choose file</label>
-                 </div>
+             <input type="email" class="form-control"  name="correo_per" id="correo_per" placeholder="Correo Personal" aria-label="Username" aria-describedby="addon-wrapping">
          </div>
      </div>
      <div class="col-md-4">
@@ -109,15 +89,7 @@
              <div class="input-group-prepend">
                  <span class="input-group-text" id="addon-wrapping">@</span>
              </div>
-             <input type="text" class="form-control"  name="correo_per" id="correo_per" placeholder="Correo Personal" aria-label="Username" aria-describedby="addon-wrapping">
-         </div>
-     </div>
-     <div class="col-md-4">
-         <div class="input-group flex-nowrap">
-             <div class="input-group-prepend">
-                 <span class="input-group-text" id="addon-wrapping">@</span>
-             </div>
-             <input type="text" class="form-control"  name="correo_ins" id="correo_ins" placeholder="Correo Institucional" aria-label="Username" aria-describedby="addon-wrapping">
+             <input type="email" class="form-control"  name="correo_ins" id="correo_ins" placeholder="Correo Institucional" aria-label="Username" aria-describedby="addon-wrapping">
          </div>
      </div>
      <div class="col-md-4">
@@ -136,7 +108,7 @@
                  <input type="text" class="form-control" name="tel_movil" id="tel_movil" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
          </div>
      </div>
-     <div class="col-md-4">
+     <div class="col-md-6">
              <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
                      <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
@@ -144,18 +116,39 @@
                  <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
              </div>
      </div>
-     <div class="col-md-4">
-         <div class="input-group flex-nowrap">
-                 <div class="input-group-prepend">
-                     <span class="input-group-text" id="inputGroupFileAddon01">Foto</span>
-                     </div>
-                     <div class="custom-file">
-                     <input type="file" class="custom-file-input" data-name="fotos" name="foto" id="foto"  aria-describedby="inputGroupFileAddon01">
-                     <label class="custom-file-label" id="fotos" for="inputGroupFile01">Choose file</label>
-                 </div>
-         </div>
-     </div>
 </div>
+
+
+
+    <div class="row rfc">
+            <div class="col-md-1">
+                    <label class="foto_tex">RFC</label>
+            </div>
+
+          <div class="col-md-5">
+                <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc" >
+          </div>
+    </div>
+
+    <div class="row curp">
+        <div class="col-md-1">
+        <label class="foto_tex">CURP</label>
+        </div>
+        <div class="col-md-5">
+            <input type="file" class="form-control"  name="carga_curp" id="carga_curp" >
+        </div>
+    </div>
+
+    <div class="row curp">
+        <div class="col-md-1">
+        <label class="foto_tex">IFE</label>
+        </div>
+        <div class="col-md-5">
+                <input type="file" class="form-control"  name="carga_ife" id="carga_ife" >
+        </div>
+    </div>
+
+
 
 
 

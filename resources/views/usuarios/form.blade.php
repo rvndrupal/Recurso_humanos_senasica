@@ -12,6 +12,7 @@
     <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/errores.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/personales.css') }}" rel="stylesheet" />
 
     <title>Document</title>
 </head>
@@ -59,9 +60,6 @@
         <!-- fieldsets -->
         <fieldset>
             <h2 class="fs-title">Datos Personales</h2>
-            <h3 class="fs-subtitle">Registro</h3>
-            <div class="row">
-
                   @include('usuarios/form/fase_uno')
 
         </fieldset>
@@ -520,14 +518,14 @@ $(document).ready(function(){
 
 
 
-            $('input[type="file"]').change(function(e){
-                var fileName = e.target.files[0].name;
 
-                var nom=$(this).data("name");
-                $("#"+nom).html(fileName);
-            });
 
             $('input[type="text"]').change(function(){
+                $(this).css('background','rgb(234, 234, 234)');
+                $(this).css('color','black');
+            });
+
+            $('input[type="email"]').change(function(){
                 $(this).css('background','rgb(234, 234, 234)');
                 $(this).css('color','black');
             });
@@ -560,6 +558,25 @@ $(document).ready(function(){
                     }
                 }
             });
+
+            {{-- preload imagenes --}}
+            function filePreview(input) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#pre + img').remove();
+                        $('#pre').after('<img src="'+e.target.result+'" class="previo" width="120px" height="120px"/>');
+
+                    }
+                    reader.readAsDataURL(input.files[0]);
+
+            }
+
+            $("#previo").change(function () {
+                filePreview(this);
+                $('#pre').removeClass('load');
+            });
+
+
 
 
 });//inicio

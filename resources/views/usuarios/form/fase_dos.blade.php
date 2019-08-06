@@ -3,7 +3,7 @@
              <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Estado</span>
             </div>
-            <select  name="estados_id" class="estados_select" placeholder="Estado" id="estado">
+            <select  name="estados_id" class="estados_select form-control" placeholder="Estado" id="estado">
                     <option value="">Estado</option>
                     @foreach ($estados as $item)
                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
@@ -62,29 +62,29 @@
 
 
 
-<div class="col-md-6">
-        <div class="input-group flex-nowrap">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Domicilio</span>
+
+
+    <div class="col-md-6">
+            <div class="input-group flex-nowrap">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">Fecha Domicilio</span>
                     </div>
-                    <div class="custom-file">
-                    <input type="file" class="custom-file-input"  data-name="domm" name="carga_domicilio" id="inputGroupFileAddon01"  aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" id="domm" for="inputGroupFile01">Choose file</label>
-                </div>
-        </div>
-    </div>
-
-<div class="col-md-6">
-    <div class="input-group flex-nowrap">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="addon-wrapping">Fecha Domicilio</span>
+                    <input type="date" class="form-control" name="fecha_domicilio" id="fecha_domicilio" placeholder="Fecha" aria-label="Nombre" aria-describedby="addon-wrapping">
             </div>
-            <input type="date" class="form-control" name="fecha_domicilio" id="fecha_domicilio" placeholder="Fecha" aria-label="Nombre" aria-describedby="addon-wrapping">
     </div>
-</div>
 
 
 
+</div>{{-- row --}}
+
+<div class="row rfc">
+        <div class="col-md-2">
+                <label class="foto_tex text2">DOMICILIO</label>
+        </div>
+
+      <div class="col-md-5">
+            <input type="file" class="form-control dom"  id="carga_domicilio"  name="carga_domicilio" >
+      </div>
 </div>
 <input type="button" name="previous" class="previous action-button" value="Previous" />
 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
