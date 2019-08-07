@@ -85,28 +85,28 @@
 <table class="table table-bordered" id="ifc">
         <tr>
                 <td>
-                        <div class="input-group flex-nowrap">
+                        {{-- <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                 </div>
                                 <input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div>
+                        </div> --}}
                 </td>
                 <td>
-                    <div class="input-group flex-nowrap">
+                    {{-- <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Ap</span>
                             </div>
                             <input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">
-                    </div>
+                    </div> --}}
                 </td>
                 <td>
-                        <div class="input-group flex-nowrap">
+                        {{-- <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Ap</span>
                                 </div>
                                 <input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div>
+                        </div> --}}
                     </td>
                 <td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>
 
@@ -156,13 +156,13 @@
         var i=1;
         $(document).on('click', '#addViudo', function(){
              i++;
-             $('#ifc').append('<tr id="row'+i+'">'+
+             $('#ifc').append('<tr class="muertos" id="row'+i+'">'+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_des[]" id="des_nom'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                   '</td>'+
                   '<td>'+
@@ -170,7 +170,7 @@
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="ap_des[]" id="des_ap'+i+'" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
 
@@ -179,7 +179,7 @@
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="am_des[]" id="des_am'+i+'" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');

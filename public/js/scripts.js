@@ -121,6 +121,10 @@ $(".next").click(function(){
     var edad;
     var edad_array=new Array();
     var data;
+    var idm;
+    var clam;
+    var rm;
+    var resm=new Array();
 
 
     $('.recorrer input').each(function() {
@@ -128,8 +132,7 @@ $(".next").click(function(){
          id=$(this).attr('id');
          cla=$(this).attr('class');//par el error
          r = cla.substring(13,24); //deja la pura palabra is-invalid
-         edad=$(this).attr('data-name');
-         data=$(this).attr('data-valor');
+         data=$(this).attr('data-valor');//el numero
 
         $('#hijoc'+data).rules("add",
             {
@@ -166,6 +169,52 @@ $(".next").click(function(){
     $(edad_array).each(function(i){
         //alert(res + i);
         if(edad_array[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+    //descendientes conyuges
+    $('.muertos input').each(function() {
+        // alert($(this).attr('class'));
+         idm=$(this).attr('id');
+         clam=$(this).attr('class');//par el error
+         rm = clam.substring(13,24); //deja la pura palabra is-invalid
+         data=$(this).attr('data-valor');
+
+
+        $('#des_nom'+data).rules("add",
+            {
+                required: true,texto:true,minlength:4,maxlength:20,
+                messages: {
+                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+                }
+        });
+
+        $('#des_ap'+data).rules("add",
+        {
+            required: true,texto:true,minlength:4,maxlength:20,
+            messages: {
+                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+            }
+         });
+
+         $('#des_am'+data).rules("add",
+         {
+             required: true,texto:true,minlength:4,maxlength:20,
+             messages: {
+                 required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+             }
+        });
+
+        resm.push(rm);//la magia ponerlo en un arreglo
+
+    });
+
+    $(resm).each(function(i){
+        //alert(res + i);
+        if(resm[i] == "is-invalid")
         {
            // alert("dentro: "+res);
             form.valid=false;
