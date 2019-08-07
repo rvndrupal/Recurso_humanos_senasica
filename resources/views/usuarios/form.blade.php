@@ -324,9 +324,12 @@ $(document).ready(function(){
             if(seleccion=='si')
             {
 
-                $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
+
+                $('#bh').html('<table class="table table-bordered soltero_hijos" id="dynamic_field">'+
+                       ' <h4>Agrega a tus hijos</h4>'+
+                        '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
                         '<tr>'+
-                                '<td>'+
+                                {{-- '<td>'+
                                         '<div class="input-group flex-nowrap">'+
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
@@ -342,7 +345,7 @@ $(document).ready(function(){
                                                '<input type="text" class="form-control" name="edad[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
                                 '</td>'+
-                                '<td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>'+
+                                '<td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>'+ --}}
 
                         '</tr>'+
 
@@ -455,13 +458,13 @@ $(document).ready(function(){
         var i=1;
         $(document).on('click', '#add', function(){
              i++;
-             $('#dynamic_field').append('<tr id="row'+i+'">'+
+             $('#dynamic_field').append('<tr class="soltero_hijos" id="row'+i+'">'+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="nombre[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                   '</td>'+
                   '<td>'+
@@ -469,7 +472,7 @@ $(document).ready(function(){
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="edad[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');

@@ -125,6 +125,11 @@ $(".next").click(function(){
     var clam;
     var rm;
     var resm=new Array();
+    var idsol;
+    var clasol;
+    var rsol;
+    var resol=new Array();
+    var edsol=new Array();
 
 
     $('.recorrer input').each(function() {
@@ -145,7 +150,7 @@ $(".next").click(function(){
 
         $('#edadc'+data).rules("add",
         {
-            required: true,numeros:true,minlength:1,maxlength:3,
+            required: true,numeros:true,minlength:1,maxlength:2,
             messages: {
                 required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 3 caracteres"
             }
@@ -220,6 +225,53 @@ $(".next").click(function(){
             form.valid=false;
         }
     });
+
+    //soltero con hijos
+    $('.soltero_hijos input').each(function() {
+        // alert($(this).attr('class'));
+         idsol=$(this).attr('id');
+         clasol=$(this).attr('class');//par el error
+         rsol = clasol.substring(13,24); //deja la pura palabra is-invalid
+         data=$(this).attr('data-valor');//el numero
+
+        $('#sol_hijo'+data).rules("add",
+            {
+                required: true,texto:true,minlength:4,maxlength:20,
+                messages: {
+                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+                }
+        });
+
+        $('#sol_edad'+data).rules("add",
+        {
+            required: true,numeros:true,minlength:1,maxlength:2,
+            messages: {
+                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 2 caracteres"
+            }
+        });
+
+        resol.push(rsol);//la magia ponerlo en un arreglo
+        edsol.push(rsol);
+    });
+
+    $(resol).each(function(i){
+        //alert(res + i);
+        if(resol[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+    $(edsol).each(function(i){
+        //alert(res + i);
+        if(edsol[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
 
 
 
