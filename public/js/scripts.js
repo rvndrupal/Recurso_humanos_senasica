@@ -3,10 +3,16 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
+
+
+
 $(".next").click(function(){
 
 
+
     var form= $("#msform");
+
+
 
     jQuery.validator.addMethod("texto", function(value, element) {
     return this.optional(element) ||  /^[a-z]+$/i.test(value);
@@ -28,7 +34,12 @@ $(".next").click(function(){
     return this.optional(element) ||  /(.pdf)$/i.test(value);
     }, "Formato no valido solo (PDF)");
 
+
+
+
     form.validate({
+
+
 
         rules:{
             // nom:{required:true,minlength:3,maxlength:20,texto: true},
@@ -53,6 +64,13 @@ $(".next").click(function(){
             // numero:{required:true,minlength:2,maxlength:5,numeros:true},
             // carga_domicilio:{required:true,imagen:true},
             // fecha_domicilio:{required:true},
+            // estado_civils_id:{required:true},
+            // nombres_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // curp_coy:{required:true,minlength:18,maxlength:18},
+            // carga_curp_coy:{required:true,imagen:true},
+            // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
 
 
         },
@@ -80,49 +98,121 @@ $(".next").click(function(){
             numero:{required:"Es obligatorio",minlength:"Mínimo 2 caracteres",maxlength:"Máximo 5 caracteres"},
             carga_domicilio:{required:"Es obligatorio"},
             fecha_domicilio:{required:"Es obligatorio"},
+            nombres_coy:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            primero_coy:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            segundo_coy:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            estado_civils_id:{required:"Es obligatorio"},
+            curp_coy:{required:"Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo 18 caracteres"},
+            carga_curp_coy:{required:"Es obligatorio"},
+            // 'nombre_hijo_coy[]':{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+
 
 
         },
 
+
     });//validación de los campos
 
 
-    if (form.valid() == true){
+    var id;
+    var cla;
+    var res=new Array();
+    var r;
+    var edad;
+    var edad_array=new Array();
+    var data;
 
-            if(animating) return false;
-            animating = true;
 
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
+    $('.recorrer input').each(function() {
+        // alert($(this).attr('class'));
+         id=$(this).attr('id');
+         cla=$(this).attr('class');//par el error
+         r = cla.substring(13,24); //deja la pura palabra is-invalid
+         edad=$(this).attr('data-name');
+         data=$(this).attr('data-valor');
 
-            //activate next step on progressbar using the index of next_fs
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $('#hijoc'+data).rules("add",
+            {
+                required: true,texto:true,minlength:4,maxlength:20,
 
-            //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function(now, mx) {
-                    //as the opacity of current_fs reduces to 0 - stored in "now"
-                    //1. scale current_fs down to 80%
-                    scale = 1 - (1 - now) * 0.2;
-                    //2. bring next_fs from the right(50%)
-                    left = (now * 50)+"%";
-                    //3. increase opacity of next_fs to 1 as it moves in
-                    opacity = 1 - now;
-                    current_fs.css({'transform': 'scale('+scale+')'});
-                    next_fs.css({'left': left, 'opacity': opacity});
-                },
-                duration: 1200,
-                complete: function(){
-                    current_fs.hide();
-                    animating = false;
-                },
-                //this comes from the custom easing plugin
-                easing: 'easeInOutBack'
-            });
+                messages: {
+                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+                }
+        });
 
-    }
+        $('#edadc'+data).rules("add",
+        {
+            required: true,numeros:true,minlength:1,maxlength:3,
+            messages: {
+                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 3 caracteres"
+            }
+    });
+
+        res.push(r);//la magia ponerlo en un arreglo
+        edad_array.push(r);
+
+    });
+
+
+    $(res).each(function(i){
+        //alert(res + i);
+        if(res[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+    $(edad_array).each(function(i){
+        //alert(res + i);
+        if(edad_array[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+
+
+        if (form.valid() == true){
+
+                if(animating) return false;
+                animating = true;
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //activate next step on progressbar using the index of next_fs
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now, mx) {
+                        //as the opacity of current_fs reduces to 0 - stored in "now"
+                        //1. scale current_fs down to 80%
+                        scale = 1 - (1 - now) * 0.2;
+                        //2. bring next_fs from the right(50%)
+                        left = (now * 50)+"%";
+                        //3. increase opacity of next_fs to 1 as it moves in
+                        opacity = 1 - now;
+                        current_fs.css({'transform': 'scale('+scale+')'});
+                        next_fs.css({'left': left, 'opacity': opacity});
+                    },
+                    duration: 1200,
+                    complete: function(){
+                        current_fs.hide();
+                        animating = false;
+                    },
+                    //this comes from the custom easing plugin
+                    easing: 'easeInOutBack'
+                });
+
+        }
+
+
+
 
 
 

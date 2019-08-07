@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Curp</span>
@@ -38,31 +38,30 @@
             </div>
         </div>
 
-        <div class="col-md-8">
-            <div class="input-group flex-nowrap">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Curp</span>
-                    </div>
-                    <div class="custom-file">
-                    <input type="file" class="custom-file-input" data-name="cur_cas" name="carga_curp_coy" id="carga_curp_coy"  aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" id="cur_cas" for="inputGroupFile01">Choose file</label>
-                    </div>
-            </div>
+        <div class="col-md-2">
+                <label class="foto_tex text3">CURP</label>
         </div>
+
+      <div class="col-md-5">
+            <input type="file" class="form-control"  name="carga_curp_coy" id="carga_curp_coy">
+      </div>
 
 </div>
 
 
+
+
 <div class="row">
+
         <table class="table table-bordered" id="dynamic_hijos">
             <h4>Tienes Hijos</h4><br><p></p>
                 <tr>
-                        <td>
+                        {{-- <td>
                                 <div class="input-group flex-nowrap">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                         </div>
-                                        <input type="text" class="form-control" name="nombre_hijo_coy[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                        <input type="text" class="form-control nombre_hijo_coy" name="nombre_hijo_coy[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
                                 </div>
                         </td>
                         <td>
@@ -72,12 +71,13 @@
                                         </div>
                                        <input type="text" class="form-control" name="edad_hijo_coy[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">
                                 </div>
-                        </td>
+                        </td> --}}
                         <td><button type="button" name="addHijos" id="addHijos" class="btn btn-success">+</button></td>
 
                 </tr>
 
         </table>
+
 </div>
 
 
@@ -121,16 +121,16 @@
 <script>
 
 
-        var i=1;
+        var i=0;
         $(document).on('click', '#addHijos', function(){
              i++;
-             $('#dynamic_hijos').append('<tr id="row'+i+'">'+
+             $('#dynamic_hijos').append('<tr class="recorrer" id="row'+i+'">'+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="nombre_hijo_coy[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_hijo_coy[]" id="hijoc'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                   '</td>'+
                   '<td>'+
@@ -138,10 +138,14 @@
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" name="edad_hijo_coy[]" id="edad" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="edad_hijo_coy[]" id="edadc'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+
+
+
+
         });
         $(document).on('click', '.btn_remove', function(){
              var button_id = $(this).attr("id");
@@ -184,6 +188,9 @@
              var button_id = $(this).attr("id");
              $('#row'+button_id+'').remove();
         });
+
+
+
 
 
 
