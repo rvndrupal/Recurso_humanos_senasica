@@ -15,7 +15,7 @@ $(".next").click(function(){
 
 
     jQuery.validator.addMethod("texto", function(value, element) {
-    return this.optional(element) ||  /^[a-z]+$/i.test(value);
+    return this.optional(element) ||  /^[a-záéóóúàèìòùäëïöüñ\s]+$/i.test(value);
     }, "Solo se permite texto");
 
     jQuery.validator.addMethod("email", function(value, element) {

@@ -48,13 +48,13 @@
 
 </div>
 
-
-
+<h4>Tienes Hijos</h4><br>
+<td><button type="button" name="addHijos" id="addHijos" class="btn btn-success">+</button></td>
 
 <div class="row">
 
         <table class="table table-bordered" id="dynamic_hijos">
-            <h4>Tienes Hijos</h4><br><p></p>
+
                 <tr>
                         {{-- <td>
                                 <div class="input-group flex-nowrap">
@@ -72,7 +72,7 @@
                                        <input type="text" class="form-control" name="edad_hijo_coy[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">
                                 </div>
                         </td> --}}
-                        <td><button type="button" name="addHijos" id="addHijos" class="btn btn-success">+</button></td>
+
 
                 </tr>
 
@@ -82,33 +82,38 @@
 
 
 <h4>Familiares Descendientes</h4>
+
 <table class="table table-bordered" id="ifc">
+
         <tr>
-                <td>
+
+                {{-- <td> --}}
                         {{-- <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                 </div>
                                 <input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
                         </div> --}}
-                </td>
-                <td>
+                {{-- </td>
+                <td> --}}
                     {{-- <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Ap</span>
                             </div>
                             <input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div> --}}
-                </td>
-                <td>
+                {{-- </td>
+                <td> --}}
                         {{-- <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Ap</span>
                                 </div>
                                 <input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">
                         </div> --}}
-                    </td>
-                <td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>
+                    {{-- </td> --}}
+                {{-- <td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td> --}}
+
+                <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
 
         </tr>
 
@@ -124,7 +129,9 @@
         var i=0;
         $(document).on('click', '#addHijos', function(){
              i++;
+
              $('#dynamic_hijos').append('<tr class="recorrer" id="row'+i+'">'+
+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+
                                 '<div class="input-group-prepend">'+
@@ -142,9 +149,6 @@
                         '</div>'+
                  '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-
-
-
 
         });
         $(document).on('click', '.btn_remove', function(){
