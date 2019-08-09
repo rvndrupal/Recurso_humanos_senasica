@@ -356,8 +356,9 @@ $(document).ready(function(){
                 $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<hr>'+
                         '<h4>Familiares Descendientes</h4>'+
+                       ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
                         '<tr>'+
-                                '<td>'+
+                                {{-- '<td>'+
                                         '<div class="input-group flex-nowrap">'+
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
@@ -381,7 +382,7 @@ $(document).ready(function(){
                                                 '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
                                     '</td>'+
-                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+
+                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
 
                         '</tr>'+
 
@@ -418,8 +419,9 @@ $(document).ready(function(){
                 $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<hr>'+
                         '<h4>Familiares Descendientes</h4>'+
+                       ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
                         '<tr>'+
-                                '<td>'+
+                                {{-- '<td>'+
                                         '<div class="input-group flex-nowrap">'+
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
@@ -443,7 +445,7 @@ $(document).ready(function(){
                                                 '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
                                     '</td>'+
-                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+
+                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
 
                         '</tr>'+
 
@@ -454,7 +456,7 @@ $(document).ready(function(){
             }
         });
 
-
+        {{-- Agregar hijos --}}
         var i=1;
         $(document).on('click', '#add', function(){
              i++;
@@ -483,9 +485,13 @@ $(document).ready(function(){
         });
 
 
+        {{-- Agregar descendientes --}}
+
         var i=1;
         $(document).on('click', '#addViudo', function(){
              i++;
+
+
              $('#if').append('<tr id="row'+i+'">'+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+
@@ -513,6 +519,7 @@ $(document).ready(function(){
                         '</div>'+
                  '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+
         });
         $(document).on('click', '.btn_remove', function(){
              var button_id = $(this).attr("id");

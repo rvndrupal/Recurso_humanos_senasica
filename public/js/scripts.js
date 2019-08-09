@@ -132,6 +132,7 @@ $(".next").click(function(){
     var edsol=new Array();
 
 
+
     $('.recorrer input').each(function() {
         // alert($(this).attr('class'));
          id=$(this).attr('id');
@@ -234,6 +235,8 @@ $(".next").click(function(){
          rsol = clasol.substring(13,24); //deja la pura palabra is-invalid
          data=$(this).attr('data-valor');//el numero
 
+
+
         $('#sol_hijo'+data).rules("add",
             {
                 required: true,texto:true,minlength:4,maxlength:20,
@@ -256,6 +259,7 @@ $(".next").click(function(){
 
     $(resol).each(function(i){
         //alert(res + i);
+
         if(resol[i] == "is-invalid")
         {
            // alert("dentro: "+res);
