@@ -355,7 +355,7 @@
             var wrapper = $('.field_wrapper2'); //Input field wrapper
             var fieldHTML = '<div>'+
              '<div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">'+
-               ' <div class="row">'+
+               ' <div class="row escolaridad">'+
                     '<div class="col-md-12">'+
                             '<div class="input-group flex-nowrap">'+
                                     '<div class="input-group-prepend">'+

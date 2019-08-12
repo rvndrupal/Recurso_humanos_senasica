@@ -192,11 +192,13 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- jQuery easing plugin -->
     <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
+    <script src="{{ asset('js/validando.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/scripts.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/validando.js') }}" type="text/javascript"></script>
+
+
 
 </body>
 </html>
@@ -395,7 +397,7 @@ $(document).ready(function(){
 
                 $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<tr>'+
-                                '<td>'+
+                                {{-- '<td>'+
                                         '<div class="input-group flex-nowrap">'+
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
@@ -410,7 +412,7 @@ $(document).ready(function(){
                                                 '</div>'+
                                                '<input type="text" class="form-control" name="edad[]" id="edad"  readonly value="0" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
-                                '</td>'+
+                                '</td>'+ --}}
 
                         '</tr>'+
 
@@ -467,6 +469,7 @@ $(document).ready(function(){
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
                                 '<input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
                         '</div>'+
                   '</td>'+
                   '<td>'+
@@ -474,9 +477,10 @@ $(document).ready(function(){
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
+                 '$("#sol_hijo").focus();'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
         });
         $(document).on('click', '.btn_remove', function(){
@@ -518,6 +522,7 @@ $(document).ready(function(){
                                 '<input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
 
         });

@@ -139,7 +139,7 @@ body {
 .flex-nowrap {
     -ms-flex-wrap: nowrap!important;
     flex-wrap: nowrap!important;
-    margin: 0 0 14px 0px;
+    margin: 0 0 21px 0px;
 }
 
 
@@ -147,5 +147,10 @@ body {
     display:none;
 }
 
+#sol_hijo-error, #sol_edad-error{
+    display:none;
+    margin: 43px 0 0px 177px;
+    position: absolute;
+}
 
 

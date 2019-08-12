@@ -9,97 +9,354 @@ var animating; //flag to prevent quick multi-click glitches
 $(".next").click(function(){
 
 
-  var pasa=false;
+
+    var form= $("#msform");
 
 
-  var nom=$("#nom");
-  var sol_hijo=$('#sol_hijo');
-  var solh;
-  var sol_A=new Array();
-  var esc;
-  var esc_A=new Array();
 
-        if(nom.val()=="" || nom.val().length < 1)
+    jQuery.validator.addMethod("texto", function(value, element) {
+    return this.optional(element) ||  /^[a-záéóóúàèìòùäëïöüñ\s]+$/i.test(value);
+    }, "Solo se permite texto");
+
+    jQuery.validator.addMethod("email", function(value, element) {
+    return this.optional(element) ||  /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/.test(value);
+    }, "Introduce un correo Valido");
+
+    jQuery.validator.addMethod("numeros", function(value, element) {
+    return this.optional(element) ||  /^[0-9]+$/.test(value);
+    }, "Solo números");
+
+    jQuery.validator.addMethod("imagen", function(value, element) {
+    return this.optional(element) ||  /(.jpg|.jpeg|.png)$/i.test(value);
+    }, "Formato no valido solo jpg,jpeg,png");
+
+    jQuery.validator.addMethod("pdf", function(value, element) {
+    return this.optional(element) ||  /(.pdf)$/i.test(value);
+    }, "Formato no valido solo (PDF)");
+
+
+
+
+    form.validate({
+
+
+
+        rules:{
+            // nom:{required:true,minlength:3,maxlength:20,texto: true},
+            // ap:{required:true,minlength:3,maxlength:20,texto: true},
+            // am:{required:true,minlength:3,maxlength:20,texto: true},
+            // paises_id:{required:true},
+            // rfc:{required:true,minlength:12,maxlength:13},
+            // curp:{required:true,minlength:18,maxlength:18},
+            // correo_per:{required:true,email:true},
+            // correo_ins:{required:true,email:true},
+            // tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
+            // tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
+            // fecha_nacimiento:{required:true},
+            // foto:{required:true,imagen:true},
+            // carga_rfc:{required:true,imagen:true},
+            // carga_curp:{required:true,imagen:true},
+            // carga_ife:{required:true,imagen:true},
+            // estados_id:{required:true},
+            // municipios_id:{required:true},
+            // colonias_id:{required:true},
+            // calle:{required:true,minlength:5,maxlength:100},
+            // numero:{required:true,minlength:2,maxlength:5,numeros:true},
+            // carga_domicilio:{required:true,imagen:true},
+            // fecha_domicilio:{required:true},
+            // estado_civils_id:{required:true},
+            // nombres_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // curp_coy:{required:true,minlength:18,maxlength:18},
+            // carga_curp_coy:{required:true,imagen:true},
+            // // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
+            // 'cedula[]':{required:true},
+
+
+
+
+        },
+
+        messages:{
+            nom:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            ap:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            am:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            paises_id:{required:"Es obligatorio"},
+            rfc:{required:"Es obligatorio",minlength:"Mínimo 12 caracteres",maxlength:"Máximo 13 caracteres"},
+            curp:{required:"Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo 18 caracteres"},
+            correo_per:{required:"Es obligatorio"},
+            correo_ins:{required:"Es obligatorio"},
+            tel_casa:{required:"Es obligatorio",minlength:"Mínimo 8 caracteres",maxlength:"Máximo 30 caracteres"},
+            tel_movil:{required:"Es obligatorio",minlength:"Mínimo 10 caracteres",maxlength:"Máximo 30 caracteres"},
+            fecha_nacimiento:{required:"Es obligatorio"},
+            foto:{required:"Es obligatorio"},
+            carga_rfc:{required:"Es obligatorio"},
+            carga_curp:{required:"Es obligatorio"},
+            carga_ife:{required:"Es obligatorio"},
+            estados_id:{required:"Es obligatorio"},
+            municipios_id:{required:"Es obligatorio"},
+            colonias_id:{required:"Es obligatorio"},
+            calle:{required:"Es obligatorio",minlength:"Mínimo 5 caracteres",maxlength:"Máximo 100 caracteres"},
+            numero:{required:"Es obligatorio",minlength:"Mínimo 2 caracteres",maxlength:"Máximo 5 caracteres"},
+            carga_domicilio:{required:"Es obligatorio"},
+            fecha_domicilio:{required:"Es obligatorio"},
+            nombres_coy:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            primero_coy:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            segundo_coy:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            estado_civils_id:{required:"Es obligatorio"},
+            curp_coy:{required:"Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo 18 caracteres"},
+            carga_curp_coy:{required:"Es obligatorio"},
+            // 'nombre_hijo_coy[]':{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+
+
+
+
+        },
+
+
+    });//validación de los campos
+
+
+    var id;
+    var cla;
+    var res=new Array();
+    var r;
+    var edad;
+    var edad_array=new Array();
+    var data;
+    var idm;
+    var clam;
+    var rm;
+    var resm=new Array();
+    var idsol;
+    var clasol;
+    var rsol;
+    var resol=new Array();
+    var edsol=new Array();
+    var cla_esc;
+    var r_esc;
+    var res_esc=new Array();
+    var esc;
+    var esc_A=new Array();
+
+
+
+    $('.recorrer input').each(function() {
+        // alert($(this).attr('class'));
+         id=$(this).attr('id');
+         cla=$(this).attr('class');//par el error
+         r = cla.substring(13,24); //deja la pura palabra is-invalid
+         data=$(this).attr('data-valor');//el numero
+
+        $('#hijoc'+data).rules("add",
+            {
+                required: true,texto:true,minlength:4,maxlength:20,
+
+                messages: {
+                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+                }
+        });
+
+        $('#edadc'+data).rules("add",
         {
-            nom.addClass("is-invalid");
-            pasa=false;
+            required: true,numeros:true,minlength:1,maxlength:2,
+            messages: {
+                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 3 caracteres"
+            }
+    });
+
+        res.push(r);//la magia ponerlo en un arreglo
+        edad_array.push(r);
+
+    });
+
+
+    $(res).each(function(i){
+        //alert(res + i);
+        alert($("#sol_hijo"+i))
+        if(res[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
         }
-        else{
-            nom.removeClass("is-invalid");
-            pasa=true;
+    });
+
+    $(edad_array).each(function(i){
+        //alert(res + i);
+        if(edad_array[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
         }
+    });
 
-        $('.soltero_hijos input').each(function(i){
+    //descendientes conyuges
+    $('.muertos input').each(function() {
+        // alert($(this).attr('class'));
+         idm=$(this).attr('id');
+         clam=$(this).attr('class');//par el error
+         rm = clam.substring(13,24); //deja la pura palabra is-invalid
+         data=$(this).attr('data-valor');
 
-            data=$(this).attr('data-valor');//el numero
-            var solh=$(this).attr('id');
 
-            sol_A.push(solh);
-
+        $('#des_nom'+data).rules("add",
+            {
+                required: true,texto:true,minlength:4,maxlength:20,
+                messages: {
+                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+                }
         });
 
-        $(sol_A).each(function(i){
-        //var validar=$("#"+sol_A[i]);
-            if($("#sol_hijo"+(i+2)).val()=="")
-            {
-            $("#sol_hijo"+(i+2)).addClass('is-invalid');
-            pasa=false;
+        $('#des_ap'+data).rules("add",
+        {
+            required: true,texto:true,minlength:4,maxlength:20,
+            messages: {
+                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
             }
-            else{
-                $("#sol_hijo"+(i+2)).removeClass('is-invalid');
-               // pasa=true;
-            }
-            if($("#sol_edad"+(i+1)).val()=="")
-            {
-            $("#sol_edad"+(i+1)).addClass('is-invalid');
-            pasa=false;
-            }
-            else{
-                $("#sol_edad"+(i+1)).removeClass('is-invalid');
-            }
-        });
-
-        //ESCOLARIDAD
-        $('.escolaridad select').each(function(i){
-            data=$(this).attr('data-valor');//el numero
-            var esc=$(this).attr('id');
-            esc_A.push(esc);
-            //alert(esc_A);
-        });
-
-         $(esc_A).each(function(i){
-            //grado
-            if($("#grados"+(i+2)).val()=="")
-            {
-            $("#grados"+(i+2)).addClass('is-invalid');
-            pasa=false;
-            }
-            else{
-                $("#grados"+(i+2)).removeClass('is-invalid');
-            }
-            //carrera
-            if($("#carreras"+(i+2)).val()=="")
-            {
-            $("#carreras"+(i+2)).addClass('is-invalid');
-            pasa=false;
-            }
-            else{
-                $("#carreras"+(i+2)).removeClass('is-invalid');
-            }
-
-
-
          });
 
+         $('#des_am'+data).rules("add",
+         {
+             required: true,texto:true,minlength:4,maxlength:20,
+             messages: {
+                 required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+             }
+        });
 
+        resm.push(rm);//la magia ponerlo en un arreglo
 
-        if(pasa==true)
+    });
+
+    $(resm).each(function(i){
+        //alert(res + i);
+        if(resm[i] == "is-invalid")
         {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+    //soltero con hijos
+    $('.soltero_hijos input').each(function() {
+        // alert($(this).attr('class'));
+         idsol=$(this).attr('id');
+         clasol=$(this).attr('class');//par el error
+         rsol = clasol.substring(13,24); //deja la pura palabra is-invalid
+         data=$(this).attr('data-valor');//el numero
+
+
+
+        $('#sol_hijo'+data).rules("add",
+            {
+                required: true,texto:true,minlength:4,maxlength:20,
+                messages: {
+                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+                }
+        });
+
+        $('#sol_edad'+data).rules("add",
+        {
+            required: true,numeros:true,minlength:1,maxlength:2,
+            messages: {
+                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 2 caracteres"
+            }
+        });
+
+        resol.push(rsol);//la magia ponerlo en un arreglo
+        edsol.push(rsol);
+    });
+
+    $(resol).each(function(i){
+        //alert(res + i);
+
+        if(resol[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+    $(edsol).each(function(i){
+        //alert(res + i);
+        if(edsol[i] == "is-invalid")
+        {
+           // alert("dentro: "+res);
+            form.valid=false;
+        }
+    });
+
+    // // ESCOLARIDAD
+    // $('.escolaridad select').each(function() {
+    //     // alert($(this).attr('class'));
+    //      //id_esc=$(this).attr('id');
+    //     // cla_esc=$(this).attr('class');
+    //     cla_esc=$(this).val();
+
+    //      //alert(cla_esc);
+
+    //      r_esc = cla_esc.substring(13,24); //deja la pura palabra is-invalid
+
+    //      data=$(this).attr('data-valor');//el numero
+
+
+
+    //      $('#grados'+data).rules("add",
+    //      {
+    //          required: true,
+    //          messages: {
+    //              required: "Es obligatorio"
+    //          }
+    //      });
+
+    //     res_esc.push(r_esc);//la magia ponerlo en un arreglo
+    //     alert(res_esc);
+
+    // });
+
+    // $(res_esc).each(function(i){
+    //     //alert(res + i);
+    //     if(res_esc[i] == "is-invalid")
+    //     {
+    //        // alert("dentro: "+res);
+    //         form.valid=false;
+    //     }
+    // });
+
+    //ESCOLARIDAD
+    $('.escolaridad select').each(function(i){
+        data=$(this).attr('data-valor');//el numero
+        var esc=$(this).attr('id');
+        esc_A.push(esc);
+        //alert(esc_A);
+    });
+
+     $(esc_A).each(function(i){
+        //grado
+        if($("#grados"+(i+2)).val()=="")
+        {
+        $("#grados"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#grados"+(i+2)).removeClass('is-invalid');
+        }
+        //carrera
+        if($("#carreras"+(i+2)).val()=="")
+        {
+        $("#carreras"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#carreras"+(i+2)).removeClass('is-invalid');
+        }
+     });
 
 
 
 
 
+        if (form.valid() == true){
 
                 if(animating) return false;
                 animating = true;
@@ -134,7 +391,11 @@ $(".next").click(function(){
                     easing: 'easeInOutBack'
                 });
 
-         }
+        }
+
+
+
+
 
 
 });
