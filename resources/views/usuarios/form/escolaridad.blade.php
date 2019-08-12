@@ -2,10 +2,10 @@
     <div>{{-- div principal --}}
 
     <a href="#" class="add_button btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Carrera</a>
-    <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
-        <div class="row">
+    {{-- <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
+        <div class="row"> --}}
 
-            <div class="col">
+            {{-- <div class="col">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Grado</span>
@@ -94,10 +94,12 @@
                         </div>
                     </div>
             </div>
+ --}}
 
-
-        </div>{{-- row --}}
-    </div>{{-- -container --}}
+        {{-- </div>  --}}
+               {{-- row --}}
+    {{-- </div> --}}
+    {{-- -container --}}
 
 
     </div>{{-- Div importante contenedor --}}
@@ -200,22 +202,26 @@
 
 
 
-
+{{-- Alta Escolaridad --}}
 <script type="text/javascript">
+
     $(document).ready(function(){
+
+        var i=0;
         var maxField = 10; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
-        var fieldHTML = '<div>'+
-         '<div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">'+
+        var fieldHTML = '<div class="destino">'+
+
+         '<div class="container escolaridad" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">'+
             '<div class="row">'+
-            '<div class="col">'+
+            '<div class="col-md-4">'+
                     '<div class="input-group flex-nowrap">'+
                             '<div class="input-group-prepend">'+
                            ' <span class="input-group-text" id="addon-wrapping">Grado</span>'+
                        ' </div>'+
-                        '<select  name="grados_id[]" class="estados_select" placeholder="Escolar">'+
-                                '<option value="">Escolar</option>'+
+                        '<select  name="grados_id[]" class="form-control"  id="grados" placeholder="Escolar">'+
+                                '<option value="">Grado</option>'+
                                ' @foreach ($grados as $item)'+
                                ' <option value="{{ $item->id }}">{{ $item->nom_gra }}</option>'+
                               '  @endforeach'+
@@ -223,12 +229,12 @@
                   '  </div>'+
             '</div>'+
 
-            '<div class="col">'+
+            '<div class="col-md-4">'+
                     '<div class="input-group flex-nowrap">'+
                             '<div class="input-group-prepend">'+
                             '<span class="input-group-text" id="addon-wrapping">Carrera</span>'+
                         '</div>'+
-                        '<select  name="carreras_id[]" class="estados_select" placeholder="Carrera">'+
+                        '<select  name="carreras_id[]" class="form-control" id="carreras" placeholder="Carrera">'+
                                 '<option value="">Carrera</option>'+
                                ' @foreach ($carreras as $item)'+
                                 '<option value="{{ $item->id }}">{{ $item->nom_car }}</option>'+
@@ -308,19 +314,34 @@
 
 '</div>';
 
-        var x = 1; //Initial field counter is 1
+        var x = 1;
+      //Initial field counter is 1
         $(addButton).click(function(){ //Once add button is clicked
             if(x < maxField){ //Check maximum number of input fields
                 x++; //Increment field counter
+
+
                 $(wrapper).append(fieldHTML); // Add field html
+                 // Add field html
+                 $(".destino").removeClass('destino').addClass(""+x);
+                 $("#grados").attr("data-valor",""+x);
+                 $("#grados").attr('id','grados'+x);
+                 $("#carreras").attr("data-valor",""+x);
+                 $("#carreras").attr('id','carreras'+x);
+                 $("#cedula").attr("data-valor",+x);
+                 $("#cedula").attr('id','cedula'+x);
+
+
+
             }
+
         });
         $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
             e.preventDefault();
             $(this).parent('div').remove(); //Remove field html
             x--; //Decrement field counter
         });
-    });
+});
 
 
 </script>
