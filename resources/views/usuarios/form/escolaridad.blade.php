@@ -252,12 +252,12 @@
                ' </div>'+
           '  </div>'+
 
-            '<div class="col">'+
+            '<div class="col-md-6">'+
                ' <div class="input-group flex-nowrap">'+
                        ' <div class="input-group-prepend">'+
                         '<span class="input-group-text" id="addon-wrapping">Escuela</span>'+
                     '</div>'+
-                    '<select  name="escuelas_id[]" class="estados_select" placeholder="Escuelas">'+
+                    '<select  name="escuelas_id[]" class="form-control" id="escuelas" placeholder="Escuelas">'+
                            ' <option value="">Escuela</option>'+
                            ' @foreach ($escuelas as $item)'+
                             '<option value="{{ $item->id }}">{{ $item->nombre_escuela }}</option>'+
@@ -266,12 +266,12 @@
                ' </div>'+
             '</div>'+
 
-            '<div class="col">'+
+            '<div class="col-md-6">'+
                 '<div class="input-group flex-nowrap">'+
                         '<div class="input-group-prepend">'+
                        ' <span class="input-group-text" id="addon-wrapping">Título</span>'+
                    ' </div>'+
-                    '<select  name="titulos_id[]" class="estados_select" placeholder="Profesional">'+
+                    '<select  name="titulos_id[]" class="form-control" id="titulos" placeholder="Profesional">'+
                             '<option value="">Título</option>'+
                            ' @foreach ($titulos as $item)'+
                            ' <option value="{{ $item->id }}">{{ $item->nombre_titulo }}</option>'+
@@ -282,7 +282,18 @@
 
 
 
-        '<div class="col">'+
+               '<div class="col-md-2">'+
+                      '  <label class="tit">Título</label>'+
+               '</div>'+
+
+                '<div class="col-md-10">'+
+                   ' <input type="file" class="form-control"  id="titulo_pro"  name="carga_titulo[]" >'+
+               '</div>'+
+
+
+
+
+        {{-- '<div class="col">'+
                 '<div class="input-group flex-nowrap">'+
                    '<div class="input-group-prepend">'+
                         '<span class="input-group-text" id="inputGroupFileAddon01">Título</span>'+
@@ -292,9 +303,9 @@
                        ' <label class="custom-file-label" id="titulol" for="inputGroupFile01">Choose file</label>'+
                    ' </div>'+
                ' </div>'+
-        '</div>'+
+        '</div>'+ --}}
 
-        '<div class="col">'+
+        {{-- '<div class="col">'+
                 '<div class="input-group flex-nowrap">'+
                     '<div class="input-group-prepend">'+
                        ' <span class="input-group-text" id="inputGroupFileAddon01">Cédula</span>'+
@@ -304,7 +315,16 @@
                         '<label class="custom-file-label" id="cedulal" for="inputGroupFile01">Choose file</label>'+
                     '</div>'+
                ' </div>'+
-       ' </div>'+
+       ' </div>'+ --}}
+
+       '<div class="col-md-2">'+
+            '  <label class="ced">Cédula</label>'+
+        '</div>'+
+
+        '<div class="col-md-10">'+
+            ' <input type="file" class="form-control"  id="cedula"  name="carga_cedula[]" >'+
+        '</div>'+
+
 
 
 
@@ -330,6 +350,15 @@
                  $("#carreras").attr('id','carreras'+x);
                  $("#cedula").attr("data-valor",+x);
                  $("#cedula").attr('id','cedula'+x);
+                 $("#escuelas").attr("data-valor",+x);
+                 $("#escuelas").attr('id','escuelas'+x);
+                 $("#titulos").attr("data-valor",+x);
+                 $("#titulos").attr('id','titulos'+x);
+                 $("#titulo_pro").attr("data-valor",+x);
+                 $("#titulo_pro").attr('id','titulo_pro'+x);
+                 $("#cedula").attr("data-valor",+x);
+                 $("#cedula").attr('id','cedula'+x);
+
 
 
 

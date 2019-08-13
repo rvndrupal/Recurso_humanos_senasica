@@ -350,6 +350,55 @@ $(".next").click(function(){
         else{
             $("#carreras"+(i+2)).removeClass('is-invalid');
         }
+        // //cedula
+        // if($("#cedula"+(i+2)).val()=="")
+        // {
+        // $("#cedula"+(i+2)).addClass('is-invalid');
+        // form.valid=false;
+        // }
+        // else{
+        //     $("#cedula"+(i+2)).removeClass('is-invalid');
+        // }
+
+        //escuelas
+        if($("#escuelas"+(i+2)).val()=="")
+        {
+        $("#escuelas"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#escuelas"+(i+2)).removeClass('is-invalid');
+        }
+
+        //titulos
+        if($("#titulos"+(i+2)).val()=="")
+        {
+        $("#titulos"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#titulos"+(i+2)).removeClass('is-invalid');
+        }
+
+         //titulo_pro
+        //  if($("#titulo_pro"+(i+2)).val()=="")
+        //  {
+        //  $("#titulo_pro"+(i+2)).addClass('is-invalid');
+        //  form.valid=false;
+        //  }
+        //  else{
+        //      $("#titulo_pro"+(i+2)).removeClass('is-invalid');
+        //  }
+
+        //  //cedula
+        //  if($("#cedula"+(i+2)).val()=="")
+        //  {
+        //  $("#cedula"+(i+2)).addClass('is-invalid');
+        //  form.valid=false;
+        //  }
+        //  else{
+        //      $("#cedula"+(i+2)).removeClass('is-invalid');
+        //  }
      });
 
 

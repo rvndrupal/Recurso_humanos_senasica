@@ -153,4 +153,7 @@ body {
     position: absolute;
 }
 
+label.tit, .ced {
+    margin: 8px 0 18px 13px;
+}
 

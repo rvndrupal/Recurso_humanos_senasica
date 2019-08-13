@@ -249,7 +249,11 @@
                         </td>
                         <td>
                             @for($i=0; $i<$total; $i++)
-                            {{ $usuario->DetalleEscolaridades[$i]->cedula }}<p></p>
+                                @if($usuario->DetalleEscolaridades[$i]->cedula==0)
+                                <h6>Sin Cédula</h6>
+                                @else
+                                 {{ $usuario->DetalleEscolaridades[$i]->cedula }}<p></p>
+                                 @endif
                             @endfor
                         </td>
                         <td>
@@ -264,18 +268,26 @@
                             @endforeach
                         </td>
                         <td>
-                            @for($i=0; $i<$total; $i++)
-                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }}">
-                                <i class="glyphicon glyphicon-download">TÍTULO</i>
-                            </a><p></p>
-                            @endfor
+                        @for($i=0; $i<$total; $i++)
+                            @if($usuario->DetalleEscolaridades[$i]->carga_titulo==0)
+                                <h6>Sin Título</h6>
+                            @else
+                                <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }}">
+                                    <i class="glyphicon glyphicon-download">TÍTULO</i>
+                                </a><p></p>
+                            @endif
+                        @endfor
                         </td>
 
                         <td>
                             @for($i=0; $i<$total; $i++)
-                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }}">
-                                <i class="glyphicon glyphicon-download">CEDULA</i>
-                            </a><p></p>
+                                @if($usuario->DetalleEscolaridades[$i]->carga_cedula==0)
+                                <h6>Sin Cédula</h6>
+                                @else
+                                <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }}">
+                                    <i class="glyphicon glyphicon-download">CEDULA</i>
+                                </a><p></p>
+                                @endif
                             @endfor
                         </td>
 
