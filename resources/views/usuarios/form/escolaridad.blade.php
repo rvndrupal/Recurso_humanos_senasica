@@ -1,7 +1,9 @@
 <div class="field_wrapper">
     <div>{{-- div principal --}}
+    <div class="col-md-12">
 
-    <a href="#" class="add_button btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Carrera</a>
+        <a href="#" class="add_button btn btn-success" style="margin: -96px 0 7px 926px;;" title="Add field">Agregar Carrera</a>
+    </div>
     {{-- <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
         <div class="row"> --}}
 
@@ -114,13 +116,12 @@
 <div class="field_wrapper2" style="width:100%" ">
         <div>{{-- div principal --}}
 
-                <h2 class="fs-title" style="margin: 81px 0px 0 0;">IDIOMAS</h2>
+        <h2 class="fs-title" style="margin: 81px 0px 0 0;">IDIOMAS</h2>
 
-        <a href="#" class="add_button2 btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Idioma</a>
-        <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px; width="90%" ">
-            <div class="row">
+        <a href="#" class="add_button2 btn btn-success" style="margin: 0 0 7px 932px;" title="Add field">Agregar Idiomas</a>
 
-                <div class="col-md-12">
+
+                {{--  <div class="col-md-12">
                         <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Idioma</span>
@@ -190,10 +191,10 @@
                                 </div>
                             </div>
                     </div>
-                </div>
+                </div>  --}}
 
 
-        </div>{{-- -container --}}
+
 
 
         </div>{{-- Div importante contenedor --}}
@@ -383,14 +384,14 @@
             var addButton = $('.add_button2'); //Add button selector
             var wrapper = $('.field_wrapper2'); //Input field wrapper
             var fieldHTML = '<div>'+
-             '<div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">'+
+             '<div class="container idiomas" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">'+
                ' <div class="row escolaridad">'+
                     '<div class="col-md-12">'+
                             '<div class="input-group flex-nowrap">'+
                                     '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Idioma</span>'+
                                 '</div>'+
-                                '<select  name="idiomas_id[]" class="estados_select" placeholder="Escolar">'+
+                                '<select  name="idiomas_id[]" class="form-control" id="idioma" placeholder="Escolar">'+
                                         '<option value="">Idioma</option>'+
                                         '@foreach ($idiomas as $item)'+
                                        ' <option value="{{ $item->id }}">{{ $item->nombre_idioma }}</option>'+
@@ -406,35 +407,35 @@
                   '<div class="col-md-2">'+
 
                       '<div class="form-check">'+
-                             ' <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="0%">'+
+                             ' <input class="form-check-inputce checar" style="margin: 0 0 0 -28px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="0%">'+
                             '  <label class="form-check-label" for="nivel_ingles">'+
                             '  0%'+
                              ' </label>'+
                       '</div>'+
 
                       '<div class="form-check">'+
-                            '  <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="25%">'+
+                            '  <input class="form-check-input checar" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="25%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                              ' 25%'+
                              ' </label>'+
                      ' </div>'+
 
                      ' <div class="form-check">'+
-                              '<input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="50%">'+
+                              '<input class="form-check-input checar" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="50%" checked>'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                               '50%'+
                              ' </label>'+
                      ' </div>'+
 
                       '<div class="form-check">'+
-                             ' <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="75%">'+
+                             ' <input class="form-check-input checar" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="75%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                              ' 75%'+
                               '</label>'+
                       '</div>'+
 
                      ' <div class="form-check">'+
-                             ' <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="100%">'+
+                             ' <input class="form-check-inputc checar" style="margin: 0 0 0 -13px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="100%">'+
                              ' <label class="form-check-label" for="nivel_ingles">'+
                              ' 100%'+
                              ' </label>'+
@@ -445,7 +446,7 @@
 
              ' <div class="row" style="margin:20px 0 0 0">'+
 
-                    '<div class="col-md-7">'+
+                    {{--  '<div class="col-md-7">'+
                             '<div class="input-group flex-nowrap">'+
                                ' <div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="inputGroupFileAddon01">Certificados</span>'+
@@ -455,8 +456,17 @@
                                     '<label class="custom-file-label" id="certificadosl" for="inputGroupFile01">Choose file</label>'+
                                ' </div>'+
                             '</div>'+
-                   ' </div>'+
-               ' </div>'+
+                   ' </div>'+  --}}
+
+                   '<div class="col-md-1">'+
+                        '  <label class="certificado">Certificado</label>'+
+                    '</div>'+
+
+                    '<div class="col-md-10">'+
+                        ' <input type="file" class="form-control"  id="tit_ingles"  name="carga_certificado[]" >'+
+                    '</div>'+
+
+                 ' </div>'+
 
 
                '<a href="#" class="btn btn-sm btn btn-danger remove_button2" style="margin: 0 0 0 97%;" >X</a>'+
@@ -472,6 +482,12 @@
                 if(x < maxField){ //Check maximum number of input fields
                     x++; //Increment field counter
                     $(wrapper).append(fieldHTML); // Add field html
+                    $("#idioma").attr("data-valor",+x);
+                    $("#idioma").attr('id','idioma'+x);
+                    $("#nivel_ingles").attr("data-valor",+x);
+                    $("#nivel_ingles").attr('id','nivel_ingles'+x);
+                    $("#tit_ingles").attr("data-valor",+x);
+                    $("#tit_ingles").attr('id','tit_ingles'+x);
                 }
             });
             $(wrapper).on('click', '.remove_button2', function(e){ //Once remove button is clicked

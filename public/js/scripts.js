@@ -72,6 +72,25 @@ $(".next").click(function(){
             // carga_curp_coy:{required:true,imagen:true},
             // // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
             // 'cedula[]':{required:true},
+            // puesto_actual:{required:true,minlength:3,maxlength:20,texto: true},
+            // codigo_puesto:{required:true},
+            // grado_nivel:{required:true},
+            // direcciones_generales_id:{required:true},
+            // direcciones_areas_id:{required:true},
+            // fecha_ultimo:{required:true},
+            // fecha_senasica:{required:true},
+            // est_lab:{required:true},
+            // mun_lab:{required:true},
+            // col_lab:{required:true},
+            // calle_lab:{required:true,minlength:3,maxlength:70},
+            // num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
+            // fecha_gobierno:{required:true},
+
+
+
+
+
+
 
 
 
@@ -108,6 +127,23 @@ $(".next").click(function(){
             curp_coy:{required:"Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo 18 caracteres"},
             carga_curp_coy:{required:"Es obligatorio"},
             // 'nombre_hijo_coy[]':{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            puesto_actual:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 20 caracteres"},
+            codigo_puesto:{required:"Es obligatorio"},
+            grado_nivel:{required:"Es obligatorio"},
+            direcciones_generales_id:{required:"Es obligatorio"},
+            direcciones_areas_id:{required:"Es obligatorio"},
+            fecha_ultimo:{required:"Es obligatorio"},
+            fecha_senasica:{required:"Es obligatorio"},
+            est_lab:{required:"Es obligatorio"},
+            mun_lab:{required:"Es obligatorio"},
+            col_lab:{required:"Es obligatorio"},
+            calle_lab:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 70 caracteres"},
+            num_lab:{required:"Es obligatorio",numeros:"Solo números",minlength:"Mínimo 1 caracteres",maxlength:"Máximo 4 caracteres"},
+            fecha_gobierno:{required:"Es obligatorio"},
+
+
+
+
 
 
 
@@ -139,6 +175,12 @@ $(".next").click(function(){
     var res_esc=new Array();
     var esc;
     var esc_A=new Array();
+    var idi;
+    var idi_A=new Array();
+    var che;
+    var che_A=new Array();
+    var exp;
+    var exp_A=new Array();
 
 
 
@@ -286,70 +328,35 @@ $(".next").click(function(){
         }
     });
 
-    // // ESCOLARIDAD
-    // $('.escolaridad select').each(function() {
-    //     // alert($(this).attr('class'));
-    //      //id_esc=$(this).attr('id');
-    //     // cla_esc=$(this).attr('class');
-    //     cla_esc=$(this).val();
 
-    //      //alert(cla_esc);
-
-    //      r_esc = cla_esc.substring(13,24); //deja la pura palabra is-invalid
-
-    //      data=$(this).attr('data-valor');//el numero
-
-
-
-    //      $('#grados'+data).rules("add",
-    //      {
-    //          required: true,
-    //          messages: {
-    //              required: "Es obligatorio"
-    //          }
-    //      });
-
-    //     res_esc.push(r_esc);//la magia ponerlo en un arreglo
-    //     alert(res_esc);
-
-    // });
-
-    // $(res_esc).each(function(i){
-    //     //alert(res + i);
-    //     if(res_esc[i] == "is-invalid")
-    //     {
-    //        // alert("dentro: "+res);
-    //         form.valid=false;
-    //     }
-    // });
 
     //ESCOLARIDAD
-    $('.escolaridad select').each(function(i){
-        data=$(this).attr('data-valor');//el numero
-        var esc=$(this).attr('id');
-        esc_A.push(esc);
-        //alert(esc_A);
-    });
+    // $('.escolaridad select').each(function(i){
+    //     data=$(this).attr('data-valor');//el numero
+    //     var esc=$(this).attr('id');
+    //     esc_A.push(esc);
+    //     //alert(esc_A);
+    // });
 
-     $(esc_A).each(function(i){
-        //grado
-        if($("#grados"+(i+2)).val()=="")
-        {
-        $("#grados"+(i+2)).addClass('is-invalid');
-        form.valid=false;
-        }
-        else{
-            $("#grados"+(i+2)).removeClass('is-invalid');
-        }
-        //carrera
-        if($("#carreras"+(i+2)).val()=="")
-        {
-        $("#carreras"+(i+2)).addClass('is-invalid');
-        form.valid=false;
-        }
-        else{
-            $("#carreras"+(i+2)).removeClass('is-invalid');
-        }
+    //  $(esc_A).each(function(i){
+    //     //grado
+    //     if($("#grados"+(i+2)).val()=="")
+    //     {
+    //     $("#grados"+(i+2)).addClass('is-invalid');
+    //     form.valid=false;
+    //     }
+    //     else{
+    //         $("#grados"+(i+2)).removeClass('is-invalid');
+    //     }
+    //     //carrera
+    //     if($("#carreras"+(i+2)).val()=="")
+    //     {
+    //     $("#carreras"+(i+2)).addClass('is-invalid');
+    //     form.valid=false;
+    //     }
+    //     else{
+    //         $("#carreras"+(i+2)).removeClass('is-invalid');
+    //     }
         // //cedula
         // if($("#cedula"+(i+2)).val()=="")
         // {
@@ -361,24 +368,24 @@ $(".next").click(function(){
         // }
 
         //escuelas
-        if($("#escuelas"+(i+2)).val()=="")
-        {
-        $("#escuelas"+(i+2)).addClass('is-invalid');
-        form.valid=false;
-        }
-        else{
-            $("#escuelas"+(i+2)).removeClass('is-invalid');
-        }
+        // if($("#escuelas"+(i+2)).val()=="")
+        // {
+        // $("#escuelas"+(i+2)).addClass('is-invalid');
+        // form.valid=false;
+        // }
+        // else{
+        //     $("#escuelas"+(i+2)).removeClass('is-invalid');
+        // }
 
         //titulos
-        if($("#titulos"+(i+2)).val()=="")
-        {
-        $("#titulos"+(i+2)).addClass('is-invalid');
-        form.valid=false;
-        }
-        else{
-            $("#titulos"+(i+2)).removeClass('is-invalid');
-        }
+        // if($("#titulos"+(i+2)).val()=="")
+        // {
+        // $("#titulos"+(i+2)).addClass('is-invalid');
+        // form.valid=false;
+        // }
+        // else{
+        //     $("#titulos"+(i+2)).removeClass('is-invalid');
+        // }
 
          //titulo_pro
         //  if($("#titulo_pro"+(i+2)).val()=="")
@@ -399,7 +406,139 @@ $(".next").click(function(){
         //  else{
         //      $("#cedula"+(i+2)).removeClass('is-invalid');
         //  }
-     });
+    //  });
+
+     //IDIOMAS
+    // $('.idiomas select').each(function(i){
+    //     data=$(this).attr('data-valor');//el numero
+    //     var idi=$(this).attr('id');
+    //     idi_A.push(idi);
+    //    // alert(idi_A);
+    // });
+
+    // //IDIOMAS checked
+    // $('.idiomas input').each(function(i){
+    //     data=$(this).attr('data-valor');//el numero
+    //     var che=$('.checar').attr('id');
+    //     che_A.push(idi);
+    //     alert(che_A);
+    // });
+
+    // $(idi_A).each(function(i){
+    //     //select
+    //     if($("#idioma"+(i+2)).val()=="")
+    //     {
+    //     $("#idioma"+(i+2)).addClass('is-invalid');
+    //     form.valid=false;
+    //     }
+    //     else{
+    //         $("#idioma"+(i+2)).removeClass('is-invalid');
+    //     }
+
+        // //check
+        // if($("#nivel_ingles"+(i+2)).is(':checked'))
+        // {
+        // // $("#nivel_ingles"+(i+2)).addClass('is-invalid');
+        // alert("Debe seleccionar almenos un porcentaje");
+        // form.valid=false;
+        // }
+        // else{
+        //     $("#nivel_ingles"+(i+2)).removeClass('is-invalid');
+        // }
+
+         //select
+    //      if($("#tit_ingles"+(i+2)).val()=="")
+    //      {
+    //      $("#tit_ingles"+(i+2)).addClass('is-invalid');
+    //      form.valid=false;
+    //      }
+    //      else{
+    //          $("#tit_ingles"+(i+2)).removeClass('is-invalid');
+    //      }
+    // });
+
+    //EXPERIENCIA
+
+        $('.experiencia input').each(function(i){
+            data=$(this).attr('data-valor');//el numero
+            var exp=$(this).attr('id');
+            exp_A.push(exp);
+            //alert(exp_A);
+        });
+
+        $(exp_A).each(function(i){
+             //puesto
+            if($("#den_puesto"+(i+2)).val()=="")
+            {
+            $("#den_puesto"+(i+2)).addClass('is-invalid');
+            form.valid=false;
+            }
+            else{
+                $("#den_puesto"+(i+2)).removeClass('is-invalid');
+            }
+
+             //empresa
+             if($("#ins_puesto"+(i+2)).val()=="")
+             {
+             $("#ins_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#ins_puesto"+(i+2)).removeClass('is-invalid');
+             }
+
+             //empresa
+             if($("#area_puesto"+(i+2)).val()=="")
+             {
+             $("#area_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#area_puesto"+(i+2)).removeClass('is-invalid');
+             }
+
+
+             //años
+             if($("#anos_puesto"+(i+2)).val()=="")
+             {
+             $("#anos_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#anos_puesto"+(i+2)).removeClass('is-invalid');
+             }
+
+             //fecha de ingreso
+             if($("#fecha_ing_puesto"+(i+2)).val()=="")
+             {
+             $("#fecha_ing_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#fecha_ing_puesto"+(i+2)).removeClass('is-invalid');
+             }
+
+              //fecha de senasica
+              if($("#fecha_baj_puesto"+(i+2)).val()=="")
+              {
+              $("#fecha_baj_puesto"+(i+2)).addClass('is-invalid');
+              form.valid=false;
+              }
+              else{
+                  $("#fecha_baj_puesto"+(i+2)).removeClass('is-invalid');
+              }
+
+               //documento
+               if($("#doc_puesto"+(i+2)).val()=="")
+               {
+               $("#doc_puesto"+(i+2)).addClass('is-invalid');
+               form.valid=false;
+               }
+               else{
+                   $("#doc_puesto"+(i+2)).removeClass('is-invalid');
+               }
+
+        });
 
 
 
@@ -431,7 +570,7 @@ $(".next").click(function(){
                         current_fs.css({'transform': 'scale('+scale+')'});
                         next_fs.css({'left': left, 'opacity': opacity});
                     },
-                    duration: 1200,
+                    duration: 800,
                     complete: function(){
                         current_fs.hide();
                         animating = false;
@@ -474,7 +613,7 @@ $(".previous").click(function(){
 			current_fs.css({'left': left});
 			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
 		},
-		duration: 1200,
+		duration: 800,
 		complete: function(){
 			current_fs.hide();
 			animating = false;

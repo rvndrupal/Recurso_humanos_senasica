@@ -97,7 +97,7 @@
             <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping">Fecha</span>
+                            <span class="input-group-text" id="addon-wrapping">Fecha Senasica</span>
                         </div>
                         <input type="date" class="form-control" name="fecha_senasica" id="fecha_senasica" placeholder="Senasica" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
