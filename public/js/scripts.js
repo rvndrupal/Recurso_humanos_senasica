@@ -459,86 +459,86 @@ $(".next").click(function(){
 
     //EXPERIENCIA
 
-        $('.experiencia input').each(function(i){
-            data=$(this).attr('data-valor');//el numero
-            var exp=$(this).attr('id');
-            exp_A.push(exp);
-            //alert(exp_A);
-        });
+        // $('.experiencia input').each(function(i){
+        //     data=$(this).attr('data-valor');//el numero
+        //     var exp=$(this).attr('id');
+        //     exp_A.push(exp);
+        //     //alert(exp_A);
+        // });
 
-        $(exp_A).each(function(i){
-             //puesto
-            if($("#den_puesto"+(i+2)).val()=="")
-            {
-            $("#den_puesto"+(i+2)).addClass('is-invalid');
-            form.valid=false;
-            }
-            else{
-                $("#den_puesto"+(i+2)).removeClass('is-invalid');
-            }
+        // $(exp_A).each(function(i){
+        //      //puesto
+        //     if($("#den_puesto"+(i+2)).val()=="")
+        //     {
+        //     $("#den_puesto"+(i+2)).addClass('is-invalid');
+        //     form.valid=false;
+        //     }
+        //     else{
+        //         $("#den_puesto"+(i+2)).removeClass('is-invalid');
+        //     }
 
-             //empresa
-             if($("#ins_puesto"+(i+2)).val()=="")
-             {
-             $("#ins_puesto"+(i+2)).addClass('is-invalid');
-             form.valid=false;
-             }
-             else{
-                 $("#ins_puesto"+(i+2)).removeClass('is-invalid');
-             }
+        //      //empresa
+        //      if($("#ins_puesto"+(i+2)).val()=="")
+        //      {
+        //      $("#ins_puesto"+(i+2)).addClass('is-invalid');
+        //      form.valid=false;
+        //      }
+        //      else{
+        //          $("#ins_puesto"+(i+2)).removeClass('is-invalid');
+        //      }
 
-             //empresa
-             if($("#area_puesto"+(i+2)).val()=="")
-             {
-             $("#area_puesto"+(i+2)).addClass('is-invalid');
-             form.valid=false;
-             }
-             else{
-                 $("#area_puesto"+(i+2)).removeClass('is-invalid');
-             }
+        //      //empresa
+        //      if($("#area_puesto"+(i+2)).val()=="")
+        //      {
+        //      $("#area_puesto"+(i+2)).addClass('is-invalid');
+        //      form.valid=false;
+        //      }
+        //      else{
+        //          $("#area_puesto"+(i+2)).removeClass('is-invalid');
+        //      }
 
 
-             //años
-             if($("#anos_puesto"+(i+2)).val()=="")
-             {
-             $("#anos_puesto"+(i+2)).addClass('is-invalid');
-             form.valid=false;
-             }
-             else{
-                 $("#anos_puesto"+(i+2)).removeClass('is-invalid');
-             }
+        //      //años
+        //      if($("#anos_puesto"+(i+2)).val()=="")
+        //      {
+        //      $("#anos_puesto"+(i+2)).addClass('is-invalid');
+        //      form.valid=false;
+        //      }
+        //      else{
+        //          $("#anos_puesto"+(i+2)).removeClass('is-invalid');
+        //      }
 
-             //fecha de ingreso
-             if($("#fecha_ing_puesto"+(i+2)).val()=="")
-             {
-             $("#fecha_ing_puesto"+(i+2)).addClass('is-invalid');
-             form.valid=false;
-             }
-             else{
-                 $("#fecha_ing_puesto"+(i+2)).removeClass('is-invalid');
-             }
+        //      //fecha de ingreso
+        //      if($("#fecha_ing_puesto"+(i+2)).val()=="")
+        //      {
+        //      $("#fecha_ing_puesto"+(i+2)).addClass('is-invalid');
+        //      form.valid=false;
+        //      }
+        //      else{
+        //          $("#fecha_ing_puesto"+(i+2)).removeClass('is-invalid');
+        //      }
 
-              //fecha de senasica
-              if($("#fecha_baj_puesto"+(i+2)).val()=="")
-              {
-              $("#fecha_baj_puesto"+(i+2)).addClass('is-invalid');
-              form.valid=false;
-              }
-              else{
-                  $("#fecha_baj_puesto"+(i+2)).removeClass('is-invalid');
-              }
+        //       //fecha de senasica
+        //       if($("#fecha_baj_puesto"+(i+2)).val()=="")
+        //       {
+        //       $("#fecha_baj_puesto"+(i+2)).addClass('is-invalid');
+        //       form.valid=false;
+        //       }
+        //       else{
+        //           $("#fecha_baj_puesto"+(i+2)).removeClass('is-invalid');
+        //       }
 
-               //documento
-               if($("#doc_puesto"+(i+2)).val()=="")
-               {
-               $("#doc_puesto"+(i+2)).addClass('is-invalid');
-               form.valid=false;
-               }
-               else{
-                   $("#doc_puesto"+(i+2)).removeClass('is-invalid');
-               }
+        //        //documento
+        //        if($("#doc_puesto"+(i+2)).val()=="")
+        //        {
+        //        $("#doc_puesto"+(i+2)).addClass('is-invalid');
+        //        form.valid=false;
+        //        }
+        //        else{
+        //            $("#doc_puesto"+(i+2)).removeClass('is-invalid');
+        //        }
 
-        });
+        // });
 
 
 

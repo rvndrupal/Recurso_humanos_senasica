@@ -165,3 +165,27 @@ label.certificado2 {
     margin: 5px 0 0 0;
 }
 
+.tit_enf {
+    margin: 0 0 0 -741px;
+    display: inline;
+}
+
+.form-check-inputce{
+    margin: 14px 5px 0px -996px;
+    position: relative;
+}
+
+.form-check-inputcr{
+    margin: 14px 5px 17px -987px;
+    position: relative;
+}
+
+.tit_enff {
+    margin: 0 0 0 -730px;
+    display: inline;
+}
+
+.tit_eme {
+    margin: 0 0 0 -784px;
+    display: inline;
+}

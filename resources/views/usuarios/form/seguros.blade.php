@@ -1,7 +1,7 @@
 <div class="container">
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-9">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Numero de Seguridad Social</span>
@@ -10,16 +10,25 @@
                     </div>
             </div>
 
+            <div class="col-md-9">
+                    <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Tipo de Sangre ?</span>
+                            </div>
+                        <input type="text" class="form-control" name="tipo_seg" id="tipo_seg"    placeholder="Sangre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                    </div>
+            </div>
+
             <div class="col-md-12">
-                <h4>Sufre de alguna Enfermedad</h4>
+                <h4 class="tit_enf">Sufre de alguna Enfermedad</h4>
                 <div class="form-check">
-                        <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="radio" name="enf_seg" id="enf_seg" value="si">
+                        <input class="form-check-inputce" style="" type="radio" name="enf_seg" id="enf_seg" value="si">
                         <label class="form-check-label" for="nivel_ingles">
                         Si
                         </label>
                 </div>
                 <div class="form-check">
-                        <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="radio" name="enf_seg" id="enf_seg" value="no">
+                        <input class="form-check-inputcr" style="" type="radio" name="enf_seg" id="enf_seg" value="no">
                         <label class="form-check-label" for="nivel_ingles">
                         No
                         </label>
@@ -35,26 +44,19 @@
                     </div>
             </div>
 
-            <div class="col-md-12">
-                    <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Tipo de Sangre ?</span>
-                            </div>
-                        <input type="text" class="form-control" name="tipo_seg" id="tipo_seg"    placeholder="Sangre" aria-label="Nombre" aria-describedby="addon-wrapping">
-                    </div>
-            </div>
+
 
 
             <div class="col-md-12">
-                    <h4>Sufre de alguna Discapacidad</h4>
+                    <h4 class="tit_enff">Sufre de alguna Discapacidad</h4>
                     <div class="form-check">
-                            <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="radio" name="dis_seg" id="dis_seg" value="si">
+                            <input class="form-check-inputce" style="" type="radio" name="dis_seg" id="dis_seg" value="si">
                             <label class="form-check-label" for="nivel_ingles">
                             Si
                             </label>
                     </div>
                     <div class="form-check">
-                            <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="radio" name="dis_seg" id="dis_seg" value="no">
+                            <input class="form-check-inputcr" style="" type="radio" name="dis_seg" id="dis_seg" value="no">
                             <label class="form-check-label" for="nivel_ingles">
                             No
                             </label>
@@ -69,8 +71,9 @@
                             <input type="text" class="form-control" name="cual_dis_seg" id="cual_dis_seg"    placeholder="Cual" aria-label="Nombre" aria-describedby="addon-wrapping">
                         </div>
                 </div>
-
-                <h4>CONTACTO DE EMERGENCIA</h4><p></p>
+                <div class="col-md-12">
+                    <h4 class="tit_eme">Contacto de Emergencia</h4><p></p>
+                </div>
 
                 <div class="col-md-4">
                         <div class="input-group flex-nowrap">

@@ -56,7 +56,7 @@
             <li>ESCOLARIDAD</li>
             <li>DATOS LABORALES</li>
             <li>EXPERIENCIA LABORAL</li>
-            <li>SEGURO SOCIAL</li>
+            <li>SEGURIDAD SOCIAL</li>
         </ul>
         <!-- fieldsets -->
         <fieldset>
@@ -173,7 +173,7 @@
 
 
         <fieldset>
-            <h2 class="fs-title">DATOS SEGURO SOCIAL</h2>
+            <h2 class="fs-title">DATOS SEGURIDAD SOCIAL</h2>
 
             @include('usuarios/form/seguros')
 
