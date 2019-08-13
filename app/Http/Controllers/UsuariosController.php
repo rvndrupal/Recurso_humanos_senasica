@@ -353,25 +353,33 @@ class UsuariosController extends Controller
         if(isset($request->grados_id))
         {
         //Escolaridad
-        $carga_titulo="";
-        $carga_cedula="";
-        $cedula="";
+
 
             foreach($request->grados_id as $item=>$v)
             {
                   //dd($request->carga_titulo);
+                $carga_titulo=$request->carga_titulo[$item];
+                $cedula=$request->cedula[$item];
+                    if($carga_titulo != 0)
+                    {
+                        $filenamewithExt = $request->carga_titulo[$item]->getClientOriginalName();
+                        $carga_titulo=$request->carga_titulo[$item]->storeAs('TITULOPROFESIONAL',$filenamewithExt);
+                    }
+                    else{
+                        $carga_titulo=0;
+                    }
 
-                  if($cedula==""){$cedula=0;}else{$cedula=$request->cedula[$item];}
-                  if($carga_titulo==""){$carga_titulo=0;}
-                  else{
-                      $carga_titulo=$request->carga_titulo[$item]->storeAs('TITULOPROFESIONAL',$filenamewithExt);
-                      $filenamewithExt = $request->carga_titulo[$item]->getClientOriginalName();
+                    if($cedula !=0)
+                    {
+                        $filenameCed = $request->carga_cedula[$item]->getClientOriginalName();
+                        $carga_cedula=$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed);
                     }
-                  if($carga_cedula==""){$carga_cedula=0;}
-                  else{
-                      $carga_cedula=$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed);
-                      $filenameCed = $request->carga_cedula[$item]->getClientOriginalName();
+                    else
+                    {
+                        $cedula=0;
                     }
+
+
                 $usuario->DetalleEscolaridades()->create([
                     'titulos_id'=>$request->titulos_id[$item],
                     'carreras_id'=>$request->carreras_id[$item],
@@ -379,7 +387,7 @@ class UsuariosController extends Controller
                     'grados_id'=>$request->grados_id[$item],
                     'cedula'=>$cedula,
                     'carga_titulo'=>$carga_titulo,
-                    'carga_cedula'=>$carga_cedula,
+                    'carga_cedula'=>$cedula,
                     ]);
             }
         }
@@ -665,23 +673,20 @@ class UsuariosController extends Controller
             //esperiencia laboral
 
             $total_Exp=count($usuario->ExpLaborales);
+            $total_Esc=count($usuario->DetalleEscolaridades);
 
-
-
-
-
-
+            //dd($total_Esc);
 
 
 
            // dd($ndge);
 
-           //dd($usuario->DetalleLaborales);
+           //dd($usuario->DetalleEscolaridades[1]->carga_titulo);
 
 
 
 
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp','ncodi','nnive'));
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp','ncodi','nnive','total_Esc'));
     }
 
     /**

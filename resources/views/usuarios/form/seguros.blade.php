@@ -4,7 +4,7 @@
             <div class="col-md-12">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Numero de Seguro</span>
+                                <span class="input-group-text" id="addon-wrapping">Numero de Seguridad Social</span>
                             </div>
                         <input type="text" class="form-control" name="num_seg" id="num_seg"    placeholder="Numero" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>

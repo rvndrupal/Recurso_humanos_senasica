@@ -190,7 +190,7 @@
                     </div>
 
 
-                    {{-- dESCENDIENTES --}}
+                    {{-- DESCENDIENTES --}}
                     <div class="row">
                         <div class="col-md-12">
                         <h3>Familiares Descendientes</h3>
@@ -233,7 +233,7 @@
 
                       <tr>
                         <th scope="row">
-                           @for($i=1; $i<=$total; $i++)
+                           @for($i=1; $i<=$total_Esc; $i++)
                             {{ $i }}<p></p>
                            @endfor
                         </th>
@@ -248,7 +248,7 @@
                             @endforeach
                         </td>
                         <td>
-                            @for($i=0; $i<$total; $i++)
+                            @for($i=0; $i<$total_Esc; $i++)
                                 @if($usuario->DetalleEscolaridades[$i]->cedula==0)
                                 <h6>Sin Cédula</h6>
                                 @else
@@ -268,8 +268,8 @@
                             @endforeach
                         </td>
                         <td>
-                        @for($i=0; $i<$total; $i++)
-                            @if($usuario->DetalleEscolaridades[$i]->carga_titulo==0)
+                        @for($i=0; $i<$total_Esc; $i++)
+                            @if($usuario->DetalleEscolaridades[$i]->cedula==0)
                                 <h6>Sin Título</h6>
                             @else
                                 <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }}">
@@ -280,8 +280,8 @@
                         </td>
 
                         <td>
-                            @for($i=0; $i<$total; $i++)
-                                @if($usuario->DetalleEscolaridades[$i]->carga_cedula==0)
+                            @for($i=0; $i<$total_Esc; $i++)
+                                @if($usuario->DetalleEscolaridades[$i]->cedula==0)
                                 <h6>Sin Cédula</h6>
                                 @else
                                 <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }}">
@@ -290,9 +290,6 @@
                                 @endif
                             @endfor
                         </td>
-
-
-
 
 
                       </tr>
