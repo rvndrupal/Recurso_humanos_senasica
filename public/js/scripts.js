@@ -85,6 +85,18 @@ $(".next").click(function(){
             // calle_lab:{required:true,minlength:3,maxlength:70},
             // num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
             // fecha_gobierno:{required:true},
+            num_seg:{required:true,minlength:11,maxlength:11},
+            tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
+            nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            par_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            email_seg:{required:true,minlength:5,maxlength:50,email: true},
+            tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
+            mov_seg:{required:true,minlength:10,maxlength:10,numeros: true},
+
+
 
 
 
@@ -140,6 +152,17 @@ $(".next").click(function(){
             calle_lab:{required:"Es obligatorio",minlength:"Minimo 3 caracteres",maxlength:"Máximo de 70 caracteres"},
             num_lab:{required:"Es obligatorio",numeros:"Solo números",minlength:"Mínimo 1 caracteres",maxlength:"Máximo 4 caracteres"},
             fecha_gobierno:{required:"Es obligatorio"},
+            num_seg:{required:"Es obligatorio",minlength:"Minimo 11 caracteres",maxlength:"Máximo de 11 caracteres"},
+            tipo_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 20 caracteres"},
+            nom_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 20 caracteres"},
+            pri_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 20 caracteres"},
+            seg_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 20 caracteres"},
+            par_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 20 caracteres"},
+            email_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 50 caracteres"},
+            tel_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 14 caracteres"},
+            mov_seg:{required:"Es obligatorio",minlength:"Minimo 5 caracteres",maxlength:"Máximo de 10 caracteres"},
+
+
 
 
 
