@@ -44,6 +44,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ['module' => 'idiomas', 'controller' => 'IdiomasController'],
         ['module' => 'direccionesgenerales', 'controller' => 'DireccionesGeneralesController'],
         ['module' => 'direccionesareas', 'controller' => 'DireccionesAreasController'],
+        ['module' => 'codigos', 'controller' => 'CodigosController'],
+        ['module' => 'niveles', 'controller' => 'NivelesController'],
     ];
 
     foreach ($routes as $route) {
@@ -73,9 +75,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
              Route::get('/municipios/{id}', 'UsuariosController@municipios');
              Route::get('/colonias/{id}', 'UsuariosController@colonias');
              Route::get('/cp/{id}', 'UsuariosController@cp');
-
-
-
 
         });
     }

@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
         factory(App\Titulos::class, 3)->create();
         factory(App\DireccionesAreas::class, 3)->create();
         factory(App\DireccionesGenerales::class, 3)->create();
+        factory(App\Codigos::class, 10)->create();
+        factory(App\Niveles::class, 5)->create();
 
 
         DB::table('estado_civils')->insert([

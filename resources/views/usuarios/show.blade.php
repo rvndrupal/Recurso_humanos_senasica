@@ -355,7 +355,7 @@
                             <th scope="col">#</th>
                             <th scope="col">PUESTO</th>
                             <th scope="col">CÓDIGO PUESTO</th>
-                            <th scope="col">GRADO</th>
+                            <th scope="col">NIVEL</th>
                             <th scope="col">DIRECCIÓN GENERAL</th>
                             <th scope="col">DIRECCIÓN ÁREA</th>
                             <th scope="col">FECHA ULTIMO</th>
@@ -382,10 +382,10 @@
                             </td>
 
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->codigo_puesto }}<p></p>
+                            {{ $ncodi }}<p></p>
                             </td>
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->grado_nivel }}<p></p>
+                            {{ $nnive }}<p></p>
                             </td>
                             <td>
                                 @foreach($dge as $item)

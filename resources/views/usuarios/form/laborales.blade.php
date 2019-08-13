@@ -10,22 +10,50 @@
                     </div>
             </div>
 
-            <div class="col-md-4">
+            {{--  <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Código puesto</span>
                             </div>
                         <input type="text" class="form-control" name="codigo_puesto" id="codigo_puesto"    placeholder="Código del puesto" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
-            </div>
+            </div>  --}}
 
             <div class="col-md-4">
+                <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">Código puesto</span>
+                    </div>
+                    <select  name="codigo_puesto" class="form-control" id="codigo_puesto"  placeholder="Código">
+                            <option value="">Código</option>
+                            @foreach ($co as $item)
+                            <option value="{{ $item->id }}">{{ $item->nom_codigos }}</option>
+                            @endforeach
+                    </select>
+                </div>
+            </div>
+
+            {{--  <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Grupo,grado,nivel</span>
                             </div>
                         <input type="text" class="form-control" name="grado_nivel" id="grado_nivel"    placeholder="Grupo,grado" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
+            </div>  --}}
+
+            <div class="col-md-4">
+                <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="addon-wrapping">Niveles</span>
+                    </div>
+                    <select  name="grado_nivel" class="form-control" id="niveles"  placeholder="Niveles">
+                            <option value="">Niveles</option>
+                            @foreach ($ni as $item)
+                            <option value="{{ $item->id }}">{{ $item->nom_niveles }}</option>
+                            @endforeach
+                    </select>
+                </div>
             </div>
 
 

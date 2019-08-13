@@ -355,6 +355,48 @@ return [
             ],
         ],
 
+        [
+            'text' => 'Código Puesto',
+            'url'  => 'admin/codigos',
+            'icon' => 'users',
+            'permission'  => 'read-codigos',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/codigos',
+                    'permission'  => 'read-codigos',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/codigos/create',
+                    'permission'  => 'create-codigos',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Nivel',
+            'url'  => 'admin/niveles',
+            'icon' => 'users',
+            'permission'  => 'read-niveles',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/niveles',
+                    'permission'  => 'read-niveles',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/niveles/create',
+                    'permission'  => 'create-niveles',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
 
         [
             'text' => 'Roles',
@@ -398,126 +440,126 @@ return [
             ],
         ],
 
-        [
-            'text' => 'Clientes',
-            'url'  => 'admin/customers',
-            'icon' => 'users',
-            'permission'  => 'read-customers',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/customers',
-                    'permission'  => 'read-customers',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/customers/create',
-                    'permission'  => 'create-customers',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Métodos de pago',
-            'url'  => 'admin/payment-methods',
-            'icon' => 'gem',
-            'permission'  => 'read-payment-methods',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/payment-methods',
-                    'permission'  => 'read-payment-methods',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/payment-methods/create',
-                    'permission'  => 'create-payment-methods',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Pedidos',
-            'url'  => 'admin/orders',
-            'icon' => 'shopping-basket',
-            'permission'  => 'read-orders',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/orders',
-                    'permission'  => 'read-orders',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/orders/create',
-                    'permission'  => 'create-orders',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Productos',
-            'url'  => 'admin/products',
-            'icon' => 'boxes',
-            'permission'  => 'read-products',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/products',
-                    'permission'  => 'read-products',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/products/create',
-                    'permission'  => 'create-products',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Categorías',
-            'url'  => 'admin/categories',
-            'icon' => 'tag',
-            'permission'  => 'read-categories',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/categories',
-                    'permission'  => 'read-categories',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/categories/create',
-                    'permission'  => 'create-categories',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-        [
-            'text' => 'Etiquetas',
-            'url'  => 'admin/tags',
-            'icon' => 'tags',
-            'permission'  => 'read-tags',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/tags',
-                    'permission'  => 'read-tags',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/tags/create',
-                    'permission'  => 'create-tags',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ]
+        // [
+        //     'text' => 'Clientes',
+        //     'url'  => 'admin/customers',
+        //     'icon' => 'users',
+        //     'permission'  => 'read-customers',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Listado',
+        //             'url'  => 'admin/customers',
+        //             'permission'  => 'read-customers',
+        //             'icon' => 'list'
+        //         ],
+        //         [
+        //             'text' => 'Crear',
+        //             'url'  => 'admin/customers/create',
+        //             'permission'  => 'create-customers',
+        //             'icon' => 'plus-circle'
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'Métodos de pago',
+        //     'url'  => 'admin/payment-methods',
+        //     'icon' => 'gem',
+        //     'permission'  => 'read-payment-methods',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Listado',
+        //             'url'  => 'admin/payment-methods',
+        //             'permission'  => 'read-payment-methods',
+        //             'icon' => 'list'
+        //         ],
+        //         [
+        //             'text' => 'Crear',
+        //             'url'  => 'admin/payment-methods/create',
+        //             'permission'  => 'create-payment-methods',
+        //             'icon' => 'plus-circle'
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'Pedidos',
+        //     'url'  => 'admin/orders',
+        //     'icon' => 'shopping-basket',
+        //     'permission'  => 'read-orders',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Listado',
+        //             'url'  => 'admin/orders',
+        //             'permission'  => 'read-orders',
+        //             'icon' => 'list'
+        //         ],
+        //         [
+        //             'text' => 'Crear',
+        //             'url'  => 'admin/orders/create',
+        //             'permission'  => 'create-orders',
+        //             'icon' => 'plus-circle'
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'Productos',
+        //     'url'  => 'admin/products',
+        //     'icon' => 'boxes',
+        //     'permission'  => 'read-products',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Listado',
+        //             'url'  => 'admin/products',
+        //             'permission'  => 'read-products',
+        //             'icon' => 'list'
+        //         ],
+        //         [
+        //             'text' => 'Crear',
+        //             'url'  => 'admin/products/create',
+        //             'permission'  => 'create-products',
+        //             'icon' => 'plus-circle'
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'Categorías',
+        //     'url'  => 'admin/categories',
+        //     'icon' => 'tag',
+        //     'permission'  => 'read-categories',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Listado',
+        //             'url'  => 'admin/categories',
+        //             'permission'  => 'read-categories',
+        //             'icon' => 'list'
+        //         ],
+        //         [
+        //             'text' => 'Crear',
+        //             'url'  => 'admin/categories/create',
+        //             'permission'  => 'create-categories',
+        //             'icon' => 'plus-circle'
+        //         ],
+        //     ],
+        // ],
+        // [
+        //     'text' => 'Etiquetas',
+        //     'url'  => 'admin/tags',
+        //     'icon' => 'tags',
+        //     'permission'  => 'read-tags',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Listado',
+        //             'url'  => 'admin/tags',
+        //             'permission'  => 'read-tags',
+        //             'icon' => 'list'
+        //         ],
+        //         [
+        //             'text' => 'Crear',
+        //             'url'  => 'admin/tags/create',
+        //             'permission'  => 'create-tags',
+        //             'icon' => 'plus-circle'
+        //         ],
+        //     ],
+        // ]
     ],
 
     /*

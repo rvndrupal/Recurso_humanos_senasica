@@ -7,7 +7,6 @@ use App\Paises;
 use App\Estados;
 use App\Municipios;
 use App\Colonias;
-use App\Codigos;
 use App\EstadoCivil;
 use App\Solteros;
 use App\Escuelas;
@@ -19,6 +18,8 @@ use App\DireccionesGenerales;
 use App\DireccionesAreas;
 use App\DetalleLaborales;
 use App\ExpLaborales;
+use App\Codigos;
+use App\Niveles;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -132,10 +133,12 @@ class UsuariosController extends Controller
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
        $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
        $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
+       $co=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
+       $ni=Niveles::orderBy('id','ASC')->select('id','nom_niveles')->get();
 
         //dd($usuarios);
 
-        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas','dg','da'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas','dg','da','co','ni'));
     }
 
     /**
@@ -350,12 +353,13 @@ class UsuariosController extends Controller
         if(isset($request->grados_id))
         {
         //Escolaridad
+        $carga_titulo="";
+        $carga_cedula="";
+        $cedula="";
+
             foreach($request->grados_id as $item=>$v)
             {
                   //dd($request->carga_titulo);
-                  $carga_titulo="";
-                  $carga_cedula="";
-                  $cedula="";
 
                   if($cedula==""){$cedula=0;}else{$cedula=$request->cedula[$item];}
                   if($carga_titulo==""){$carga_titulo=0;}
@@ -648,8 +652,16 @@ class UsuariosController extends Controller
                 $ncoll=$nom_coll[0]->nombre_col;
                 array_push($coll, $ncoll);
 
+                $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
+                $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
+                $ncodi=$nom_codigo[0]->nom_codigos;
+
+                $nive=$usuario->DetalleLaborales[0]->grado_nivel;
+                $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
+                $nnive=$nom_nivel[0]->nom_niveles;
 
 
+            //dd($ncodi);
             //esperiencia laboral
 
             $total_Exp=count($usuario->ExpLaborales);
@@ -661,14 +673,15 @@ class UsuariosController extends Controller
 
 
 
+
            // dd($ndge);
 
-           //dd($usuario->ExpLaborales);
+           //dd($usuario->DetalleLaborales);
 
 
 
 
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp'));
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp','ncodi','nnive'));
     }
 
     /**

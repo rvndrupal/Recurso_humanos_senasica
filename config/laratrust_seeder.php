@@ -22,6 +22,8 @@ return [
             'idiomas' => 'c,r,u,d',
             'direccionesgenerales' => 'c,r,u,d',
             'direccionesareas' => 'c,r,u,d',
+            'codigos' => 'c,r,u,d',
+            'niveles' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -43,6 +45,8 @@ return [
             'idiomas' => 'c,r,u',
             'direccionesgenerales' => 'c,r,u',
             'direccionesareas' => 'c,r,u',
+            'codigos' => 'c,r,u',
+            'niveles' => 'c,r,u',
 
         ],
         'normaluser' => [
@@ -64,6 +68,8 @@ return [
             'idiomas' => 'r',
             'direccionesgenerales' => 'r',
             'direccionesareas' => 'r',
+            'codigos' => 'r',
+            'niveles' => 'r',
 
         ],
     ],
