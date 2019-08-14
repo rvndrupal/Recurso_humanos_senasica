@@ -189,3 +189,13 @@ label.certificado2 {
     margin: 0 0 0 -784px;
     display: inline;
 }
+
+/*chosen*/
+.chosen-container {
+    width: 100% !important;
+}
+
+/*Calendarios*/
+div#ui-datepicker-div {
+    width: 39%;
+}

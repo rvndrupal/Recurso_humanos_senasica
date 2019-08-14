@@ -49,8 +49,8 @@
                  <div class="input-group-prepend">
                  <span class="input-group-text" id="addon-wrapping">Pais</span>
              </div>
-             <select  name="paises_id" class="estados_select" placeholder="Pais">
-                     <option value="">Pais</option>
+             <select  name="paises_id" class="form-control pais" data-live-search="true" data-size="7" placeholder="Pais" id="pais">
+                     <option value="">Selecciona un Pais</option>
                      @foreach ($pais as $item)
                      <option value="{{ $item->id }}">{{ $item->nombre_pais }}</option>
                      @endforeach
@@ -100,6 +100,7 @@
              <input type="text" class="form-control" name="tel_casa" id="tel_casa" placeholder="Telefono de casa" aria-label="Nombre" aria-describedby="addon-wrapping">
          </div>
      </div>
+
      <div class="col-md-4">
          <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">
@@ -108,13 +109,16 @@
                  <input type="text" class="form-control" name="tel_movil" id="tel_movil" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
          </div>
      </div>
+     <div class="col-md-2">
+            <h6>Fecha de Nacimiento</h6>
+        </div>
      <div class="col-md-6">
-             <div class="input-group flex-nowrap">
-                 <div class="input-group-prepend">
-                     <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
-                 </div>
-                 <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Telefono movil" aria-label="Nombre" aria-describedby="addon-wrapping">
-             </div>
+             {{--  <div class="input-group flex-nowrap">
+                 <div class="input-group-prepend">  --}}
+                     {{--  <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
+                 </div>  --}}
+                 <input type="text" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de Nacimiento" aria-label="Nombre" aria-describedby="addon-wrapping">
+             {{--  </div>  --}}
      </div>
 </div>
 
@@ -153,3 +157,10 @@
 
 
 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
+
+
+
+
+
+
+

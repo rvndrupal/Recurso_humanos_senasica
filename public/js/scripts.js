@@ -42,10 +42,10 @@ $(".next").click(function(){
 
 
         rules:{
-            // nom:{required:true,minlength:3,maxlength:20,texto: true},
+            //  nom:{required:true,minlength:3,maxlength:20,texto: true},
             // ap:{required:true,minlength:3,maxlength:20,texto: true},
             // am:{required:true,minlength:3,maxlength:20,texto: true},
-            // paises_id:{required:true},
+            //  paises_id:{required:true},
             // rfc:{required:true,minlength:12,maxlength:13},
             // curp:{required:true,minlength:18,maxlength:18},
             // correo_per:{required:true,email:true},
@@ -85,16 +85,16 @@ $(".next").click(function(){
             // calle_lab:{required:true,minlength:3,maxlength:70},
             // num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
             // fecha_gobierno:{required:true},
-            num_seg:{required:true,minlength:11,maxlength:11},
-            tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
-            nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            par_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            email_seg:{required:true,minlength:5,maxlength:50,email: true},
-            tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
-            mov_seg:{required:true,minlength:10,maxlength:10,numeros: true},
+            // num_seg:{required:true,minlength:11,maxlength:11},
+            // tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
+            // nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // par_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // email_seg:{required:true,minlength:5,maxlength:50,email: true},
+            // tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
+            // mov_seg:{required:true,minlength:10,maxlength:10,numeros: true},
 
 
 
@@ -354,33 +354,34 @@ $(".next").click(function(){
 
 
     //ESCOLARIDAD
-    // $('.escolaridad select').each(function(i){
-    //     data=$(this).attr('data-valor');//el numero
-    //     var esc=$(this).attr('id');
-    //     esc_A.push(esc);
-    //     //alert(esc_A);
-    // });
+    $('.escolaridad select').each(function(i){
+        data=$(this).attr('data-valor');//el numero
+        var esc=$(this).attr('id');
+        esc_A.push(esc);
+        //alert(esc_A);
+    });
 
-    //  $(esc_A).each(function(i){
-    //     //grado
-    //     if($("#grados"+(i+2)).val()=="")
-    //     {
-    //     $("#grados"+(i+2)).addClass('is-invalid');
-    //     form.valid=false;
-    //     }
-    //     else{
-    //         $("#grados"+(i+2)).removeClass('is-invalid');
-    //     }
-    //     //carrera
-    //     if($("#carreras"+(i+2)).val()=="")
-    //     {
-    //     $("#carreras"+(i+2)).addClass('is-invalid');
-    //     form.valid=false;
-    //     }
-    //     else{
-    //         $("#carreras"+(i+2)).removeClass('is-invalid');
-    //     }
-        // //cedula
+     $(esc_A).each(function(i){
+        //grado
+        // if($("#grados"+(i+2)).val()=="")
+        // {
+        // $("#grados"+(i+2)).addClass('is-invalid');
+        // form.valid=false;
+        // }
+        // else{
+        //     $("#grados"+(i+2)).removeClass('is-invalid');
+        // }
+        //carrera
+        // if($("#carreras"+(i+2)).val()=="")
+        // {
+        // $("#carreras"+(i+2)).addClass('is-invalid');
+        // form.valid=false;
+        // }
+        // else{
+        //     $("#carreras"+(i+2)).removeClass('is-invalid');
+        // }
+
+        //cedula
         // if($("#cedula"+(i+2)).val()=="")
         // {
         // $("#cedula"+(i+2)).addClass('is-invalid');
@@ -390,7 +391,7 @@ $(".next").click(function(){
         //     $("#cedula"+(i+2)).removeClass('is-invalid');
         // }
 
-        //escuelas
+       // escuelas
         // if($("#escuelas"+(i+2)).val()=="")
         // {
         // $("#escuelas"+(i+2)).addClass('is-invalid');
@@ -420,7 +421,7 @@ $(".next").click(function(){
         //      $("#titulo_pro"+(i+2)).removeClass('is-invalid');
         //  }
 
-        //  //cedula
+         //cedula
         //  if($("#cedula"+(i+2)).val()=="")
         //  {
         //  $("#cedula"+(i+2)).addClass('is-invalid');
@@ -429,7 +430,9 @@ $(".next").click(function(){
         //  else{
         //      $("#cedula"+(i+2)).removeClass('is-invalid');
         //  }
-    //  });
+     });
+
+
 
      //IDIOMAS
     // $('.idiomas select').each(function(i){

@@ -22,9 +22,9 @@
             <div class="col-md-4">
                 <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="addon-wrapping">Código puesto</span>
+                        <span class="input-group-text"  id="addon-wrapping">Código puesto</span>
                     </div>
-                    <select  name="codigo_puesto" class="form-control" id="codigo_puesto"  placeholder="Código">
+                    <select  name="codigo_puesto" class="form-control" data-live-search="true" data-size="5" id="codigo_puesto"  placeholder="Código">
                             <option value="">Código</option>
                             @foreach ($co as $item)
                             <option value="{{ $item->id }}">{{ $item->nom_codigos }}</option>
@@ -47,7 +47,7 @@
                         <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Niveles</span>
                     </div>
-                    <select  name="grado_nivel" class="form-control" id="niveles"  placeholder="Niveles">
+                    <select  name="grado_nivel" class="form-control" data-live-search="true" data-size="5" id="niveles"  placeholder="Niveles">
                             <option value="">Niveles</option>
                             @foreach ($ni as $item)
                             <option value="{{ $item->id }}">{{ $item->nom_niveles }}</option>
@@ -62,7 +62,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Direcció general</span>
                         </div>
-                        <select  name="direcciones_generales_id" class="estados_select" placeholder="Direccion general">
+                        <select  name="direcciones_generales_id"  data-live-search="true" data-size="5" class="form-control" id="dir_general" placeholder="Direccion general">
                                 <option value="">Dirección General</option>
                                 @foreach ($dg as $item)
                                 <option value="{{ $item->id }}">{{ $item->nombre_dir_gen }}</option>
@@ -76,7 +76,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Direcció Área</span>
                         </div>
-                        <select  name="direcciones_areas_id" class="estados_select" placeholder="Direccion area">
+                        <select  name="direcciones_areas_id"  data-live-search="true" data-size="5" class="form-control" id="dir_area" placeholder="Direccion area">
                                 <option value="">Dirección Área</option>
                                 @foreach ($da as $item)
                                 <option value="{{ $item->id }}">{{ $item->nombre_dir_are }}</option>
@@ -109,7 +109,7 @@
                          <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Estado</span>
                         </div>
-                        <select  name="est_lab" class="estados_select" placeholder="Estado" id="estadoss">
+                        <select  name="est_lab" class="form-control" data-live-search="true" data-size="6" placeholder="Estado" id="estadoss">
                                 <option value="">Estado</option>
                                 @foreach ($estados as $item)
                                 <option value="{{ $item->id }}">{{ $item->nombre }}</option>
@@ -123,7 +123,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Municipio</span>
                         </div>
-                        <select class="form-control" name="mun_lab" class="municipios_select" placeholder="Colonia" id="municipioss">
+                        <select class="form-control" name="mun_lab" data-live-search="true" data-size="6" class="form-control" placeholder="Colonia" id="municipioss">
                                 <option value="">Municipio</option>
                         </select>
                 </div>
@@ -134,7 +134,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Colonia</span>
                         </div>
-                        <select class="form-control" name="col_lab" placeholder="codigo" id="coloniass">
+                        <select class="form-control" name="col_lab" data-live-search="true" data-size="5" placeholder="codigo" id="coloniass">
                                 <option value="">Colonia</option>
                         </select>
                 </div>
@@ -192,7 +192,7 @@
         $(document).ready(function(){
 
                 //mostrar estado
-                $("#estadoss").change(function(e){
+                $("#estadoss").on("changed.bs.select",function(e){
 
                     var id=e.target.value;
                     console.log(id);
@@ -212,12 +212,14 @@
                                     $("#municipioss").append("<option value='" +data[i].id+"'>"+data[i].nombre_mun+"</option>");
                                 }
 
+                                 $('#municipioss').selectpicker("refresh");
+
                         });
                     }
                 });//estados
 
                 //mostrar las colonias
-                $("#municipioss").change(function(e){
+                $("#municipioss").on("changed.bs.select",function(e){
 
                     var id=e.target.value;
                     console.log(id);
@@ -237,6 +239,10 @@
                                     $("#coloniass").append("<option value='" +data[i].id+"'>"+data[i].nombre_col+"</option>");
 
                                 }
+
+                                $('#coloniass').selectpicker("refresh");
+                                $('#coloniass').selectpicker();
+
 
                         });
                     }

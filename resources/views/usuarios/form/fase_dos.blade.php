@@ -3,7 +3,7 @@
              <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Estado</span>
             </div>
-            <select  name="estados_id" class="estados_select form-control" placeholder="Estado" id="estado">
+            <select  name="estados_id" class="form-control estado" data-live-search="true" data-size="7" placeholder="Estado" id="estado">
                     <option value="">Estado</option>
                     @foreach ($estados as $item)
                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
@@ -15,9 +15,9 @@
 <div class="col-md-4">
     <div class="input-group flex-nowrap">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="addon-wrapping">Municipio</span>
+                <span class="input-group-text"  id="addon-wrapping">Municipio</span>
             </div>
-            <select class="form-control" name="municipios_id" class="municipios_select" placeholder="Colonia" id="municipios">
+            <select class="form-control mun" data-live-search="true" data-size="7" name="municipios_id" placeholder="Colonia" id="municipios">
                     <option value="">Municipio</option>
             </select>
     </div>
@@ -28,7 +28,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="addon-wrapping">Colonia</span>
             </div>
-            <select class="form-control" name="colonias_id" placeholder="codigo" id="colonias">
+            <select class="form-control" name="colonias_id"  data-live-search="true" data-size="7" placeholder="codigo" id="colonias">
                     <option value="">Colonia</option>
             </select>
     </div>

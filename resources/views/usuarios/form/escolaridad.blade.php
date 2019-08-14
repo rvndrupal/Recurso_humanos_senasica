@@ -235,7 +235,7 @@
                             '<div class="input-group-prepend">'+
                             '<span class="input-group-text" id="addon-wrapping">Carrera</span>'+
                         '</div>'+
-                        '<select  name="carreras_id[]" class="form-control" id="carreras" placeholder="Carrera">'+
+                        '<select  name="carreras_id[]" class="form-control"  id="carreras" placeholder="Carrera">'+
                                 '<option value="">Carrera</option>'+
                                ' @foreach ($carreras as $item)'+
                                 '<option value="{{ $item->id }}">{{ $item->nom_car }}</option>'+
@@ -359,11 +359,10 @@
                  $("#titulo_pro").attr('id','titulo_pro'+x);
                  $("#cedula").attr("data-valor",+x);
                  $("#cedula").attr('id','cedula'+x);
-
-
-
-
             }
+
+
+
 
         });
         $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked

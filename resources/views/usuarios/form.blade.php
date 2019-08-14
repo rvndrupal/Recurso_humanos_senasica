@@ -7,13 +7,19 @@
     {{--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  --}}
 
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/chosen.min.css') }}" rel="stylesheet" />
+    {{--  <link href="{{ asset('css/chosen.min.css') }}" rel="stylesheet" />  --}}
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/errores.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/personales.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/picker.min.css') }}" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+
 
     <title>Document</title>
 </head>
@@ -201,6 +207,9 @@
     <script src="{{ asset('js/jquery-ui.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/picker.js') }}" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
 
 
 
@@ -213,8 +222,11 @@
 <script>
 $(document).ready(function(){
 
+
+
+
         //mostrar estado
-        $("#estado").change(function(e){
+        $("#estado").on("changed.bs.select",function(e){
 
             var id=e.target.value;
             console.log(id);
@@ -234,12 +246,14 @@ $(document).ready(function(){
                             $("#municipios").append("<option value='" +data[i].id+"'>"+data[i].nombre_mun+"</option>");
                         }
 
+                        $('#municipios').selectpicker("refresh");
                 });
             }
         });//estados
 
+
         //mostrar las colonias
-        $("#municipios").change(function(e){
+        $("#municipios").on("changed.bs.select",function(e){
 
             var id=e.target.value;
             console.log(id);
@@ -257,10 +271,12 @@ $(document).ready(function(){
                     for(i=0; i<data.length ;i++)
                         {
                             $("#colonias").append("<option value='" +data[i].id+"'>"+data[i].nombre_col+"</option>");
-
                         }
 
+                        $('#colonias').selectpicker("refresh");
+
                 });
+
             }
         });
 
@@ -594,6 +610,37 @@ $(document).ready(function(){
                 filePreview(this);
                 $('#pre').removeClass('load');
             });
+
+            //piker
+            $(".pais").selectpicker({
+                dropdownAlignRight:true,
+            });
+            $('.estado').selectpicker(); //ojo evento change
+            $('#municipios').selectpicker();
+            $('#colonias').selectpicker();
+            $('#codigo_puesto').selectpicker();
+            $('#niveles').selectpicker();
+            $('#dir_general').selectpicker();
+            $('#dir_area').selectpicker();
+            $('#estadoss').selectpicker();
+            $('#municipioss').selectpicker();
+
+            //datapiker
+            $( "#fecha_nacimiento" ).datepicker();
+
+
+
+            //boton derecho del mause
+            {{--  $(document).bind("contextmenu",function(e){
+                alert("Web Segura");
+                return false;
+            });  --}}
+
+
+
+
+
+
 
 
 
