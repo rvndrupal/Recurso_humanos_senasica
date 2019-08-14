@@ -110,9 +110,9 @@
          </div>
      </div>
      <div class="col-md-2">
-            <h6>Fecha de Nacimiento</h6>
+            <h6 class="foto_tex2">Fecha de Nacimiento</h6>
         </div>
-     <div class="col-md-6">
+     <div class="col-md-4">
              {{--  <div class="input-group flex-nowrap">
                  <div class="input-group-prepend">  --}}
                      {{--  <span class="input-group-text" id="addon-wrapping">Fecha Nacimiento</span>
