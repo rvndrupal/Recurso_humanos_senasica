@@ -676,16 +676,21 @@ class UsuariosController extends Controller
     public function edit(Usuarios $usuarios, $id)
     {
         $use=Usuarios::where('id','=',$id)->get();
-        //dd($use);
+       // dd($use);
 
         //pais
        $paiss=Paises::orderBy('id','ASC')->select('id','nombre_pais')->get();
        $sel_pais=$use[0]->paises_id;
 
+       //rfc
+       $edi_rfc=$use[0]->carga_rfc;
+       $rfc_sub=substr($edi_rfc,4);
+       //dd($rfc_sub);
+
        //dd($use);
 
 
-        return view('usuarios.editar',compact('use','paiss','sel_pais'));
+        return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub'));
     }
 
     /**

@@ -168,8 +168,27 @@
             </div>
 
           <div class="col-md-5">
+
+                <div class="image-upload">
+                    {{--  <div id="img_pre">
+
+                    </div>  --}}
+
+                    <label for="file-input">
+                        <img src="{{ asset('img/carga.png') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
+                    </label>
+                    <input id="file-input" type="file"  name="carga_rfc"/>
+                </div>
+          </div>
+          <div class="col-md-6">
                 @foreach ($use as $item)
-                <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc" value="{{ $item->carga_rfc}}" >
+                <div id="previa">
+                <img src="http://localhost/recursos/public/{{ $item->carga_rfc }}" width="200px" alt="">
+                {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
+                </div>
+                <div id="img_pre">
+
+                </div>
                 @endforeach
           </div>
     </div>

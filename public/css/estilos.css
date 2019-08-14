@@ -214,3 +214,15 @@ div#ui-datepicker-div {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+/*subir imagen*/
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 148px;
+    cursor: pointer;
+}

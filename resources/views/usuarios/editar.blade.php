@@ -603,7 +603,6 @@ $(document).ready(function(){
 
                     }
                     reader.readAsDataURL(input.files[0]);
-
             }
 
             $("#previo").change(function () {
@@ -656,6 +655,27 @@ $(document).ready(function(){
                 alert("Web Segura");
                 return false;
             });  --}}
+
+            //precio rfc
+
+            function preview_rfc(input)
+            {
+                if(input.files && input.files[0])
+                {
+                    var reader=new FileReader();
+
+                    reader.onload= function(e){
+                        $('#img_pre').html("<img src='"+e.target.result+"' width='148px'>");
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $('#file-input').change(function(){
+                preview_rfc(this);
+                $('#previa').hide();
+            });
 
 
 
