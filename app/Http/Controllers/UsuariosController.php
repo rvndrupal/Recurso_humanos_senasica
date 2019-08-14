@@ -471,12 +471,6 @@ class UsuariosController extends Controller
             'mov_seg'=>$request->mov_seg,
             ]);
 
-
-
-
-
-
-
          $usuario->save();
 
          $title = __('Usuarios');
@@ -499,7 +493,6 @@ class UsuariosController extends Controller
         $title = __('Carnets');
         return view('usuarios.cards2',compact('title'));
     }
-
 
     public function cardsAction(Request $request)
     {
@@ -579,9 +572,6 @@ class UsuariosController extends Controller
         $title = __('Usuario');
 
         $usuario= Usuarios::findOrFail($id);
-
-        // $total=count($usuario->DetalleEscolaridades);
-        //dd($total);
 
             $nt=[];//Los valores en array pasados
             $nc=[];
@@ -669,22 +659,10 @@ class UsuariosController extends Controller
                 $nnive=$nom_nivel[0]->nom_niveles;
 
 
-            //dd($ncodi);
-            //esperiencia laboral
-
             $total_Exp=count($usuario->ExpLaborales);
             $total_Esc=count($usuario->DetalleEscolaridades);
 
-            //dd($total_Esc);
-
-
-
-           // dd($ndge);
-
            //dd($usuario->DetalleEscolaridades[1]->carga_titulo);
-
-
-
 
         return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp','ncodi','nnive','total_Esc'));
     }
@@ -697,11 +675,17 @@ class UsuariosController extends Controller
      */
     public function edit(Usuarios $usuarios, $id)
     {
-        $datos=Usuarios::where('id','=',$id)->get();
+        $use=Usuarios::where('id','=',$id)->get();
+        //dd($use);
 
-        //dd($datos);
+        //pais
+       $paiss=Paises::orderBy('id','ASC')->select('id','nombre_pais')->get();
+       $sel_pais=$use[0]->paises_id;
 
-        return view('usuarios.editar',compact('datos'));
+       //dd($use);
+
+
+        return view('usuarios.editar',compact('use','paiss','sel_pais'));
     }
 
     /**
