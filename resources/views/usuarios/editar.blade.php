@@ -75,7 +75,7 @@
             <h3 class="fs-subtitle">Datos Particulares</h3>
             <div class="row">
 
-                {{--  @include('usuarios/form/fase_dos')  --}}
+                @include('usuarios/edit/fase_dos')
 
         </fieldset>
 
@@ -221,9 +221,6 @@
 
 <script>
 $(document).ready(function(){
-
-
-
 
         //mostrar estado
         $("#estado").on("changed.bs.select",function(e){
@@ -706,6 +703,23 @@ $(document).ready(function(){
                     preview_ife(this);
                     $('#previa_ife').hide();
                 });
+
+                 //previo domicilio
+                 function preview_domicilio(input)
+                 {
+                     if(input.files && input.files[0])
+                     {
+                         var reader=new FileReader();
+                         reader.onload= function(e){
+                             $('#img_pre_domicilio').html("<img src='"+e.target.result+"'>");
+                         }
+                         reader.readAsDataURL(input.files[0]);
+                     }
+                 }
+                 $('#file-input-domicilio').change(function(){
+                     preview_domicilio(this);
+                     $('#previa_domicilio').hide();
+                 });
 
 
 

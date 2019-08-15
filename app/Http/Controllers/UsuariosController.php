@@ -680,17 +680,38 @@ class UsuariosController extends Controller
 
         //pais
        $paiss=Paises::orderBy('id','ASC')->select('id','nombre_pais')->get();
-       $sel_pais=$use[0]->paises_id;
+       $estadoss=Estados::orderBy('nombre','ASC')->select('id','nombre')->where('condicion','=','1')->get();
+       $muns=Municipios::orderBy('nombre_mun','ASC')->select('id','nombre_mun')->where('condicion','=','1')->get();
+       $cols=Colonias::orderBy('nombre_col','ASC')->select('id','nombre_col')->where('condicion','=','1')->get();
+    //    $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
+    //    $titulos=Titulos::orderBy('id','ASC')->select('id','nombre_titulo')->get();
+    //    $grados=Grados::orderBy('id','ASC')->select('id','nom_gra')->get();
+    //    $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
+    //    $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
+    //    $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
+    //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+    //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+    //    $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
+    //    $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
+    //    $co=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
+    //    $ni=Niveles::orderBy('id','ASC')->select('id','nom_niveles')->get();
 
+
+       $sel_pais=$use[0]->paises_id;
+       $s_est=$use[0]->estados_id;
+       $s_mun=$use[0]->municipios_id;
+       $s_col=$use[0]->colonias_id;
        //rfc
        $edi_rfc=$use[0]->carga_rfc;
        $rfc_sub=substr($edi_rfc,4);
        //dd($rfc_sub);
 
-       //dd($use);
+       //dd($muns);
+
+       //dd($use[0]->colonias);
 
 
-        return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub'));
+        return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'));
     }
 
     /**
