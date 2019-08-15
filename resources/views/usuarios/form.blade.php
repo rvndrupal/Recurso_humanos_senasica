@@ -106,11 +106,13 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="addon-wrapping">Hijos</span>
                                             </div>
-                                            <select class="form-control" name="" id="hijos" placeholder="Hijos" >
+                                            <select class="form-control" name="opcionciviles_id" id="hijos" placeholder="Hijos" >
                                                 <option value="">Tienes Hijos</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                @foreach ($opCivil as $item)
+                                                <option value="{{ $item->id }}">{{ $item->opcion_civil }}</option>
+                                               @endforeach
                                             </select>
+
                                     </div>
                             </div>
 
@@ -343,7 +345,7 @@ $(document).ready(function(){
 
 
 
-            if(seleccion=='si')
+            if(seleccion=='1')
             {
 
 
@@ -413,7 +415,7 @@ $(document).ready(function(){
 
 
             }
-            if(seleccion=='no'){
+            if(seleccion=='2'){
 
                 $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<tr>'+
@@ -627,7 +629,7 @@ $(document).ready(function(){
 
             //datapiker
             $( "#fecha_nacimiento" ).datepicker({
-                dateFormat: "dd-mm-yy",
+                dateFormat: "yy-mm-dd",
             });
 
             $.datepicker.regional['es'] = {

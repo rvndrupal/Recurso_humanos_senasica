@@ -36,10 +36,18 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('estado_civils')->insert([
-            'nombre' => 'Soltero(a)',
+            'nombre' => 'Soltero(a)'
         ]);
         DB::table('estado_civils')->insert([
             'nombre' => 'Casado(a)',
+        ]);
+
+
+        DB::table('opcionciviles')->insert([
+            'opcion_civil' => 'Si'
+        ]);
+        DB::table('opcionciviles')->insert([
+            'opcion_civil' => 'No',
         ]);
 
 

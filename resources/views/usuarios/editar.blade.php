@@ -88,13 +88,18 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Selecciona una opción</span>
                                 </div>
-                                {{--  <select class="form-control" name="estado_civils_id" id="estado_civil" placeholder="Estado civil" >
+                                <select class="form-control" name="estado_civils_id" id="estado_civil" placeholder="Estado civil" >
                                     <option value="">Estado civil</option>
-                                    @foreach ($estadoCivil as $item)
-                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    @foreach ($estCS as $item)
+                                     <option value="{{ $item->id }}"
+                                    @if($item->id === $s_civ)
+                                    selected
+                                    @endif
+                                    >
+                                    {{ $item->nombre }}
+                                     </option>
                                     @endforeach
-
-                                </select>  --}}
+                                </select>
                         </div>
                     </div>
                 </div>
@@ -106,10 +111,17 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="addon-wrapping">Hijos</span>
                                             </div>
-                                            <select class="form-control" name="" id="hijos" placeholder="Hijos" >
+                                            <select class="form-control" name="opcionciviles_id" id="hijos" placeholder="Hijos" >
                                                 <option value="">Tienes Hijos</option>
-                                                <option value="si">Si</option>
-                                                <option value="no">No</option>
+                                                @foreach ($opcCiv as $item)
+                                                 <option value="{{ $item->id }}"
+                                                @if($item->id === $s_opv)
+                                                selected
+                                                @endif
+                                                >
+                                                {{ $item->opcion_civil }}
+                                                 </option>
+                                                @endforeach
                                             </select>
                                     </div>
                             </div>
@@ -122,7 +134,7 @@
                         </div>{{-- -soltero --}}
 
                          <div id="casado">
-                             {{--  @include('usuarios/form/casado')  --}}
+                             {{--  @include('usuarios/edit/casado')  --}}
 
                              <div id="ec">
                                 <table class="table table-bordered" id="dynamic_hijos">
@@ -304,7 +316,82 @@ $(document).ready(function(){
         });
 
 
+        var esc=$('#estado_civil').val();
+        if(esc==1)
+        {
+            $('#soltero').show(500);
+            $('#casado').hide();
+            $('#ec').empty();
+            $('dynamic_hijos').empty();
+        }
 
+        var hi=$('#hijos').val();
+        if(hi==1){
+            $('#bh').html('<table class="table table-bordered soltero_hijos" id="dynamic_field">'+
+                    ' <h4>Agrega a tus hijos</h4>'+
+                     '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
+                     '<tr>'+
+                             {{-- '<td>'+
+                                     '<div class="input-group flex-nowrap">'+
+                                             '<div class="input-group-prepend">'+
+                                                 '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                             '</div>'+
+                                             '<input type="text" class="form-control" name="nombre[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                     '</div>'+
+                             '</td>'+
+                             '<td>'+
+                                     '<div class="input-group flex-nowrap">'+
+                                             '<div class="input-group-prepend">'+
+                                                 '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
+                                             '</div>'+
+                                            '<input type="text" class="form-control" name="edad[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                     '</div>'+
+                             '</td>'+
+                             '<td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>'+ --}}
+
+                     '</tr>'+
+
+             '</table>');
+
+
+
+             $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
+                     '<hr>'+
+                     '<h4>Familiares Descendientes</h4>'+
+                    ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
+                     '<tr>'+
+                             {{-- '<td>'+
+                                     '<div class="input-group flex-nowrap">'+
+                                             '<div class="input-group-prepend">'+
+                                                 '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                             '</div>'+
+                                             '<input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                     '</div>'+
+                             '</td>'+
+                             '<td>'+
+                                 '<div class="input-group flex-nowrap">'+
+                                         '<div class="input-group-prepend">'+
+                                             '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                         '</div>'+
+                                         '<input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                 '</div>'+
+                             '</td>'+
+                             '<td>'+
+                                     '<div class="input-group flex-nowrap">'+
+                                             '<div class="input-group-prepend">'+
+                                                 '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                             '</div>'+
+                                             '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                     '</div>'+
+                                 '</td>'+
+                             '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
+
+                     '</tr>'+
+
+             '</table>');
+
+        }
+        {{-- si tiene hijos --}}
 
 
 
@@ -340,7 +427,7 @@ $(document).ready(function(){
 
 
 
-            if(seleccion=='si')
+            if(seleccion=='1')
             {
 
 
@@ -410,7 +497,7 @@ $(document).ready(function(){
 
 
             }
-            if(seleccion=='no'){
+            if(seleccion=='2'){
 
                 $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
                         '<tr>'+

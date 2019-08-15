@@ -20,6 +20,7 @@ use App\DetalleLaborales;
 use App\ExpLaborales;
 use App\Codigos;
 use App\Niveles;
+use App\Opcionciviles;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -130,7 +131,7 @@ class UsuariosController extends Controller
        $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
        $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
-       $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+       $opCivil=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
        $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
        $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
        $co=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
@@ -138,7 +139,8 @@ class UsuariosController extends Controller
 
         //dd($usuarios);
 
-        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas','dg','da','co','ni'));
+        return view('usuarios.form', compact('usuarios', 'title','estados','estadoCivil','pais','escuelas','titulos','carreras','grados','escuelas','idiomas','dg','da','co'
+        ,'ni','opCivil'));
     }
 
     /**
@@ -233,6 +235,11 @@ class UsuariosController extends Controller
             $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
          }
 
+         //opcion civil
+         $usuario->Opcionciviles->create([
+            'opcionciviles_id'=>$request->opcionciviles_id
+         ]);
+
          if(isset($request->nombre))
          {
                 foreach($request->nombre as $item=>$v)
@@ -261,6 +268,8 @@ class UsuariosController extends Controller
 
                 }
         }
+
+
 
         if(isset($request->nombres_coy))
         {
@@ -689,7 +698,8 @@ class UsuariosController extends Controller
     //    $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
     //    $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
     //    $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
-    //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+        $estCS=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
+        $opcCiv=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
     //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
     //    $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
     //    $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
@@ -701,17 +711,18 @@ class UsuariosController extends Controller
        $s_est=$use[0]->estados_id;
        $s_mun=$use[0]->municipios_id;
        $s_col=$use[0]->colonias_id;
+       $s_civ=$use[0]->estado_civils_id;
+       $s_opv=$use[0]->opcionciviles_id;
        //rfc
        $edi_rfc=$use[0]->carga_rfc;
        $rfc_sub=substr($edi_rfc,4);
-       //dd($rfc_sub);
-
-       //dd($muns);
-
-       //dd($use[0]->colonias);
 
 
-        return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'));
+      // dd($use);
+
+
+        return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
+        ,'estCS','s_civ','s_opv','opcCiv'));
     }
 
     /**
