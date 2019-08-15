@@ -128,6 +128,34 @@
 
                             <div id="bh">
                             </div>
+
+                            {{--  <div id="editar_hijo">
+                                    <h1>ok mostrar</h1>
+                                    @foreach($use[0]->solteros as $item=>$v)
+                                    <tr>
+                                       <td>
+                                               <div class="input-group flex-nowrap">
+                                                      <div class="input-group-prepend">
+                                                           <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                                      </div>
+                                                       <input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" value="{{ $v->nombre }}"  id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+
+                                               </div>
+                                       </td>
+                                       <td>
+                                               <div class="input-group flex-nowrap">
+                                                       <div class="input-group-prepend">
+                                                           <span class="input-group-text" id="addon-wrapping">Edad</span>
+                                                       </div>
+                                                       <input type="text" class="form-control" data-valor="'+i+'" name="edad[]" value="{{ $v->edad }}" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                               </div>
+                                       </td>
+                                       <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
+                                    </tr>
+                                    @endforeach
+                            </div>  --}}
+                            {{-- mostrar ehijos editar --}}
+
                             <div id="if">
 
                             </div>
@@ -199,7 +227,6 @@
             <input type="submit" name="submit"  class="submit action-button" id="guardar"  value="Guardar" />
         </fieldset>
     </form>
-
 
 
 </div>{{-- DEL MENU WRAPER --}}
@@ -316,6 +343,8 @@ $(document).ready(function(){
         });
 
 
+        $("#editar_hijo").hide();
+
         var esc=$('#estado_civil').val();
         if(esc==1)
         {
@@ -327,29 +356,32 @@ $(document).ready(function(){
 
         var hi=$('#hijos').val();
         if(hi==1){
+           // $("#editar_hijo").show();
             $('#bh').html('<table class="table table-bordered soltero_hijos" id="dynamic_field">'+
                     ' <h4>Agrega a tus hijos</h4>'+
                      '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
+                     '@foreach($use[0]->solteros as $item=>$v)'+
                      '<tr>'+
-                             {{-- '<td>'+
-                                     '<div class="input-group flex-nowrap">'+
-                                             '<div class="input-group-prepend">'+
-                                                 '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                             '</div>'+
-                                             '<input type="text" class="form-control" name="nombre[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                     '</div>'+
-                             '</td>'+
-                             '<td>'+
-                                     '<div class="input-group flex-nowrap">'+
-                                             '<div class="input-group-prepend">'+
-                                                 '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
-                                             '</div>'+
-                                            '<input type="text" class="form-control" name="edad[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                     '</div>'+
-                             '</td>'+
-                             '<td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>'+ --}}
+                        '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" value="{{ $v->nombre }}"  id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
 
+                                '</div>'+
+                        '</td>'+
+                        '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="edad[]" value="{{ $v->edad }}" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '</div>'+
+                        '</td>'+
+                        '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>'+
                      '</tr>'+
+                    ' @endforeach'+
 
              '</table>');
 

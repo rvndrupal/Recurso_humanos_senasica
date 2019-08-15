@@ -718,7 +718,7 @@ class UsuariosController extends Controller
        $rfc_sub=substr($edi_rfc,4);
 
 
-      // dd($use);
+      // dd($use[0]->solteros);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
