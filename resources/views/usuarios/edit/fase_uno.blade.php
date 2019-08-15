@@ -1,13 +1,19 @@
     {{-- FASE UNO EDITAR --}}
     <div class="row foto">
+            @foreach ($use as $item)
+            <div id="previos">
+            <img src="/recursos/public/Fotos/Usuarios/{{ $item->foto }}" width="120px" height="120px" alt="">
+            </div>
+        @endforeach
             <div class="col-md-2">
-                <div id="pre" class="load">
+                <div id="pre" class="load_editar">
 
                 </div>
             </div>
             <div class="col-md-2">
-                    <label class="foto_tex">FOTO</label>
+                    <label class="foto_tex_edi">FOTO</label>
             </div>
+
             <div class="col-md-5">
                     <input type="file" class="form-control"  name="foto" id="previo" >
             </div>
@@ -168,16 +174,11 @@
             </div>
 
           <div class="col-md-5">
-
                 <div class="image-upload">
-                    {{--  <div id="img_pre">
-
-                    </div>  --}}
-
                     <label for="file-input">
-                        <img src="{{ asset('img/carga.png') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
+                        <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                     </label>
-                    <input id="file-input" type="file"  name="carga_rfc"/>
+                    <input id="file-input" type="file"  class="form-control" name="carga_rfc"/>
                 </div>
           </div>
           <div class="col-md-6">
@@ -195,21 +196,75 @@
 
     <div class="row curp">
         <div class="col-md-1">
+                <label class="foto_tex">CURP</label>
+        </div>
+
+      <div class="col-md-5">
+            <div class="image-upload-curp">
+                <label for="file-input-curp">
+                    {{--  importante el cambio for label  --}}
+                    <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir curp" title ="Click aquí para subir curp" >
+                </label>
+                <input id="file-input-curp" type="file" class="form-control id_curp"  name="carga_curp"/>
+            </div>
+      </div>
+      <div class="col-md-6">
+            @foreach ($use as $item)
+            <div id="previa_curp">
+            <img src="http://localhost/recursos/public/{{ $item->carga_curp }}" width="200px" alt="">
+            {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
+            </div>
+            <div id="img_pre_curp">
+
+            </div>
+            @endforeach
+      </div>
+</div>
+
+    <div class="row ife">
+            <div class="col-md-1">
+                    <label class="foto_tex">IFE</label>
+            </div>
+
+        <div class="col-md-5">
+                <div class="image-upload-ife">
+                    <label for="file-input-ife">
+                        {{--  importante el cambio for label  --}}
+                        <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir ife" title ="Click aquí para subir ife" >
+                    </label>
+                    <input id="file-input-ife" type="file" class="form-control id_ife"  name="carga_ife"/>
+                </div>
+        </div>
+        <div class="col-md-6">
+                @foreach ($use as $item)
+                <div id="previa_ife">
+                <img src="http://localhost/recursos/public/{{ $item->carga_ife }}" width="200px" alt="">
+                {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
+                </div>
+                <div id="img_pre_ife">
+
+                </div>
+                @endforeach
+        </div>
+    </div>
+
+    {{--  <div class="row curp">
+        <div class="col-md-1">
         <label class="foto_tex">CURP</label>
         </div>
         <div class="col-md-5">
             <input type="file" class="form-control"  name="carga_curp" id="carga_curp" >
         </div>
-    </div>
+    </div>  --}}
 
-    <div class="row curp">
+    {{--  <div class="row curp">
         <div class="col-md-1">
         <label class="foto_tex">IFE</label>
         </div>
         <div class="col-md-5">
                 <input type="file" class="form-control"  name="carga_ife" id="carga_ife" >
         </div>
-    </div>
+    </div>  --}}
 
 
 

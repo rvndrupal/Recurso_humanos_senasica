@@ -225,4 +225,65 @@ div#ui-datepicker-div {
 {
     width: 148px;
     cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 72px;
+}
+
+#img_pre img{
+    width: 148px;
+    height: 100px;
+    margin: 0 0 33px 0px;
+}
+
+.image-upload-curp > input
+{
+    display: none;
+}
+
+.image-upload-curp img
+{
+    width: 148px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 72px;
+}
+
+#img_pre_curp img{
+    width: 148px;
+    height: 100px;
+    margin: 0 0 33px 0px;
+}
+
+/*ife*/
+.image-upload-ife > input
+{
+    display: none;
+}
+
+.image-upload-ife img
+{
+    width: 148px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 72px;
+}
+
+#img_pre_ife img{
+    width: 148px;
+    height: 100px;
+    margin: 0 0 33px 0px;
+}
+
+/*foto*/
+#previos img{
+
+    position: absolute;
+    /* border-radius: 37px; */
+    margin: -37px 0 0 33px;
+    border: 3px solid #00000057;
+    border-radius: 100px;
+}
+
+.foto_tex_edi {
+    margin: 0 0 58px 0;
 }
