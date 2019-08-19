@@ -15,7 +15,7 @@ class CreateOpcioncivilesTable extends Migration
     {
         Schema::create('opcionciviles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('opcion_civil',50)->nullable();
+            $table->string('opcion_civil',50)->default(0);
             $table->timestamps();
         });
     }

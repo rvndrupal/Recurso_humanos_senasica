@@ -38,6 +38,8 @@
             </div>
         </div>
 
+
+
         <div class="col-md-2">
                 <label class="foto_tex text3">CURP</label>
         </div>

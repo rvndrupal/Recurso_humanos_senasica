@@ -27,7 +27,7 @@ $(".next").click(function(){
     }, "Solo números");
 
     jQuery.validator.addMethod("imagen", function(value, element) {
-    return this.optional(element) ||  /(.jpg|.jpeg|.png)$/i.test(value);
+    return this.optional(element) ||  /(.jpg|.jpeg|.png|.jfif)$/i.test(value);
     }, "Formato no valido solo jpg,jpeg,png");
 
     jQuery.validator.addMethod("pdf", function(value, element) {
@@ -42,59 +42,59 @@ $(".next").click(function(){
 
 
         rules:{
-            //  nom:{required:true,minlength:3,maxlength:20,texto: true},
-            // ap:{required:true,minlength:3,maxlength:20,texto: true},
-            // am:{required:true,minlength:3,maxlength:20,texto: true},
-            //  paises_id:{required:true},
-            // rfc:{required:true,minlength:12,maxlength:13},
-            // curp:{required:true,minlength:18,maxlength:18},
-            // correo_per:{required:true,email:true},
-            // correo_ins:{required:true,email:true},
-            // tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
-            // tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
-            // fecha_nacimiento:{required:true},
-            // foto:{required:true,imagen:true},
-            // carga_rfc:{required:true,imagen:true},
-            // carga_curp:{required:true,imagen:true},
-            // carga_ife:{required:true,imagen:true},
-            // estados_id:{required:true},
-            // municipios_id:{required:true},
-            // colonias_id:{required:true},
-            // calle:{required:true,minlength:5,maxlength:100},
-            // numero:{required:true,minlength:2,maxlength:5,numeros:true},
-            // carga_domicilio:{required:true,imagen:true},
-            // fecha_domicilio:{required:true},
-            // estado_civils_id:{required:true},
-            // nombres_coy:{required:true,minlength:3,maxlength:20,texto: true},
-            // primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
-            // segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
-            // curp_coy:{required:true,minlength:18,maxlength:18},
-            // carga_curp_coy:{required:true,imagen:true},
-            // // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
-            // 'cedula[]':{required:true},
-            // puesto_actual:{required:true,minlength:3,maxlength:20,texto: true},
-            // codigo_puesto:{required:true},
-            // grado_nivel:{required:true},
-            // direcciones_generales_id:{required:true},
-            // direcciones_areas_id:{required:true},
-            // fecha_ultimo:{required:true},
-            // fecha_senasica:{required:true},
-            // est_lab:{required:true},
-            // mun_lab:{required:true},
-            // col_lab:{required:true},
-            // calle_lab:{required:true,minlength:3,maxlength:70},
-            // num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
-            // fecha_gobierno:{required:true},
-            // num_seg:{required:true,minlength:11,maxlength:11},
-            // tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
-            // nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            // pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            // seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            // seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            // par_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            // email_seg:{required:true,minlength:5,maxlength:50,email: true},
-            // tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
-            // mov_seg:{required:true,minlength:10,maxlength:10,numeros: true},
+             nom:{required:true,minlength:3,maxlength:20,texto: true},
+            ap:{required:true,minlength:3,maxlength:20,texto: true},
+            am:{required:true,minlength:3,maxlength:20,texto: true},
+             paises_id:{required:true},
+            rfc:{required:true,minlength:12,maxlength:13},
+            curp:{required:true,minlength:18,maxlength:18},
+            correo_per:{required:true,email:true},
+            correo_ins:{required:true,email:true},
+            tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
+            tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
+            fecha_nacimiento:{required:true},
+            foto:{required:true,imagen:true},
+            carga_rfc:{required:true,imagen:true},
+            carga_curp:{required:true,imagen:true},
+            carga_ife:{required:true,imagen:true},
+            estados_id:{required:true},
+            municipios_id:{required:true},
+            colonias_id:{required:true},
+            calle:{required:true,minlength:5,maxlength:100},
+            numero:{required:true,minlength:2,maxlength:5,numeros:true},
+            carga_domicilio:{required:true,imagen:true},
+            fecha_domicilio:{required:true},
+            estado_civils_id:{required:true},
+            nombres_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            curp_coy:{required:true,minlength:18,maxlength:18},
+            carga_curp_coy:{required:true,imagen:true},
+            // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
+            'cedula[]':{required:true},
+            puesto_actual:{required:true,minlength:3,maxlength:20,texto: true},
+            codigo_puesto:{required:true},
+            grado_nivel:{required:true},
+            direcciones_generales_id:{required:true},
+            direcciones_areas_id:{required:true},
+            fecha_ultimo:{required:true},
+            fecha_senasica:{required:true},
+            est_lab:{required:true},
+            mun_lab:{required:true},
+            col_lab:{required:true},
+            calle_lab:{required:true,minlength:3,maxlength:70},
+            num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
+            fecha_gobierno:{required:true},
+            num_seg:{required:true,minlength:11,maxlength:11},
+            tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
+            nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            par_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            email_seg:{required:true,minlength:5,maxlength:50,email: true},
+            tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
+            mov_seg:{required:true,minlength:10,maxlength:10,numeros: true},
 
 
 
@@ -363,23 +363,23 @@ $(".next").click(function(){
 
      $(esc_A).each(function(i){
         //grado
-        // if($("#grados"+(i+2)).val()=="")
-        // {
-        // $("#grados"+(i+2)).addClass('is-invalid');
-        // form.valid=false;
-        // }
-        // else{
-        //     $("#grados"+(i+2)).removeClass('is-invalid');
-        // }
+        if($("#grados"+(i+2)).val()=="")
+        {
+        $("#grados"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#grados"+(i+2)).removeClass('is-invalid');
+        }
         //carrera
-        // if($("#carreras"+(i+2)).val()=="")
-        // {
-        // $("#carreras"+(i+2)).addClass('is-invalid');
-        // form.valid=false;
-        // }
-        // else{
-        //     $("#carreras"+(i+2)).removeClass('is-invalid');
-        // }
+        if($("#carreras"+(i+2)).val()=="")
+        {
+        $("#carreras"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#carreras"+(i+2)).removeClass('is-invalid');
+        }
 
         //cedula
         // if($("#cedula"+(i+2)).val()=="")
@@ -392,24 +392,24 @@ $(".next").click(function(){
         // }
 
        // escuelas
-        // if($("#escuelas"+(i+2)).val()=="")
-        // {
-        // $("#escuelas"+(i+2)).addClass('is-invalid');
-        // form.valid=false;
-        // }
-        // else{
-        //     $("#escuelas"+(i+2)).removeClass('is-invalid');
-        // }
+        if($("#escuelas"+(i+2)).val()=="")
+        {
+        $("#escuelas"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#escuelas"+(i+2)).removeClass('is-invalid');
+        }
 
         //titulos
-        // if($("#titulos"+(i+2)).val()=="")
-        // {
-        // $("#titulos"+(i+2)).addClass('is-invalid');
-        // form.valid=false;
-        // }
-        // else{
-        //     $("#titulos"+(i+2)).removeClass('is-invalid');
-        // }
+        if($("#titulos"+(i+2)).val()=="")
+        {
+        $("#titulos"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#titulos"+(i+2)).removeClass('is-invalid');
+        }
 
          //titulo_pro
         //  if($("#titulo_pro"+(i+2)).val()=="")
@@ -435,12 +435,12 @@ $(".next").click(function(){
 
 
      //IDIOMAS
-    // $('.idiomas select').each(function(i){
-    //     data=$(this).attr('data-valor');//el numero
-    //     var idi=$(this).attr('id');
-    //     idi_A.push(idi);
-    //    // alert(idi_A);
-    // });
+    $('.idiomas select').each(function(i){
+        data=$(this).attr('data-valor');//el numero
+        var idi=$(this).attr('id');
+        idi_A.push(idi);
+       // alert(idi_A);
+    });
 
     // //IDIOMAS checked
     // $('.idiomas input').each(function(i){
@@ -450,121 +450,121 @@ $(".next").click(function(){
     //     alert(che_A);
     // });
 
-    // $(idi_A).each(function(i){
-    //     //select
-    //     if($("#idioma"+(i+2)).val()=="")
-    //     {
-    //     $("#idioma"+(i+2)).addClass('is-invalid');
-    //     form.valid=false;
-    //     }
-    //     else{
-    //         $("#idioma"+(i+2)).removeClass('is-invalid');
-    //     }
+    $(idi_A).each(function(i){
+        //select
+        if($("#idioma"+(i+2)).val()=="")
+        {
+        $("#idioma"+(i+2)).addClass('is-invalid');
+        form.valid=false;
+        }
+        else{
+            $("#idioma"+(i+2)).removeClass('is-invalid');
+        }
 
-        // //check
-        // if($("#nivel_ingles"+(i+2)).is(':checked'))
-        // {
-        // // $("#nivel_ingles"+(i+2)).addClass('is-invalid');
-        // alert("Debe seleccionar almenos un porcentaje");
-        // form.valid=false;
-        // }
-        // else{
-        //     $("#nivel_ingles"+(i+2)).removeClass('is-invalid');
-        // }
+        //check
+        if($("#nivel_ingles"+(i+2)).is(':checked'))
+        {
+        // $("#nivel_ingles"+(i+2)).addClass('is-invalid');
+        alert("Debe seleccionar almenos un porcentaje");
+        form.valid=false;
+        }
+        else{
+            $("#nivel_ingles"+(i+2)).removeClass('is-invalid');
+        }
 
          //select
-    //      if($("#tit_ingles"+(i+2)).val()=="")
-    //      {
-    //      $("#tit_ingles"+(i+2)).addClass('is-invalid');
-    //      form.valid=false;
-    //      }
-    //      else{
-    //          $("#tit_ingles"+(i+2)).removeClass('is-invalid');
-    //      }
-    // });
+         if($("#tit_ingles"+(i+2)).val()=="")
+         {
+         $("#tit_ingles"+(i+2)).addClass('is-invalid');
+         form.valid=false;
+         }
+         else{
+             $("#tit_ingles"+(i+2)).removeClass('is-invalid');
+         }
+    });
 
     //EXPERIENCIA
 
-        // $('.experiencia input').each(function(i){
-        //     data=$(this).attr('data-valor');//el numero
-        //     var exp=$(this).attr('id');
-        //     exp_A.push(exp);
-        //     //alert(exp_A);
-        // });
+        $('.experiencia input').each(function(i){
+            data=$(this).attr('data-valor');//el numero
+            var exp=$(this).attr('id');
+            exp_A.push(exp);
+            //alert(exp_A);
+        });
 
-        // $(exp_A).each(function(i){
-        //      //puesto
-        //     if($("#den_puesto"+(i+2)).val()=="")
-        //     {
-        //     $("#den_puesto"+(i+2)).addClass('is-invalid');
-        //     form.valid=false;
-        //     }
-        //     else{
-        //         $("#den_puesto"+(i+2)).removeClass('is-invalid');
-        //     }
+        $(exp_A).each(function(i){
+             //puesto
+            if($("#den_puesto"+(i+2)).val()=="")
+            {
+            $("#den_puesto"+(i+2)).addClass('is-invalid');
+            form.valid=false;
+            }
+            else{
+                $("#den_puesto"+(i+2)).removeClass('is-invalid');
+            }
 
-        //      //empresa
-        //      if($("#ins_puesto"+(i+2)).val()=="")
-        //      {
-        //      $("#ins_puesto"+(i+2)).addClass('is-invalid');
-        //      form.valid=false;
-        //      }
-        //      else{
-        //          $("#ins_puesto"+(i+2)).removeClass('is-invalid');
-        //      }
+             //empresa
+             if($("#ins_puesto"+(i+2)).val()=="")
+             {
+             $("#ins_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#ins_puesto"+(i+2)).removeClass('is-invalid');
+             }
 
-        //      //empresa
-        //      if($("#area_puesto"+(i+2)).val()=="")
-        //      {
-        //      $("#area_puesto"+(i+2)).addClass('is-invalid');
-        //      form.valid=false;
-        //      }
-        //      else{
-        //          $("#area_puesto"+(i+2)).removeClass('is-invalid');
-        //      }
+             //empresa
+             if($("#area_puesto"+(i+2)).val()=="")
+             {
+             $("#area_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#area_puesto"+(i+2)).removeClass('is-invalid');
+             }
 
 
-        //      //años
-        //      if($("#anos_puesto"+(i+2)).val()=="")
-        //      {
-        //      $("#anos_puesto"+(i+2)).addClass('is-invalid');
-        //      form.valid=false;
-        //      }
-        //      else{
-        //          $("#anos_puesto"+(i+2)).removeClass('is-invalid');
-        //      }
+             //años
+             if($("#anos_puesto"+(i+2)).val()=="")
+             {
+             $("#anos_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#anos_puesto"+(i+2)).removeClass('is-invalid');
+             }
 
-        //      //fecha de ingreso
-        //      if($("#fecha_ing_puesto"+(i+2)).val()=="")
-        //      {
-        //      $("#fecha_ing_puesto"+(i+2)).addClass('is-invalid');
-        //      form.valid=false;
-        //      }
-        //      else{
-        //          $("#fecha_ing_puesto"+(i+2)).removeClass('is-invalid');
-        //      }
+             //fecha de ingreso
+             if($("#fecha_ing_puesto"+(i+2)).val()=="")
+             {
+             $("#fecha_ing_puesto"+(i+2)).addClass('is-invalid');
+             form.valid=false;
+             }
+             else{
+                 $("#fecha_ing_puesto"+(i+2)).removeClass('is-invalid');
+             }
 
-        //       //fecha de senasica
-        //       if($("#fecha_baj_puesto"+(i+2)).val()=="")
-        //       {
-        //       $("#fecha_baj_puesto"+(i+2)).addClass('is-invalid');
-        //       form.valid=false;
-        //       }
-        //       else{
-        //           $("#fecha_baj_puesto"+(i+2)).removeClass('is-invalid');
-        //       }
+              //fecha de senasica
+              if($("#fecha_baj_puesto"+(i+2)).val()=="")
+              {
+              $("#fecha_baj_puesto"+(i+2)).addClass('is-invalid');
+              form.valid=false;
+              }
+              else{
+                  $("#fecha_baj_puesto"+(i+2)).removeClass('is-invalid');
+              }
 
-        //        //documento
-        //        if($("#doc_puesto"+(i+2)).val()=="")
-        //        {
-        //        $("#doc_puesto"+(i+2)).addClass('is-invalid');
-        //        form.valid=false;
-        //        }
-        //        else{
-        //            $("#doc_puesto"+(i+2)).removeClass('is-invalid');
-        //        }
+               //documento
+               if($("#doc_puesto"+(i+2)).val()=="")
+               {
+               $("#doc_puesto"+(i+2)).addClass('is-invalid');
+               form.valid=false;
+               }
+               else{
+                   $("#doc_puesto"+(i+2)).removeClass('is-invalid');
+               }
 
-        // });
+        });
 
 
 

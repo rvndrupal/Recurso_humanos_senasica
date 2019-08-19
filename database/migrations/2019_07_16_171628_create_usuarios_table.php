@@ -42,20 +42,22 @@ class CreateUsuariosTable extends Migration
 
 
             $table->unsignedBigInteger('paises_id');
-            $table->foreign('paises_id')->references('id')->on('paises');
+            $table->foreign('paises_id')->references('id')->on('paises')->onDelete('cascade');
 
             $table->unsignedBigInteger('estados_id');
-            $table->foreign('estados_id')->references('id')->on('estados');
+            $table->foreign('estados_id')->references('id')->on('estados')->onDelete('cascade');
+
             $table->unsignedBigInteger('colonias_id');
-            $table->foreign('colonias_id')->references('id')->on('colonias');
+            $table->foreign('colonias_id')->references('id')->on('colonias')->onDelete('cascade');
+
             $table->unsignedBigInteger('municipios_id');
-            $table->foreign('municipios_id')->references('id')->on('municipios');
+            $table->foreign('municipios_id')->references('id')->on('municipios')->onDelete('cascade');
 
             $table->unsignedBigInteger('estado_civils_id');
-            $table->foreign('estado_civils_id')->references('id')->on('estado_civils');
+            $table->foreign('estado_civils_id')->references('id')->on('estado_civils')->onDelete('cascade');
 
             $table->unsignedBigInteger('opcionciviles_id');
-            $table->foreign('opcionciviles_id')->references('id')->on('opcionciviles');
+            $table->foreign('opcionciviles_id')->references('id')->on('opcionciviles')->onDelete('cascade');;
 
 
 

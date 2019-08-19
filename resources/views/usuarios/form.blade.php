@@ -90,15 +90,17 @@
                                 </div>
                                 <select class="form-control" name="estado_civils_id" id="estado_civil" placeholder="Estado civil" >
                                     <option value="">Estado civil</option>
-                                    @foreach ($estadoCivil as $item)
-                                     <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    @foreach ($estadoCivil as $estado_civil)
+                                     <option value="{{ $estado_civil->id }}">{{ $estado_civil->nombre }}</option>
                                     @endforeach
-
                                 </select>
+
                         </div>
                     </div>
                 </div>
                     <div class="elementos_estado">
+
+
 
                         <div id="soltero">
                             <div class="col-md-4" >
@@ -123,8 +125,29 @@
                             </div>
                         </div>{{-- -soltero --}}
 
+
+
+
                          <div id="casado">
+
+                                <div class="col-md-4" >
+                                        <div class="input-group flex-nowrap">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="addon-wrapping">Hijos</span>
+                                                </div>
+                                                <select class="form-control" name="opcionciviles_id" id="hijosCas" placeholder="Hijos" >
+                                                    <option value="">Tienes Hijos</option>
+                                                    @foreach ($opCivil as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->opcion_civil }}</option>
+                                                   @endforeach
+                                                </select>
+
+                                        </div>
+                                </div>
+
                              @include('usuarios/form/casado')
+
+
 
                              <div id="ec">
                                 <table class="table table-bordered" id="dynamic_hijos">
@@ -322,6 +345,7 @@ $(document).ready(function(){
             {
                 $('#soltero').show(500);
                 $('#casado').hide();
+                //$('#casado').empty();
                 $('#ec').empty();
                 $('dynamic_hijos').empty();
 
@@ -333,9 +357,18 @@ $(document).ready(function(){
                 $('#bh').empty();
                 $('#if').empty();
             }
+        });
 
-
-
+        //mostrar hijos si esta casado
+        $('#hijosCas').change(function(){
+           $casH=$(this).val();
+            if($casH==1){
+                $('#hijoscas').show();
+            }
+            else{
+                $('#hijoscas').hide();
+                $('#hijoscas').empty();
+            }
         });
 
         //soltero

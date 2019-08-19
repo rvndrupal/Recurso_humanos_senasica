@@ -128,41 +128,13 @@
 
                             <div id="bh">
                             </div>
-
-                            {{--  <div id="editar_hijo">
-                                    <h1>ok mostrar</h1>
-                                    @foreach($use[0]->solteros as $item=>$v)
-                                    <tr>
-                                       <td>
-                                               <div class="input-group flex-nowrap">
-                                                      <div class="input-group-prepend">
-                                                           <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                                      </div>
-                                                       <input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" value="{{ $v->nombre }}"  id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-
-                                               </div>
-                                       </td>
-                                       <td>
-                                               <div class="input-group flex-nowrap">
-                                                       <div class="input-group-prepend">
-                                                           <span class="input-group-text" id="addon-wrapping">Edad</span>
-                                                       </div>
-                                                       <input type="text" class="form-control" data-valor="'+i+'" name="edad[]" value="{{ $v->edad }}" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">
-                                               </div>
-                                       </td>
-                                       <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
-                                    </tr>
-                                    @endforeach
-                            </div>  --}}
-                            {{-- mostrar ehijos editar --}}
-
                             <div id="if">
 
                             </div>
                         </div>{{-- -soltero --}}
 
                          <div id="casado">
-                             {{--  @include('usuarios/edit/casado')  --}}
+                             @include('usuarios/edit/casado')
 
                              <div id="ec">
                                 <table class="table table-bordered" id="dynamic_hijos">
@@ -391,13 +363,14 @@ $(document).ready(function(){
                      '<hr>'+
                      '<h4>Familiares Descendientes</h4>'+
                     ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
+                    '@foreach($use[0]->Descensientes as $item=>$v)'+
                      '<tr>'+
-                             {{-- '<td>'+
+                            '<td>'+
                                      '<div class="input-group flex-nowrap">'+
                                              '<div class="input-group-prepend">'+
                                                  '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                              '</div>'+
-                                             '<input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                             '<input type="text" class="form-control" name="nombre_des[]" id="hijo" value="{{ $v->nombre_des }}"  placeholder="Nombre" aria-label="Nombre"  aria-describedby="addon-wrapping">'+
                                      '</div>'+
                              '</td>'+
                              '<td>'+
@@ -405,7 +378,7 @@ $(document).ready(function(){
                                          '<div class="input-group-prepend">'+
                                              '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
                                          '</div>'+
-                                         '<input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                         '<input type="text" class="form-control" name="ap_des[]" id="edad" value="{{ $v->ap_des }}"   placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                  '</div>'+
                              '</td>'+
                              '<td>'+
@@ -413,17 +386,57 @@ $(document).ready(function(){
                                              '<div class="input-group-prepend">'+
                                                  '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
                                              '</div>'+
-                                             '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                             '<input type="text" class="form-control" name="am_des[]" id="edad"  value="{{ $v->am_des }}"  placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                      '</div>'+
                                  '</td>'+
-                             '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
-
+                                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>'+
                      '</tr>'+
+                     ' @endforeach'+
 
              '</table>');
 
         }
         {{-- si tiene hijos --}}
+
+        if(hi==2){
+              $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
+                      '<hr>'+
+                      '<h4>Familiares Descendientes</h4>'+
+                     ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
+                     '@foreach($use[0]->Descensientes as $item=>$v)'+
+                      '<tr>'+
+                             '<td>'+
+                                      '<div class="input-group flex-nowrap">'+
+                                              '<div class="input-group-prepend">'+
+                                                  '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                              '</div>'+
+                                              '<input type="text" class="form-control" name="nombre_des[]" id="hijo" value="{{ $v->nombre_des }}"  placeholder="Nombre" aria-label="Nombre"  aria-describedby="addon-wrapping">'+
+                                      '</div>'+
+                              '</td>'+
+                              '<td>'+
+                                  '<div class="input-group flex-nowrap">'+
+                                          '<div class="input-group-prepend">'+
+                                              '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                          '</div>'+
+                                          '<input type="text" class="form-control" name="ap_des[]" id="edad" value="{{ $v->ap_des }}"   placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                  '</div>'+
+                              '</td>'+
+                              '<td>'+
+                                      '<div class="input-group flex-nowrap">'+
+                                              '<div class="input-group-prepend">'+
+                                                  '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
+                                              '</div>'+
+                                              '<input type="text" class="form-control" name="am_des[]" id="edad"  value="{{ $v->am_des }}"  placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                      '</div>'+
+                                  '</td>'+
+                                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>'+
+                      '</tr>'+
+                      ' @endforeach'+
+
+              '</table>');
+         }
+        {{-- No tiene hijos --}}
+
 
 
 
@@ -461,8 +474,6 @@ $(document).ready(function(){
 
             if(seleccion=='1')
             {
-
-
                 $('#bh').html('<table class="table table-bordered soltero_hijos" id="dynamic_field">'+
                        ' <h4>Agrega a tus hijos</h4>'+
                         '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
@@ -495,8 +506,9 @@ $(document).ready(function(){
                         '<hr>'+
                         '<h4>Familiares Descendientes</h4>'+
                        ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
+                       {{--
                         '<tr>'+
-                                {{-- '<td>'+
+                               '<td>'+
                                         '<div class="input-group flex-nowrap">'+
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
@@ -520,9 +532,10 @@ $(document).ready(function(){
                                                 '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
                                     '</td>'+
-                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
+                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+
 
                         '</tr>'+
+                        --}}
 
                 '</table>');
 
@@ -558,8 +571,9 @@ $(document).ready(function(){
                         '<hr>'+
                         '<h4>Familiares Descendientes</h4>'+
                        ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
+                       {{--
                         '<tr>'+
-                                {{-- '<td>'+
+                                '<td>'+
                                         '<div class="input-group flex-nowrap">'+
                                                 '<div class="input-group-prepend">'+
                                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
@@ -583,9 +597,9 @@ $(document).ready(function(){
                                                 '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                                         '</div>'+
                                     '</td>'+
-                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
-
+                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+
                         '</tr>'+
+                        --}}
 
                 '</table>');
 
@@ -630,8 +644,6 @@ $(document).ready(function(){
         var i=1;
         $(document).on('click', '#addViudo', function(){
              i++;
-
-
              $('#if').append('<tr id="row'+i+'">'+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+

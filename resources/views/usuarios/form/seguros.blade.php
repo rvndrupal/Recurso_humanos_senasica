@@ -107,7 +107,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Parentesco</span>
                                 </div>
-                            <input type="text" class="form-control" name="par_seg" id="par_seg"    placeholder="Empleado" aria-label="Nombre" aria-describedby="addon-wrapping">
+                            <input type="text" class="form-control" name="par_seg" id="par_seg"    placeholder="Parentesco" aria-label="Nombre" aria-describedby="addon-wrapping">
                         </div>
                 </div>
 

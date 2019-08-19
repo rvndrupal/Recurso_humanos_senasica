@@ -186,7 +186,7 @@ class UsuariosController extends Controller
         //     'numero'  => $request->numero,
         //     'condicion'  => '1',
         // );
-
+        //dd($request->opcionciviles_id);
 
         $usuario = Usuarios::create($request->all());
         //  $usuario->pais()->attach($request->get('pais'));
@@ -236,9 +236,21 @@ class UsuariosController extends Controller
          }
 
          //opcion civil
-         $usuario->Opcionciviles->create([
-            'opcionciviles_id'=>$request->opcionciviles_id
-         ]);
+         $opci=$request->opcionciviles_id;
+         if($opci==null){
+            $opci=0;
+         }
+         else{
+             $opci=$request->opcionciviles_id;
+         }
+
+        $usuario->Opcionciviles->create([
+            'opcionciviles_id'=>$opci
+        ]);
+
+
+
+         //edad
 
          if(isset($request->nombre))
          {
@@ -337,12 +349,9 @@ class UsuariosController extends Controller
          {
                 foreach($request->nombre_des as $item=>$v)
                 {
-
                     $nom=$request->nombre_des[$item];
                     $ap=$request->ap_des[$item];
-                    $am=$request->am_des[$item];
-
-                    //dd($edad);
+                    $am=$request->am_des[$item];                    //dd($edad);
 
                     if($nom==""){$nom=0;}else{$nom=$request->nombre_des[$item];}
                     if($ap==""){$ap=0;}else{$ap=$request->ap_des[$item];}
@@ -353,7 +362,6 @@ class UsuariosController extends Controller
                     'ap_des'=>$ap,
                     'am_des'=>$am
                     ]);
-
                 }
         }
 
@@ -718,7 +726,7 @@ class UsuariosController extends Controller
        $rfc_sub=substr($edi_rfc,4);
 
 
-      // dd($use[0]->solteros);
+      //dd($use[0]->Descensientes);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'

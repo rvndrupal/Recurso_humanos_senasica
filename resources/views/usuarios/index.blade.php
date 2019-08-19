@@ -51,7 +51,17 @@
                     { data: 'ap' },
                     { data: 'am' },
                     { data: 'curp' },
-                    { data: 'condicion'},
+                    { data: 'condicion',
+                        "render": function (data, type, row) {
+                            if (row.condicion == 1) {
+                                return "<p class='activo_index'>Activo</p>"
+                            }
+                            else
+                            {
+                                return "<p class='desactivado_index'>Desactivado</p>"
+                            }
+                        }
+                     },
                     { data: 'actions' }
                 ]
             })

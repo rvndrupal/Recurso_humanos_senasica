@@ -307,3 +307,24 @@ div#ui-datepicker-div {
 .foto_tex_edi {
     margin: 0 0 58px 0;
 }
+
+/*Activo y descativado"*/
+.desactivado_index {
+    background: #dd4b39;
+    width: 122px;
+    text-align: center;
+    color: white;
+    margin: 0 0 0 -2px;
+    font-size: 18px;
+}
+
+
+.activo_index {
+    background: #00a65a;
+    width: 67px;
+    text-align: center;
+    color: white;
+    margin: 0 0 0 17px;
+    font-size: 18px;
+}
+
