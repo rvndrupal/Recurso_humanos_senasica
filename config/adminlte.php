@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'yellow-light',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -117,6 +117,48 @@ return [
         ],
 
         [
+            'text' => 'Roles',
+            'url'  => 'admin/role',
+            'icon' => 'user-tag',
+            'permission'  => 'read-role',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/role',
+                    'permission'  => 'read-role',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/role/create',
+                    'permission'  => 'create-role',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Permisos',
+            'url'  => 'admin/permission',
+            'icon' => 'lock',
+            'permission'  => 'read-permission',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/permission',
+                    'permission'  => 'read-permission',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/permission/create',
+                    'permission'  => 'create-permission',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
             'text' => 'Admin Usuarios',
             'url'  => 'admin/user',
             'icon' => 'users',
@@ -158,7 +200,7 @@ return [
                     'text' => 'ListadoAdmin',
                     'url'  => 'admin/usuarios/lista',
                     'permission'  => 'read-usuarios',
-                    // 'permission'  => 'read-usuariosAdmin',
+                    'permission'  => 'read-usuariosAdmin',
                     'icon' => 'list'
                 ],
 
@@ -398,47 +440,7 @@ return [
         ],
 
 
-        [
-            'text' => 'Roles',
-            'url'  => 'admin/role',
-            'icon' => 'user-tag',
-            'permission'  => 'read-role',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/role',
-                    'permission'  => 'read-role',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/role/create',
-                    'permission'  => 'create-role',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
-        [
-            'text' => 'Permisos',
-            'url'  => 'admin/permission',
-            'icon' => 'lock',
-            'permission'  => 'read-permission',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/permission',
-                    'permission'  => 'read-permission',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/permission/create',
-                    'permission'  => 'create-permission',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
         // [
         //     'text' => 'Clientes',

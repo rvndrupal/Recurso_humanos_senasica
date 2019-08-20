@@ -3,5 +3,5 @@
 @section('title', 'AdminLTE')
 
 @section('content')
-    <p>You are logged in!</p>
+    <p>Panel de Control</p>
 @stop

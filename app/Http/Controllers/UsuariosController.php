@@ -235,18 +235,18 @@ class UsuariosController extends Controller
             $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
          }
 
-         //opcion civil
-         $opci=$request->opcionciviles_id;
-         if($opci==null){
-            $opci=0;
-         }
-         else{
-             $opci=$request->opcionciviles_id;
-         }
+        //  //opcion civil
+        //  $opci=$request->opcionciviles_id;
+        //  if($opci==null){
+        //     $opci=0;
+        //  }
+        //  else{
+        //      $opci=$request->opcionciviles_id;
+        //  }
 
-        $usuario->Opcionciviles->create([
-            'opcionciviles_id'=>$opci
-        ]);
+        // $usuario->Opcionciviles->create([
+        //     'opcionciviles_id'=>$opci
+        // ]);
 
 
 
@@ -513,28 +513,35 @@ class UsuariosController extends Controller
 
     public function cardsAction(Request $request)
     {
+
         if($request->ajax())
         {
             $output = '';
+
             $query = $request->get('query');
             if($query != '')
             {
 
-            $data = DB::table('usuarios')
 
-                ->orwhere('nom', 'like', '%'.$query.'%')
-                ->orWhere('ap', 'like', '%'.$query.'%')
-                ->orWhere('am', 'like', '%'.$query.'%')
-                ->orWhere('rfc', 'like', '%'.$query.'%')
-                ->orWhere('curp', 'like', '%'.$query.'%')
-                ->orderBy('nom', 'desc')
-                ->get();
+
+                $data = DB::table('usuarios')
+
+                    ->orwhere('nom', 'like', '%'.$query.'%')->where('condicion','=',1)
+                    ->orWhere('ap', 'like', '%'.$query.'%')->where('condicion','=',1)
+                    ->orWhere('am', 'like', '%'.$query.'%')->where('condicion','=',1)
+                    ->orWhere('rfc', 'like', '%'.$query.'%')->where('condicion','=',1)
+                    ->orWhere('curp', 'like', '%'.$query.'%')->where('condicion','=',1)
+
+                    ->orderBy('nom', 'desc')
+
+                    ->get();
 
             }
             else
             {
             $data = DB::table('usuarios')
                 ->orderBy('nom', 'desc')
+                ->where('condicion','=',1)
                 ->get();
             }
 

@@ -123,7 +123,7 @@
                 <div class="col-md-4">
                         <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Telefono</span>
+                                    <span class="input-group-text" id="addon-wrapping">Teléfono</span>
                                 </div>
                             <input type="text" class="form-control" name="tel_seg" id="tel_seg"    placeholder="Casa" aria-label="Nombre" aria-describedby="addon-wrapping">
                         </div>
@@ -132,7 +132,7 @@
                 <div class="col-md-4">
                         <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Telefono</span>
+                                    <span class="input-group-text" id="addon-wrapping">Movil</span>
                                 </div>
                             <input type="text" class="form-control" name="mov_seg" id="mov_seg"    placeholder="Movil" aria-label="Nombre" aria-describedby="addon-wrapping">
                         </div>

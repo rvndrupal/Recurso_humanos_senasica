@@ -34,12 +34,18 @@
             <div class="bg-light border-right" id="sidebar-wrapper">
               <div class="sidebar-heading">ADMINISTRACIÓN</div>
               <div class="list-group list-group-flush">
-                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">INICIO</a>
-                <a href="{{ route('cards') }}" class="list-group-item list-group-item-action bg-light">CARDS</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">TRES</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">CUATRO</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">CINCO</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">SEIS</a>
+                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
+                <a href="{{ route('paises.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo pais</a>
+                <a href="{{ route('escuelas.create') }}" class="list-group-item list-group-item-action bg-light">Nueva escuela</a>
+                <a href="{{ route('grados.create') }}" class="list-group-item list-group-item-action bg-light">Nueva grado</a>
+                <a href="{{ route('carreras.create') }}" class="list-group-item list-group-item-action bg-light">Nueva carrera</a>
+                <a href="{{ route('titulos.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo título</a>
+                <a href="{{ route('idiomas.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo idioma</a>
+                <a href="{{ route('direccionesgenerales.create') }}" class="list-group-item list-group-item-action bg-light">Nueva dirección general</a>
+                <a href="{{ route('direccionesareas.create') }}" class="list-group-item list-group-item-action bg-light">Nueva dirección area</a>
+                <a href="{{ route('codigos.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos códigos</a>
+                <a href="{{ route('niveles.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos nivel</a>
+
               </div>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -106,12 +112,12 @@
                     <div class="elementos_estado">
 
                         <div id="soltero">
-                            <div class="col-md-4" >
+                            {{-- <div class="col-md-4" >
                                     <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="addon-wrapping">Hijos</span>
                                             </div>
-                                            <select class="form-control" name="opcionciviles_id" id="hijos" placeholder="Hijos" >
+                                             <select class="form-control" name="opcionciviles_id" id="hijos" placeholder="Hijos" >
                                                 <option value="">Tienes Hijos</option>
                                                 @foreach ($opcCiv as $item)
                                                  <option value="{{ $item->id }}"
@@ -124,7 +130,7 @@
                                                 @endforeach
                                             </select>
                                     </div>
-                            </div>
+                            </div> --}}
 
                             <div id="bh">
                             </div>

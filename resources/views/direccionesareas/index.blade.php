@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@permission('read-grados')
+@permission('read-direccionesareas')
 @section('content')
     <div class="box">
         <div class="box-header">

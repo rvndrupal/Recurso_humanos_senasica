@@ -51,7 +51,7 @@
 </div>
 
 
-<div id="hijoscas" style="display:none">
+
 
     <h4>Tienes Hijos</h4><br>
     <td><button type="button" name="addHijos" id="addHijos" class="btn btn-success">+</button></td>
@@ -84,7 +84,7 @@
             </table>
 
     </div>
-</div>
+
 
 
 

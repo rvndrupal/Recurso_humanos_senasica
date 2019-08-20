@@ -42,7 +42,7 @@ $(".next").click(function(){
 
 
         rules:{
-             nom:{required:true,minlength:3,maxlength:20,texto: true},
+            nom:{required:true,minlength:3,maxlength:20,texto: true},
             ap:{required:true,minlength:3,maxlength:20,texto: true},
             am:{required:true,minlength:3,maxlength:20,texto: true},
              paises_id:{required:true},
@@ -94,7 +94,7 @@ $(".next").click(function(){
             par_seg:{required:true,minlength:5,maxlength:20,texto: true},
             email_seg:{required:true,minlength:5,maxlength:50,email: true},
             tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
-            mov_seg:{required:true,minlength:10,maxlength:10,numeros: true},
+            mov_seg:{required:true,minlength:5,maxlength:10,numeros: true},
 
 
 
@@ -239,7 +239,7 @@ $(".next").click(function(){
 
     $(res).each(function(i){
         //alert(res + i);
-        alert($("#sol_hijo"+i))
+        //alert($("#sol_hijo"+i))
         if(res[i] == "is-invalid")
         {
            // alert("dentro: "+res);
@@ -465,7 +465,7 @@ $(".next").click(function(){
         if($("#nivel_ingles"+(i+2)).is(':checked'))
         {
         // $("#nivel_ingles"+(i+2)).addClass('is-invalid');
-        alert("Debe seleccionar almenos un porcentaje");
+        //alert("Debe seleccionar almenos un porcentaje");
         form.valid=false;
         }
         else{

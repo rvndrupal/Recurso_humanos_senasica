@@ -34,12 +34,18 @@
             <div class="bg-light border-right" id="sidebar-wrapper">
               <div class="sidebar-heading">ADMINISTRACIÓN</div>
               <div class="list-group list-group-flush">
-                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">INICIO</a>
-                <a href="{{ route('cards') }}" class="list-group-item list-group-item-action bg-light">CARDS</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">TRES</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">CUATRO</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">CINCO</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">SEIS</a>
+                <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
+                <a href="{{ route('paises.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo pais</a>
+                <a href="{{ route('escuelas.create') }}" class="list-group-item list-group-item-action bg-light">Nueva escuela</a>
+                <a href="{{ route('grados.create') }}" class="list-group-item list-group-item-action bg-light">Nueva grado</a>
+                <a href="{{ route('carreras.create') }}" class="list-group-item list-group-item-action bg-light">Nueva carrera</a>
+                <a href="{{ route('titulos.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo título</a>
+                <a href="{{ route('idiomas.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo idioma</a>
+                <a href="{{ route('direccionesgenerales.create') }}" class="list-group-item list-group-item-action bg-light">Nueva dirección general</a>
+                <a href="{{ route('direccionesareas.create') }}" class="list-group-item list-group-item-action bg-light">Nueva dirección area</a>
+                <a href="{{ route('codigos.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos códigos</a>
+                <a href="{{ route('niveles.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos nivel</a>
+
               </div>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -103,7 +109,7 @@
 
 
                         <div id="soltero">
-                            <div class="col-md-4" >
+                            {{-- <div class="col-md-4" >
                                     <div class="input-group flex-nowrap">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="addon-wrapping">Hijos</span>
@@ -116,7 +122,7 @@
                                             </select>
 
                                     </div>
-                            </div>
+                            </div> --}}
 
                             <div id="bh">
                             </div>
@@ -129,8 +135,7 @@
 
 
                          <div id="casado">
-
-                                <div class="col-md-4" >
+                                {{-- <div class="col-md-4" >
                                         <div class="input-group flex-nowrap">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="addon-wrapping">Hijos</span>
@@ -143,7 +148,7 @@
                                                 </select>
 
                                         </div>
-                                </div>
+                                </div> --}}
 
                              @include('usuarios/form/casado')
 
@@ -332,145 +337,21 @@ $(document).ready(function(){
         });
 
 
-
-
-
-
         //estado civil ocultar
         $('#estado_civil').change(function(){
 
             var seleccion=$(this).val();
+            //alert(seleccion);
 
             if(seleccion=='1')
             {
-                $('#soltero').show(500);
-                $('#casado').hide();
-                //$('#casado').empty();
-                $('#ec').empty();
-                $('dynamic_hijos').empty();
-
-            }
-            if(seleccion=='2'){
-                $('#soltero').hide();
-                $('#casado').show(500);
-                $('#viudo').hide();
-                $('#bh').empty();
-                $('#if').empty();
-            }
-        });
-
-        //mostrar hijos si esta casado
-        $('#hijosCas').change(function(){
-           $casH=$(this).val();
-            if($casH==1){
-                $('#hijoscas').show();
-            }
-            else{
-                $('#hijoscas').hide();
-                $('#hijoscas').empty();
-            }
-        });
-
-        //soltero
-        $('#hijos').change(function(){
-
-            var seleccion=$(this).val();
-
-
-
-            if(seleccion=='1')
-            {
-
-
+                //hijos y descendientes
                 $('#bh').html('<table class="table table-bordered soltero_hijos" id="dynamic_field">'+
-                       ' <h4>Agrega a tus hijos</h4>'+
-                        '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
-                        '<tr>'+
-                                {{-- '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                                '</div>'+
-                                                '<input type="text" class="form-control" name="nombre[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                '</td>'+
-                                '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
-                                                '</div>'+
-                                               '<input type="text" class="form-control" name="edad[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                '</td>'+
-                                '<td><button type="button" name="add" id="add" class="btn btn-success">+</button></td>'+ --}}
+                    ' <h4>Agrega a tus hijos</h4>'+
+                     '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
+                     '<tr>'+
 
-                        '</tr>'+
-
-                '</table>');
-
-
-
-                $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
-                        '<hr>'+
-                        '<h4>Familiares Descendientes</h4>'+
-                       ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
-                        '<tr>'+
-                                {{-- '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                                '</div>'+
-                                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                '</td>'+
-                                '<td>'+
-                                    '<div class="input-group flex-nowrap">'+
-                                            '<div class="input-group-prepend">'+
-                                                '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                            '</div>'+
-                                            '<input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                    '</div>'+
-                                '</td>'+
-                                '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                                '</div>'+
-                                                '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                    '</td>'+
-                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
-
-                        '</tr>'+
-
-                '</table>');
-
-
-
-            }
-            if(seleccion=='2'){
-
-                $('#bh').html('<table class="table table-bordered" id="dynamic_field">'+
-                        '<tr>'+
-                                {{-- '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                                '</div>'+
-                                                '<input type="text" class="form-control" name="nombre[]" id="hijo" readonly value="0" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                '</td>'+
-                                '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
-                                                '</div>'+
-                                               '<input type="text" class="form-control" name="edad[]" id="edad"  readonly value="0" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                '</td>'+ --}}
-
-                        '</tr>'+
-
+                '</tr>'+
                 '</table>');
 
                 $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
@@ -478,41 +359,12 @@ $(document).ready(function(){
                         '<h4>Familiares Descendientes</h4>'+
                        ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
                         '<tr>'+
-                                {{-- '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                                '</div>'+
-                                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                '</td>'+
-                                '<td>'+
-                                    '<div class="input-group flex-nowrap">'+
-                                            '<div class="input-group-prepend">'+
-                                                '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                            '</div>'+
-                                            '<input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                    '</div>'+
-                                '</td>'+
-                                '<td>'+
-                                        '<div class="input-group flex-nowrap">'+
-                                                '<div class="input-group-prepend">'+
-                                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                                '</div>'+
-                                                '<input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                                        '</div>'+
-                                    '</td>'+
-                                '<td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td>'+ --}}
 
-                        '</tr>'+
-
+                '</tr>'+
                 '</table>');
 
 
-
-            }
-        });
-
+                  //soltero
         {{-- Agregar hijos --}}
         var i=1;
         $(document).on('click', '#add', function(){
@@ -585,6 +437,48 @@ $(document).ready(function(){
              var button_id = $(this).attr("id");
              $('#row'+button_id+'').remove();
         });
+
+
+
+
+
+                //hijos y descendientes
+
+                $('#soltero').show(500);
+                $('#casado').hide();
+                //$('#casado').empty();
+                {{-- $('#ec').empty();
+                $('dynamic_hijos').empty(); --}}
+
+            }
+            if(seleccion=='2'){
+                $('#soltero').hide();
+                $('#casado').show(500);
+                $('#viudo').hide();
+                $('#bh').empty();
+                $('#if').empty();
+            }
+        });
+
+        //mostrar hijos si esta casado
+        $('#hijosCas').change(function(){
+           $casH=$(this).val();
+            if($casH==1){
+                $('#hijoscas').show();
+            }
+            else{
+                $('#hijoscas').hide();
+                $('#hijoscas').empty();
+            }
+        });
+
+        $('#hijos').change(function(){
+            var Hijossoltero=$(this).val();
+            alert(Hijossoltero);
+        });
+
+
+
 
 
 
