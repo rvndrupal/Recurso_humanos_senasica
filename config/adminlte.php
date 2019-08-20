@@ -159,6 +159,29 @@ return [
         ],
 
         [
+            'text' => 'Importar',
+            'url'  => 'importar',
+            'icon' => 'users',
+            'permission'  => 'import-sistema',
+            'submenu' => [
+                [
+                    'text' => 'Paises',
+                    'url'  => 'admin/importar/pais',
+                    'permission'  => 'import-paises',
+                    'icon' => 'list'
+                ],
+
+                [
+                    'text' => 'Carreras',
+                    'url'  => 'admin/importar/carreras',
+                    'permission'  => 'import-carreras',
+                    'icon' => 'list'
+                ],
+
+            ],
+        ],
+
+        [
             'text' => 'Admin Usuarios',
             'url'  => 'admin/user',
             'icon' => 'users',

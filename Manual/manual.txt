@@ -58,3 +58,7 @@ activar-usuarios
 
 
   });  //guardar  --}}
+
+  //importar
+
+  php artisan make:import UsersImport --model=User

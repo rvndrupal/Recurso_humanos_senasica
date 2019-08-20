@@ -84,6 +84,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //importar
     Route::get('/importar','ImportarController@importar');
+
+    //importaciones de Catalogos
+    Route::get('/importar/pais', 'PaisesController@cargarPais')->name('paises.index');
+    Route::post('/importar/pais/ejecutar', 'PaisesController@importarPais')->name('import.pais');
+
+    Route::get('/importar/carreras', 'CarrerasController@cargarCarrera')->name('carreras.index');
+    Route::post('/importar/carreras/ejecutar', 'CarrerasController@importarCarrera')->name('import.carreras');
+
 });
 
 

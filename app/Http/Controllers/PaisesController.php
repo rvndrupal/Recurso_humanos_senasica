@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Paises;
 use Illuminate\Http\Request;
+use App\Imports\PaisesImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaisesController extends Controller
 {
@@ -106,6 +108,20 @@ class PaisesController extends Controller
         $pais->delete();
         return redirect(route('paises.index'))->with('message', [
             'success', __("Pais borrada correctamente")
+        ]);
+    }
+
+    public function cargarPais()
+    {
+        $title = __('Importar Paises');
+        return view('paises.import_pais',compact('title'));
+    }
+    public function importarPais()
+    {
+        Excel::import(new PaisesImport, request()->file('file'));
+
+        return redirect(route('paises.index'))->with('message', [
+            'success', __("Pais importados Correctamente")
         ]);
     }
 }

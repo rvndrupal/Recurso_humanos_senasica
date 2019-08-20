@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Carreras;
 use Illuminate\Http\Request;
+use App\Imports\CarrerasImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CarrerasController extends Controller
 {
@@ -111,6 +113,21 @@ class CarrerasController extends Controller
         $carrera->delete();
         return redirect(route('carreras.index'))->with('message', [
             'success', __("Carrera borrada correctamente")
+        ]);
+    }
+
+
+    public function cargarCarrera()
+    {
+        $title = __('Importar Carreras');
+        return view('carreras.import_carreras',compact('title'));
+    }
+    public function importarCarrera()
+    {
+        Excel::import(new CarrerasImport, request()->file('file'));
+
+        return redirect(route('carreras.index'))->with('message', [
+            'success', __("Carreras importadas Correctamente")
         ]);
     }
 }
