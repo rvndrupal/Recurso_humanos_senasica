@@ -191,9 +191,32 @@
 
 
                     {{-- DESCENDIENTES --}}
+                    <h3>Familiares Dependientes</h3>
                     <div class="row">
                         <div class="col-md-12">
-                        <h3>Familiares Descendientes</h3>
+                                <table class="table" style="margin: 14px 0 0 0;">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE</th>
+                                            <th scope="col">APELLIDO PATERNO</th>
+                                            <th scope="col">APELLIDO MATERNO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                @foreach($usuario->DependientesCasados as $item)
+                                                <tr>
+                                                  <th scope="row">{{ $loop->index+1 }}</th>
+                                                  <td>{{ $item->nombre_dep }}</td>
+                                                  <td>{{ $item->ap_dep }}</td>
+                                                  <td>{{ $item->am_dep }}</td>
+                                                </tr>
+                                                @endforeach
+                                              </tbody>
+                                      </table>
+
+
+
                         <ul>
                             @foreach($usuario->Descensientes as $item)
                             @if($item->nombre_des=="0")

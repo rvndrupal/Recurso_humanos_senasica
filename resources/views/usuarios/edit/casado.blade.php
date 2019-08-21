@@ -116,14 +116,15 @@
 <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
 <table class="table table-bordered" id="ifc">
         {{-- @foreach($use[0]->Descensientes as $item=>$v) --}}
+        @foreach($use[0]->DependientesCasados as $item)
         <tr>
                 <td>
                     <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                 </div>
-                                <input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre"
-                                aria-describedby="addon-wrapping" >
+                                <input type="text" class="form-control" name="nombre_dep[]" id="hijo"   placeholder="Nombre" aria-label="Nombre"
+                                aria-describedby="addon-wrapping" value="{{ $item->nombre_dep }}">
                     </div>
                 </td>
                 <td>
@@ -131,8 +132,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Ap</span>
                             </div>
-                            <input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre"
-                            aria-describedby="addon-wrapping" >
+                            <input type="text" class="form-control" name="ap_dep[]" id="edad"    placeholder="Paterno" aria-label="Nombre"
+                            aria-describedby="addon-wrapping" value="{{ $item->ap_dep }}" >
                     </div>
                 </td>
                 <td>
@@ -140,12 +141,12 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Ap</span>
                                 </div>
-                                <input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre"
-                                aria-describedby="addon-wrapping" >
+                                <input type="text" class="form-control" name="am_dep[]" id="edad"    placeholder="Materno" aria-label="Nombre"
+                                aria-describedby="addon-wrapping" value="{{ $item->am_dep }}">
                         </div>
                      </td>
         </tr>
-        {{-- @endforeach --}}
+        @endforeach
 
 </table>
 

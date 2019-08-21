@@ -709,7 +709,7 @@ class UsuariosController extends Controller
             $total_Exp=count($usuario->ExpLaborales);
             $total_Esc=count($usuario->DetalleEscolaridades);
 
-           //dd($usuario->DetalleEscolaridades[1]->carga_titulo);
+           //dd($usuario->DependientesCasados);
 
         return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp','ncodi','nnive','total_Esc'));
     }
