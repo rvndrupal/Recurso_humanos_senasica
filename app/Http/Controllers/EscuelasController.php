@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Escuelas;
 use Illuminate\Http\Request;
+use App\Imports\EscuelasImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EscuelasController extends Controller
 {
@@ -106,6 +108,20 @@ class EscuelasController extends Controller
         $esucela->delete();
         return redirect(route('escuelas.index'))->with('message', [
             'success', __("Escuela borrada correctamente")
+        ]);
+    }
+
+    public function cargarEscuelas()
+    {
+        $title = __('Importar Escuelas');
+        return view('escuelas.import_escuelas',compact('title'));
+    }
+    public function importarEscuelas()
+    {
+        Excel::import(new EscuelasImport, request()->file('file'));
+
+        return redirect(route('escuelas.index'))->with('message', [
+            'success', __("Escuelas importadas Correctamente")
         ]);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Grados;
 use Illuminate\Http\Request;
+use App\Imports\GradosImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class GradosController extends Controller
 {
@@ -111,6 +113,20 @@ class GradosController extends Controller
         $grados->delete();
         return redirect(route('grados.index'))->with('message', [
             'success', __("Grado borrado correctamente")
+        ]);
+    }
+
+    public function cargarGrados()
+    {
+        $title = __('Importar Grados');
+        return view('grados.import_grados',compact('title'));
+    }
+    public function importarGrados()
+    {
+        Excel::import(new GradosImport, request()->file('file'));
+
+        return redirect(route('grados.index'))->with('message', [
+            'success', __("Grados importadas Correctamente")
         ]);
     }
 }

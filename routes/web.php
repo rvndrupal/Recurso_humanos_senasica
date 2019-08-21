@@ -91,6 +91,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/importar/carreras', 'CarrerasController@cargarCarrera')->name('carreras.index');
     Route::post('/importar/carreras/ejecutar', 'CarrerasController@importarCarrera')->name('import.carreras');
+    Route::get('/importar/escuelas', 'EscuelasController@cargarEscuelas')->name('escuelas.index');
+    Route::post('/importar/escuelas/ejecutar', 'EscuelasController@importarEscuelas')->name('import.escuelas');
+    Route::get('/importar/permission', 'PermissionController@cargarPermission')->name('permission.index');
+    Route::post('/importar/permission/ejecutar', 'PermissionController@importarPermission')->name('import.permission');
+    Route::get('/importar/grados', 'GradosController@cargarGrados')->name('grados.index');
+    Route::post('/importar/grados/ejecutar', 'GradosController@importarGrados')->name('import.grados');
 
 });
 

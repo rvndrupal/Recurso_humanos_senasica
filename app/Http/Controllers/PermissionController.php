@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Role;
 use App\Permission;
 use Session;
+use App\Imports\PermissionImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PermissionController extends Controller
 {
-   
+
     public function index()
     {
         $title = __('Permisos');
@@ -30,34 +32,34 @@ class PermissionController extends Controller
 
 
     public function create()
-    {      
+    {
         $title = __('Crear nuevo Permiso');
         $permission= new Permission();
         return view('permission.form',compact('title', 'permission'));
-      
+
     }
 
 
     public function store(Request $request)
     {
         //$permiso=Permission::create($request->all());
-       
+
         $permiso=new Permission();
         $permiso->name = $request->name;
         $permiso->display_name = $request->name;
         $permiso->description = $request->description;
         $permiso->save();
 
-        return redirect(route('permission.index'))->with('message', ['success', __("Permiso creado correctamente")]);
+        return redirect(route('permission.create'))->with('message', ['success', __("Permiso creado correctamente")]);
     }
 
-   
+
     public function show($id)
     {
         //
     }
 
-    
+
     public function edit($id)
     {
         $title = __('Editar Permiso');
@@ -65,7 +67,7 @@ class PermissionController extends Controller
         return view('permission.form',compact('permission','title'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
         $permiso = Permission::find($id);
@@ -75,7 +77,7 @@ class PermissionController extends Controller
         return redirect(route('permission.index'))->with('message', ['success', __("Permiso actualizado correctamente")]);
     }
 
-  
+
     public function destroy($id)
     {
         if (request()->ajax()) {
@@ -93,5 +95,19 @@ class PermissionController extends Controller
         } else {
             abort(401);
         }
+    }
+
+    public function cargarPermission()
+    {
+        $title = __('Importar Permisos');
+        return view('permission.import_permission',compact('title'));
+    }
+    public function importarPermission()
+    {
+        Excel::import(new PermissionImport, request()->file('file'));
+
+        return redirect(route('permission.index'))->with('message', [
+            'success', __("Permisos importados Correctamente")
+        ]);
     }
 }

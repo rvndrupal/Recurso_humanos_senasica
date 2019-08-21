@@ -165,6 +165,12 @@ return [
             'permission'  => 'import-sistema',
             'submenu' => [
                 [
+                    'text' => 'Permisos',
+                    'url'  => 'admin/importar/permission',
+                    'permission'  => 'import-permission',
+                    'icon' => 'list'
+                ],
+                [
                     'text' => 'Paises',
                     'url'  => 'admin/importar/pais',
                     'permission'  => 'import-paises',
@@ -175,6 +181,19 @@ return [
                     'text' => 'Carreras',
                     'url'  => 'admin/importar/carreras',
                     'permission'  => 'import-carreras',
+                    'icon' => 'list'
+                ],
+
+                [
+                    'text' => 'Escuelas',
+                    'url'  => 'admin/importar/escuelas',
+                    'permission'  => 'import-escuelas',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Grados',
+                    'url'  => 'admin/importar/grados',
+                    'permission'  => 'import-grados',
                     'icon' => 'list'
                 ],
 
