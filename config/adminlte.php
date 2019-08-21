@@ -196,6 +196,42 @@ return [
                     'permission'  => 'import-grados',
                     'icon' => 'list'
                 ],
+                [
+                    'text' => 'Títulos',
+                    'url'  => 'admin/importar/titulos',
+                    'permission'  => 'import-titulos',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Idiomas',
+                    'url'  => 'admin/importar/idiomas',
+                    'permission'  => 'import-idiomas',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Dirección General',
+                    'url'  => 'admin/importar/direccionesgenerales',
+                    'permission'  => 'import-direccionesgenerales',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Dirección Area',
+                    'url'  => 'admin/importar/direccionesareas',
+                    'permission'  => 'import-direccionesareas',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Código',
+                    'url'  => 'admin/importar/codigos',
+                    'permission'  => 'import-codigos',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Nivel',
+                    'url'  => 'admin/importar/niveles',
+                    'permission'  => 'import-niveles',
+                    'icon' => 'list'
+                ],
 
             ],
         ],

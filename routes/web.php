@@ -97,6 +97,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/importar/permission/ejecutar', 'PermissionController@importarPermission')->name('import.permission');
     Route::get('/importar/grados', 'GradosController@cargarGrados')->name('grados.index');
     Route::post('/importar/grados/ejecutar', 'GradosController@importarGrados')->name('import.grados');
+    Route::get('/importar/titulos', 'TitulosController@cargarTitulos')->name('titulos.index');
+    Route::post('/importar/titulos/ejecutar', 'TitulosController@importarTitulos')->name('import.titulos');
+    Route::get('/importar/idiomas', 'IdiomasController@cargarIdiomas')->name('idiomas.index');
+    Route::post('/importar/idiomas/ejecutar', 'IdiomasController@importarIdiomas')->name('import.idiomas');
+    Route::get('/importar/direccionesgenerales', 'DireccionesGeneralesController@cargarDireccionesGenerales')->name('direccionesgenerales.index');
+    Route::post('/importar/direccionesgenerales/ejecutar', 'DireccionesGeneralesController@importarDireccionesGenerales')->name('import.direccionesgenerales');
+    Route::get('/importar/direccionesareas', 'DireccionesAreasController@cargarDireccionesAreas')->name('direccionesareas.index');
+    Route::post('/importar/direccionesareas/ejecutar', 'DireccionesAreasController@importarDireccionesAreas')->name('import.direccionesareas');
+    Route::get('/importar/codigos', 'CodigosController@cargarCodigos')->name('codigos.index');
+    Route::post('/importar/codigos/ejecutar', 'CodigosController@importarCodigos')->name('import.codigos');
+    Route::get('/importar/niveles', 'NivelesController@cargarNiveles')->name('niveles.index');
+    Route::post('/importar/niveles/ejecutar', 'NivelesController@importarNiveles')->name('import.niveles');
 
 });
 

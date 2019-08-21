@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DireccionesAreas;
 use Illuminate\Http\Request;
+use App\Imports\DireccionesAreasImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class DireccionesAreasController extends Controller
 {
@@ -76,6 +79,20 @@ class DireccionesAreasController extends Controller
         $direccionesareas->delete();
         return redirect(route('direccionesareas.index'))->with('message', [
             'success', __("Dirección borrada correctamente")
+        ]);
+    }
+
+    public function cargarDireccionesAreas()
+    {
+        $title = __('Importar Dirección por Area');
+        return view('direccionesareas.import_direccionesareas',compact('title'));
+    }
+    public function importarDireccionesAreas()
+    {
+        Excel::import(new DireccionesAreasImport, request()->file('file'));
+
+        return redirect(route('direccionesareas.index'))->with('message', [
+            'success', __("Dirección por Areas importadas Correctamente")
         ]);
     }
 }

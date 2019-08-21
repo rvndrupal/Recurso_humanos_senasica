@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DireccionesGenerales;
 use Illuminate\Http\Request;
+use App\Imports\DireccionesGeneralesImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class DireccionesGeneralesController extends Controller
 {
@@ -76,6 +79,20 @@ class DireccionesGeneralesController extends Controller
         $direccionesgenerales->delete();
         return redirect(route('direccionesgenerales.index'))->with('message', [
             'success', __("Dirección borrada correctamente")
+        ]);
+    }
+
+    public function cargarDireccionesGenerales()
+    {
+        $title = __('Importar Dirección General');
+        return view('direccionesgenerales.import_direccionesgenerales',compact('title'));
+    }
+    public function importarDireccionesGenerales()
+    {
+        Excel::import(new DireccionesGeneralesImport, request()->file('file'));
+
+        return redirect(route('direccionesgenerales.index'))->with('message', [
+            'success', __("Direcciones Generales importadas Correctamente")
         ]);
     }
 }

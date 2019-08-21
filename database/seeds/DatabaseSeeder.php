@@ -12,13 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(LaratrustSeeder::class);
-        $this->call(CategorySeeder::class);
-        $this->call(TagSeeder::class);
-        $this->call(ProductSeeder::class);
-        $this->call(PaymentMethodSeeder::class);
-        $this->call(CustomerSeeder::class);
-        $this->call(OrderSeeder::class);
-        $this->call(ProductTagSeeder::class);
+       // $this->call(CategorySeeder::class);
+        //$this->call(TagSeeder::class);
+        //$this->call(ProductSeeder::class);
+        //$this->call(PaymentMethodSeeder::class);
+        //$this->call(CustomerSeeder::class);
+        //$this->call(OrderSeeder::class);
+        //$this->call(ProductTagSeeder::class);
 
 
 
@@ -48,6 +48,18 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('opcionciviles')->insert([
             'opcion_civil' => 'No',
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'import-sistema',
+            'display_name' => 'Importar',
+            'description' => 'Importar al Sistema',
+        ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'import-permission',
+            'display_name' => 'Importar',
+            'description' => 'Importar Permisos',
         ]);
 
 

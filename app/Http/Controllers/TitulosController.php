@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Titulos;
 use Illuminate\Http\Request;
+use App\Imports\TitulosImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TitulosController extends Controller
 {
@@ -81,6 +83,20 @@ class TitulosController extends Controller
         $titulos->delete();
         return redirect(route('titulos.index'))->with('message', [
             'success', __("Título borrado correctamente")
+        ]);
+    }
+
+    public function cargarTitulos()
+    {
+        $title = __('Importar Titulos');
+        return view('titulos.import_titulos',compact('title'));
+    }
+    public function importarTitulos()
+    {
+        Excel::import(new TitulosImport, request()->file('file'));
+
+        return redirect(route('titulos.index'))->with('message', [
+            'success', __("Títulos importadas Correctamente")
         ]);
     }
 }

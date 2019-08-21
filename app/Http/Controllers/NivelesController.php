@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Niveles;
 use Illuminate\Http\Request;
+use App\Imports\NivelesImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class NivelesController extends Controller
 {
@@ -76,6 +80,20 @@ class NivelesController extends Controller
         $niveles->delete();
         return redirect(route('niveles.index'))->with('message', [
             'success', __("Nivel borrado correctamente")
+        ]);
+    }
+
+    public function cargarNiveles()
+    {
+        $title = __('Importar Niveles');
+        return view('niveles.import_niveles',compact('title'));
+    }
+    public function importarNiveles()
+    {
+        Excel::import(new NivelesImport, request()->file('file'));
+
+        return redirect(route('niveles.index'))->with('message', [
+            'success', __("Niveles importados Correctamente")
         ]);
     }
 }

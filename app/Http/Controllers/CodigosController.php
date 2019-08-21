@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Codigos;
+use App\Imports\CodigosImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class CodigosController extends Controller
 {
@@ -76,6 +79,20 @@ class CodigosController extends Controller
         $codigos->delete();
         return redirect(route('codigos.index'))->with('message', [
             'success', __("Código borrado correctamente")
+        ]);
+    }
+
+    public function cargarCodigos()
+    {
+        $title = __('Importar Códigos');
+        return view('codigos.import_codigos',compact('title'));
+    }
+    public function importarCodigos()
+    {
+        Excel::import(new CodigosImport, request()->file('file'));
+
+        return redirect(route('codigos.index'))->with('message', [
+            'success', __("Códigos importados Correctamente")
         ]);
     }
 }

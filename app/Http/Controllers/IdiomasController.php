@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Idiomas;
 use Illuminate\Http\Request;
+use App\Imports\IdiomasImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IdiomasController extends Controller
 {
@@ -76,6 +78,20 @@ class IdiomasController extends Controller
         $idiomas->delete();
         return redirect(route('idiomas.index'))->with('message', [
             'success', __("Idioma borrado correctamente")
+        ]);
+    }
+
+    public function cargarIdiomas()
+    {
+        $title = __('Importar Idiomas');
+        return view('idiomas.import_idiomas',compact('title'));
+    }
+    public function importarIdiomas()
+    {
+        Excel::import(new IdiomasImport, request()->file('file'));
+
+        return redirect(route('idiomas.index'))->with('message', [
+            'success', __("Idiomas importados Correctamente")
         ]);
     }
 }
