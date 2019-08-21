@@ -399,7 +399,7 @@ class UsuariosController extends Controller
             {
                   //dd($request->carga_titulo);
                 $carga_titulo=$request->carga_titulo[$item];
-                $cedula=$request->cedula[$item];
+                $carga_cedula=$request->carga_cedula[$item];
                     if($carga_titulo != 0)
                     {
                         $filenamewithExt = $request->carga_titulo[$item]->getClientOriginalName();
@@ -409,14 +409,14 @@ class UsuariosController extends Controller
                         $carga_titulo=0;
                     }
 
-                    if($cedula !=0)
+                    if($carga_cedula !=0)
                     {
                         $filenameCed = $request->carga_cedula[$item]->getClientOriginalName();
                         $carga_cedula=$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed);
                     }
                     else
                     {
-                        $cedula=0;
+                        $carga_cedula=0;
                     }
 
 
@@ -425,9 +425,9 @@ class UsuariosController extends Controller
                     'carreras_id'=>$request->carreras_id[$item],
                     'escuelas_id'=>$request->escuelas_id[$item],
                     'grados_id'=>$request->grados_id[$item],
-                    'cedula'=>$cedula,
+                    'cedula'=>$request->cedula[$item],
                     'carga_titulo'=>$carga_titulo,
-                    'carga_cedula'=>$cedula,
+                    'carga_cedula'=>$carga_cedula,
                     ]);
             }
         }
@@ -731,10 +731,10 @@ class UsuariosController extends Controller
        $muns=Municipios::orderBy('nombre_mun','ASC')->select('id','nombre_mun')->where('condicion','=','1')->get();
        $cols=Colonias::orderBy('nombre_col','ASC')->select('id','nombre_col')->where('condicion','=','1')->get();
     //    $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
-    //    $titulos=Titulos::orderBy('id','ASC')->select('id','nombre_titulo')->get();
-    //    $grados=Grados::orderBy('id','ASC')->select('id','nom_gra')->get();
-    //    $escuelas=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
-    //    $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
+      $tituloss=Titulos::orderBy('id','ASC')->select('id','nombre_titulo')->get();
+      $gradoss=Grados::orderBy('id','ASC')->select('id','nom_gra')->get();
+      $escuelass=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
+      $carrerass=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
     //    $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
         $estCS=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
         $opcCiv=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
@@ -755,12 +755,18 @@ class UsuariosController extends Controller
        $edi_rfc=$use[0]->carga_rfc;
        $rfc_sub=substr($edi_rfc,4);
 
+       $s_grados=$use[0]->DetalleEscolaridades[0]->grados_id;
+       $s_carreras=$use[0]->DetalleEscolaridades[0]->carreras_id;
+       $s_escuelas=$use[0]->DetalleEscolaridades[0]->escuelas_id;
+       $s_tt=$use[0]->DetalleEscolaridades[0]->titulos_id;
+      //dd($s_escuelas);
 
-      //dd($use[0]->solteros);
+
+      //dd($use[0]->DetalleEscolaridades[0]);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
-        ,'estCS','s_civ','s_opv','opcCiv'));
+        ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'));
     }
 
     /**

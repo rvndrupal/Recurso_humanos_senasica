@@ -274,6 +274,46 @@ div#ui-datepicker-div {
     margin: 0 0 33px 0px;
 }
 
+/*Previo titulo*/
+.image-upload-titulo > input
+{
+    display: none;
+}
+
+.image-upload-titulo img
+{
+    width: 148px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 72px;
+}
+
+#img_pre_titulo img{
+    width: 148px;
+    height: 100px;
+    margin: 0 0 33px 0px;
+}
+
+/*Previo cedula*/
+.image-upload-cedula > input
+{
+    display: none;
+}
+
+.image-upload-cedula img
+{
+    width: 148px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 72px;
+}
+
+#img_pre_cedula img{
+    width: 148px;
+    height: 100px;
+    margin: 0 0 33px 0px;
+}
+
 /*ife*/
 .image-upload-ife > input
 {

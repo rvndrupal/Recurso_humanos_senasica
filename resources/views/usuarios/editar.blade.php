@@ -211,8 +211,6 @@
 
                      </div>
 
-
-
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
@@ -221,7 +219,7 @@
                 <h2 class="fs-title">Escolaridad</h2>
                 <h3 class="fs-subtitle">Información del nivel Académico</h3>
                 <div class="row">
-                        {{--  @include('usuarios/form/escolaridad')  --}}
+                         @include('usuarios/edit/escolaridad')
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -630,6 +628,40 @@ $(document).ready(function(){
                    preview_curp_coy(this);
                    $('#previa_curp_coy').hide();
                });
+
+               //previo titulo edit
+               function preview_titulo(input)
+               {
+                   if(input.files && input.files[0])
+                   {
+                       var reader=new FileReader();
+                       reader.onload= function(e){
+                           $('#img_pre_titulo').html("<img src='"+e.target.result+"'>");
+                       }
+                       reader.readAsDataURL(input.files[0]);
+                   }
+               }
+               $('#file-input-titulo').change(function(){
+                   preview_titulo(this);
+                   $('#previa_titulo').hide();
+               });
+
+                //previo cedula edit
+                function preview_cedula(input)
+                {
+                    if(input.files && input.files[0])
+                    {
+                        var reader=new FileReader();
+                        reader.onload= function(e){
+                            $('#img_pre_cedula').html("<img src='"+e.target.result+"'>");
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+                $('#file-input-cedula').change(function(){
+                    preview_cedula(this);
+                    $('#previa_cedula').hide();
+                });
 
 
                 //precio ife
