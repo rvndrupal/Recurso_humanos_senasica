@@ -21,6 +21,7 @@ use App\ExpLaborales;
 use App\Codigos;
 use App\Niveles;
 use App\Opcionciviles;
+use App\DependientesCasados;
 
 use Illuminate\Http\Request;
 use Validator;
@@ -364,6 +365,28 @@ class UsuariosController extends Controller
                     ]);
                 }
         }
+
+        //Dependientes Casados
+         if(isset($request->nombre_dep))
+         {
+                foreach($request->nombre_dep as $item=>$v)
+                {
+                    $nom_dep=$request->nombre_dep[$item];
+                    $ap_dep=$request->ap_dep[$item];
+                    $am_dep=$request->am_dep[$item];                    //dd($edad);
+
+                    if($nom_dep==""){$nom_dep=0;}else{$nom_dep=$request->nombre_dep[$item];}
+                    if($ap_dep==""){$ap_dep=0;}else{$ap_dep=$request->ap_dep[$item];}
+                    if($am_dep==""){$am_dep=0;}else{$am_dep=$request->am_dep[$item];}
+
+                    $usuario->DependientesCasados()->create([
+                    'nombre_dep'=>$nom_dep,
+                    'ap_dep'=>$ap_dep,
+                    'am_dep'=>$am_dep
+                    ]);
+                }
+        }
+
 
 
 
@@ -733,7 +756,7 @@ class UsuariosController extends Controller
        $rfc_sub=substr($edi_rfc,4);
 
 
-      //dd($use[0]->Descensientes);
+      //dd($use[0]->solteros);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'

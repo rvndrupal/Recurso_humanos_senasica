@@ -109,20 +109,6 @@
 
 
                         <div id="soltero">
-                            {{-- <div class="col-md-4" >
-                                    <div class="input-group flex-nowrap">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="addon-wrapping">Hijos</span>
-                                            </div>
-                                            <select class="form-control" name="opcionciviles_id" id="hijos" placeholder="Hijos" >
-                                                <option value="">Tienes Hijos</option>
-                                                @foreach ($opCivil as $item)
-                                                <option value="{{ $item->id }}">{{ $item->opcion_civil }}</option>
-                                               @endforeach
-                                            </select>
-
-                                    </div>
-                            </div> --}}
 
                             <div id="bh">
                             </div>
@@ -461,7 +447,7 @@ $(document).ready(function(){
         });
 
         //mostrar hijos si esta casado
-        $('#hijosCas').change(function(){
+        {{-- $('#hijosCas').change(function(){
            $casH=$(this).val();
             if($casH==1){
                 $('#hijoscas').show();
@@ -475,7 +461,7 @@ $(document).ready(function(){
         $('#hijos').change(function(){
             var Hijossoltero=$(this).val();
             alert(Hijossoltero);
-        });
+        }); --}}
 
 
 

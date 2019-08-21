@@ -254,6 +254,26 @@ div#ui-datepicker-div {
     margin: 0 0 33px 0px;
 }
 
+/*Previo curp_coy*/
+.image-upload-curp_coy > input
+{
+    display: none;
+}
+
+.image-upload-curp_coy img
+{
+    width: 148px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 72px;
+}
+
+#img_pre_curp_coy img{
+    width: 148px;
+    height: 100px;
+    margin: 0 0 33px 0px;
+}
+
 /*ife*/
 .image-upload-ife > input
 {

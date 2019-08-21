@@ -88,7 +88,7 @@
 
 
 
-<h4>Familiares Descendientes</h4>
+<h4>Familiares Dependientes</h4>
 
 <table class="table table-bordered" id="ifc">
 
@@ -173,7 +173,7 @@
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_des[]" id="des_nom'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_dep[]" id="dep_nom'+i+'" placeholder="Nombres" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                   '</td>'+
                   '<td>'+
@@ -181,7 +181,7 @@
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="ap_des[]" id="des_ap'+i+'" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="ap_dep[]" id="dep_ap'+i+'" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
 
@@ -190,7 +190,7 @@
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="am_des[]" id="des_am'+i+'" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="am_dep[]" id="dep_am'+i+'" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
                         '</div>'+
                  '</td>'+
                  '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');

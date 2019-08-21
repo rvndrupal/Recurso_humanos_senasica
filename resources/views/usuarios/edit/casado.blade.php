@@ -1,13 +1,14 @@
-<h4>Información del Conyuge</h4>
+{{-- EDITAR ESTADO CASADO --}}
+<h4>Información del Conyuge editar</h4>
 <div class="row">
-
         <div class="col-md-4">
-
+            @foreach($use[0]->conyuges as $item=>$v)
             <div class="input-group flex-nowrap">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="addon-wrapping">Nombres</span>
                 </div>
-                <input type="text" class="form-control" name="nombres_coy" id="nombres_coy" placeholder="Nombres" aria-label="" aria-describedby="addon-wrapping">
+                <input type="text" class="form-control" name="nombres_coy" id="nombres_coy" placeholder="Nombres" aria-label=""
+                aria-describedby="addon-wrapping" value="{{ $v->nombres_coy }}">
             </div>
         </div>
 
@@ -16,7 +17,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Apellido</span>
                     </div>
-                <input type="text" class="form-control" name="primero_coy" id="primero_coy"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">
+                <input type="text" class="form-control" name="primero_coy" id="primero_coy"    placeholder="Paterno" aria-label="Nombre"
+                aria-describedby="addon-wrapping" value="{{ $v->primero_coy }}">
             </div>
         </div>
 
@@ -25,45 +27,72 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Apellido</span>
                     </div>
-                <input type="text" class="form-control" name="segundo_coy" id="segundo_coy"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">
+                <input type="text" class="form-control" name="segundo_coy" id="segundo_coy"    placeholder="Materno" aria-label="Nombre"
+                aria-describedby="addon-wrapping" value="{{ $v->segundo_coy }}">
             </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-12">
             <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Curp</span>
                     </div>
-                <input type="text" class="form-control" name="curp_coy" id="curp_coy"    placeholder="Curp" aria-label="Nombre" aria-describedby="addon-wrapping">
+                <input type="text" class="form-control" name="curp_coy" id="curp_coy"    placeholder="Curp" aria-label="Nombre"
+                aria-describedby="addon-wrapping" value="{{ $v->curp_coy }}">
             </div>
         </div>
 
-
-
-        <div class="col-md-2">
+        {{-- <div class="col-md-2">
                 <label class="foto_tex text3">CURP</label>
         </div>
 
       <div class="col-md-5">
             <input type="file" class="form-control"  name="carga_curp_coy" id="carga_curp_coy">
-      </div>
+      </div> --}}
+      <div class="row curp">
+            <div class="col-md-1">
+                    <label class="foto_tex">CURP</label>
+            </div>
+
+          <div class="col-md-5">
+                <div class="image-upload-curp">
+                    <label for="file-input-curp_coy">
+                        {{--  importante el cambio for label  --}}
+                        <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir curp" title ="Click aquí para subir curp" >
+                    </label>
+                    <input id="file-input-curp_coy" type="file" class="form-control id_curp"  name="carga_curp_coy"/>
+                </div>
+          </div>
+          <div class="col-md-6">
+                <div id="previa_curp_coy">
+                <img src="http://localhost/recursos/public/{{ $v->carga_curp_coy }}" width="200px" alt="">
+                {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
+                </div>
+                <div id="img_pre_curp_coy">
+
+                </div>
+
+          </div>
+    </div>
+      @endforeach
 
 </div>
+{{-- row --}}
 
 <h4>Tienes Hijos</h4><br>
 <td><button type="button" name="addHijos" id="addHijos" class="btn btn-success">+</button></td>
 
 <div class="row">
-
         <table class="table table-bordered" id="dynamic_hijos">
-
+                @foreach($use[0]->HijosConyuges as $item=>$v)
                 <tr>
-                        {{-- <td>
+                        <td>
                                 <div class="input-group flex-nowrap">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                         </div>
-                                        <input type="text" class="form-control nombre_hijo_coy" name="nombre_hijo_coy[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                        <input type="text" class="form-control nombre_hijo_coy" name="nombre_hijo_coy[]" id="hijo"   placeholder="Nombre" aria-label="Nombre"
+                                        aria-describedby="addon-wrapping" value="{{ $v->nombre_hijo_coy }}">
                                 </div>
                         </td>
                         <td>
@@ -71,12 +100,12 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="addon-wrapping">Edad</span>
                                         </div>
-                                       <input type="text" class="form-control" name="edad_hijo_coy[]" id="edad"    placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">
+                                       <input type="text" class="form-control" name="edad_hijo_coy[]" id="edad"  placeholder="Edad" aria-label="Nombre"
+                                       aria-describedby="addon-wrapping" value="{{ $v->edad_hijo_coy }}">
                                 </div>
-                        </td> --}}
-
-
+                        </td>
                 </tr>
+                @endforeach
 
         </table>
 
@@ -84,40 +113,39 @@
 
 
 <h4>Familiares Descendientes</h4>
-
+<button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
 <table class="table table-bordered" id="ifc">
-
+        {{-- @foreach($use[0]->Descensientes as $item=>$v) --}}
         <tr>
-
-                {{-- <td> --}}
-                        {{-- <div class="input-group flex-nowrap">
+                <td>
+                    <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Nombre</span>
                                 </div>
-                                <input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div> --}}
-                {{-- </td>
-                <td> --}}
-                    {{-- <div class="input-group flex-nowrap">
+                                <input type="text" class="form-control" name="nombre_des[]" id="hijo"   placeholder="Nombre" aria-label="Nombre"
+                                aria-describedby="addon-wrapping" >
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Ap</span>
                             </div>
-                            <input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">
-                    </div> --}}
-                {{-- </td>
-                <td> --}}
-                        {{-- <div class="input-group flex-nowrap">
+                            <input type="text" class="form-control" name="ap_des[]" id="edad"    placeholder="Paterno" aria-label="Nombre"
+                            aria-describedby="addon-wrapping" >
+                    </div>
+                </td>
+                <td>
+                         <div class="input-group flex-nowrap">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Ap</span>
                                 </div>
-                                <input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">
-                        </div> --}}
-                    {{-- </td> --}}
-                {{-- <td><button type="button" name="add" id="addViudo" class="btn btn-success">+</button></td> --}}
-
-                <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
-
+                                <input type="text" class="form-control" name="am_des[]" id="edad"    placeholder="Materno" aria-label="Nombre"
+                                aria-describedby="addon-wrapping" >
+                        </div>
+                     </td>
         </tr>
+        {{-- @endforeach --}}
 
 </table>
 

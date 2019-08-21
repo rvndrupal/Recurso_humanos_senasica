@@ -42,59 +42,59 @@ $(".next").click(function(){
 
 
         rules:{
-            nom:{required:true,minlength:3,maxlength:20,texto: true},
-            ap:{required:true,minlength:3,maxlength:20,texto: true},
-            am:{required:true,minlength:3,maxlength:20,texto: true},
-             paises_id:{required:true},
-            rfc:{required:true,minlength:12,maxlength:13},
-            curp:{required:true,minlength:18,maxlength:18},
-            correo_per:{required:true,email:true},
-            correo_ins:{required:true,email:true},
-            tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
-            tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
-            fecha_nacimiento:{required:true},
-            foto:{required:true,imagen:true},
-            carga_rfc:{required:true,imagen:true},
-            carga_curp:{required:true,imagen:true},
-            carga_ife:{required:true,imagen:true},
-            estados_id:{required:true},
-            municipios_id:{required:true},
-            colonias_id:{required:true},
-            calle:{required:true,minlength:5,maxlength:100},
-            numero:{required:true,minlength:2,maxlength:5,numeros:true},
-            carga_domicilio:{required:true,imagen:true},
-            fecha_domicilio:{required:true},
-            estado_civils_id:{required:true},
-            nombres_coy:{required:true,minlength:3,maxlength:20,texto: true},
-            primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
-            segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
-            curp_coy:{required:true,minlength:18,maxlength:18},
-            carga_curp_coy:{required:true,imagen:true},
-            // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
-            'cedula[]':{required:true},
-            puesto_actual:{required:true,minlength:3,maxlength:20,texto: true},
-            codigo_puesto:{required:true},
-            grado_nivel:{required:true},
-            direcciones_generales_id:{required:true},
-            direcciones_areas_id:{required:true},
-            fecha_ultimo:{required:true},
-            fecha_senasica:{required:true},
-            est_lab:{required:true},
-            mun_lab:{required:true},
-            col_lab:{required:true},
-            calle_lab:{required:true,minlength:3,maxlength:70},
-            num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
-            fecha_gobierno:{required:true},
-            num_seg:{required:true,minlength:11,maxlength:11},
-            tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
-            nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            par_seg:{required:true,minlength:5,maxlength:20,texto: true},
-            email_seg:{required:true,minlength:5,maxlength:50,email: true},
-            tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
-            mov_seg:{required:true,minlength:5,maxlength:10,numeros: true},
+            // nom:{required:true,minlength:3,maxlength:20,texto: true},
+            // ap:{required:true,minlength:3,maxlength:20,texto: true},
+            // am:{required:true,minlength:3,maxlength:20,texto: true},
+            //  paises_id:{required:true},
+            // rfc:{required:true,minlength:12,maxlength:13},
+            // curp:{required:true,minlength:18,maxlength:18},
+            // correo_per:{required:true,email:true},
+            // correo_ins:{required:true,email:true},
+            // tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
+            // tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
+            // fecha_nacimiento:{required:true},
+            // foto:{required:true,imagen:true},
+            // carga_rfc:{required:true,imagen:true},
+            // carga_curp:{required:true,imagen:true},
+            // carga_ife:{required:true,imagen:true},
+            // estados_id:{required:true},
+            // municipios_id:{required:true},
+            // colonias_id:{required:true},
+            // calle:{required:true,minlength:5,maxlength:100},
+            // numero:{required:true,minlength:2,maxlength:5,numeros:true},
+            // carga_domicilio:{required:true,imagen:true},
+            // fecha_domicilio:{required:true},
+            // estado_civils_id:{required:true},
+            // nombres_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
+            // curp_coy:{required:true,minlength:18,maxlength:18},
+            // carga_curp_coy:{required:true,imagen:true},
+            // // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
+            // 'cedula[]':{required:true},
+            // puesto_actual:{required:true,minlength:3,maxlength:20,texto: true},
+            // codigo_puesto:{required:true},
+            // grado_nivel:{required:true},
+            // direcciones_generales_id:{required:true},
+            // direcciones_areas_id:{required:true},
+            // fecha_ultimo:{required:true},
+            // fecha_senasica:{required:true},
+            // est_lab:{required:true},
+            // mun_lab:{required:true},
+            // col_lab:{required:true},
+            // calle_lab:{required:true,minlength:3,maxlength:70},
+            // num_lab:{required:true,numeros:true,minlength:1,maxlength:4},
+            // fecha_gobierno:{required:true},
+            // num_seg:{required:true,minlength:11,maxlength:11},
+            // tipo_seg:{required:true,minlength:5,maxlength:40,texto: true},
+            // nom_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // pri_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // seg_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // par_seg:{required:true,minlength:5,maxlength:20,texto: true},
+            // email_seg:{required:true,minlength:5,maxlength:50,email: true},
+            // tel_seg:{required:true,minlength:8,maxlength:14,numeros: true},
+            // mov_seg:{required:true,minlength:5,maxlength:10,numeros: true},
 
 
 
@@ -257,50 +257,50 @@ $(".next").click(function(){
     });
 
     //descendientes conyuges
-    $('.muertos input').each(function() {
-        // alert($(this).attr('class'));
-         idm=$(this).attr('id');
-         clam=$(this).attr('class');//par el error
-         rm = clam.substring(13,24); //deja la pura palabra is-invalid
-         data=$(this).attr('data-valor');
+    // $('.muertos input').each(function() {
+    //     // alert($(this).attr('class'));
+    //      idm=$(this).attr('id');
+    //      clam=$(this).attr('class');//par el error
+    //      rm = clam.substring(13,24); //deja la pura palabra is-invalid
+    //      data=$(this).attr('data-valor');
 
 
-        $('#des_nom'+data).rules("add",
-            {
-                required: true,texto:true,minlength:4,maxlength:20,
-                messages: {
-                    required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
-                }
-        });
+    //     $('#des_nom'+data).rules("add",
+    //         {
+    //             required: true,texto:true,minlength:4,maxlength:20,
+    //             messages: {
+    //                 required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+    //             }
+    //     });
 
-        $('#des_ap'+data).rules("add",
-        {
-            required: true,texto:true,minlength:4,maxlength:20,
-            messages: {
-                required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
-            }
-         });
+    //     $('#des_ap'+data).rules("add",
+    //     {
+    //         required: true,texto:true,minlength:4,maxlength:20,
+    //         messages: {
+    //             required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+    //         }
+    //      });
 
-         $('#des_am'+data).rules("add",
-         {
-             required: true,texto:true,minlength:4,maxlength:20,
-             messages: {
-                 required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
-             }
-        });
+    //      $('#des_am'+data).rules("add",
+    //      {
+    //          required: true,texto:true,minlength:4,maxlength:20,
+    //          messages: {
+    //              required: "Es obligatorio",minlength:"Minimo 4 caracteres",maxlength:"Máximo de 20 caracteres"
+    //          }
+    //     });
 
-        resm.push(rm);//la magia ponerlo en un arreglo
+    //     resm.push(rm);//la magia ponerlo en un arreglo
 
-    });
+    // });
 
-    $(resm).each(function(i){
-        //alert(res + i);
-        if(resm[i] == "is-invalid")
-        {
-           // alert("dentro: "+res);
-            form.valid=false;
-        }
-    });
+    // $(resm).each(function(i){
+    //     //alert(res + i);
+    //     if(resm[i] == "is-invalid")
+    //     {
+    //        // alert("dentro: "+res);
+    //         form.valid=false;
+    //     }
+    // });
 
     //soltero con hijos
     $('.soltero_hijos input').each(function() {
