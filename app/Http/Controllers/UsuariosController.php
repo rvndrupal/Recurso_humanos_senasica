@@ -20,7 +20,6 @@ use App\DetalleLaborales;
 use App\ExpLaborales;
 use App\Codigos;
 use App\Niveles;
-use App\Opcionciviles;
 use App\DependientesCasados;
 
 use Illuminate\Http\Request;
@@ -132,7 +131,7 @@ class UsuariosController extends Controller
        $carreras=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
        $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
        $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
-       $opCivil=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
+
        $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
        $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
        $co=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
@@ -251,32 +250,40 @@ class UsuariosController extends Controller
 
 
 
-         //edad
+         //carga hijos
 
-         if(isset($request->nombre))
+         if(isset($request->nombre_hijo))
          {
-                foreach($request->nombre as $item=>$v)
+                foreach($request->nombre_hijo as $item=>$v)
                 {
 
-                    $nom=$request->nombre[$item];
-                    $edad=$request->edad[$item];
+                    $nom_hijo=$request->nombre_hijo[$item];
+                    $curp_hijo=$request->curp_hijo[$item];
+                    $cch=$request->carga_curp_hijo[$item];
 
-                    if($nom=="0" || $nom==""){
-                    $nom=0;
+
+                    if($nom_hijo=="0" || $nom_hijo==""){
+                    $nom_hijo=0;
                     }else{
-                    $nom=$request->nombre[$item];
+                    $nom_hijo=$request->nombre_hijo[$item];
                     }
 
-                    if($edad=="0" || $edad=="")
+                    if($curp_hijo=="0" || $curp_hijo=="")
                     {
-                    $edad=0;
+                    $curp_hijo=0;
                     }else{
-                    $edad=$request->edad[$item];
+                    $curp_hijo=$request->$curp_hijo[$item];
+                    }
+
+                    if($cch==""){$cch=0;}else{
+                        $filenamewithExt =$cch->getClientOriginalName();
+                        $cch=$request->carga_curp_hijo->storeAs('CURPHIJOS',$filenamewithExt);
                     }
 
                     $usuario->solteros()->create([
-                    'nombre'=>$nom,
-                    'edad'=>$edad
+                    'nombre_hijo'=>$nom_hijo,
+                    'curp_hijo'=>$curp_hijo,
+                    'carga_curp_hijo'=>$cch
                     ]);
 
                 }

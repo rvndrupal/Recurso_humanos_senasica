@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solteros extends Model
 {
-    protected $fillable = ['nombre','edad'];
+    protected $fillable = ['nombre_hijo','curp_hijo','carga_curp_hijo'];
 
     public function usuario()
     {

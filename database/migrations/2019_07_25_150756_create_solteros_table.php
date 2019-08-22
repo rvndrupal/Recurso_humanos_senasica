@@ -15,8 +15,9 @@ class CreateSolterosTable extends Migration
     {
         Schema::create('solteros', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre',50)->default('0');
-            $table->string('edad',50)->default('0');
+            $table->string('nombre_hijo',50)->default('0');
+            $table->string('curp_hijo',50)->default('0');
+            $table->string('carga_curp_hijo',400)->default('0');
             $table->unsignedBigInteger('usuarios_id');
             $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->timestamps();

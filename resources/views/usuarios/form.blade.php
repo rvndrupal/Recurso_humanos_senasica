@@ -104,64 +104,49 @@
                         </div>
                     </div>
                 </div>
-                    <div class="elementos_estado">
 
-
-
-                        <div id="soltero">
-
-                            <div id="bh">
-                            </div>
-                            <div id="if">
-
-                            </div>
-                        </div>{{-- -soltero --}}
+                <div id="conyuge">
+                @include('usuarios/form/conyuge')
+                </div>
 
 
 
 
-                         <div id="casado">
-                                {{-- <div class="col-md-4" >
-                                        <div class="input-group flex-nowrap">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="addon-wrapping">Hijos</span>
-                                                </div>
-                                                <select class="form-control" name="opcionciviles_id" id="hijosCas" placeholder="Hijos" >
-                                                    <option value="">Tienes Hijos</option>
-                                                    @foreach ($opCivil as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->opcion_civil }}</option>
-                                                   @endforeach
-                                                </select>
+                <div class="hijos">
+                        <table class="table table-bordered" id="dynamic_field">
+                                <hr>
+                                <h4>Tienes Hijos</h4>
+                             <button type="button" name="add" id="addHijos" class="btn btn-success">+</button>
+                                <tr>
 
-                                        </div>
-                                </div> --}}
+                                </tr>
+                        </table>
+                </div>
 
-                             @include('usuarios/form/casado')
+                <div class="dependientes">
+                        <table class="table table-bordered" id="dependientes">
+                                <hr>
+                                <h4>Familiares Dependientes</h4>
+                             <button type="button" name="add" id="addDependientes" class="btn btn-success">+</button>
+                                <tr>
 
-
-
-                             <div id="ec">
-                                <table class="table table-bordered" id="dynamic_hijos">
-
-                                </table>
-
-                             </div>
-
-                             <div id="ifc">
-
-                             </div>
-
-                         </div>{{-- casados --}}
+                                </tr>
+                        </table>
+                </div>
 
 
 
-                     </div>
+
+
+
+
 
 
 
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
+        {{-- Estado civil --}}
 
         <fieldset>
                 <h2 class="fs-title">Escolaridad</h2>
@@ -323,145 +308,101 @@ $(document).ready(function(){
         });
 
 
-        //estado civil ocultar
-        $('#estado_civil').change(function(){
 
-            var seleccion=$(this).val();
-            //alert(seleccion);
-
-            if(seleccion=='1')
+        //mostrar conyuge
+        $('#conyuge').hide();
+         $('#estado_civil').change(function(){
+            var casado=$(this).val();
+            if(casado==2)
             {
-                //hijos y descendientes
-                $('#bh').html('<table class="table table-bordered soltero_hijos" id="dynamic_field">'+
-                    ' <h4>Agrega a tus hijos</h4>'+
-                     '<button type="button" name="add" id="add" class="btn btn-success">+</button>'+
-                     '<tr>'+
-
-                '</tr>'+
-                '</table>');
-
-                $('#if').html('<table class="table table-bordered" id="dynamic_field">'+
-                        '<hr>'+
-                        '<h4>Familiares Descendientes</h4>'+
-                       ' <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>'+
-                        '<tr>'+
-
-                '</tr>'+
-                '</table>');
-
-
-                  //soltero
-        {{-- Agregar hijos --}}
-        var i=1;
-        $(document).on('click', '#add', function(){
-             i++;
-             $('#dynamic_field').append('<tr class="soltero_hijos" id="row'+i+'">'+
-                 '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-
-                        '</div>'+
-                  '</td>'+
-                  '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                 '</td>'+
-                 '$("#sol_hijo").focus();'+
-                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-        });
-        $(document).on('click', '.btn_remove', function(){
-             var button_id = $(this).attr("id");
-             $('#row'+button_id+'').remove();
-        });
-
-
-        {{-- Agregar descendientes --}}
-
-        var i=1;
-        $(document).on('click', '#addViudo', function(){
-             i++;
-
-
-             $('#if').append('<tr id="row'+i+'">'+
-                 '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                  '</td>'+
-                  '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                 '</td>'+
-
-                 '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                 '</td>'+
-
-                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-
-        });
-        $(document).on('click', '.btn_remove', function(){
-             var button_id = $(this).attr("id");
-             $('#row'+button_id+'').remove();
-        });
-
-
-
-
-
-                //hijos y descendientes
-
-                $('#soltero').show(500);
-                $('#casado').hide();
-                //$('#casado').empty();
-                {{-- $('#ec').empty();
-                $('dynamic_hijos').empty(); --}}
-
-            }
-            if(seleccion=='2'){
-                $('#soltero').hide();
-                $('#casado').show(500);
-                $('#viudo').hide();
-                $('#bh').empty();
-                $('#if').empty();
-            }
-        });
-
-        //mostrar hijos si esta casado
-        {{-- $('#hijosCas').change(function(){
-           $casH=$(this).val();
-            if($casH==1){
-                $('#hijoscas').show();
+                $('#conyuge').show(500);
             }
             else{
-                $('#hijoscas').hide();
-                $('#hijoscas').empty();
+                $('#conyuge').hide(500);
             }
+         });
+
+
+
+        //Agregando los hijos
+        var i=1;
+        $(document).on('click', '#addHijos', function(){
+             i++;
+             $('#dynamic_field').append('<tr class="hijos" id="row'+i+'">'+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_hijo[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
+                        '</div>'+
+                  '</td>'+
+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Curp</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="curp_hijo[]" id="curp_hijo'+i+'" placeholder="Curp" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
+                        '</div>'+
+                  '</td>'+
+
+                  '<td>'+
+                        '<div class="col-md-12">'+
+                                '<input type="file" class="form-control"  id="carga_curp_hijo[]"  name="carga_rfc" >'+
+                        '</div>'+
+                    '</div>'+
+                  '</td>'+
+
+
+                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        });
+        $(document).on('click', '.btn_remove', function(){
+             var button_id = $(this).attr("id");
+             $('#row'+button_id+'').remove();
         });
 
-        $('#hijos').change(function(){
-            var Hijossoltero=$(this).val();
-            alert(Hijossoltero);
-        }); --}}
+        //Dependientes
+
+        var i=1;
+        $(document).on('click', '#addDependientes', function(){
+             i++;
+             $('#dependientes').append('<tr class="dependientes" id="row'+i+'">'+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_des[]" id="nombre_des'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
+                        '</div>'+
+                  '</td>'+
+                  '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Apellido</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="ap_des[]" id="ap_des'+i+'" placeholder="paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                 '</td>'+
+
+                 '<td>'+
+                        '<div class="input-group flex-nowrap">'+
+                                '<div class="input-group-prepend">'+
+                                    '<span class="input-group-text" id="addon-wrapping">Apellido</span>'+
+                                '</div>'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="am_des[]" id="am_des'+i+'" placeholder="materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                        '</div>'+
+                 '</td>'+
+
+                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        });
+        $(document).on('click', '.btn_remove', function(){
+             var button_id = $(this).attr("id");
+             $('#row'+button_id+'').remove();
+        });
 
 
 
@@ -469,6 +410,12 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+
+        //OPCIONES CONFIGURACION
 
             $('input[type="text"]').change(function(){
                 $(this).css('background','rgb(234, 234, 234)');
