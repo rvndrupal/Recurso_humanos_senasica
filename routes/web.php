@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ['module' => 'direccionesareas', 'controller' => 'DireccionesAreasController'],
         ['module' => 'codigos', 'controller' => 'CodigosController'],
         ['module' => 'niveles', 'controller' => 'NivelesController'],
+        ['module' => 'estadocivil', 'controller' => 'EstadoCivilController'],
     ];
 
     foreach ($routes as $route) {
@@ -109,6 +110,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/importar/codigos/ejecutar', 'CodigosController@importarCodigos')->name('import.codigos');
     Route::get('/importar/niveles', 'NivelesController@cargarNiveles')->name('niveles.index');
     Route::post('/importar/niveles/ejecutar', 'NivelesController@importarNiveles')->name('import.niveles');
+    Route::get('/importar/estadocivil', 'EstadoCivilController@cargarEstadoCivil')->name('estadocivil.index');
+    Route::post('/importar/estadocivil/ejecutar', 'EstadoCivilController@importarEstadoCivil')->name('import.estadocivil');
 
 });
 

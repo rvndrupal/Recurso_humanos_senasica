@@ -24,6 +24,7 @@ return [
             'direccionesareas' => 'c,r,u,d',
             'codigos' => 'c,r,u,d',
             'niveles' => 'c,r,u,d',
+            'estadocivil' => 'c,r,u,d',
 
         ],
         'administrator' => [
@@ -47,6 +48,9 @@ return [
             'direccionesareas' => 'c,r,u',
             'codigos' => 'c,r,u',
             'niveles' => 'c,r,u',
+            'estadocivil' => 'c,r,u',
+
+
 
         ],
         'normaluser' => [
@@ -70,6 +74,8 @@ return [
             'direccionesareas' => 'r',
             'codigos' => 'r',
             'niveles' => 'r',
+            'estadocivil' => 'r',
+
 
         ],
     ],

@@ -117,6 +117,76 @@ return [
         ],
 
         [
+            'text' => 'Admin Usuarios',
+            'url'  => 'admin/user',
+            'icon' => 'users',
+            'permission'  => 'read-user',
+            'submenu' => [
+                [
+                    'text' => 'Listado',
+                    'url'  => 'admin/user',
+                    'permission'  => 'read-user',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/user/create',
+                    'permission'  => 'create-user',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+        [
+            'text' => 'Carnet',
+            'url'  => 'admin/usuarios',
+            'icon' => 'users',
+            'permission'  => 'read-usuarios',
+            // 'permission'  => 'read-carnet',
+            'submenu' => [
+                [
+                    'text' => 'ListadoSuper',
+                    'url'  => 'admin/usuarios',
+                    'permission'  => 'read-usuarios',
+                    // 'permission'  => 'read-usuariosSuper',
+                    'icon' => 'list'
+                ],
+
+                [
+                    'text' => 'ListadoAdmin',
+                    'url'  => 'admin/usuarios/lista',
+                    'permission'  => 'read-usuarios',
+                    'permission'  => 'read-usuariosAdmin',
+                    'icon' => 'list'
+                ],
+
+                // [
+                //     'text' => 'Cards',
+                //     'url'  => 'admin/usuarios/cards',
+                //     'permission'  => 'read-card',
+                //     'icon' => 'list'
+                // ],
+
+                [
+                    'text' => 'Cards',
+                    'url'  => 'admin/usuarios/cards',
+                    'permission'  => 'read-usuarios',
+                    // 'permission'  => 'read-card',
+                    'icon' => 'list'
+                ],
+
+                [
+                    'text' => 'Crear',
+                    'url'  => 'admin/usuarios/create',
+                    'permission'  => 'create-usuarios',
+                    'icon' => 'plus-circle'
+                ],
+            ],
+        ],
+
+
+
+        [
             'text' => 'Roles',
             'url'  => 'admin/role',
             'icon' => 'user-tag',
@@ -158,6 +228,7 @@ return [
             ],
         ],
 
+        //importar
         [
             'text' => 'Importar',
             'url'  => 'importar',
@@ -174,6 +245,13 @@ return [
                     'text' => 'Paises',
                     'url'  => 'admin/importar/pais',
                     'permission'  => 'import-paises',
+                    'icon' => 'list'
+                ],
+
+                [
+                    'text' => 'Estado Civil',
+                    'url'  => 'admin/importar/estadocivil',
+                    'permission'  => 'import-estadocivil',
                     'icon' => 'list'
                 ],
 
@@ -236,286 +314,267 @@ return [
             ],
         ],
 
+        //catalogos
         [
-            'text' => 'Admin Usuarios',
-            'url'  => 'admin/user',
+            'text' => 'Catálogos',
+            'url'  => 'catalagos',
             'icon' => 'users',
-            'permission'  => 'read-user',
+            'permission'  => 'catalogos-sistema',
             'submenu' => [
+
                 [
-                    'text' => 'Listado',
-                    'url'  => 'admin/user',
-                    'permission'  => 'read-user',
-                    'icon' => 'list'
+                    'text' => 'Pais',
+                    'url'  => 'admin/paises',
+                    'icon' => 'users',
+                    'permission'  => 'read-paises',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/paises',
+                            'permission'  => 'read-paises',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/paises/create',
+                            'permission'  => 'create-paises',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
                 ],
+
                 [
-                    'text' => 'Crear',
-                    'url'  => 'admin/user/create',
-                    'permission'  => 'create-user',
-                    'icon' => 'plus-circle'
+                    'text' => 'Estado civil',
+                    'url'  => 'admin/estadocivil',
+                    'icon' => 'users',
+                    'permission'  => 'read-estadocivil',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/estadocivil',
+                            'permission'  => 'read-estadocivil',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/estadocivil/create',
+                            'permission'  => 'create-estadocivil',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
                 ],
+
+
+                [
+                    'text' => 'Escuela',
+                    'url'  => 'admin/escuelas',
+                    'icon' => 'users',
+                    'permission'  => 'read-escuelas',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/escuelas',
+                            'permission'  => 'read-escuelas',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/escuelas/create',
+                            'permission'  => 'create-escuelas',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Grados',
+                    'url'  => 'admin/grados',
+                    'icon' => 'users',
+                    'permission'  => 'read-grados',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/grados',
+                            'permission'  => 'read-grados',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/grados/create',
+                            'permission'  => 'create-grados',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Carreras',
+                    'url'  => 'admin/carreras',
+                    'icon' => 'users',
+                    'permission'  => 'read-carreras',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/carreras',
+                            'permission'  => 'read-carreras',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/carreras/create',
+                            'permission'  => 'create-carreras',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Títulos',
+                    'url'  => 'admin/titulos',
+                    'icon' => 'users',
+                    'permission'  => 'read-titulos',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/titulos',
+                            'permission'  => 'read-titulos',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/titulos/create',
+                            'permission'  => 'create-titulos',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Idiomas',
+                    'url'  => 'admin/idiomas',
+                    'icon' => 'users',
+                    'permission'  => 'read-idiomas',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/idiomas',
+                            'permission'  => 'read-idiomas',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/idiomas/create',
+                            'permission'  => 'create-idiomas',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Dirección General',
+                    'url'  => 'admin/direccionesgenerales',
+                    'icon' => 'users',
+                    'permission'  => 'read-direccionesgenerales',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/direccionesgenerales',
+                            'permission'  => 'read-direccionesgenerales',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/direccionesgenerales/create',
+                            'permission'  => 'create-direccionesgenerales',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Dirección por Área',
+                    'url'  => 'admin/direccionesareas',
+                    'icon' => 'users',
+                    'permission'  => 'read-direccionesareas',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/direccionesareas',
+                            'permission'  => 'read-direccionesareas',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/direccionesareas/create',
+                            'permission'  => 'create-direccionesareas',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Código Puesto',
+                    'url'  => 'admin/codigos',
+                    'icon' => 'users',
+                    'permission'  => 'read-codigos',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/codigos',
+                            'permission'  => 'read-codigos',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/codigos/create',
+                            'permission'  => 'create-codigos',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+                [
+                    'text' => 'Nivel',
+                    'url'  => 'admin/niveles',
+                    'icon' => 'users',
+                    'permission'  => 'read-niveles',
+                    'submenu' => [
+                        [
+                            'text' => 'Listado',
+                            'url'  => 'admin/niveles',
+                            'permission'  => 'read-niveles',
+                            'icon' => 'list'
+                        ],
+                        [
+                            'text' => 'Crear',
+                            'url'  => 'admin/niveles/create',
+                            'permission'  => 'create-niveles',
+                            'icon' => 'plus-circle'
+                        ],
+                    ],
+                ],
+
+
+
+
+
+
+
+
             ],
         ],
+
+
 
         //Panel de usuarios
 
-        [
-            'text' => 'Carnet',
-            'url'  => 'admin/usuarios',
-            'icon' => 'users',
-            'permission'  => 'read-usuarios',
-            // 'permission'  => 'read-carnet',
-            'submenu' => [
-                [
-                    'text' => 'ListadoSuper',
-                    'url'  => 'admin/usuarios',
-                    'permission'  => 'read-usuarios',
-                    // 'permission'  => 'read-usuariosSuper',
-                    'icon' => 'list'
-                ],
-
-                [
-                    'text' => 'ListadoAdmin',
-                    'url'  => 'admin/usuarios/lista',
-                    'permission'  => 'read-usuarios',
-                    'permission'  => 'read-usuariosAdmin',
-                    'icon' => 'list'
-                ],
-
-                // [
-                //     'text' => 'Cards',
-                //     'url'  => 'admin/usuarios/cards',
-                //     'permission'  => 'read-card',
-                //     'icon' => 'list'
-                // ],
-
-                [
-                    'text' => 'Cards',
-                    'url'  => 'admin/usuarios/cards',
-                    'permission'  => 'read-usuarios',
-                    // 'permission'  => 'read-card',
-                    'icon' => 'list'
-                ],
-
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/usuarios/create',
-                    'permission'  => 'create-usuarios',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-
-        [
-            'text' => 'Pais',
-            'url'  => 'admin/paises',
-            'icon' => 'users',
-            'permission'  => 'read-paises',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/paises',
-                    'permission'  => 'read-paises',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/paises/create',
-                    'permission'  => 'create-paises',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-
-        [
-            'text' => 'Escuela',
-            'url'  => 'admin/escuelas',
-            'icon' => 'users',
-            'permission'  => 'read-escuelas',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/escuelas',
-                    'permission'  => 'read-escuelas',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/escuelas/create',
-                    'permission'  => 'create-escuelas',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-
-        [
-            'text' => 'Grados',
-            'url'  => 'admin/grados',
-            'icon' => 'users',
-            'permission'  => 'read-grados',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/grados',
-                    'permission'  => 'read-grados',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/grados/create',
-                    'permission'  => 'create-grados',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
-
-        [
-            'text' => 'Carreras',
-            'url'  => 'admin/carreras',
-            'icon' => 'users',
-            'permission'  => 'read-carreras',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/carreras',
-                    'permission'  => 'read-carreras',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/carreras/create',
-                    'permission'  => 'create-carreras',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
 
-        [
-            'text' => 'Títulos',
-            'url'  => 'admin/titulos',
-            'icon' => 'users',
-            'permission'  => 'read-titulos',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/titulos',
-                    'permission'  => 'read-titulos',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/titulos/create',
-                    'permission'  => 'create-titulos',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
-        [
-            'text' => 'Idiomas',
-            'url'  => 'admin/idiomas',
-            'icon' => 'users',
-            'permission'  => 'read-idiomas',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/idiomas',
-                    'permission'  => 'read-idiomas',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/idiomas/create',
-                    'permission'  => 'create-idiomas',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
-        [
-            'text' => 'Dirección General',
-            'url'  => 'admin/direccionesgenerales',
-            'icon' => 'users',
-            'permission'  => 'read-direccionesgenerales',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/direccionesgenerales',
-                    'permission'  => 'read-direccionesgenerales',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/direccionesgenerales/create',
-                    'permission'  => 'create-direccionesgenerales',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
-        [
-            'text' => 'Dirección por Área',
-            'url'  => 'admin/direccionesareas',
-            'icon' => 'users',
-            'permission'  => 'read-direccionesareas',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/direccionesareas',
-                    'permission'  => 'read-direccionesareas',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/direccionesareas/create',
-                    'permission'  => 'create-direccionesareas',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
-        [
-            'text' => 'Código Puesto',
-            'url'  => 'admin/codigos',
-            'icon' => 'users',
-            'permission'  => 'read-codigos',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/codigos',
-                    'permission'  => 'read-codigos',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/codigos/create',
-                    'permission'  => 'create-codigos',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
-        [
-            'text' => 'Nivel',
-            'url'  => 'admin/niveles',
-            'icon' => 'users',
-            'permission'  => 'read-niveles',
-            'submenu' => [
-                [
-                    'text' => 'Listado',
-                    'url'  => 'admin/niveles',
-                    'permission'  => 'read-niveles',
-                    'icon' => 'list'
-                ],
-                [
-                    'text' => 'Crear',
-                    'url'  => 'admin/niveles/create',
-                    'permission'  => 'create-niveles',
-                    'icon' => 'plus-circle'
-                ],
-            ],
-        ],
 
 
 

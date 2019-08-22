@@ -85,6 +85,8 @@
 
         </fieldset>
 
+
+
         <fieldset>
                 <h2 class="fs-title">ESTADO CIVIL</h2>
                 <h3 class="fs-subtitle">Datos Personales</h3>
@@ -109,16 +111,16 @@
                         </div>
                     </div>
                 </div>
-                    <div class="elementos_estado">
 
-                        <div id="soltero">
-                            <div id="hijosEdit">
-                                <table class="table table-bordered" id="dynamic_field">
-                                <h4>Agrega a tus hijos</h4>
-                                <button type="button" name="add" id="add" class="btn btn-success">+</button>
-                                @foreach($use[0]->solteros as $item=>$v)
-                                <tr>
-                                        <td>
+                <div class="elementos_estado">
+                            <div id="soltero">
+                                <div id="hijosEdit">
+                                        <table class="table table-bordered" id="dynamic_field">
+                                        <h4>Agrega a tus hijos</h4>
+                                        <button type="button" name="add" id="add" class="btn btn-success">+</button>
+                                        @foreach($use[0]->solteros as $item=>$v)
+                                        <tr>
+                                                <td>
                                                 <div class="input-group flex-nowrap">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="addon-wrapping">Nombre</span>
@@ -128,8 +130,8 @@
 
 
                                                 </div>
-                                          </td>
-                                          <td>
+                                                </td>
+                                                <td>
                                                 <div class="input-group flex-nowrap">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="addon-wrapping">Edad</span>
@@ -137,89 +139,86 @@
                                                         <input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre"
                                                         aria-describedby="addon-wrapping" value="{{ $v->edad }}">
                                                 </div>
-                                         </td>
-                                         <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
-                                </tr>
-                                @endforeach
-                                </table>
-
-                                <table class="table table-bordered" id="dynamic_field">
-                                        <h4>Familiares Descendientes</h4>
-                                        <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
-                                        @foreach($use[0]->Descensientes as $item=>$v)
-                                        <tr>
-                                            <td>
-                                                    <div class="input-group flex-nowrap">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                                            </div>
-
-                                                            <input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre"
-                                                            aria-describedby="addon-wrapping" value="{{ $v->nombre_des }}">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="input-group flex-nowrap">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="addon-wrapping">Ap</span>
-                                                            </div>
-                                                            <input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre"
-                                                            aria-describedby="addon-wrapping" value="{{ $v->ap_des }}">
-                                                    </div>
-                                                </td>
-
-                                                <td>
-                                                    <div class="input-group flex-nowrap">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text" id="addon-wrapping">Ap</span>
-                                                            </div>
-                                                            <input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre"
-                                                            aria-describedby="addon-wrapping" value="{{ $v->am_des }}">
-                                                    </div>
                                                 </td>
                                                 <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
                                         </tr>
                                         @endforeach
-                                </table>
+                                        </table>
+
+                                        <table class="table table-bordered" id="dynamic_field">
+                                                <h4>Familiares Descendientes</h4>
+                                                <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
+                                                @foreach($use[0]->Descensientes as $item=>$v)
+                                                <tr>
+                                                        <td>
+                                                            <div class="input-group flex-nowrap">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="addon-wrapping">Nombre</span>
+                                                                    </div>
+
+                                                                    <input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre"
+                                                                    aria-describedby="addon-wrapping" value="{{ $v->nombre_des }}">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group flex-nowrap">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="addon-wrapping">Ap</span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre"
+                                                                    aria-describedby="addon-wrapping" value="{{ $v->ap_des }}">
+                                                            </div>
+                                                        </td>
+
+                                                        <td>
+                                                            <div class="input-group flex-nowrap">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="addon-wrapping">Ap</span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre"
+                                                                    aria-describedby="addon-wrapping" value="{{ $v->am_des }}">
+                                                            </div>
+                                                        </td>
+                                                        <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
+                                                </tr>
+                                                @endforeach
+                                        </table>
+
+                                            <div id="bh">
+                                            </div>
+                                            <div id="if">
+                                            </div>
+
+                                </div>
+                            </div>
+
+                            <div id="casado">
+                                    @include('usuarios/edit/casado')
+                                    <div id="ec">
+                                        <table class="table table-bordered" id="dynamic_hijos">
+                                        </table>
+                                    </div>
+
+                                    <div id="ifc">
+                                    </div>
 
                             </div>
 
-                            <div id="bh">
-                            </div>
-                            <div id="if">
+                </div>
 
-                            </div>
-                        </div>{{-- -soltero --}}
-
-                         <div id="casado">
-                             @include('usuarios/edit/casado')
-
-                             <div id="ec">
-                                <table class="table table-bordered" id="dynamic_hijos">
-
-                                </table>
-
-                             </div>
-
-                             <div id="ifc">
-
-                             </div>
-
-                         </div>{{-- casados --}}
-
-
-
-                     </div>
 
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
 
+
+
+
         <fieldset>
                 <h2 class="fs-title">Escolaridad</h2>
                 <h3 class="fs-subtitle">Información del nivel Académico</h3>
                 <div class="row">
-                         @include('usuarios/edit/escolaridad')
+                         @include('usuarios/edit/escolaridad_edit')
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -377,27 +376,16 @@ $(document).ready(function(){
         {
             $('#soltero').show(500);
             $('#casado').hide();
-            $('#ec').empty();
-            $('dynamic_hijos').empty();
+            {{-- $('#ec').empty();
+            $('dynamic_hijos').empty(); --}}
         }
         if(esc=='2'){
             $('#soltero').hide();
             $('#casado').show(500);
             $('#viudo').hide();
-            $('#bh').empty();
-            $('#if').empty();
+            {{-- $('#bh').empty();
+            $('#if').empty(); --}}
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

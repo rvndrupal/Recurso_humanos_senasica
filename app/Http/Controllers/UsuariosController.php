@@ -735,7 +735,7 @@ class UsuariosController extends Controller
       $gradoss=Grados::orderBy('id','ASC')->select('id','nom_gra')->get();
       $escuelass=Escuelas::orderBy('id','ASC')->select('id','nombre_escuela')->get();
       $carrerass=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
-    //    $idiomas=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
+      $idiomass=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
         $estCS=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
         $opcCiv=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
     //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
@@ -759,14 +759,18 @@ class UsuariosController extends Controller
        $s_carreras=$use[0]->DetalleEscolaridades[0]->carreras_id;
        $s_escuelas=$use[0]->DetalleEscolaridades[0]->escuelas_id;
        $s_tt=$use[0]->DetalleEscolaridades[0]->titulos_id;
-      //dd($s_escuelas);
+       $s_idioma=$use[0]->DetalleIdiomas[0]->idiomas_id;
+       $s_ni=$use[0]->DetalleIdiomas[0]->nivel_ingles;
+
+      //dd($s_ni);
 
 
-      //dd($use[0]->DetalleEscolaridades[0]);
+      //dd($use[0]->DetalleIdiomas[0]->nivel_ingles);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
-        ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'));
+        ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
+        ,'idiomass','s_idioma','s_ni'));
     }
 
     /**

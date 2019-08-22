@@ -42,13 +42,7 @@
             </div>
         </div>
 
-        {{-- <div class="col-md-2">
-                <label class="foto_tex text3">CURP</label>
-        </div>
 
-      <div class="col-md-5">
-            <input type="file" class="form-control"  name="carga_curp_coy" id="carga_curp_coy">
-      </div> --}}
       <div class="row curp">
             <div class="col-md-1">
                     <label class="foto_tex">CURP</label>

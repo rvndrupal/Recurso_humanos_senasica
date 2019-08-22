@@ -35,20 +35,10 @@ class DatabaseSeeder extends Seeder
         // factory(App\Niveles::class, 5)->create();
 
 
-        DB::table('estado_civils')->insert([
-            'nombre' => 'Soltero(a)'
-        ]);
-        DB::table('estado_civils')->insert([
-            'nombre' => 'Casado(a)',
-        ]);
 
 
-        DB::table('opcionciviles')->insert([
-            'opcion_civil' => 'Si'
-        ]);
-        DB::table('opcionciviles')->insert([
-            'opcion_civil' => 'No',
-        ]);
+
+
 
         DB::table('permissions')->insert([
             'name' => 'import-sistema',
@@ -61,6 +51,13 @@ class DatabaseSeeder extends Seeder
             'display_name' => 'Importar',
             'description' => 'Importar Permisos',
         ]);
+
+        DB::table('permissions')->insert([
+            'name' => 'catalogos-sistema',
+            'display_name' => 'Catalagos',
+            'description' => 'Sistema de Cátalagos',
+        ]);
+
 
 
 
