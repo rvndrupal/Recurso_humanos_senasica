@@ -154,15 +154,19 @@
                                             <td>{{ $usuario->estadoCivil->nombre }}</td>
                                             <td>
                                             @foreach($usuario->conyuges as $item)
-                                            <h5 class="card-title">{{ $item->nombres_coy }} {{ $item->primero_coy }} {{ $item->segundo_coy }}</h5>
-                                            <td>
-                                                <h5 class="card-title">{{ $item->curp_coy }}</h5>
-                                            </td>
-                                            <td>
-                                                <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
-                                                    <i class="glyphicon glyphicon-download">Curp</i>
-                                                </a>
-                                            </td>
+                                                @if($item->nombres_coy == '0')
+                                                <h5>Sin Pareja</h5>
+                                                @else
+                                                <h5 class="card-title">{{ $item->nombres_coy }} {{ $item->primero_coy }} {{ $item->segundo_coy }}</h5>
+                                                <td>
+                                                    <h5 class="card-title">{{ $item->curp_coy }}</h5>
+                                                </td>
+                                                <td>
+                                                    <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
+                                                        <i class="glyphicon glyphicon-download">Curp</i>
+                                                    </a>
+                                                </td>
+                                                @endif
                                             @endforeach
                                             </td>
 

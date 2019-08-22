@@ -322,36 +322,36 @@ class UsuariosController extends Controller
                 ]);
          }
 
-         if(isset($request->nombre_hijo_coy))
-         {
-                foreach($request->nombre_hijo_coy as $item=>$v)
-                {
+        //  if(isset($request->nombre_hijo_coy))
+        //  {
+        //         foreach($request->nombre_hijo_coy as $item=>$v)
+        //         {
 
-                    $nom=$request->nombre_hijo_coy[$item];
-                    $edad=$request->edad_hijo_coy[$item];
+        //             $nom=$request->nombre_hijo_coy[$item];
+        //             $edad=$request->edad_hijo_coy[$item];
 
-                    //dd($edad);
+        //             //dd($edad);
 
-                    if($nom=="0" || $nom==""){
-                    $nom=0;
-                    }else{
-                    $nom=$request->nombre_hijo_coy[$item];
-                    }
+        //             if($nom=="0" || $nom==""){
+        //             $nom=0;
+        //             }else{
+        //             $nom=$request->nombre_hijo_coy[$item];
+        //             }
 
-                    if($edad=="0" || $edad=="")
-                    {
-                    $edad=0;
-                    }else{
-                    $edad=$request->edad_hijo_coy[$item];
-                    }
+        //             if($edad=="0" || $edad=="")
+        //             {
+        //             $edad=0;
+        //             }else{
+        //             $edad=$request->edad_hijo_coy[$item];
+        //             }
 
-                    $usuario->HijosConyuges()->create([
-                    'nombre_hijo_coy'=>$nom,
-                    'edad_hijo_coy'=>$edad
-                    ]);
+        //             $usuario->HijosConyuges()->create([
+        //             'nombre_hijo_coy'=>$nom,
+        //             'edad_hijo_coy'=>$edad
+        //             ]);
 
-                }
-        }
+        //         }
+        // }
 
         if(isset($request->nombre_des))
          {
@@ -749,7 +749,7 @@ class UsuariosController extends Controller
       $carrerass=Carreras::orderBy('id','ASC')->select('id','nom_car')->get();
       $idiomass=Idiomas::orderBy('id','ASC')->select('id','nombre_idioma')->get();
         $estCS=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
-        $opcCiv=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
+       // $opcCiv=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
     //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
     //    $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
     //    $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
@@ -777,7 +777,7 @@ class UsuariosController extends Controller
       //dd($s_ni);
 
 
-      //dd($use[0]->DetalleIdiomas[0]->nivel_ingles);
+      //dd($use[0]->conyuges);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'

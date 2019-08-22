@@ -88,7 +88,7 @@
 
 
         <fieldset>
-                <h2 class="fs-title">ESTADO CIVIL</h2>
+                <h2 class="fs-title">EDITAR ESTADO CIVIL</h2>
                 <h3 class="fs-subtitle">Datos Personales</h3>
                 <div class="row">
                     <div class="col-md-12">
@@ -112,99 +112,38 @@
                     </div>
                 </div>
 
-                <div class="elementos_estado">
-                            <div id="soltero">
-                                <div id="hijosEdit">
-                                        <table class="table table-bordered" id="dynamic_field">
-                                        <h4>Agrega a tus hijos</h4>
-                                        <button type="button" name="add" id="add" class="btn btn-success">+</button>
-                                        @foreach($use[0]->solteros as $item=>$v)
-                                        <tr>
-                                                <td>
-                                                <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" id="sol_hijo'+i+'" placeholder="Nombre"
-                                                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->nombre }}">
-
-
-                                                </div>
-                                                </td>
-                                                <td>
-                                                <div class="input-group flex-nowrap">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text" id="addon-wrapping">Edad</span>
-                                                        </div>
-                                                        <input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre"
-                                                        aria-describedby="addon-wrapping" value="{{ $v->edad }}">
-                                                </div>
-                                                </td>
-                                                <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
-                                        </tr>
-                                        @endforeach
-                                        </table>
-
-                                        <table class="table table-bordered" id="dynamic_field">
-                                                <h4>Familiares Descendientes</h4>
-                                                <button type="button" name="add" id="addViudo" class="btn btn-success">+</button>
-                                                @foreach($use[0]->Descensientes as $item=>$v)
-                                                <tr>
-                                                        <td>
-                                                            <div class="input-group flex-nowrap">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                                                                    </div>
-
-                                                                    <input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre"
-                                                                    aria-describedby="addon-wrapping" value="{{ $v->nombre_des }}">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="input-group flex-nowrap">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="addon-wrapping">Ap</span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre"
-                                                                    aria-describedby="addon-wrapping" value="{{ $v->ap_des }}">
-                                                            </div>
-                                                        </td>
-
-                                                        <td>
-                                                            <div class="input-group flex-nowrap">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="addon-wrapping">Ap</span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre"
-                                                                    aria-describedby="addon-wrapping" value="{{ $v->am_des }}">
-                                                            </div>
-                                                        </td>
-                                                        <td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td>
-                                                </tr>
-                                                @endforeach
-                                        </table>
-
-                                            <div id="bh">
-                                            </div>
-                                            <div id="if">
-                                            </div>
-
-                                </div>
-                            </div>
-
-                            <div id="casado">
-                                    @include('usuarios/edit/casado')
-                                    <div id="ec">
-                                        <table class="table table-bordered" id="dynamic_hijos">
-                                        </table>
-                                    </div>
-
-                                    <div id="ifc">
-                                    </div>
-
-                            </div>
-
+                <div id="conyuge">
+                        @include('usuarios/edit/conyuge')
                 </div>
+
+
+
+
+                        <div class="hijos">
+                                <table class="table table-bordered" id="dynamic_field">
+                                        <hr>
+                                        <h4>Tienes Hijos</h4>
+                                     <button type="button" name="add" id="addHijos" class="btn btn-success">+</button>
+                                        <tr>
+
+                                        </tr>
+                                        @include('usuarios/edit/hijos')
+                                </table>
+                        </div>
+
+                        <div class="dependientes">
+                                <table class="table table-bordered" id="dependientes">
+                                        <hr>
+                                        <h4>Familiares Dependientes</h4>
+                                     <button type="button" name="add" id="addDependientes" class="btn btn-success">+</button>
+                                        <tr>
+
+                                        </tr>
+                                </table>
+                        </div>
+
+
+
 
 
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
@@ -218,7 +157,7 @@
                 <h2 class="fs-title">Escolaridad</h2>
                 <h3 class="fs-subtitle">Información del nivel Académico</h3>
                 <div class="row">
-                         @include('usuarios/edit/escolaridad_edit')
+                         {{-- @include('usuarios/edit/escolaridad_edit') --}}
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -285,406 +224,327 @@
 
 
 
+
 <script>
-$(document).ready(function(){
+        $(document).ready(function(){
 
-        //mostrar estado
-        $("#estado").on("changed.bs.select",function(e){
+                //mostrar estado
+                $("#estado").on("changed.bs.select",function(e){
 
-            var id=e.target.value;
-            console.log(id);
+                    var id=e.target.value;
+                    console.log(id);
 
-            if(id=="selected"){
-                $("#municipios").append("<option value=''>Selecciona un estado</option>");
-                console.log("nada");
-            }
-            else{
-
-                $.get("municipios/" + id, function(data){
-
-                    $("#municipios").empty();
-
-                    for(i=0; i<data.length ;i++)
-                        {
-                            $("#municipios").append("<option value='" +data[i].id+"'>"+data[i].nombre_mun+"</option>");
-                        }
-
-                        $('#municipios').selectpicker("refresh");
-                });
-            }
-        });//estados
-
-
-        //mostrar las colonias
-        $("#municipios").on("changed.bs.select",function(e){
-
-            var id=e.target.value;
-            console.log(id);
-
-            if(id=="selected"){
-                $("#colonia").append("<option value=''>Selecciona un código</option>");
-                console.log("nada");
-            }
-            else{
-
-                $.get("colonias/" + id, function(data){
-
-                    $("#colonias").empty();
-
-                    for(i=0; i<data.length ;i++)
-                        {
-                            $("#colonias").append("<option value='" +data[i].id+"'>"+data[i].nombre_col+"</option>");
-                        }
-
-                        $('#colonias').selectpicker("refresh");
-
-                });
-
-            }
-        });
-
-
-        //mostrar las cp
-        $("#colonias").change(function(e){
-
-            var id=e.target.value;
-            console.log(id);
-
-            if(id=="selected"){
-                $("#colonia").append("<option value=''>Selecciona un código</option>");
-                console.log("nada");
-            }
-            else{
-
-                $.get("cp/" + id, function(data){
-
-                    $("#colonias_cp").empty();
-
-                    for(i=0; i<data.length ;i++)
-                        {
-                            $("#colonias_cp").append(" <div class='input-group-prepend' id='colonias_cp'><span class='input-group-text' id='addon-wrapping'>CP</span></div><input type='text' name='codigo_postal' readonly value="+data[i].codigo_postal+" class='form-control'> ");
-                        }
-
-                });
-            }
-        });
-
-
-       //soltero o casado
-        var esc=$('#estado_civil').val();
-        if(esc==1)
-        {
-            $('#soltero').show(500);
-            $('#casado').hide();
-            {{-- $('#ec').empty();
-            $('dynamic_hijos').empty(); --}}
-        }
-        if(esc=='2'){
-            $('#soltero').hide();
-            $('#casado').show(500);
-            $('#viudo').hide();
-            {{-- $('#bh').empty();
-            $('#if').empty(); --}}
-        }
-
-
-
-
-        {{-- Agregar hijos --}}
-        var i=1;
-        $(document).on('click', '#add', function(){
-             i++;
-             $('#dynamic_field').append('<tr class="soltero_hijos" id="row'+i+'">'+
-                 '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-
-                        '</div>'+
-                  '</td>'+
-                  '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Edad</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="edad[]" id="sol_edad'+i+'" placeholder="Edad" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                 '</td>'+
-                 '$("#sol_hijo").focus();'+
-                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-        });
-        $(document).on('click', '.btn_remove', function(){
-             var button_id = $(this).attr("id");
-             $('#row'+button_id+'').remove();
-        });
-
-
-        {{-- Agregar descendientes --}}
-
-        var i=1;
-        $(document).on('click', '#addViudo', function(){
-             i++;
-             $('#if').append('<tr id="row'+i+'">'+
-                 '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" name="nombre_des[]" id="hijo" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                  '</td>'+
-                  '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" name="ap_des[]" id="edad" placeholder="Paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                 '</td>'+
-
-                 '<td>'+
-                        '<div class="input-group flex-nowrap">'+
-                                '<div class="input-group-prepend">'+
-                                    '<span class="input-group-text" id="addon-wrapping">Ap</span>'+
-                                '</div>'+
-                                '<input type="text" class="form-control" name="am_des[]" id="edad" placeholder="Materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
-                        '</div>'+
-                 '</td>'+
-
-                 '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-
-        });
-        $(document).on('click', '.btn_remove', function(){
-             var button_id = $(this).attr("id");
-             $('#row'+button_id+'').remove();
-        });
-
-
-
-
-
-            $('input[type="text"]').change(function(){
-                $(this).css('background','rgb(234, 234, 234)');
-                $(this).css('color','black');
-            });
-
-            $('input[type="email"]').change(function(){
-                $(this).css('background','rgb(234, 234, 234)');
-                $(this).css('color','black');
-            });
-
-            {{-- DEL MENU --}}
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-              });
-
-            {{-- DEL MENU --}}
-
-
-            {{-- Magia para los campos de validación --}}
-
-            jQuery.validator.setDefaults({
-                highlight: function(element) {
-                    jQuery(element).closest('.form-control').addClass('is-invalid');
-                },
-                unhighlight: function(element) {
-                    jQuery(element).closest('.form-control').removeClass('is-invalid');
-                },
-                errorElement: 'span',
-                errorClass: 'label label-danger',
-                errorPlacement: function(error, element) {
-                    if(element.parent('.input-group').length) {
-                        error.insertAfter(element.parent());
-                    } else {
-                        error.insertAfter(element);
+                    if(id=="selected"){
+                        $("#municipios").append("<option value=''>Selecciona un estado</option>");
+                        console.log("nada");
                     }
-                }
-            });
+                    else{
 
-            {{-- preload imagenes --}}
-            function filePreview(input) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#pre + img').remove();
-                        $('#pre').after('<img src="'+e.target.result+'" class="previo" width="120px" height="120px"/>');
+                        $.get("municipios/" + id, function(data){
+
+                            $("#municipios").empty();
+
+                            for(i=0; i<data.length ;i++)
+                                {
+                                    $("#municipios").append("<option value='" +data[i].id+"'>"+data[i].nombre_mun+"</option>");
+                                }
+
+                                $('#municipios').selectpicker("refresh");
+                        });
+                    }
+                });//estados
+
+
+                //mostrar las colonias
+                $("#municipios").on("changed.bs.select",function(e){
+
+                    var id=e.target.value;
+                    console.log(id);
+
+                    if(id=="selected"){
+                        $("#colonia").append("<option value=''>Selecciona un código</option>");
+                        console.log("nada");
+                    }
+                    else{
+
+                        $.get("colonias/" + id, function(data){
+
+                            $("#colonias").empty();
+
+                            for(i=0; i<data.length ;i++)
+                                {
+                                    $("#colonias").append("<option value='" +data[i].id+"'>"+data[i].nombre_col+"</option>");
+                                }
+
+                                $('#colonias').selectpicker("refresh");
+
+                        });
 
                     }
-                    reader.readAsDataURL(input.files[0]);
-            }
-
-            $("#previo").change(function () {
-                filePreview(this);
-                $('#pre').removeClass('load');
-            });
-
-            //piker
-            $(".pais").selectpicker({
-                dropdownAlignRight:true,
-            });
-            $('.estado').selectpicker(); //ojo evento change
-            $('#municipios').selectpicker();
-            $('#colonias').selectpicker();
-            $('#codigo_puesto').selectpicker();
-            $('#niveles').selectpicker();
-            $('#dir_general').selectpicker();
-            $('#dir_area').selectpicker();
-            $('#estadoss').selectpicker();
-            $('#municipioss').selectpicker();
-
-            //datapiker
-            $( "#fecha_nacimiento" ).datepicker({
-                dateFormat: "dd-mm-yy",
-            });
-
-            $.datepicker.regional['es'] = {
-                closeText: 'Cerrar',
-                prevText: '< Ant',
-                nextText: 'Sig >',
-                currentText: 'Hoy',
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-                weekHeader: 'Sm',
-                dateFormat: 'dd/mm/yy',
-                firstDay: 1,
-                isRTL: false,
-                showMonthAfterYear: false,
-                yearSuffix: ''
-                };
-                $.datepicker.setDefaults($.datepicker.regional['es']);
+                });
 
 
+                //mostrar las cp
+                $("#colonias").change(function(e){
 
-            //boton derecho del mause
-            {{--  $(document).bind("contextmenu",function(e){
-                alert("Web Segura");
-                return false;
-            });  --}}
+                    var id=e.target.value;
+                    console.log(id);
 
-            //precio rfc
-            function preview_rfc(input)
-            {
-                if(input.files && input.files[0])
-                {
-                    var reader=new FileReader();
-                    reader.onload= function(e){
-                        $('#img_pre').html("<img src='"+e.target.result+"'>");
+                    if(id=="selected"){
+                        $("#colonia").append("<option value=''>Selecciona un código</option>");
+                        console.log("nada");
                     }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-            $('#file-input').change(function(){
-                preview_rfc(this);
-                $('#previa').hide();
-            });
+                    else{
 
-              //precio curp
-              function preview_curp(input)
-              {
-                  if(input.files && input.files[0])
-                  {
-                      var reader=new FileReader();
-                      reader.onload= function(e){
-                          $('#img_pre_curp').html("<img src='"+e.target.result+"'>");
-                      }
-                      reader.readAsDataURL(input.files[0]);
-                  }
-              }
-              $('#file-input-curp').change(function(){
-                  preview_curp(this);
-                  $('#previa_curp').hide();
-              });
+                        $.get("cp/" + id, function(data){
 
-               //previo curp_coy
-               function preview_curp_coy(input)
-               {
-                   if(input.files && input.files[0])
-                   {
-                       var reader=new FileReader();
-                       reader.onload= function(e){
-                           $('#img_pre_curp_coy').html("<img src='"+e.target.result+"'>");
-                       }
-                       reader.readAsDataURL(input.files[0]);
-                   }
-               }
-               $('#file-input-curp_coy').change(function(){
-                   preview_curp_coy(this);
-                   $('#previa_curp_coy').hide();
-               });
+                            $("#colonias_cp").empty();
 
-               //previo titulo edit
-               function preview_titulo(input)
-               {
-                   if(input.files && input.files[0])
-                   {
-                       var reader=new FileReader();
-                       reader.onload= function(e){
-                           $('#img_pre_titulo').html("<img src='"+e.target.result+"'>");
-                       }
-                       reader.readAsDataURL(input.files[0]);
-                   }
-               }
-               $('#file-input-titulo').change(function(){
-                   preview_titulo(this);
-                   $('#previa_titulo').hide();
-               });
+                            for(i=0; i<data.length ;i++)
+                                {
+                                    $("#colonias_cp").append(" <div class='input-group-prepend' id='colonias_cp'><span class='input-group-text' id='addon-wrapping'>CP</span></div><input type='text' name='codigo_postal' readonly value="+data[i].codigo_postal+" class='form-control'> ");
+                                }
 
-                //previo cedula edit
-                function preview_cedula(input)
-                {
-                    if(input.files && input.files[0])
+                        });
+                    }
+                });
+
+
+
+
+
+                //Agregando los hijos
+                var i=1;
+                $(document).on('click', '#addHijos', function(){
+                     i++;
+                     $('#dynamic_field').append('<tr class="hijos" id="row'+i+'">'+
+                         '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_hijo[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
+                                '</div>'+
+                          '</td>'+
+
+                         '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Curp</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="curp_hijo[]" id="curp_hijo'+i+'" placeholder="Curp" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
+                                '</div>'+
+                          '</td>'+
+
+                          '<td>'+
+                                '<div class="col-md-12">'+
+                                        '<input type="file" class="form-control"  id="carga_curp_hijo"  name="carga_curp_hijo[]" >'+
+                                '</div>'+
+                            '</div>'+
+                          '</td>'+
+
+
+                         '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+                });
+                $(document).on('click', '.btn_remove', function(){
+                     var button_id = $(this).attr("id");
+                     $('#row'+button_id+'').remove();
+                });
+
+                //Dependientes
+
+                var i=1;
+                $(document).on('click', '#addDependientes', function(){
+                     i++;
+                     $('#dependientes').append('<tr class="dependientes" id="row'+i+'">'+
+                         '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_des[]" id="nombre_des'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+
+                                '</div>'+
+                          '</td>'+
+                          '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Apellido</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="ap_des[]" id="ap_des'+i+'" placeholder="paterno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '</div>'+
+                         '</td>'+
+
+                         '<td>'+
+                                '<div class="input-group flex-nowrap">'+
+                                        '<div class="input-group-prepend">'+
+                                            '<span class="input-group-text" id="addon-wrapping">Apellido</span>'+
+                                        '</div>'+
+                                        '<input type="text" class="form-control" data-valor="'+i+'" name="am_des[]" id="am_des'+i+'" placeholder="materno" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '</div>'+
+                         '</td>'+
+
+                         '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+                });
+                $(document).on('click', '.btn_remove', function(){
+                     var button_id = $(this).attr("id");
+                     $('#row'+button_id+'').remove();
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+                //OPCIONES CONFIGURACION
+
+                    $('input[type="text"]').change(function(){
+                        $(this).css('background','rgb(234, 234, 234)');
+                        $(this).css('color','black');
+                    });
+
+                    $('input[type="email"]').change(function(){
+                        $(this).css('background','rgb(234, 234, 234)');
+                        $(this).css('color','black');
+                    });
+
+                    {{-- DEL MENU --}}
+                    $("#menu-toggle").click(function(e) {
+                        e.preventDefault();
+                        $("#wrapper").toggleClass("toggled");
+                      });
+
+                    {{-- DEL MENU --}}
+
+
+                    {{-- Magia para los campos de validación --}}
+
+                    jQuery.validator.setDefaults({
+                        highlight: function(element) {
+                            jQuery(element).closest('.form-control').addClass('is-invalid');
+                        },
+                        unhighlight: function(element) {
+                            jQuery(element).closest('.form-control').removeClass('is-invalid');
+                        },
+                        errorElement: 'span',
+                        errorClass: 'label label-danger',
+                        errorPlacement: function(error, element) {
+                            if(element.parent('.input-group').length) {
+                                error.insertAfter(element.parent());
+                            } else {
+                                error.insertAfter(element);
+                            }
+                        }
+                    });
+
+                    {{-- preload imagenes --}}
+                    function filePreview(input) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#pre + img').remove();
+                                $('#pre').after('<img src="'+e.target.result+'" class="previo" width="120px" height="120px"/>');
+
+                            }
+                            reader.readAsDataURL(input.files[0]);
+
+                    }
+
+                    $("#previo").change(function () {
+                        filePreview(this);
+                        $('#pre').removeClass('load');
+                    });
+
+                    //piker
+                    $(".pais").selectpicker({
+                        dropdownAlignRight:true,
+                    });
+                    $('.estado').selectpicker(); //ojo evento change
+                    $('#municipios').selectpicker();
+                    $('#colonias').selectpicker();
+                    $('#codigo_puesto').selectpicker();
+                    $('#niveles').selectpicker();
+                    $('#dir_general').selectpicker();
+                    $('#dir_area').selectpicker();
+                    $('#estadoss').selectpicker();
+                    $('#municipioss').selectpicker();
+
+                    //datapiker
+                    $( "#fecha_nacimiento" ).datepicker({
+                        dateFormat: "yy-mm-dd",
+                    });
+
+                    $.datepicker.regional['es'] = {
+                        closeText: 'Cerrar',
+                        prevText: '< Ant',
+                        nextText: 'Sig >',
+                        currentText: 'Hoy',
+                        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                        weekHeader: 'Sm',
+                        dateFormat: 'dd/mm/yy',
+                        firstDay: 1,
+                        isRTL: false,
+                        showMonthAfterYear: false,
+                        yearSuffix: ''
+                        };
+                        $.datepicker.setDefaults($.datepicker.regional['es']);
+
+
+
+                    //boton derecho del mause
+                    {{--  $(document).bind("contextmenu",function(e){
+                        alert("Web Segura");
+                        return false;
+                    });  --}}
+
+
+                    //precargas imagenes
+                     //previo curp conyuge
+                    function preview_curp_coy(input)
                     {
-                        var reader=new FileReader();
-                        reader.onload= function(e){
-                            $('#img_pre_cedula').html("<img src='"+e.target.result+"'>");
+                        if(input.files && input.files[0])
+                        {
+                            var reader=new FileReader();
+                            reader.onload= function(e){
+                                $('#img_pre-curp-coy').html("<img src='"+e.target.result+"'>");
+                            }
+                            reader.readAsDataURL(input.files[0]);
                         }
-                        reader.readAsDataURL(input.files[0]);
                     }
-                }
-                $('#file-input-cedula').change(function(){
-                    preview_cedula(this);
-                    $('#previa_cedula').hide();
-                });
+                    $('#file-input-curp-coy').change(function(){
+                        preview_curp_coy(this);
+                        $('#previa-curp-coy').hide();
+                    });
 
 
-                //precio ife
-                function preview_ife(input)
-                {
-                    if(input.files && input.files[0])
+
+                       //previo curp hijo
+                    function preview_curp_hijo(input)
                     {
-                        var reader=new FileReader();
-                        reader.onload= function(e){
-                            $('#img_pre_ife').html("<img src='"+e.target.result+"'>");
+                        if(input.files && input.files[0])
+                        {
+                            var reader=new FileReader();
+                            reader.onload= function(e){
+                                $('#img_pre-curp-hijo').html("<img src='"+e.target.result+"'>");
+                            }
+                            reader.readAsDataURL(input.files[0]);
                         }
-                        reader.readAsDataURL(input.files[0]);
                     }
-                }
-                $('#file-input-ife').change(function(){
-                    preview_ife(this);
-                    $('#previa_ife').hide();
-                });
-
-                 //previo domicilio
-                 function preview_domicilio(input)
-                 {
-                     if(input.files && input.files[0])
-                     {
-                         var reader=new FileReader();
-                         reader.onload= function(e){
-                             $('#img_pre_domicilio').html("<img src='"+e.target.result+"'>");
-                         }
-                         reader.readAsDataURL(input.files[0]);
-                     }
-                 }
-                 $('#file-input-domicilio').change(function(){
-                     preview_domicilio(this);
-                     $('#previa_domicilio').hide();
-                 });
+                    $('#file-input-curp-hijo').change(function(){
+                        preview_curp_hijo(this);
+                        $('#previa-curp-hijo').hide();
+                    });
 
 
 
@@ -699,9 +559,10 @@ $(document).ready(function(){
 
 
 
-});//inicio
 
 
-</script>
+        });//inicio
 
+
+        </script>
 
