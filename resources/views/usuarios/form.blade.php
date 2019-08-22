@@ -135,14 +135,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
         </fieldset>
@@ -222,9 +214,6 @@
 
 <script>
 $(document).ready(function(){
-
-
-
 
         //mostrar estado
         $("#estado").on("changed.bs.select",function(e){
@@ -309,19 +298,6 @@ $(document).ready(function(){
 
 
 
-        //mostrar conyuge
-        $('#conyuge').hide();
-         $('#estado_civil').change(function(){
-            var casado=$(this).val();
-            if(casado==2)
-            {
-                $('#conyuge').show(500);
-            }
-            else{
-                $('#conyuge').hide(500);
-            }
-         });
-
 
 
         //Agregando los hijos
@@ -351,7 +327,7 @@ $(document).ready(function(){
 
                   '<td>'+
                         '<div class="col-md-12">'+
-                                '<input type="file" class="form-control"  id="carga_curp_hijo[]"  name="carga_rfc" >'+
+                                '<input type="file" class="form-control"  id="carga_curp_hijo"  name="carga_curp_hijo[]" >'+
                         '</div>'+
                     '</div>'+
                   '</td>'+

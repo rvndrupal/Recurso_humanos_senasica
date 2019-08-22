@@ -202,16 +202,16 @@
 
 
 
-
+<script src="{{ asset('js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
 {{-- Alta Escolaridad --}}
 <script type="text/javascript">
 
     $(document).ready(function(){
 
         var i=0;
-        var maxField = 10; //Input fields increment limitation
-        var addButton = $('.add_button'); //Add button selector
-        var wrapper = $('.field_wrapper'); //Input field wrapper
+        var maxField = 10;
+        var addButton = $('.add_button');
+        var wrapper = $('.field_wrapper');
         var fieldHTML = '<div class="destino">'+
 
          '<div class="container escolaridad" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">'+
@@ -292,32 +292,6 @@
                '</div>'+
 
 
-
-
-        {{-- '<div class="col">'+
-                '<div class="input-group flex-nowrap">'+
-                   '<div class="input-group-prepend">'+
-                        '<span class="input-group-text" id="inputGroupFileAddon01">Título</span>'+
-                        '</div>'+
-                       ' <div class="custom-file">'+
-                        '<input type="file" class="custom-file-input" data-name="titulol" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_titulo[]" >'+
-                       ' <label class="custom-file-label" id="titulol" for="inputGroupFile01">Choose file</label>'+
-                   ' </div>'+
-               ' </div>'+
-        '</div>'+ --}}
-
-        {{-- '<div class="col">'+
-                '<div class="input-group flex-nowrap">'+
-                    '<div class="input-group-prepend">'+
-                       ' <span class="input-group-text" id="inputGroupFileAddon01">Cédula</span>'+
-                        '</div>'+
-                        '<div class="custom-file">'+
-                        '<input type="file" class="custom-file-input" data-name="cedulal" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_cedula[]" >'+
-                        '<label class="custom-file-label" id="cedulal" for="inputGroupFile01">Choose file</label>'+
-                    '</div>'+
-               ' </div>'+
-       ' </div>'+ --}}
-
        '<div class="col-md-2">'+
             '  <label class="ced">Cédula</label>'+
         '</div>'+
@@ -373,10 +347,10 @@
 });
 
 
+
+
 </script>
-
 {{-- Idiomas --}}
-
 <script>
         $(document).ready(function(){
             var maxField = 10; //Input fields increment limitation

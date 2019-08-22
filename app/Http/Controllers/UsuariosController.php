@@ -272,12 +272,12 @@ class UsuariosController extends Controller
                     {
                     $curp_hijo=0;
                     }else{
-                    $curp_hijo=$request->$curp_hijo[$item];
+                    $curp_hijo=$request->curp_hijo[$item];
                     }
 
                     if($cch==""){$cch=0;}else{
-                        $filenamewithExt =$cch->getClientOriginalName();
-                        $cch=$request->carga_curp_hijo->storeAs('CURPHIJOS',$filenamewithExt);
+                        $file_curp_hijo =$cch->getClientOriginalName();
+                        $cch=$request->carga_curp_hijo[$item]->storeAs('CURPHIJOS',$file_curp_hijo);
                     }
 
                     $usuario->solteros()->create([
@@ -716,9 +716,14 @@ class UsuariosController extends Controller
             $total_Exp=count($usuario->ExpLaborales);
             $total_Esc=count($usuario->DetalleEscolaridades);
 
+            $des=$usuario->nom."-".$usuario->ap."-".$usuario->am;
+
+
+
            //dd($usuario->DependientesCasados);
 
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp','ncodi','nnive','total_Esc'));
+        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp'
+        ,'ncodi','nnive','total_Esc','des'));
     }
 
     /**

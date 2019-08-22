@@ -65,12 +65,12 @@
                                           <tr>
                                             <th scope="row">1</th>
                                             <td>
-                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}">
+                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}{{ "RFC-".$des }}">
                                                     <i class="glyphicon glyphicon-download">RFC</i>
                                                 </a>
                                             </td>
                                             <td>
-                                            <a href="http://localhost/recursos/public/{{ $usuario->carga_curp }} " download="{{ $usuario->carga_pdf }}">
+                                            <a href="http://localhost/recursos/public/{{ $usuario->carga_curp }} " download="{{ $usuario->carga_pdf }}{{ "CURP-".$des }}">
                                                 <i class="glyphicon glyphicon-download">CURP</i>
                                             </a>
                                             </td>
@@ -144,7 +144,8 @@
                                             <th scope="col">#</th>
                                             <th scope="col">ESTADO CIVIL</th>
                                             <th scope="col">CONYUGE</th>
-                                            <th scope="col">HIJOS</th>
+                                            <th scope="col">CURP</th>
+                                            <th scope="col">ARCHIVO</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -154,40 +155,61 @@
                                             <td>
                                             @foreach($usuario->conyuges as $item)
                                             <h5 class="card-title">{{ $item->nombres_coy }} {{ $item->primero_coy }} {{ $item->segundo_coy }}</h5>
-                                            <h5 class="card-title">Curp: {{ $item->curp_coy }}</h5>
-                                            <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
-                                                <i class="glyphicon glyphicon-download">Curp</i>
-                                            </a>
-                                            @endforeach
+                                            <td>
+                                                <h5 class="card-title">{{ $item->curp_coy }}</h5>
                                             </td>
                                             <td>
-                                            @if($usuario->estadoCivil->nombre=="Soltero(a)")
-
-                                                    @foreach($usuario->solteros as $item)
-                                                        @if($item->nombre == '0' and $item->edad=='0')
-                                                        <h3>No tiene Hijos</h3>
-                                                        @else
-                                                        <h5 class="card-title">{{ $item->nombre }}  Edad: {{ $item->edad }}</h5>
-                                                        @endif
-                                                    @endforeach
-
-                                            @else
-                                                @if($usuario->HijosConyuges)
-                                                    @foreach($usuario->HijosConyuges as $item)
-                                                        @if($item->nombre_hijo_coy == '0')
-                                                        <h3>No tiene Hijos</h3>
-                                                        @else
-                                                        <h5 class="card-title">{{ $item->nombre_hijo_coy }}  Edad: {{ $item->edad_hijo_coy }}</h5>
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            @endif
+                                                <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
+                                                    <i class="glyphicon glyphicon-download">Curp</i>
+                                                </a>
                                             </td>
+                                            @endforeach
+                                            </td>
+
                                           </tr>
                                         </tbody>
                                 </table>
                         </div>
                     </div>
+
+                    {{-- hijos --}}
+                    <hr>
+                    <h3>Hijos</h3>
+                    <div class="row">
+                        <div class="col-md-12">
+                                <table class="table" style="margin: 14px 0 0 0;">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">NOMBRE</th>
+                                            <th scope="col">CURP</th>
+                                            <th scope="col">ARCHIVO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                @foreach($usuario->solteros as $item)
+                                                    @if($item->nombre_hijo == '0')
+                                                    <h3>No tiene Hijos</h3>
+                                                    @else
+                                                    <tr>
+                                                    <th scope="row">{{ $loop->index+1 }}</th>
+                                                    <td>{{ $item->nombre_hijo }}</td>
+                                                    <td>{{ $item->curp_hijo }}</td>
+                                                    <td>
+                                                        <a href="http://localhost/recursos/public/{{ $item->carga_curp_hijo }} " download="{{ $item->carga_curp_hijo }}">
+                                                            <i class="glyphicon glyphicon-download">Curp</i>
+                                                        </a>
+                                                    </td>
+                                                    </tr>
+                                                    @endif
+                                                @endforeach
+                                              </tbody>
+                                      </table>
+
+                        </div>
+                    </div>
+
+                    <hr>
 
 
                     {{-- DESCENDIENTES --}}
@@ -204,28 +226,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                @foreach($usuario->DependientesCasados as $item)
+                                                @foreach($usuario->Descensientes as $item)
                                                 <tr>
                                                   <th scope="row">{{ $loop->index+1 }}</th>
-                                                  <td>{{ $item->nombre_dep }}</td>
-                                                  <td>{{ $item->ap_dep }}</td>
-                                                  <td>{{ $item->am_dep }}</td>
+                                                  <td>{{ $item->nombre_des }}</td>
+                                                  <td>{{ $item->ap_des }}</td>
+                                                  <td>{{ $item->am_des }}</td>
                                                 </tr>
                                                 @endforeach
                                               </tbody>
                                       </table>
-
-
-
-                        <ul>
-                            @foreach($usuario->Descensientes as $item)
-                            @if($item->nombre_des=="0")
-
-                            @else
-                            <li>{{ $item->nombre_des }} {{ $item->ap_des }} {{ $item->am_des }}</li>
-                            @endif
-                            @endforeach
-                        </ul>
 
                         </div>
                     </div>
