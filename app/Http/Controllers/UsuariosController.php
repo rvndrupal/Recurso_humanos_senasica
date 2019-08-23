@@ -751,8 +751,8 @@ class UsuariosController extends Controller
         $estCS=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
        // $opcCiv=Opcionciviles::orderBy('id','ASC')->select('id','opcion_civil')->get();
     //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
-    //    $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
-    //    $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
+          $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
+          $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
           $cos=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
           $ni=Niveles::orderBy('id','ASC')->select('id','nom_niveles')->get();
 
@@ -782,14 +782,34 @@ class UsuariosController extends Controller
        $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nivel)->get();
        $nivell=$nom_nivel[0]->nom_niveles;
 
-        //dd($ncodi);
+       $id_dge=$use[0]->DetalleLaborales[0]->direcciones_generales_id;
+       $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
+       $ndge=$nom_dge[0]->nombre_dir_gen;
+
+       $id_dga=$use[0]->DetalleLaborales[0]->direcciones_areas_id;
+       $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
+       $ndga=$nom_dga[0]->nombre_dir_are;
+
+       $id_estl=$use[0]->DetalleLaborales[0]->est_lab;
+       $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
+       $nestl=$nom_estl[0]->nombre;
+
+       $id_munl=$use[0]->DetalleLaborales[0]->mun_lab;
+       $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
+       $nmunl=$nom_munl[0]->nombre_mun;
+
+       $id_coll=$use[0]->DetalleLaborales[0]->col_lab;
+       $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
+       $ncoll=$nom_coll[0]->nombre_col;
+
+       //dd($nestl);
 
        //dd($use[0]->DetalleLaborales);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
-        ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell'));
+        ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'));
     }
 
     /**
