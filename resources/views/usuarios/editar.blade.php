@@ -529,22 +529,44 @@
 
 
 
-                       //previo curp hijo
-                    function preview_curp_hijo(input)
-                    {
-                        if(input.files && input.files[0])
-                        {
-                            var reader=new FileReader();
-                            reader.onload= function(e){
-                                $('#img_pre-curp-hijo').html("<img src='"+e.target.result+"'>");
-                            }
-                            reader.readAsDataURL(input.files[0]);
-                        }
-                    }
-                    $('#file-input-curp-hijo').change(function(){
-                        preview_curp_hijo(this);
-                        $('#previa-curp-hijo').hide();
+                    //previo curp hijo
+                    var id_A=new Array();
+                    $('.hijos_index input').each(function(i){
+                    id=$(this).data('id');
+                    id_A.push(id);
                     });
+
+                    $(id_A).each(function(index){
+                        console.log(index+1);
+                        function preview_curp_hijo(input)
+                        {
+                            if(input.files && input.files[0])
+                            {
+                                var reader=new FileReader();
+                                reader.onload= function(e){
+                                    $('#img_pre-curp-hijo'+(index+1)).html("<img src='"+e.target.result+"'>");
+                                }
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+                        $('#file-input-curp-hijo'+(index+1)).change(function(){
+                            preview_curp_hijo(this);
+                            $('#previa-curp-hijo'+(index+1)).hide();
+                        });
+
+                    });
+                    //previo curp hijo
+
+
+
+
+
+
+
+
+
+
+
 
 
 
