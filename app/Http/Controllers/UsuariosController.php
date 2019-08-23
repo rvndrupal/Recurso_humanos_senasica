@@ -802,14 +802,18 @@ class UsuariosController extends Controller
        $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
        $ncoll=$nom_coll[0]->nombre_col;
 
+       $enfermo=$use[0]->Seguros[0]->enf_seg;
+       $disca=$use[0]->Seguros[0]->dis_seg;
+
        //dd($nestl);
 
-       //dd($use[0]->DetalleLaborales);
+       //dd($use[0]->Seguros[0]->enf_seg);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
-        ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'));
+        ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'
+    ,   'enfermo','disca'));
     }
 
     /**

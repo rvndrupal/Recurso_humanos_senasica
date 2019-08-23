@@ -189,7 +189,7 @@
         <fieldset>
             <h2 class="fs-title">DATOS SEGURIDAD SOCIAL</h2>
 
-            {{--  @include('usuarios/form/seguros')  --}}
+             @include('usuarios/edit/seguros')
 
             <input type="button" name="previous" class="previous action-button" value="Previous" />
             <input type="submit" name="submit"  class="submit action-button" id="guardar"  value="Guardar" />
