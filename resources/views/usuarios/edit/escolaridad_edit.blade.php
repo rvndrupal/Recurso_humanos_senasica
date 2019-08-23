@@ -1,11 +1,13 @@
-@foreach ($use[0]->DetalleEscolaridades as $item=>$v)
+
 
 <div class="field_wrapper">
 
             <div class="col-md-12">
                 <a href="#" class="add_button btn btn-success" style="margin: -96px 0 7px 926px;;" title="Add field">Agregar Carrera</a>
             </div>
+            @foreach ($use[0]->DetalleEscolaridades as $item=>$v)
               <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
+
                  <div class="row">
 
                         <div class="col">
@@ -144,12 +146,14 @@
 
                             </div>
 
+
             </div>
             <a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>
         </div>
+        @endforeach
 
 </div>
-@endforeach
+
 
 
 

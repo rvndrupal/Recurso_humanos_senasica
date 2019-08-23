@@ -735,7 +735,7 @@ class UsuariosController extends Controller
     public function edit(Usuarios $usuarios, $id)
     {
         $use=Usuarios::where('id','=',$id)->get();
-       // dd($use);
+
 
         //pais
        $paiss=Paises::orderBy('id','ASC')->select('id','nombre_pais')->get();
@@ -805,15 +805,17 @@ class UsuariosController extends Controller
        $enfermo=$use[0]->Seguros[0]->enf_seg;
        $disca=$use[0]->Seguros[0]->dis_seg;
 
+       $uid=$use[0]->id;
+
        //dd($nestl);
 
-       //dd($use[0]->Seguros[0]->enf_seg);
+       //dd($use[0]->DetalleEscolaridades);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
         ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'
-    ,   'enfermo','disca'));
+    ,   'enfermo','disca','uid'));
     }
 
     /**
@@ -823,9 +825,10 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuarios $usuarios, $id)
+    public function update(Request $request,$id)
     {
         //dd($id);
+        $title = __('Actualizar');
         $usuario = Usuarios::find($id);
 
         $usuario->fill($request->all())->save();
@@ -834,7 +837,7 @@ class UsuariosController extends Controller
 
         $usuario->save();
 
-        return view('usuarios.editar');
+        return view('usuarios.index',compact('title'));
     }
 
 

@@ -1,4 +1,4 @@
-@foreach ($use[0]->DetalleIdiomas as $item=>$v)
+
 
 {{-- -Idiomas --}}
 <div class="field_wrapper2" style="width:100%" ">
@@ -7,6 +7,7 @@
         <h2 class="fs-title" style="margin: 81px 0px 0 0;">IDIOMAS</h2>
 
         <a href='#' class="add_button2 btn btn-success" style="margin: 0 0 7px 932px;" title="Add field">Agregar Idiomas</a>
+        @foreach ($use[0]->DetalleIdiomas as $item=>$v)
         <div class="container idiomas">
 
                   <div class="col-md-12">
@@ -116,6 +117,7 @@
                 </div>
 
         </div>
+        @endforeach
     </div>
-@endforeach
+
 

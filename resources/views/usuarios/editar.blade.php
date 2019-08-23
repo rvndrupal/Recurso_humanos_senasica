@@ -53,7 +53,7 @@
 
 
 
-       <form id="msform" action="{{ route('usuarios.store') }}" method="POST" class="formulario" enctype="multipart/form-data">
+       <form id="msform" action="{{ route('usuarios.update', $uid) }}" method="post" class="formulario" enctype="multipart/form-data">
             @csrf
 
        {{-- -menu --}}
@@ -194,6 +194,7 @@
             <input type="button" name="previous" class="previous action-button" value="Previous" />
             <input type="submit" name="submit"  class="submit action-button" id="guardar"  value="Guardar" />
         </fieldset>
+
     </form>
 
 
