@@ -753,8 +753,8 @@ class UsuariosController extends Controller
     //    $estadoCivil=EstadoCivil::orderBy('id','ASC')->select('id','nombre')->get();
     //    $dg=DireccionesGenerales::orderBy('id','ASC')->select('id','nombre_dir_gen')->get();
     //    $da=DireccionesAreas::orderBy('id','ASC')->select('id','nombre_dir_are')->get();
-    //    $co=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
-    //    $ni=Niveles::orderBy('id','ASC')->select('id','nom_niveles')->get();
+          $cos=Codigos::orderBy('id','ASC')->select('id','nom_codigos')->get();
+          $ni=Niveles::orderBy('id','ASC')->select('id','nom_niveles')->get();
 
 
        $sel_pais=$use[0]->paises_id;
@@ -774,15 +774,22 @@ class UsuariosController extends Controller
        $s_idioma=$use[0]->DetalleIdiomas[0]->idiomas_id;
        $s_ni=$use[0]->DetalleIdiomas[0]->nivel_ingles;
 
-      //dd($s_ni);
+       $codi=$use[0]->DetalleLaborales[0]->codigo_puesto;
+       $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
+       $ncodi=$nom_codigo[0]->nom_codigos;
 
+       $nivel=$use[0]->DetalleLaborales[0]->grado_nivel;
+       $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nivel)->get();
+       $nivell=$nom_nivel[0]->nom_niveles;
 
-      //dd($use[0]->DetalleEscolaridades[0]->carga_titulo);
+        //dd($ncodi);
+
+       //dd($use[0]->DetalleLaborales);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
-        ,'idiomass','s_idioma','s_ni'));
+        ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell'));
     }
 
     /**

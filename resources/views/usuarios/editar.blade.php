@@ -159,6 +159,7 @@
                 <h3 class="fs-subtitle">Información del nivel Académico</h3>
                 <div class="row">
                          @include('usuarios/edit/escolaridad_edit')
+                         @include('usuarios/edit/idiomas')
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -167,7 +168,7 @@
         <fieldset>
                 <h2 class="fs-title">Datos Laborales</h2>
 
-                {{--  @include('usuarios/form/laborales')  --}}
+                 @include('usuarios/edit/laborales')
 
 
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
@@ -591,6 +592,24 @@
                          preview_curp_cedula(this);
                          $('#previa-carga-cedula').hide();
                      });
+
+
+                      //previa certificado
+                      function preview_curp_certificado(input)
+                      {
+                          if(input.files && input.files[0])
+                          {
+                              var reader=new FileReader();
+                              reader.onload= function(e){
+                                  $('#img_pre-certificado').html("<img src='"+e.target.result+"'>");
+                              }
+                              reader.readAsDataURL(input.files[0]);
+                          }
+                      }
+                      $('#file-input-certificado').change(function(){
+                          preview_curp_certificado(this);
+                          $('#previa-certificado').hide();
+                      });
 
 
 

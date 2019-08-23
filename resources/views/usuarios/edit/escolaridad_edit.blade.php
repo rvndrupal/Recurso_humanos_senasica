@@ -123,47 +123,31 @@
 
                             <div class="col-md-1">
                                     <h6 class="foto_tex2">CÉDULA</h6>
+                            </div>
+                            <div class="col-md-2 hijos_index">
+                                <div class="image-upload-carga-cedula">
+                                    <label for="file-input-carga-cedula">
+                                        <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
+                                    </label>
+                                    <input id="file-input-carga-cedula" class="cur_hijo" type="file"   class="form-control" name="carga_cedula[]"/>
                                 </div>
-                                <div class="col-md-2 hijos_index">
-                                    <div class="image-upload-carga-cedula">
-                                        <label for="file-input-carga-cedula">
-                                            <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
-                                        </label>
-                                        <input id="file-input-carga-cedula" class="cur_hijo" type="file"   class="form-control" name="carga_cedula[]"/>
+                            </div>
+                            <div class="col-md-3">
+
+                                    <div id="previa-carga-cedula">
+                                    <img src="http://localhost/recursos/public/{{ $v->carga_cedula }}" width="100px" height="70px" alt="">
+                                    {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
                                     </div>
-                                </div>
-                                <div class="col-md-3">
+                                    <div class="img_pre-carga-cedula" id="img_pre-carga-cedula">
 
-                                        <div id="previa-carga-cedula">
-                                        <img src="http://localhost/recursos/public/{{ $v->carga_cedula }}" width="100px" height="70px" alt="">
-                                        {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
-                                        </div>
-                                        <div class="img_pre-carga-cedula" id="img_pre-carga-cedula">
-
-                                        </div>
-
-                                </div>
-
-
-
-
-
-
-                            {{-- <div class="col">
-                                    <div class="input-group flex-nowrap">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="inputGroupFileAddon01">Cédula</span>
-                                            </div>
-                                            <div class="custom-file">
-                                            <input type="file" class="custom-file-input" data-name="cedulal" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_cedula[]" >
-                                            <label class="custom-file-label" id="cedulal" for="inputGroupFile01">Choose file</label>
-                                        </div>
                                     </div>
-                            </div> --}}
 
+                            </div>
 
             </div>
+            <a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>
         </div>
+
 </div>
 @endforeach
 
@@ -173,6 +157,7 @@
 
 
 {{-- Alta Escolaridad --}}
+<script src="{{ asset('js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -275,5 +260,41 @@
        '</div>'+
         '<a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>'+
         '</div>'+
+'</div>';
+
+
+
+        var x = 1;
+      //Initial field counter is 1
+        $(addButton).click(function(){ //Once add button is clicked
+            if(x < maxField){ //Check maximum number of input fields
+                x++; //Increment field counter
+
+
+                $(wrapper).append(fieldHTML); // Add field html
+                 // Add field html
+                 $(".destino").removeClass('destino').addClass(""+x);
+                 $("#grados").attr("data-valor",""+x);
+                 $("#grados").attr('id','grados'+x);
+                 $("#carreras").attr("data-valor",""+x);
+                 $("#carreras").attr('id','carreras'+x);
+                 $("#cedula").attr("data-valor",+x);
+                 $("#cedula").attr('id','cedula'+x);
+                 $("#escuelas").attr("data-valor",+x);
+                 $("#escuelas").attr('id','escuelas'+x);
+                 $("#titulos").attr("data-valor",+x);
+                 $("#titulos").attr('id','titulos'+x);
+                 $("#titulo_pro").attr("data-valor",+x);
+                 $("#titulo_pro").attr('id','titulo_pro'+x);
+                 $("#cedula").attr("data-valor",+x);
+                 $("#cedula").attr('id','cedula'+x);
+            }
+         });
+        $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
+            e.preventDefault();
+            $(this).parent('div').remove(); //Remove field html
+            x--; //Decrement field counter
+        });
+});
 
 </script>

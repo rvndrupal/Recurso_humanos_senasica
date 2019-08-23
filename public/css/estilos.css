@@ -376,7 +376,7 @@ div#ui-datepicker-div {
 }
 
 /*Previo cedula*/
-.image-upload-carga-cedula > input
+.image-upload-certificado > input
 {
     display: none;
 }
@@ -393,6 +393,37 @@ div#ui-datepicker-div {
     width: 100px;
     height: 70px;
     margin: 0 0 33px 0px;
+}
+
+
+/*Previo idioma*/
+.image-upload-certificado > input
+{
+    display: none;
+}
+
+.image-upload-certificado img
+{
+    width: 100px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 50px;
+}
+
+.img_pre-certificado img{
+    width: 100px;
+    height: 70px;
+    margin: 0 0 33px 0px;
+}
+
+.row.cer_idioma {
+    margin: 13px 0 0 0px;
+}
+
+.idiomas{
+    border: 1px solid #00000036;
+    padding: 23px;
+    margin: 0 0 17px 0px;
 }
 
 

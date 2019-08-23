@@ -1,48 +1,59 @@
 <div class="container">
         <div class="row">
-
+    @foreach ($use[0]->DetalleLaborales as $item)
             <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Puesto Actual</span>
                             </div>
-                        <input type="text" class="form-control" name="puesto_actual" id="puesto_actual"    placeholder="Puesto actual" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" name="puesto_actual" id="puesto_actual" placeholder="Puesto actual"
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $item->puesto_actual }}">
                     </div>
             </div>
 
-            {{--  <div class="col-md-4">
-                    <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Código puesto</span>
-                            </div>
-                        <input type="text" class="form-control" name="codigo_puesto" id="codigo_puesto"    placeholder="Código del puesto" aria-label="Nombre" aria-describedby="addon-wrapping">
-                    </div>
-            </div>  --}}
 
             <div class="col-md-4">
-                <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text"  id="addon-wrapping">Código puesto</span>
+                    <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">Códigos puesto</span>
+                            </div>
+                        <select  name="codigo_puesto" class="estados_select" placeholder="Código">
+                                <option value="">Código</option>
+                                @foreach ($cos as $item)
+                                <option value="{{ $item->id }}"
+                                @if($item->nom_codigos === $ncodi)
+                                selected
+                                @endif
+                                >{{ $item->nom_codigos }}</option>
+                                @endforeach
+                        </select>
                     </div>
-                    <select  name="codigo_puesto" class="form-control" data-live-search="true" data-size="5" id="codigo_puesto"  placeholder="Código">
-                            <option value="">Código</option>
-                            @foreach ($co as $item)
-                            <option value="{{ $item->id }}">{{ $item->nom_codigos }}</option>
-                            @endforeach
-                    </select>
-                </div>
             </div>
 
-            {{--  <div class="col-md-4">
-                    <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Grupo,grado,nivel</span>
-                            </div>
-                        <input type="text" class="form-control" name="grado_nivel" id="grado_nivel"    placeholder="Grupo,grado" aria-label="Nombre" aria-describedby="addon-wrapping">
-                    </div>
-            </div>  --}}
 
             <div class="col-md-4">
+                    <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="addon-wrapping">Niveles</span>
+                            </div>
+                        <select  name="grado_nivel" class="estados_select" placeholder="niveles">
+                                <option value="">Niveles</option>
+                                @foreach ($ni as $item)
+                                <option value="{{ $item->id }}"
+                                @if($item->nom_niveles === $nivell)
+                                selected
+                                @endif
+                                >{{ $item->nom_niveles }}</option>
+                                @endforeach
+                        </select>
+                    </div>
+            </div>
+
+
+
+
+
+            {{-- <div class="col-md-4">
                 <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Niveles</span>
@@ -54,10 +65,10 @@
                             @endforeach
                     </select>
                 </div>
-            </div>
+            </div> --}}
 
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Direcció general</span>
@@ -69,9 +80,9 @@
                                 @endforeach
                         </select>
                     </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Direcció Área</span>
@@ -83,28 +94,28 @@
                                 @endforeach
                         </select>
                     </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha ingreso</span>
                         </div>
                         <input type="date" class="form-control" name="fecha_ultimo" id="fecha_ultimo" placeholder="Último puesto" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha Senasica</span>
                         </div>
                         <input type="date" class="form-control" name="fecha_senasica" id="fecha_senasica" placeholder="Senasica" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
-            </div>
+            </div> --}}
 
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                     <div class="input-group flex-nowrap">
                          <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Estado</span>
@@ -116,9 +127,9 @@
                                 @endforeach
                         </select>
                        </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Municipio</span>
@@ -127,9 +138,9 @@
                                 <option value="">Municipio</option>
                         </select>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Colonia</span>
@@ -138,47 +149,47 @@
                                 <option value="">Colonia</option>
                         </select>
                 </div>
-            </div>
+            </div> --}}
 
 
-            <div class="col-md-2">
+            {{-- <div class="col-md-2">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend" id="colonias_cps">
                             <span class="input-group-text" id="addon-wrapping">CP</span>
                         </div>
-                        {{--  <input type="text" class="form-control" name="codigo_postal" placeholder="Codigo postal">  --}}
-                    </div>
-            </div>
 
-            <div class="col-md-6">
+                    </div>
+            </div> --}}
+
+            {{-- <div class="col-md-6">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Calle</span>
                             </div>
                         <input type="text" class="form-control" name="calle_lab" id="calle_lab"    placeholder="Calle" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Numero</span>
                             </div>
                         <input type="text" class="form-control" name="num_lab" id="num_lab"    placeholder="numero" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
-            </div>
+            </div> --}}
 
-            <div class="col-md-5">
+            {{-- <div class="col-md-5">
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha ingreso</span>
                         </div>
                         <input type="date" class="form-control" name="fecha_gobierno" id="fecha_gobierno" placeholder="Gobierno" aria-label="Nombre" aria-describedby="addon-wrapping">
                     </div>
-            </div>
+            </div>  --}}
 
 
-
+@endforeach
 
 
 
