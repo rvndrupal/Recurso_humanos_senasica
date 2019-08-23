@@ -1,6 +1,6 @@
 
  <div class="field_wrapper3">
-     <div>
+
 
     <div class="col-md-12">
 
@@ -8,24 +8,28 @@
     </div>
 
 
-    {{--  <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
+      <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
         <div class="row">
+            @foreach ($use[0]->ExpLaborales as $item=>$v)
 
             <div class="col-md-12">
                 <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Denomincación del Puesto</span>
                         </div>
-                    <input type="text" class="form-control" name="den_puesto[]" id="den_puesto[]"    placeholder="Denominación del puesto" aria-label="Nombre" aria-describedby="addon-wrapping">
+                    <input type="text" class="form-control" name="den_puesto[]" id="den_puesto[]"
+                    placeholder="Denominación del puesto" aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->den_puesto }}">
                 </div>
             </div>
+
 
             <div class="col-md-12">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Institución ó Empresa</span>
                             </div>
-                        <input type="text" class="form-control" name="ins_puesto[]" id="ins_puesto[]"    placeholder="Institución ó Empresa" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" name="ins_puesto[]" id="ins_puesto[]"
+                        placeholder="Institución ó Empresa" aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->ins_puesto }}">
                     </div>
             </div>
 
@@ -34,16 +38,19 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Área de Experiencia</span>
                             </div>
-                        <input type="text" class="form-control" name="area_puesto[]" id="area_puesto[]"    placeholder="Área de Experiencia" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" name="area_puesto[]" id="area_puesto[]"
+                        placeholder="Área de Experiencia" aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->area_puesto }}">
                     </div>
             </div>
+
 
             <div class="col-md-6">
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Años de Experiencia</span>
                             </div>
-                        <input type="text" class="form-control" name="anos_puesto[]" id="anos_puesto[]"    placeholder="Años de Experiencia" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        <input type="text" class="form-control" name="anos_puesto[]" id="anos_puesto[]"    placeholder="Años de Experiencia"
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->anos_puesto }}">
                     </div>
             </div>
 
@@ -52,7 +59,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha de Ingreso</span>
                         </div>
-                        <input type="date" class="form-control" name="fecha_ing_puesto[]" id="fecha_ing_puesto[]" placeholder="Senasica" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        <input type="date" class="form-control" name="fecha_ing_puesto[]" id="fecha_ing_puesto[]" placeholder="Senasica"
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->fecha_ing_puesto }}">
                     </div>
             </div>
 
@@ -61,9 +69,11 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha de Baja</span>
                         </div>
-                        <input type="date" class="form-control" name="fecha_baj_puesto[]" id="fecha_baj_puesto[]" placeholder="Senasica" aria-label="Nombre" aria-describedby="addon-wrapping">
+                        <input type="date" class="form-control" name="fecha_baj_puesto[]" id="fecha_baj_puesto[]" placeholder="Senasica"
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->fecha_baj_puesto }}">
                     </div>
             </div>
+            {{--
 
             <div class="col">
                     <div class="input-group flex-nowrap">
@@ -77,15 +87,43 @@
                     </div>
             </div>  --}}
 
+                <div class="row">
+                    <div class="row cer_idioma">
+                            <div class="col-md-3">
+                                    <h6 class="foto_tex2">CONSTANCIA</h6>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="image-upload-constancia">
+                                    <label for="file-input-constancia">
+                                        <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
+                                    </label>
+                                    <input id="file-input-constancia" class="cur_hijo" type="file"   class="form-control" name="doc_puesto[]"/>
+                                </div>
+                            </div>
 
-        {{--  </div>       row  --}}
-    {{--  </div>-container  --}}
-    {{--  <a href="#" class="add_Expe btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Experiencia</a>  --}}
+                            <div class="col-md-3">
+
+                                    <div id="previa-constancia">
+                                    <img src='http://localhost/recursos/public/{{ $v->doc_puesto }}' width="100px" height="70px" alt="">
+                                    </div>
+                                    <div class="img_pre-constancia" id="img_pre-constancia">
+
+                                    </div>
+
+                            </div>
+                        </div>
+                </div>
+
+            @endforeach
+        </div>
+        <a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>
+      </div>
+     {{-- <a href="#" class="add_Expe btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Experiencia</a> --}}
 
 
-    </div>
-     {{--  div contenedor  --}}
-</div> {{-- Wraper --}}
+
+
+</div>
 
 
 

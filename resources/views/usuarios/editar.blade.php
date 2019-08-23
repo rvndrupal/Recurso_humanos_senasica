@@ -177,9 +177,9 @@
 
 
         <fieldset>
-                <h2 class="fs-title">Experiencia Laboral</h2>
+                <h2 class="fs-title">Editar Experiencia Laboral</h2>
 
-                {{--  @include('usuarios/form/exp_laboral')  --}}
+                 @include('usuarios/edit/exp_laboral')
 
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -610,6 +610,24 @@
                           preview_curp_certificado(this);
                           $('#previa-certificado').hide();
                       });
+
+                        //previa certificado
+                        function preview_curp_constancia(input)
+                        {
+                            if(input.files && input.files[0])
+                            {
+                                var reader=new FileReader();
+                                reader.onload= function(e){
+                                    $('#img_pre-constancia').html("<img src='"+e.target.result+"'>");
+                                }
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+                        $('#file-input-constancia').change(function(){
+                            preview_curp_constancia(this);
+                            $('#previa-constancia').hide();
+                        });
+
 
 
 

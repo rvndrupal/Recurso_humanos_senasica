@@ -427,6 +427,27 @@ div#ui-datepicker-div {
 }
 
 
+/*Previo experiencia laboral*/
+.image-upload-constancia > input
+{
+    display: none;
+}
+
+.image-upload-constancia img
+{
+    width: 100px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 50px;
+}
+
+.img_pre-constancia img{
+    width: 100px;
+    height: 70px;
+    margin: 0 0 33px 0px;
+}
+
+
 /*ife*/
 .image-upload-ife > input
 {
