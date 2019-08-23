@@ -777,7 +777,7 @@ class UsuariosController extends Controller
       //dd($s_ni);
 
 
-      //dd($use[0]->conyuges);
+      //dd($use[0]->DetalleEscolaridades[0]->carga_titulo);
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'

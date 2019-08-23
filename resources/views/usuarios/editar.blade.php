@@ -139,6 +139,7 @@
                                         <tr>
 
                                         </tr>
+                                        @include('usuarios/edit/dependientes')
                                 </table>
                         </div>
 
@@ -157,7 +158,7 @@
                 <h2 class="fs-title">Escolaridad</h2>
                 <h3 class="fs-subtitle">Información del nivel Académico</h3>
                 <div class="row">
-                         {{-- @include('usuarios/edit/escolaridad_edit') --}}
+                         @include('usuarios/edit/escolaridad_edit')
                 </div>
                 <input type="button" name="previous" class="previous action-button" value="Previous" />
                 <input type="button" name="next" id="validar" class="next action-button" value="Siguiente" />
@@ -556,6 +557,40 @@
 
                     });
                     //previo curp hijo
+
+                    //precio titulo
+                    function preview_curp_titulo(input)
+                    {
+                        if(input.files && input.files[0])
+                        {
+                            var reader=new FileReader();
+                            reader.onload= function(e){
+                                $('#img_pre-carga-titulo').html("<img src='"+e.target.result+"'>");
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    $('#file-input-carga-titulo').change(function(){
+                        preview_curp_titulo(this);
+                        $('#previa-carga-titulo').hide();
+                    });
+
+                     //previa cedula
+                     function preview_curp_cedula(input)
+                     {
+                         if(input.files && input.files[0])
+                         {
+                             var reader=new FileReader();
+                             reader.onload= function(e){
+                                 $('#img_pre-carga-cedula').html("<img src='"+e.target.result+"'>");
+                             }
+                             reader.readAsDataURL(input.files[0]);
+                         }
+                     }
+                     $('#file-input-carga-cedula').change(function(){
+                         preview_curp_cedula(this);
+                         $('#previa-carga-cedula').hide();
+                     });
 
 
 
