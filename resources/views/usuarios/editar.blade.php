@@ -513,6 +513,77 @@
 
 
                     //precargas imagenes
+
+                    //precio rfc
+                    function preview_rfc(input)
+                    {
+                        if(input.files && input.files[0])
+                        {
+                            var reader=new FileReader();
+                            reader.onload= function(e){
+                                $('#img_pre').html("<img src='"+e.target.result+"'>");
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    $('#file-input').change(function(){
+                        preview_rfc(this);
+                        $('#previa').hide();
+                    });
+
+                      //precio curp
+                    function preview_curp(input)
+                    {
+                        if(input.files && input.files[0])
+                        {
+                            var reader=new FileReader();
+                            reader.onload= function(e){
+                                $('#img_pre_curp').html("<img src='"+e.target.result+"'>");
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    $('#file-input-curp').change(function(){
+                        preview_curp(this);
+                        $('#previa_curp').hide();
+                    });
+
+                     //precio ife
+                    function preview_ife(input)
+                    {
+                        if(input.files && input.files[0])
+                        {
+                            var reader=new FileReader();
+                            reader.onload= function(e){
+                                $('#img_pre_ife').html("<img src='"+e.target.result+"'>");
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                    $('#file-input-ife').change(function(){
+                        preview_ife(this);
+                        $('#previa_ife').hide();
+                    });
+
+                    //previo domicilio
+                 function preview_domicilio(input)
+                 {
+                     if(input.files && input.files[0])
+                     {
+                         var reader=new FileReader();
+                         reader.onload= function(e){
+                             $('#img_pre_domicilio').html("<img src='"+e.target.result+"'>");
+                         }
+                         reader.readAsDataURL(input.files[0]);
+                     }
+                 }
+                 $('#file-input-domicilio').change(function(){
+                     preview_domicilio(this);
+                     $('#previa_domicilio').hide();
+                 });
+
+
+
                      //previo curp conyuge
                     function preview_curp_coy(input)
                     {

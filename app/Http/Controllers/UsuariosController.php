@@ -193,30 +193,17 @@ class UsuariosController extends Controller
          //Handle File Upload
          if($request->hasFile('foto')){
 
-            //Get filename with the extension
             $filenamewithExt = $request->file('foto')->getClientOriginalName();
-
-            //Get just filename
             $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
-
-            //Get just ext
             $extension = $request->file('foto')->guessClientExtension();
-
-            //FileName to store
             $fileNameToStore = time().'.'.$extension;
-
-            //Upload Image
             $path = $request->file('foto')->storeAs('Fotos/Usuarios',$fileNameToStore);
-
             $usuario->foto=$fileNameToStore;
          }
 
          if ($request->hasfile('carga_rfc')) {
-
             $filenamewithExt = $request->file('carga_rfc')->getClientOriginalName();
-
             $usuario->carga_rfc=$request->carga_rfc->storeAs('RFC',$filenamewithExt);
-
          }
 
          if ($request->hasfile('carga_curp')) {
@@ -832,6 +819,32 @@ class UsuariosController extends Controller
         $usuario = Usuarios::find($id);
 
         $usuario->fill($request->all())->save();
+
+        if($request->hasFile('foto')){
+
+            $filenamewithExt = $request->file('foto')->getClientOriginalName();
+            $filename = pathinfo($filenamewithExt,PATHINFO_FILENAME);
+            $extension = $request->file('foto')->guessClientExtension();
+            $fileNameToStore = time().'.'.$extension;
+            $path = $request->file('foto')->storeAs('Fotos/Usuarios',$fileNameToStore);
+            $usuario->foto=$fileNameToStore;
+         }
+
+         if ($request->hasfile('carga_rfc')) {
+            $filenamewithExt = $request->file('carga_rfc')->getClientOriginalName();
+            $usuario->carga_rfc=$request->carga_rfc->storeAs('RFC',$filenamewithExt);
+         }
+
+         if ($request->hasfile('carga_curp')) {
+            $filenamewithExt = $request->file('carga_curp')->getClientOriginalName();
+            $usuario->carga_curp=$request->carga_curp->storeAs('CURP',$filenamewithExt);
+         }
+
+
+         if ($request->hasfile('carga_ife')) {
+            $filenamewithExt = $request->file('carga_ife')->getClientOriginalName();
+            $usuario->carga_ife=$request->carga_ife->storeAs('IFE',$filenamewithExt);
+         }
 
         $usuario->condicion='1';
 
