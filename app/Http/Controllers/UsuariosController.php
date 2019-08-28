@@ -998,18 +998,44 @@ class UsuariosController extends Controller
              }
          }
 
-          //borramos idioma
-        $usuario->ExpLaborales()->delete($id);
+         //Laborales.
+          //laborales
+        $usuario->DetalleLaborales()->delete($id);
+        $usuario->DetalleLaborales()->create([
+            'puesto_actual'=>$request->puesto_actual,
+            'codigo_puesto'=>$request->codigo_puesto,
+            'grado_nivel'=>$request->grado_nivel,
+            'direcciones_generales_id'=>$request->direcciones_generales_id,
+            'direcciones_areas_id'=>$request->direcciones_areas_id,
+            'fecha_ultimo'=>$request->fecha_ultimo,
+            'fecha_senasica'=>$request->fecha_senasica,
+            'calle_lab'=>$request->calle_lab,
+            'num_lab'=>$request->num_lab,
+            'col_lab'=>$request->col_lab,
+            'fecha_gobierno'=>$request->fecha_gobierno,
+            'mun_lab'=>$request->mun_lab,
+            'est_lab'=>$request->est_lab,
+            'cod_lab'=>$request->cod_lab,
+            ]);
 
+
+          //borramos Experiencia laboral
+        $usuario->ExpLaborales()->delete($id);
          if(isset($request->den_puesto))
         {
             foreach($request->den_puesto as $item=>$v)
             {
-                    //dd($request->carga_titulo);
-                   // $fileDocPuesto = $request->doc_puesto[$item]->getClientOriginalName();
-
                 $doc_puesto=$request->doc_puesto[$item];
-                if($doc_puesto==""){$doc_puesto=0;}else{
+                $rec_puesto=$request->rec_puesto[$item];
+                $vpue=substr($rec_puesto,10);
+                //dd($vpuesto);
+                $rpue="DOCPUESTO/".$vpue;
+
+                if($doc_puesto == ""){
+                    $doc_puesto=$rpue;
+                }
+                if($doc_puesto != $rpue)
+                {
                     $filendoc =$doc_puesto->getClientOriginalName();
                     $doc_puesto=$request->doc_puesto[$item]->storeAs('DOCPUESTO',$filendoc);
                 }
@@ -1025,6 +1051,32 @@ class UsuariosController extends Controller
                     ]);
             }
         }
+
+        //seguro social
+        $usuario->Seguros()->delete($id);
+        $cual_enf=$request->cual_enf_seg;
+        $cual_dis=$request->cual_dis_seg;
+
+        if($cual_enf==""){$cual_enf="Ninguna Enfermedad";}else{$cual_enf;}
+        if($cual_dis==""){$cual_dis="Ninguna Discapacidad";}else{$cual_dis;}
+
+
+
+        $usuario->Seguros()->create([
+            'num_seg'=>$request->num_seg,
+            'enf_seg'=>$request->enf_seg,
+            'cual_enf_seg'=>$cual_enf,
+            'tipo_seg'=>$request->tipo_seg,
+            'dis_seg'=>$request->dis_seg,
+            'cual_dis_seg'=>$cual_dis,
+            'nom_seg'=>$request->nom_seg,
+            'pri_seg'=>$request->pri_seg,
+            'seg_seg'=>$request->seg_seg,
+            'par_seg'=>$request->par_seg,
+            'email_seg'=>$request->email_seg,
+            'tel_seg'=>$request->tel_seg,
+            'mov_seg'=>$request->mov_seg,
+            ]);
 
         $usuario->condicion='1';
 

@@ -98,6 +98,7 @@
                                         <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                                     </label>
                                     <input id="file-input-constancia" class="cur_hijo" type="file"   class="form-control" name="doc_puesto[]"/>
+                                    <input type="hidden" name="rec_puesto[]" value="{{ $v->doc_puesto }}">
                                 </div>
                             </div>
 
