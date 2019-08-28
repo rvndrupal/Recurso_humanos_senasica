@@ -94,7 +94,7 @@
                 <span class="input-group-text" id="addon-wrapping">CP</span>
             </div>
             @foreach ($use as $item)
-            <input type="text" class="form-control" name="codigo_postal" placeholder="Codigo postal" value="{{ $item->colonias->codigo_postal }}">
+            <input type="text" class="form-control" name="codigo_postal" placeholder="Codigo postal" value="{{ $item->colonias->codigo_postal }}" disabled>
             @endforeach
          </div>
 </div>

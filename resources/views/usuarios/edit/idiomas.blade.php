@@ -101,6 +101,7 @@
                                 <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                             </label>
                             <input id="file-input-certificado" class="cur_hijo" type="file"   class="form-control" name="carga_certificado[]"/>
+                            <input type="hidden" name="rec_idioma[]" value="{{ $v->carga_certificado }}">
                         </div>
                     </div>
 

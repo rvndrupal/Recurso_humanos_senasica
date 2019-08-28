@@ -238,12 +238,10 @@ class UsuariosController extends Controller
 
 
          //carga hijos
-
          if(isset($request->nombre_hijo))
          {
                 foreach($request->nombre_hijo as $item=>$v)
                 {
-
                     $nom_hijo=$request->nombre_hijo[$item];
                     $curp_hijo=$request->curp_hijo[$item];
                     $cch=$request->carga_curp_hijo[$item];
@@ -272,7 +270,6 @@ class UsuariosController extends Controller
                     'curp_hijo'=>$curp_hijo,
                     'carga_curp_hijo'=>$cch
                     ]);
-
                 }
         }
 
@@ -386,9 +383,6 @@ class UsuariosController extends Controller
 
         if(isset($request->grados_id))
         {
-        //Escolaridad
-
-
             foreach($request->grados_id as $item=>$v)
             {
                   //dd($request->carga_titulo);
@@ -428,7 +422,6 @@ class UsuariosController extends Controller
 
         if(isset($request->idiomas_id))
         {
-        //ingles
             foreach($request->idiomas_id as $item=>$v)
             {
                 $filenameCce = $request->carga_certificado[$item]->getClientOriginalName();
@@ -437,7 +430,6 @@ class UsuariosController extends Controller
                     'carga_certificado'=>$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filenameCce),
                     'nivel_ingles'=>$request->nivel_ingles[$item],
                     ]);
-
             }
         }
 
@@ -463,7 +455,6 @@ class UsuariosController extends Controller
 
         if(isset($request->den_puesto))
         {
-        //Exp Laboral
             foreach($request->den_puesto as $item=>$v)
             {
                     //dd($request->carga_titulo);
@@ -840,11 +831,200 @@ class UsuariosController extends Controller
             $usuario->carga_curp=$request->carga_curp->storeAs('CURP',$filenamewithExt);
          }
 
-
          if ($request->hasfile('carga_ife')) {
             $filenamewithExt = $request->file('carga_ife')->getClientOriginalName();
             $usuario->carga_ife=$request->carga_ife->storeAs('IFE',$filenamewithExt);
          }
+
+         if ($request->hasfile('carga_domicilio')) {
+            $filenamewithExt = $request->file('carga_domicilio')->getClientOriginalName();
+            $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
+         }
+
+         //dd($usuario->solteros);
+        //  foreach($request->nombre_hijo as $item=>$v)
+        //  {
+        //     $cch=$request->carga_curp_hijo[$item];
+        //     dd($cch);
+        //  }
+
+         $usuario->solteros()->delete($id);
+        //    //carga hijos
+          //carga hijos
+         if(isset($request->nombre_hijo))
+         {
+                foreach($request->nombre_hijo as $item=>$v)
+                {
+                    $rec=$request->rec_img[$item];
+                    $valr=substr($rec,10);
+                    $rr="CURPHIJOS/".$valr;
+                    $nom_hijo=$request->nombre_hijo[$item];
+                    $curp_hijo=$request->curp_hijo[$item];
+                    $cch=$request->carga_curp_hijo[$item];
+
+                    if($nom_hijo=="0" || $nom_hijo==""){
+                    $nom_hijo=0;
+                    }else{
+                    $nom_hijo=$request->nombre_hijo[$item];
+                    }
+
+                    if($curp_hijo=="0" || $curp_hijo=="")
+                    {
+                    $curp_hijo=0;
+                    }else{
+                    $curp_hijo=$request->curp_hijo[$item];
+                    }
+                    if($cch==""){
+                        $cch=$rr;
+                    }
+                    if($cch != $rr)
+                    {
+                        $file_curp_hijo =$cch->getClientOriginalName();
+                        $cch=$request->carga_curp_hijo[$item]->storeAs('CURPHIJOS',$file_curp_hijo);
+                    }
+                    $usuario->solteros()->create([
+                    'nombre_hijo'=>$nom_hijo,
+                    'curp_hijo'=>$curp_hijo,
+                    'carga_curp_hijo'=>$cch
+                    ]);
+                }
+        }
+
+
+         //borramos dependientes y se vuelve a crear
+         $usuario->Descensientes()->delete($id);
+
+          if(isset($request->nombre_des))
+          {
+                 foreach($request->nombre_des as $item=>$v)
+                 {
+                     $nom=$request->nombre_des[$item];
+                     $ap=$request->ap_des[$item];
+                     $am=$request->am_des[$item];                    //dd($edad);
+
+                     if($nom==""){$nom=0;}else{$nom=$request->nombre_des[$item];}
+                     if($ap==""){$ap=0;}else{$ap=$request->ap_des[$item];}
+                     if($am==""){$am=0;}else{$am=$request->am_des[$item];}
+
+                     $usuario->Descensientes()->create([
+                     'nombre_des'=>$nom,
+                     'ap_des'=>$ap,
+                     'am_des'=>$am
+                     ]);
+                 }
+         }
+
+
+        //borramos escolaridad y se vuelve a crear
+        $usuario->DetalleEscolaridades()->delete($id);
+
+         if(isset($request->grados_id))
+         {
+             foreach($request->grados_id as $item=>$v)
+             {
+                $rec_tit=$request->rec_titulo[$item];
+                $rec_ced=$request->rec_cedula[$item];
+                $vtit=substr($rec_tit,18);
+                $vced=substr($rec_ced,7);
+                $rtit="TITULOPROFESIONAL/".$vtit;
+                $rced="CEDULA/".$vced;
+                 $carga_titulo=$request->carga_titulo[$item];
+                 $carga_cedula=$request->carga_cedula[$item];
+
+
+
+                if($carga_titulo == ""){
+                    $carga_titulo=$rtit;
+                }
+                if($carga_titulo != $rtit)
+                {
+                    $file_tit = $carga_titulo->getClientOriginalName();
+                    $carga_titulo=$request->carga_titulo[$item]->storeAs('TITULOPROFESIONAL',$file_tit);
+                }
+                if($carga_cedula == ""){
+                    $carga_cedula=$rced;
+                }
+                if($carga_cedula != $rced)
+                {
+                    $filenameCed = $carga_cedula->getClientOriginalName();
+                    $carga_cedula=$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed);
+                }
+                 $usuario->DetalleEscolaridades()->create([
+                     'titulos_id'=>$request->titulos_id[$item],
+                     'carreras_id'=>$request->carreras_id[$item],
+                     'escuelas_id'=>$request->escuelas_id[$item],
+                     'grados_id'=>$request->grados_id[$item],
+                     'cedula'=>$request->cedula[$item],
+                     'carga_titulo'=>$carga_titulo,
+                     'carga_cedula'=>$carga_cedula,
+                     ]);
+             }
+         }
+
+         //borramos idioma
+        $usuario->DetalleIdiomas()->delete($id);
+
+         if(isset($request->idiomas_id))
+         {
+             foreach($request->idiomas_id as $item=>$v)
+             {
+                $carga_certificado=$request->carga_certificado[$item];
+                $rec_idi=$request->rec_idioma[$item];
+                $vidi=substr($rec_idi,13);
+                //dd($vidi);
+                $ridi="CERT_IDIOMAS/".$vidi;
+
+
+                if($carga_certificado == ""){
+                    $carga_certificado=$ridi;
+                }
+                if($carga_certificado != $ridi)
+                {
+                $filencer =$carga_certificado->getClientOriginalName();
+                $carga_certificado=$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filencer);
+                }
+
+
+                // if($carga_certificado==""){$carga_certificado=0;}else{
+                //     $filencer =$carga_certificado->getClientOriginalName();
+                //     $carga_certificado=$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filencer);
+                // }
+
+                 $usuario->DetalleIdiomas()->create([
+                     'idiomas_id'=>$request->idiomas_id[$item],
+                     'carga_certificado'=>$carga_certificado,
+                     'nivel_ingles'=>$request->nivel_ingles[$item],
+                     ]);
+             }
+         }
+
+          //borramos idioma
+        $usuario->ExpLaborales()->delete($id);
+
+         if(isset($request->den_puesto))
+        {
+            foreach($request->den_puesto as $item=>$v)
+            {
+                    //dd($request->carga_titulo);
+                   // $fileDocPuesto = $request->doc_puesto[$item]->getClientOriginalName();
+
+                $doc_puesto=$request->doc_puesto[$item];
+                if($doc_puesto==""){$doc_puesto=0;}else{
+                    $filendoc =$doc_puesto->getClientOriginalName();
+                    $doc_puesto=$request->doc_puesto[$item]->storeAs('DOCPUESTO',$filendoc);
+                }
+
+                $usuario->ExpLaborales()->create([
+                    'den_puesto'=>$request->den_puesto[$item],
+                    'ins_puesto'=>$request->ins_puesto[$item],
+                    'area_puesto'=>$request->area_puesto[$item],
+                    'anos_puesto'=>$request->anos_puesto[$item],
+                    'fecha_ing_puesto'=>$request->fecha_ing_puesto[$item],
+                    'fecha_baj_puesto'=>$request->fecha_baj_puesto[$item],
+                    'doc_puesto'=>$doc_puesto
+                    ]);
+            }
+        }
 
         $usuario->condicion='1';
 

@@ -124,11 +124,11 @@
                                         <hr>
                                         <h4>Tienes Hijos</h4>
                                      <button type="button" name="add" id="addHijos" class="btn btn-success">+</button>
-                                        <tr>
 
-                                        </tr>
                                         @include('usuarios/edit/hijos')
                                 </table>
+
+
                         </div>
 
                         <div class="dependientes">
@@ -343,18 +343,22 @@
 
                           '<td>'+
                                 '<div class="col-md-12">'+
-                                        '<input type="file" class="form-control"  id="carga_curp_hijo"  name="carga_curp_hijo[]" >'+
+                                        '<input type="file" class="form-control" data-valor="'+i+'" id="carga_curp_hijo'+i+'"  name="carga_curp_hijo[]" >'+
+                                        '<input type="hidden" name="rec_img[]" value="">'+
                                 '</div>'+
                             '</div>'+
                           '</td>'+
 
 
-                         '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+                         '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removeh">X</button></td></tr>');
                 });
-                $(document).on('click', '.btn_remove', function(){
+                $(document).on('click', '.btn_removeh', function(){
                      var button_id = $(this).attr("id");
                      $('#row'+button_id+'').remove();
                 });
+
+
+
 
                 //Dependientes
 
@@ -611,7 +615,6 @@
                     });
 
                     $(id_A).each(function(index){
-                        console.log(index+1);
                         function preview_curp_hijo(input)
                         {
                             if(input.files && input.files[0])
