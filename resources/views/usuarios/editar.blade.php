@@ -350,6 +350,7 @@
                           '</td>'+
 
 
+
                          '<td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_removeh">X</button></td></tr>');
                 });
                 $(document).on('click', '.btn_removeh', function(){

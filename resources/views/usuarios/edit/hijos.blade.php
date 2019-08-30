@@ -21,16 +21,17 @@
            </div>
      </td>
 
-     {{-- <td>
+     {{--  <td>
            <div class="col-md-8">
                    <input type="file" class="form-control"  id="carga_curp_hijo"  name="carga_curp_hijo[]" >
+                   <input type="hidden" name="rec_img[]" value="{{ $v->carga_curp_hijo }}">
            </div>
        </div>
-     </td> --}}
+     </td>  --}}
 
 
 
-     <td>
+      <td>
          <div class="row">
           <div class="col-md-5 hijos_index">
                 <div class="image-upload-curp-hijo">
@@ -54,7 +55,6 @@
             </div>
         </div>
      </td>
-
 
 
 

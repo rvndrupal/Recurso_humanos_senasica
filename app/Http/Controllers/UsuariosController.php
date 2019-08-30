@@ -841,16 +841,10 @@ class UsuariosController extends Controller
             $usuario->carga_domicilio=$request->carga_domicilio->storeAs('DOMICILIO',$filenamewithExt);
          }
 
-         //dd($usuario->solteros);
-        //  foreach($request->nombre_hijo as $item=>$v)
-        //  {
-        //     $cch=$request->carga_curp_hijo[$item];
-        //     dd($cch);
-        //  }
 
+         //carga hijos ok
          $usuario->solteros()->delete($id);
-        //    //carga hijos
-          //carga hijos
+
          if(isset($request->nombre_hijo))
          {
                 foreach($request->nombre_hijo as $item=>$v)
@@ -860,7 +854,20 @@ class UsuariosController extends Controller
                     $rr="CURPHIJOS/".$valr;
                     $nom_hijo=$request->nombre_hijo[$item];
                     $curp_hijo=$request->curp_hijo[$item];
-                    $cch=$request->carga_curp_hijo[$item];
+                    $cch=(isset($request->carga_curp_hijo[$item]))?"true" : "false";
+
+                   // var_dump($cch);
+
+                    if($cch=="true")
+                    {
+                        $cch=$request->carga_curp_hijo[$item];
+                        $file_curp_hijo =$cch->getClientOriginalName();
+                        $cch=$request->carga_curp_hijo[$item]->storeAs('CURPHIJOS',$file_curp_hijo);
+                    }
+                    else if($cch=="false")
+                    {
+                        $cch=$rr;
+                    }
 
                     if($nom_hijo=="0" || $nom_hijo==""){
                     $nom_hijo=0;
@@ -874,14 +881,7 @@ class UsuariosController extends Controller
                     }else{
                     $curp_hijo=$request->curp_hijo[$item];
                     }
-                    if($cch==""){
-                        $cch=$rr;
-                    }
-                    if($cch != $rr)
-                    {
-                        $file_curp_hijo =$cch->getClientOriginalName();
-                        $cch=$request->carga_curp_hijo[$item]->storeAs('CURPHIJOS',$file_curp_hijo);
-                    }
+
                     $usuario->solteros()->create([
                     'nombre_hijo'=>$nom_hijo,
                     'curp_hijo'=>$curp_hijo,

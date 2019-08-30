@@ -65,7 +65,7 @@
                                           <tr>
                                             <th scope="row">1</th>
                                             <td>
-                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}{{ "RFC-".$des }}">
+                                                <a href="http://localhost/recursos/public//{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}">
                                                     <i class="glyphicon glyphicon-download">RFC</i>
                                                 </a>
                                             </td>
