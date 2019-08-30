@@ -18,13 +18,16 @@
                                     <select  name="grados_id[]" class="estados_select" placeholder="Escolar">
                                             <option value="">Escolar</option>
                                             @foreach ($gradoss as $item)
-                                            <option value="{{ $item->id }}"
-                                            @if($item->id === $s_grados)
-                                            selected
-                                            @endif
-                                            >
-                                            {{ $item->nom_gra }}
-                                            </option>
+                                                @foreach ($grados_A as $gra)
+                                                <option value="{{ $item->id }}"
+
+                                                        @if($item->id === $gra)
+                                                        selected
+                                                        @endif
+                                                    >
+                                                {{ $item->nom_gra }}
+                                                </option>
+                                                @endforeach
                                             @endforeach
                                     </select>
                                 </div>
@@ -58,7 +61,7 @@
                                     </div>
 
                                 <input type="text" class="form-control" name="cedula[]" id="cedula"    placeholder="Cedula profesional"
-                                aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $use[0]->DetalleEscolaridades[0]->cedula }}">
+                                aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $v->cedula }}">
 
                             </div>
                         </div>
@@ -103,22 +106,22 @@
                             <div class="col-md-1">
                                 <h6 class="foto_tex2">TÍTULO</h6>
                             </div>
-                            <div class="col-md-2 hijos_index">
+                            <div class="col-md-2 id_titulo">
                                 <div class="image-upload-carga-titulo">
-                                    <label for="file-input-carga-titulo">
+                                    <label for="file-input-carga-titulo{{ $loop->index+1 }}">
                                         <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                                     </label>
-                                    <input id="file-input-carga-titulo" class="cur_hijo" type="file"   class="form-control" name="carga_titulo[]"/>
+                                    <input id="file-input-carga-titulo{{ $loop->index+1 }}" class="cur_hijo" type="file"  data-id={{ $loop->index+1 }} class="form-control" name="carga_titulo[]"/>
                                     <input type="hidden" name="rec_titulo[]" value="{{ $v->carga_titulo }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
 
-                                    <div id="previa-carga-titulo">
+                                    <div id="previa-carga-titulo{{ $loop->index+1 }}">
                                     <img src="http://localhost/recursos/public/{{ $v->carga_titulo }}" width="100px" height="70px" alt="">
                                     {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
                                     </div>
-                                    <div class="img_pre-carga-titulo" id="img_pre-carga-titulo">
+                                    <div class="img_pre-carga-titulo" id="img_pre-carga-titulo{{ $loop->index+1 }}">
 
                                     </div>
 
@@ -127,22 +130,22 @@
                             <div class="col-md-1">
                                     <h6 class="foto_tex2">CÉDULA</h6>
                             </div>
-                            <div class="col-md-2 hijos_index">
+                            <div class="col-md-2 id_cedula">
                                 <div class="image-upload-carga-cedula">
-                                    <label for="file-input-carga-cedula">
+                                    <label for="file-input-carga-cedula{{ $loop->index+1 }}">
                                         <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                                     </label>
-                                    <input id="file-input-carga-cedula" class="cur_hijo" type="file"   class="form-control" name="carga_cedula[]"/>
+                                    <input id="file-input-carga-cedula{{ $loop->index+1 }}" class="cur_hijo" type="file" data-id={{ $loop->index+1 }}  class="form-control" name="carga_cedula[]"/>
                                     <input type="hidden" name="rec_cedula[]" value="{{ $v->carga_cedula }}">
                                 </div>
                             </div>
                             <div class="col-md-3">
 
-                                    <div id="previa-carga-cedula">
+                                    <div id="previa-carga-cedula{{ $loop->index+1 }}">
                                     <img src="http://localhost/recursos/public/{{ $v->carga_cedula }}" width="100px" height="70px" alt="">
                                     {{--  <input type="file" class="form-control"  id="carga_rfc"  name="carga_rfc">  --}}
                                     </div>
-                                    <div class="img_pre-carga-cedula" id="img_pre-carga-cedula">
+                                    <div class="img_pre-carga-cedula" id="img_pre-carga-cedula{{ $loop->index+1 }}">
 
                                     </div>
 
@@ -249,6 +252,7 @@
 
                 '<div class="col-md-10">'+
                    ' <input type="file" class="form-control"  id="titulo_pro"  name="carga_titulo[]" >'+
+                   '<input type="hidden" name="rec_titulo[]" value="{{ $v->carga_titulo }}">'+
                '</div>'+
 
 
@@ -258,6 +262,7 @@
 
         '<div class="col-md-10">'+
             ' <input type="file" class="form-control"  id="cedula"  name="carga_cedula[]" >'+
+            ' <input type="hidden" name="rec_cedula[]" value="{{ $v->carga_cedula }}">'+
         '</div>'+
 
 

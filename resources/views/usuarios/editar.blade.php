@@ -636,72 +636,103 @@
                     //previo curp hijo
 
                     //precio titulo
-                    function preview_curp_titulo(input)
-                    {
-                        if(input.files && input.files[0])
-                        {
-                            var reader=new FileReader();
-                            reader.onload= function(e){
-                                $('#img_pre-carga-titulo').html("<img src='"+e.target.result+"'>");
-                            }
-                            reader.readAsDataURL(input.files[0]);
-                        }
-                    }
-                    $('#file-input-carga-titulo').change(function(){
-                        preview_curp_titulo(this);
-                        $('#previa-carga-titulo').hide();
+                    var titulo_A=new Array();
+                    $('.id_titulo input').each(function(i){
+                    id=$(this).data('id');
+                    titulo_A.push(id);
                     });
 
-                     //previa cedula
-                     function preview_curp_cedula(input)
-                     {
-                         if(input.files && input.files[0])
-                         {
-                             var reader=new FileReader();
-                             reader.onload= function(e){
-                                 $('#img_pre-carga-cedula').html("<img src='"+e.target.result+"'>");
-                             }
-                             reader.readAsDataURL(input.files[0]);
-                         }
-                     }
-                     $('#file-input-carga-cedula').change(function(){
-                         preview_curp_cedula(this);
-                         $('#previa-carga-cedula').hide();
-                     });
+                    $(titulo_A).each(function(index){
 
-
-                      //previa certificado
-                      function preview_curp_certificado(input)
-                      {
-                          if(input.files && input.files[0])
-                          {
-                              var reader=new FileReader();
-                              reader.onload= function(e){
-                                  $('#img_pre-certificado').html("<img src='"+e.target.result+"'>");
-                              }
-                              reader.readAsDataURL(input.files[0]);
-                          }
-                      }
-                      $('#file-input-certificado').change(function(){
-                          preview_curp_certificado(this);
-                          $('#previa-certificado').hide();
-                      });
-
-                        //previa certificado
-                        function preview_curp_constancia(input)
+                        function preview_curp_titulo(input)
                         {
                             if(input.files && input.files[0])
                             {
                                 var reader=new FileReader();
                                 reader.onload= function(e){
-                                    $('#img_pre-constancia').html("<img src='"+e.target.result+"'>");
+                                    $('#img_pre-carga-titulo'+(index+1)).html("<img src='"+e.target.result+"'>");
                                 }
                                 reader.readAsDataURL(input.files[0]);
                             }
                         }
-                        $('#file-input-constancia').change(function(){
-                            preview_curp_constancia(this);
-                            $('#previa-constancia').hide();
+
+                        $('#file-input-carga-titulo'+(index+1)).change(function(){
+                            preview_curp_titulo(this);
+                            $('#previa-carga-titulo'+(index+1)).hide();
+                        });
+                    });
+
+                     //previa cedula
+                     var cedula_A=new Array();
+                     $('.id_cedula input').each(function(i){
+                     id=$(this).data('id');
+                     cedula_A.push(id);
+                     });
+                     $(titulo_A).each(function(index){
+                        function preview_curp_cedula(input)
+                        {
+                            if(input.files && input.files[0])
+                            {
+                                var reader=new FileReader();
+                                reader.onload= function(e){
+                                    $('#img_pre-carga-cedula'+(index+1)).html("<img src='"+e.target.result+"'>");
+                                }
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+                        $('#file-input-carga-cedula'+(index+1)).change(function(){
+                            preview_curp_cedula(this);
+                            $('#previa-carga-cedula'+(index+1)).hide();
+                        });
+                     });
+
+
+                      //previa certificado
+                      var certificado_A=new Array();
+                      $('.id_certificado input').each(function(i){
+                      id=$(this).data('id');
+                      certificado_A.push(id);
+                      });
+                      $(certificado_A).each(function(index){
+                            function preview_curp_certificado(input)
+                            {
+                                if(input.files && input.files[0])
+                                {
+                                    var reader=new FileReader();
+                                    reader.onload= function(e){
+                                        $('#img_pre-certificado'+(index+1)).html("<img src='"+e.target.result+"'>");
+                                    }
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                            $('#file-input-certificado'+(index+1)).change(function(){
+                                preview_curp_certificado(this);
+                                $('#previa-certificado'+(index+1)).hide();
+                            });
+                        });
+
+                        //previa certificado
+                        var constancia_A=new Array();
+                        $('.id_constancia input').each(function(i){
+                        id=$(this).data('id');
+                        constancia_A.push(id);
+                        });
+                        $(constancia_A).each(function(index){
+                            function preview_curp_constancia(input)
+                            {
+                                if(input.files && input.files[0])
+                                {
+                                    var reader=new FileReader();
+                                    reader.onload= function(e){
+                                        $('#img_pre-constancia'+(index+1)).html("<img src='"+e.target.result+"'>");
+                                    }
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                            $('#file-input-constancia'+(index+1)).change(function(){
+                                preview_curp_constancia(this);
+                                $('#previa-constancia'+(index+1)).hide();
+                            });
                         });
 
 

@@ -745,7 +745,16 @@ class UsuariosController extends Controller
        $edi_rfc=$use[0]->carga_rfc;
        $rfc_sub=substr($edi_rfc,4);
 
-       $s_grados=$use[0]->DetalleEscolaridades[0]->grados_id;
+
+        $grados_A=array();
+       foreach($use[0]->DetalleEscolaridades as $item=>$v)
+       {
+           $s_grados=$v->grados_id;
+           array_push($grados_A,$s_grados);
+       }
+
+      // dd($grados_A);
+
        $s_carreras=$use[0]->DetalleEscolaridades[0]->carreras_id;
        $s_escuelas=$use[0]->DetalleEscolaridades[0]->escuelas_id;
        $s_tt=$use[0]->DetalleEscolaridades[0]->titulos_id;
@@ -791,7 +800,7 @@ class UsuariosController extends Controller
 
 
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
-        ,'estCS','s_civ','s_opv','opcCiv','gradoss','s_grados','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
+        ,'estCS','s_civ','s_opv','opcCiv','gradoss','grados_A','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
         ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'
     ,   'enfermo','disca','uid'));
     }
@@ -928,27 +937,30 @@ class UsuariosController extends Controller
                 $vced=substr($rec_ced,7);
                 $rtit="TITULOPROFESIONAL/".$vtit;
                 $rced="CEDULA/".$vced;
-                 $carga_titulo=$request->carga_titulo[$item];
-                 $carga_cedula=$request->carga_cedula[$item];
 
 
+                 $car_tit=(isset($request->carga_titulo[$item]))?"true" : "false";
+                 $car_ced=(isset($request->carga_cedula[$item]))?"true" : "false";
 
-                if($carga_titulo == ""){
-                    $carga_titulo=$rtit;
-                }
-                if($carga_titulo != $rtit)
-                {
+
+                 if($car_tit=="true")
+                 {
+                    $carga_titulo=$request->carga_titulo[$item];
                     $file_tit = $carga_titulo->getClientOriginalName();
                     $carga_titulo=$request->carga_titulo[$item]->storeAs('TITULOPROFESIONAL',$file_tit);
-                }
-                if($carga_cedula == ""){
-                    $carga_cedula=$rced;
-                }
-                if($carga_cedula != $rced)
-                {
+                 }
+                 else{
+                     $carga_titulo=$rtit;
+                 }
+
+                 if($car_ced=="true"){
+                    $carga_cedula=$request->carga_cedula[$item];
                     $filenameCed = $carga_cedula->getClientOriginalName();
                     $carga_cedula=$request->carga_cedula[$item]->storeAs('CEDULA',$filenameCed);
-                }
+                 }else{
+                    $carga_cedula=$rced;
+                 }
+
                  $usuario->DetalleEscolaridades()->create([
                      'titulos_id'=>$request->titulos_id[$item],
                      'carreras_id'=>$request->carreras_id[$item],
@@ -968,27 +980,23 @@ class UsuariosController extends Controller
          {
              foreach($request->idiomas_id as $item=>$v)
              {
-                $carga_certificado=$request->carga_certificado[$item];
+
                 $rec_idi=$request->rec_idioma[$item];
                 $vidi=substr($rec_idi,13);
                 //dd($vidi);
                 $ridi="CERT_IDIOMAS/".$vidi;
 
+                $car_cer=(isset($request->carga_certificado[$item]))?"true" : "false";
 
-                if($carga_certificado == ""){
+                if($car_cer=="true")
+                {
+                    $carga_certificado=$request->carga_certificado[$item];
+                    $filencer =$carga_certificado->getClientOriginalName();
+                    $carga_certificado=$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filencer);
+                }
+                else{
                     $carga_certificado=$ridi;
                 }
-                if($carga_certificado != $ridi)
-                {
-                $filencer =$carga_certificado->getClientOriginalName();
-                $carga_certificado=$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filencer);
-                }
-
-
-                // if($carga_certificado==""){$carga_certificado=0;}else{
-                //     $filencer =$carga_certificado->getClientOriginalName();
-                //     $carga_certificado=$request->carga_certificado[$item]->storeAs('CERT_IDIOMAS',$filencer);
-                // }
 
                  $usuario->DetalleIdiomas()->create([
                      'idiomas_id'=>$request->idiomas_id[$item],
@@ -1025,19 +1033,22 @@ class UsuariosController extends Controller
         {
             foreach($request->den_puesto as $item=>$v)
             {
-                $doc_puesto=$request->doc_puesto[$item];
+
                 $rec_puesto=$request->rec_puesto[$item];
                 $vpue=substr($rec_puesto,10);
                 //dd($vpuesto);
                 $rpue="DOCPUESTO/".$vpue;
 
-                if($doc_puesto == ""){
-                    $doc_puesto=$rpue;
-                }
-                if($doc_puesto != $rpue)
+                $car_puesto=(isset($request->doc_puesto[$item]))?"true" : "false";
+
+                if($car_puesto=="true")
                 {
+                    $doc_puesto=$request->doc_puesto[$item];
                     $filendoc =$doc_puesto->getClientOriginalName();
                     $doc_puesto=$request->doc_puesto[$item]->storeAs('DOCPUESTO',$filendoc);
+                }
+                else{
+                    $doc_puesto=$rpue;
                 }
 
                 $usuario->ExpLaborales()->create([

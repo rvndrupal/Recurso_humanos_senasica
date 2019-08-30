@@ -6,11 +6,11 @@
 
             <a href="#" class="add_Expe btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Experiencia</a>
     </div>
-
+    @foreach ($use[0]->ExpLaborales as $item=>$v)
 
       <div class="container" style=" border: 1px solid #00000036; padding: 23px; margin: 0 0 17px 0px;">
         <div class="row">
-            @foreach ($use[0]->ExpLaborales as $item=>$v)
+
 
             <div class="col-md-12">
                 <div class="input-group flex-nowrap">
@@ -88,26 +88,26 @@
             </div>  --}}
 
                 <div class="row">
-                    <div class="row cer_idioma">
+                    <div class="row id_constancia">
                             <div class="col-md-3">
                                     <h6 class="foto_tex2">CONSTANCIA</h6>
                             </div>
                             <div class="col-md-3 ">
                                 <div class="image-upload-constancia">
-                                    <label for="file-input-constancia">
+                                    <label for="file-input-constancia{{ $loop->index+1 }}">
                                         <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                                     </label>
-                                    <input id="file-input-constancia" class="cur_hijo" type="file"   class="form-control" name="doc_puesto[]"/>
+                                    <input id="file-input-constancia{{ $loop->index+1 }}" class="cur_hijo" type="file" data-id={{ $loop->index+1 }}  class="form-control" name="doc_puesto[]"/>
                                     <input type="hidden" name="rec_puesto[]" value="{{ $v->doc_puesto }}">
                                 </div>
                             </div>
 
                             <div class="col-md-3">
 
-                                    <div id="previa-constancia">
+                                    <div id="previa-constancia{{ $loop->index+1 }}">
                                     <img src='http://localhost/recursos/public/{{ $v->doc_puesto }}' width="100px" height="70px" alt="">
                                     </div>
-                                    <div class="img_pre-constancia" id="img_pre-constancia">
+                                    <div class="img_pre-constancia" id="img_pre-constancia{{ $loop->index+1 }}">
 
                                     </div>
 
@@ -115,15 +115,12 @@
                         </div>
                 </div>
 
-            @endforeach
+
         </div>
         <a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>
       </div>
      {{-- <a href="#" class="add_Expe btn btn-success" style="margin: 0 0 7px 86%;" title="Add field">Agregar Experiencia</a> --}}
-
-
-
-
+     @endforeach
 </div>
 
 
@@ -220,20 +217,14 @@
 
                             '<div class="col-md-10">'+
                                 ' <input type="file" class="form-control"  id="doc_puesto"  name="doc_puesto[]" >'+
+                                '<input type="hidden" name="rec_puesto[]" value="{{ $v->doc_puesto }}">'+
                             '</div>'+
 
                          ' </div>'+
 
-
-
-
-
-
-
                        ' </div>'+{{-- row --}}
                        '<a href="#" class="btn btn-sm btn btn-danger remove_button" style="margin: 0 0 0 97%;" >X</a>'+
                    ' </div>'+{{-- -container --}}
-
 
 
 '</div>';
