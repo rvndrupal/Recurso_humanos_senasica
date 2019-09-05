@@ -746,14 +746,9 @@ class UsuariosController extends Controller
        $rfc_sub=substr($edi_rfc,4);
 
 
-        $grados_A=array();
-       foreach($use[0]->DetalleEscolaridades as $item=>$v)
-       {
-           $s_grados=$v->grados_id;
-           array_push($grados_A,$s_grados);
-       }
+        //dd($use[0]->DetalleEscolaridades);
 
-      // dd($grados_A);
+
 
        $s_carreras=$use[0]->DetalleEscolaridades[0]->carreras_id;
        $s_escuelas=$use[0]->DetalleEscolaridades[0]->escuelas_id;
@@ -802,7 +797,7 @@ class UsuariosController extends Controller
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','grados_A','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
         ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'
-    ,   'enfermo','disca','uid'));
+    ,   'enfermo','disca','uid','s_grados'));
     }
 
     /**

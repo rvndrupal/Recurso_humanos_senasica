@@ -15,7 +15,7 @@
                             <a class="toggle-vis btn btn-sm btn-info" data-column="1">Nombre</a>
                             <a class="toggle-vis btn btn-sm btn-info" data-column="2">Ap</a>
                             <a class="toggle-vis btn btn-sm btn-info" data-column="3">Am</a>
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="4">Curp</a>
+                            {{--  <a class="toggle-vis btn btn-sm btn-info" data-column="4">Curp</a>  --}}
                             {{--  <a class="toggle-vis btn btn-sm btn-info" data-column="5">Rfc</a>
                             <a class="toggle-vis btn btn-sm btn-info" data-column="6">Calle</a>
                             <a class="toggle-vis btn btn-sm btn-info" data-column="7">Número</a>
@@ -74,16 +74,36 @@
                 return `
                         <table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
                             <tr>
-                                    <td>Foto</td>
-                                    <td><img src="/recursos/public/Fotos/Usuarios/${d.foto}" style=" width:100px; "></td>
-                            </tr>
-                            <tr>
-                                <td>Curp</td>
+                                <td>Foto</td>
+                                <td><img src="/recursos/public/Fotos/Usuarios/${d.foto}" style=" width:80px; "></td>
+                                <td>Curp:</td>
                                 <td>${d.curp}</td>
+                                <td>Rfc:</td>
+                                <td>${d.rfc}</td>
                             </tr>
                             <tr>
-                                <td>Rfc</td>
-                                <td>${d.rfc}</td>
+                                <td>Calle:</td>
+                                <td>${d.calle}</td>
+                                <td>Numero:</td>
+                                <td>${d.numero}</td>
+                            </tr>
+                            <tr>
+                            <td>Correo Personal:</td>
+                            <td>${d.correo_per}</td>
+                            <td>Correo Institucional:</td>
+                            <td>${d.correo_ins}</td>
+                            </tr>
+                            <tr>
+                            <td>Tel casa:</td>
+                            <td>${d.tel_casa}</td>
+                            <td>Cel:</td>
+                            <td>${d.tel_movil}</td>
+                            </tr>
+                            <tr>
+                            <td>Fecha nacimiento:</td>
+                            <td>${d.fecha_nacimiento}</td>
+                            <td>Fecha alta:</td>
+                            <td>${d.created_at}</td>
                             </tr>
 
                         </table>

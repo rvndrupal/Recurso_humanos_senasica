@@ -17,17 +17,16 @@
                                     </div>
                                     <select  name="grados_id[]" class="estados_select" placeholder="Escolar">
                                             <option value="">Escolar</option>
-                                            @foreach ($gradoss as $item)
-                                                @foreach ($grados_A as $gra)
-                                                <option value="{{ $item->id }}"
 
-                                                        @if($item->id === $gra)
+                                            @foreach ($gradoss as $item)
+                                                <option value="{{ $item->id }}"
+                                                        @if($item->id === $v->grados_id)
                                                         selected
                                                         @endif
                                                     >
                                                 {{ $item->nom_gra }}
                                                 </option>
-                                                @endforeach
+
                                             @endforeach
                                     </select>
                                 </div>
@@ -42,7 +41,7 @@
                                             <option value="">Carrera</option>
                                             @foreach ($carrerass as $item)
                                             <option value="{{ $item->id }}"
-                                            @if($item->id === $s_carreras)
+                                            @if($item->id === $v->carreras_id)
                                             selected
                                             @endif
                                             >
@@ -75,7 +74,7 @@
                                         <option value="">Escuela</option>
                                         @foreach ($escuelass as $item)
                                         <option value="{{ $item->id }}"
-                                        @if($item->id === $s_escuelas)
+                                        @if($item->id === $v->escuelas_id)
                                         selected
                                         @endif
                                         >{{ $item->nombre_escuela }}</option>
@@ -93,7 +92,7 @@
                                         <option value="">Título</option>
                                         @foreach ($tituloss as $item)
                                         <option value="{{ $item->id }}"
-                                        @if($item->id === $s_tt)
+                                        @if($item->id === $v->titulos_id)
                                         selected
                                         @endif
                                         >{{ $item->nombre_titulo }}</option>

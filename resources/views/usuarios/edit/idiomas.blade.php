@@ -19,7 +19,7 @@
                                     <option value="">Idioma</option>
                                     @foreach ($idiomass as $item)
                                     <option value="{{ $item->id }}"
-                                    @if($item->id === $s_idioma)
+                                    @if($item->id === $v->idiomas_id)
                                     selected
                                     @endif
                                     >{{ $item->nombre_idioma }}</option>
@@ -34,7 +34,7 @@
                     <div class="col-md-2">
 
                         <div class="form-check">
-                                @if($s_ni === "0%")
+                                @if($v->nivel_ingles === "0%")
                                 <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="0%" checked>
                                 @else
                                 <input class="form-check-inputce" style="margin: 0 0 0 -28px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="0%">
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="form-check">
-                                @if($s_ni === "25%")
+                                @if($v->nivel_ingles === "25%")
                                 <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="25%" checked>
                                 @else
                                 <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles1" value="25%">
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="form-check">
-                                @if($s_ni === "50%")
+                                @if($v->nivel_ingles === "50%")
                                 <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="50%" checked>
                                 @else
                                 <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="50%">
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="form-check">
-                                @if($s_ni === "75%")
+                                @if($v->nivel_ingles === "75%")
                                 <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="75%" checked>
                                 @else
                                 <input class="form-check-input" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="75%">
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="form-check">
-                                @if($s_ni === "100%")
+                                @if($v->nivel_ingles === "100%")
                                 <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="100%" checked>
                                 @else
                                 <input class="form-check-inputc" style="margin: 0 0 0 -13px;" type="checkbox" name="nivel_ingles[]" id="nivel_ingles" value="100%">

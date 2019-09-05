@@ -27,12 +27,12 @@
 
     <style>
             td.details-control {
-                background: url('../img/details_open.png') no-repeat center center;
+                background: url({{ asset('img/details_open.png') }}) no-repeat center center;
                 cursor: pointer;
             }
 
             tr.shown td.details-control {
-                background: url('../img/details_close.png') no-repeat center center;
+                background: url({{ asset('img/details_close.png') }}) no-repeat center center;
             }
     </style>
 
