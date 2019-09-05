@@ -116,7 +116,7 @@
 
                     </div>
                 </div>
-
+                <a href='#' class="btn btn-sm btn btn-danger remove_button2" style="margin: 0 0 0 97%;" >X</a>
         </div>
         @endforeach
     </div>
@@ -190,19 +190,8 @@
                   '</div>'+
 
 
-                 ' <div class="row" style="margin:20px 0 0 0">'+
+                    '<div class="row" style="margin:20px 0 0 0">'+
 
-                        {{--  '<div class="col-md-7">'+
-                                '<div class="input-group flex-nowrap">'+
-                                   ' <div class="input-group-prepend">'+
-                                        '<span class="input-group-text" id="inputGroupFileAddon01">Certificados</span>'+
-                                        '</div>'+
-                                       ' <div class="custom-file">'+
-                                       ' <input type="file" class="custom-file-input" data-name="certificadosl" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="carga_certificado[]" >'+
-                                        '<label class="custom-file-label" id="certificadosl" for="inputGroupFile01">Choose file</label>'+
-                                   ' </div>'+
-                                '</div>'+
-                       ' </div>'+  --}}
 
                        '<div class="col-md-1">'+
                             '  <label class="certificado">Certificado</label>'+
@@ -213,16 +202,19 @@
                             '<input type="hidden" name="rec_idioma[]" value="{{ $v->carga_certificado }}">'+
                         '</div>'+
 
-                     ' </div>'+
+                     '</div>'+
 
 
-                   '<a href="#" class="btn btn-sm btn btn-danger remove_button2" style="margin: 0 0 0 97%;" >X</a>'+
 
-               '</div>'+
+
+               {{--  '</div>'+  --}}
+               '<a href="#" class="btn btn-sm btn btn-danger remove_button2" style="margin: 0 0 0 97%;" >X</a>'+
 
                 '</div>'+
 
+
             '</div>';
+            {{-- Global --}}
 
                 var x = 1; //Initial field counter is 1
                 $(addButton).click(function(){ //Once add button is clicked

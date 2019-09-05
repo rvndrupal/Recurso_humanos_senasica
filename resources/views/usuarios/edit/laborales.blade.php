@@ -231,7 +231,7 @@
                     }
                     else{
 
-                        $.get("municipios/" + id, function(data){
+                        $.get("../municipios/" + id, function(data){
 
                             $("#municipioss").empty();
 
@@ -258,7 +258,7 @@
                     }
                     else{
 
-                        $.get("colonias/" + id, function(data){
+                        $.get("../colonias/" + id, function(data){
 
                             $("#coloniass").empty();
 
@@ -289,7 +289,7 @@
                     }
                     else{
 
-                        $.get("cp/" + id, function(data){
+                        $.get("../cp/" + id, function(data){
 
                             $("#colonias_cps").empty();
 

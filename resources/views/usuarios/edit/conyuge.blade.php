@@ -61,6 +61,7 @@
                             <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                         </label>
                         <input id="file-input-curp-coy" type="file"  class="form-control" name="carga_curp_coy"/>
+                        <input type="hidden" name="rec_curp_coy" value="{{ $item->carga_curp_coy }}">
 
                     </div>
               </div>

@@ -898,11 +898,13 @@ class UsuariosController extends Controller
         $usuario->conyuges()->delete($id);
         if(isset($request->nombres_coy))
         {
+                $rcoy=$request->rec_curp_coy;
                 $nom=$request->nombres_coy;
                 $primero=$request->primero_coy;
                 $segundo=$request->segundo_coy;
                 $curp=$request->curp_coy;
-                $curp_carga=$request->carga_curp_coy;
+                $ccoy=(isset($request->carga_curp_coy))?"true" : "false";
+                //$curp_carga=$request->carga_curp_coy;
 
                 //dd($curp_carga);
 
@@ -910,19 +912,24 @@ class UsuariosController extends Controller
                 if($primero==""){$primero=0;}else{$primero=$request->primero_coy;}
                 if($segundo==""){$segundo=0;}else{$segundo=$request->segundo_coy;}
                 if($curp==""){$curp=0;}else{$curp=$request->curp_coy;}
-                if($curp_carga==""){$curp_carga=0;}else{
-                $filenamewithExt =$curp_carga->getClientOriginalName();
-                $curp_carga=$request->carga_curp_coy->storeAs('CURPCONYUGES',$filenamewithExt);
+
+                if($ccoy=="true")
+                {
+                    $ccoy=$request->carga_curp_coy;
+                    $filenamewithExt =$ccoy->getClientOriginalName();
+                    $ccoy=$request->carga_curp_coy->storeAs('CURPCONYUGES',$filenamewithExt);
                 }
-
-
+                else if($ccoy=="false")
+                {
+                    $ccoy=$rcoy;
+                }
 
                 $usuario->conyuges()->create([
                     'nombres_coy'=>$nom,
                     'primero_coy'=>$primero,
                     'segundo_coy'=>$segundo,
                     'curp_coy'=>$curp,
-                    'carga_curp_coy'=>$curp_carga
+                    'carga_curp_coy'=>$ccoy
 
                 ]);
          }
