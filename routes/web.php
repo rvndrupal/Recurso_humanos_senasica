@@ -70,6 +70,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             Route::get('/activar/{id}', "{$route['controller']}@activar")->middleware("permission:activar-{$route['module']}")->name("{$route['module']}.activar");
 
 
+
+
+
             //estados
             Route::get('/estados/{id}', 'UsuariosController@estados');
              //colonias
@@ -82,6 +85,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
     Route::get('/charts', 'ChartController@index')->middleware('permission:read-charts');
+
+        //exportar
+        Route::get('/usuarios/index-exportar', 'UsuariosController@indexExportar')->name('usuarios.index-exportar');
+        Route::get('/usuarios/exportar', 'UsuariosController@exportar')->name('usuarios.exportar');
+
 
     //importar
     Route::get('/importar','ImportarController@importar');

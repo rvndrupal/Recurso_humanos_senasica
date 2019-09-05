@@ -53,6 +53,25 @@ class UsuariosController extends Controller
         }
     }
 
+    public function indexExportar()
+    {
+        $title = __('Usuarios Reportes');
+        return view('usuarios.index_exp', compact('title'));
+    }
+
+    public function exportar()
+    {
+       // $title = __('Usuarios Reportes');
+
+        $actions = 'usuarios.datatables.index';
+        // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
+        return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
+            ->rawColumns(['actions'])
+            // ->orderBy('nom','ASC')
+            ->toJson();
+
+    }
+
     public function listaAdmin(){
         $title = __('Usuarios');
         return view('usuarios.indexAdmin', compact('title'));

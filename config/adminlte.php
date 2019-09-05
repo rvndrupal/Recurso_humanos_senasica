@@ -160,12 +160,14 @@ return [
                     'icon' => 'list'
                 ],
 
-                // [
-                //     'text' => 'Cards',
-                //     'url'  => 'admin/usuarios/cards',
-                //     'permission'  => 'read-card',
-                //     'icon' => 'list'
-                // ],
+                [
+                    'text' => 'Exportar',
+                    'url'  => 'admin/usuarios/index-exportar',
+                    'permission'  => 'read-exportar',
+                    'icon' => 'list'
+                ],
+
+
 
                 [
                     'text' => 'Cards',

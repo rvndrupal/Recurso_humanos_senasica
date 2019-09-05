@@ -11,7 +11,7 @@
 
             <div class="box-body">
                 @if($roles->exists)
-                    {{ Form::model($roles, ['url' => route('role.update', ['id' => $roles->id]), 'method' => 'put']) }}
+                    {{ Form::model($roles, ['url' => route('role.update', ['id' => $roles->id]), 'method' => 'post']) }}
                 @else
                     {{ Form::model($roles, ['url' => route('role.store')]) }}
                 @endif
