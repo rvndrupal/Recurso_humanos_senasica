@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-4">
             <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="addon-wrapping">Curp</span>
@@ -51,19 +51,20 @@
         </div> --}}
 
         <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-2">
                         <label class="foto_tex">CURP</label>
                 </div>
 
-              <div class="col-md-5">
+              <div class="col-md-4">
                     <div class="image-upload-curp-coy">
                         <label for="file-input-curp-coy">
                             <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
                         </label>
                         <input id="file-input-curp-coy" type="file"  class="form-control" name="carga_curp_coy"/>
+
                     </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
 
                     <div id="previa-curp-coy">
                     <img src="http://localhost/recursos/public/{{ $item->carga_curp_coy }}" width="130px" height="100px" alt="">
