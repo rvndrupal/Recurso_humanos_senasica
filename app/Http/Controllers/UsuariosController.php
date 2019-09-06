@@ -22,6 +22,8 @@ use App\Codigos;
 use App\Niveles;
 use App\DependientesCasados;
 
+use Barryvdh\DomPDF\Facade as PDF;
+
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -67,8 +69,14 @@ class UsuariosController extends Controller
         return view('usuarios.index_exp', compact('title','usuarios'));
     }
 
-    public function expPdf(){
-        return "hola";
+    public function expPdf(Request $request, $id){
+        //$usuarios=Usuarios::all();  //para todos
+        $usuario = Usuarios::find($id);
+        $ruta=public_path();
+        //dd($ruta);
+        // $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta'));
+        // return $pdf->download('usuario.pdf');
+        return view('pdf.usuarios_mol',compact('usuario','ruta'));
     }
 
 
