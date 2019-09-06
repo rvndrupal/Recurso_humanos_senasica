@@ -90,6 +90,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/usuarios/index-exportar', 'UsuariosController@indexExportar')->name('usuarios.index-exportar');
         Route::get('/usuarios/exportar', 'UsuariosController@exportar')->name('usuarios.exportar');
 
+        //exportar pdf
+        Route::get('/usuarios-pdf', 'UsuariosController@expPdf')->name('usuarios.pdf');
+
+
 
     //importar
     Route::get('/importar','ImportarController@importar');

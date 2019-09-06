@@ -35,7 +35,7 @@
                                     <th>{{ __("Número") }}</th>
                                     <th>{{ __("Email personal") }}</th>  --}}
                                     <th>{{ __("Estado") }}</th>
-                                    <th width="130">{{ __("Acciones") }}</th>
+                                    <th width="170">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
                             {{--  <tfoot>

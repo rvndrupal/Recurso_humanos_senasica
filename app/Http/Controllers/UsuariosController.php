@@ -67,26 +67,10 @@ class UsuariosController extends Controller
         return view('usuarios.index_exp', compact('title','usuarios'));
     }
 
-    // public function exportar()
-    // {
+    public function expPdf(){
+        return "hola";
+    }
 
-
-
-    //     $relaciones=App\Usuarios::with('conyuges');
-
-    //     // $usuarios = datatables()->eloquent($relaciones)
-    //     //     ->addColumn('actions', $actions)
-    //     //     ->rawColumns(['actions'])
-    //     //     // ->orderBy('nom','ASC')
-    //     //     ->toJson();
-
-
-
-
-
-    //      return $usuarios;
-
-    // }
 
     public function listaAdmin(){
         $title = __('Usuarios');

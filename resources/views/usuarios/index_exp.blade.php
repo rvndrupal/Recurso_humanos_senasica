@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
+
+
     {{--  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.min.css">
@@ -30,6 +33,7 @@
                         <table id="usuarios_exp" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>{{ __("Id") }}</th>
                                     <th>{{ __("Nombre") }}</th>
                                     <th>{{ __("Apellido paterno") }}</th>
@@ -58,6 +62,7 @@
                             <tbody>
                                 @foreach ($usuarios as  $user)
                                 <tr>
+                                    <td></td>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->nom }}</td>
                                     <td>{{ $user->ap }}</td>
@@ -126,6 +131,10 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script src=" //cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+
+
+
 
 
 
@@ -140,14 +149,32 @@
                  dom: 'Bfrtip',
                  buttons: [
                      {{--  'copy', 'csv', 'excel', 'pdf',  --}}
+
+                    'selectAll',
+                    'selectNone',
+
+
+
                      {
                         extend: 'excel',
                         exportOptions: {
                          columns: ':visible'
                         },
 
+                        text: 'PDF',
+                        action: function () {
+                            var seleccionado = table.rows( { selected: true } );
+
+                            alert(seleccionado);
+                        }
+
                      }
-                 ]
+                 ],
+
+                 //seleccionar
+                 select: {
+                    style: 'multi'
+                }
             });
 
             //para mostrar columnas
