@@ -172,7 +172,7 @@ return [
                 [
                     'text' => 'Cards',
                     'url'  => 'admin/usuarios/cards',
-                    'permission'  => 'read-usuarios',
+                    'permission'  => 'read-cards',
                     // 'permission'  => 'read-card',
                     'icon' => 'list'
                 ],

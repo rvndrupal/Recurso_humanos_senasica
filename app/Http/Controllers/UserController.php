@@ -101,7 +101,13 @@ class UserController extends Controller
             \DB::beginTransaction();
             $user = User::findOrFail($id);
             hooks()->do_action('before_update_user', $user);
+
             $user->fill($request->input())->save();
+
+            $user->password= bcrypt($request->password);
+
+            $user->save();
+
             hooks()->do_action('after_update_user', $user);
             $user->roles()->sync($request->get('roles'));
             \DB::commit();

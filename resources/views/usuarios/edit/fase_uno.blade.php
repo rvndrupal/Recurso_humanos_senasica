@@ -16,6 +16,7 @@
 
             <div class="col-md-5">
                     <input type="file" class="form-control"  name="foto" id="previo" >
+                    <input type="hidden" class="form-control"  name="user_id" value="{{ auth()->user()->id }}" >
             </div>
 
     </div>

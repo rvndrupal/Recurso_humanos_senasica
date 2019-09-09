@@ -39,6 +39,8 @@ class CreateUsuariosTable extends Migration
 
 
 
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
 
             $table->unsignedBigInteger('paises_id');
@@ -55,6 +57,8 @@ class CreateUsuariosTable extends Migration
 
             $table->unsignedBigInteger('estado_civils_id');
             $table->foreign('estado_civils_id')->references('id')->on('estado_civils')->onDelete('cascade');
+
+
 
 
 

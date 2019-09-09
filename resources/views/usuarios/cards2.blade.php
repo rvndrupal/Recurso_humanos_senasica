@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@permission('read-usuarios')
+@permission('read-cards')
 {{--  @permission('read-card')  --}}
  @section('content')
 

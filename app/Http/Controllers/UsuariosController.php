@@ -33,6 +33,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class UsuariosController extends Controller
 {
+
+    // public function before($user,$ability){
+    //     $user = auth()->user();
+    //     if($user->hasRoles(['superadministrator,alta'])){
+    //         return false;
+    //     }
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -40,18 +47,37 @@ class UsuariosController extends Controller
      */
     public function index()
     {
+        // $user = auth()->user();
+        // if($user->roles[0]->name == "alta"){
+        // $this->authorize('pass', Usuarios::class);
+        // }
+
+
         $title = __('Usuarios');
         return view('usuarios.index', compact('title'));
+
+
     }
 
     public function json () {
         if (request()->ajax()) {
-            $actions = 'usuarios.datatables.index';
-            // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
-            return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
-                ->rawColumns(['actions'])
-                // ->orderBy('nom','ASC')
-                ->toJson();
+
+        $user = auth()->user();
+            if($user->roles[0]->name == "alta"){
+                $actions = 'usuarios.datatables.index';
+                // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
+                return datatables()->of(Usuarios::query()->where('user_id', auth()->user()->id))->addColumn('actions', $actions)
+                    ->rawColumns(['actions'])
+                    // ->orderBy('nom','ASC')
+                    ->toJson();
+            }else{
+                $actions = 'usuarios.datatables.index';
+                // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
+                return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
+                    ->rawColumns(['actions'])
+                    // ->orderBy('nom','ASC')
+                    ->toJson();
+            }
         }
     }
 
@@ -72,6 +98,12 @@ class UsuariosController extends Controller
     public function expPdf(Request $request, $id){
         //$usuarios=Usuarios::all();  //para todos
         $usuario = Usuarios::find($id);
+
+        $usuarios= Usuarios::findOrFail($id);
+        $user = auth()->user();
+        if($user->roles[0]->name == "alta"){
+        $this->authorize('pass', $usuarios);
+        }
         $ruta=public_path();
         //dd($ruta);
         $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta'));
@@ -88,6 +120,7 @@ class UsuariosController extends Controller
     public function jsonAdmin () {
         if (request()->ajax()) {
             $actions = 'usuarios.datatables.indexAdminAction';
+
             return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions)
             // return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
                 ->rawColumns(['actions'])
@@ -218,6 +251,7 @@ class UsuariosController extends Controller
         $usuario = Usuarios::create($request->all());
         //  $usuario->pais()->attach($request->get('pais'));
          //Handle File Upload
+
          if($request->hasFile('foto')){
 
             $filenamewithExt = $request->file('foto')->getClientOriginalName();
@@ -629,8 +663,11 @@ class UsuariosController extends Controller
     public function show(Request $request, Usuarios $usuarios, $id)
     {
         $title = __('Usuario');
-
+        $user = auth()->user();
         $usuario= Usuarios::findOrFail($id);
+        if($user->roles[0]->name == "alta"){
+        $this->authorize('pass', $usuario);
+        }
 
             $nt=[];//Los valores en array pasados
             $nc=[];
@@ -740,6 +777,11 @@ class UsuariosController extends Controller
     public function edit(Usuarios $usuarios, $id)
     {
         $use=Usuarios::where('id','=',$id)->get();
+        $usuarios= Usuarios::findOrFail($id);
+        $user = auth()->user();
+        if($user->roles[0]->name == "alta"){
+        $this->authorize('pass', $usuarios);
+        }
 
 
         //pais
