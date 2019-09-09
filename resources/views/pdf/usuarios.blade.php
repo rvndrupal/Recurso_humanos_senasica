@@ -28,11 +28,11 @@
 
         <div class="row">
                 <h6> Curp: {{ $usuario->curp }}</h6>
-                <img src="{{ $ruta }}/{{ $usuario->carga_curp }}" class="card-img" alt="..." style="width:350px; height:350px; margin: 50px 0 0px 0px;">
-                <h6 style="margin: 0px 0 0px 50%;"> Rfc: {{ $usuario->rfc }}</h6>
-                <img src="{{ $ruta }}/{{ $usuario->carga_rfc }}" class="card-img" alt="..." style="width:350px; height:350px; margin: 50px 0 0px 50%;">
-                <h6> Curp: {{ $usuario->ife }}</h6>
-                <img src="{{ $ruta }}/{{ $usuario->carga_ife }}" class="card-img" alt="..." style="width:350px; height:350px; margin: 140px 0 0px 0px;">
+                <img src="{{ $ruta }}/{{ $usuario->carga_curp }}" class="card-img" alt="..." style="width:250px; height:250px; margin: 50px 0 0px 0px;">
+                <h6 style="margin: 0px 0 0px 60%;"> Rfc: {{ $usuario->rfc }}</h6>
+                <img src="{{ $ruta }}/{{ $usuario->carga_rfc }}" class="card-img" alt="..." style="width:250px; height:250px; margin: 40px 0 0px 60%;">
+                <img src="{{ $ruta }}/{{ $usuario->carga_ife }}" class="card-img" alt="..." style="width:250px; height:250px; margin: 280px 0 0px 0px;">
+                <img src="{{ $ruta }}/{{ $usuario->carga_domicilio }}" class="card-img" alt="..." style="width:250px; height:250px; margin: 370px 0 0px 60%;">
         </div>
 
 

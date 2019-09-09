@@ -74,9 +74,9 @@ class UsuariosController extends Controller
         $usuario = Usuarios::find($id);
         $ruta=public_path();
         //dd($ruta);
-        // $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta'));
-        // return $pdf->download('usuario.pdf');
-        return view('pdf.usuarios_mol',compact('usuario','ruta'));
+        $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta'));
+        return $pdf->download('usuario.pdf');
+
     }
 
 
