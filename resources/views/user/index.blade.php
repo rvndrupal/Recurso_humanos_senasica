@@ -13,8 +13,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __("ID") }}</th>
-                                    <th>{{ __("Nombre") }}</th>
-                                    <th>{{ __("Email") }}</th>
+                                    <th>{{ __("RFC") }}</th>
                                     <th width="60">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
@@ -40,8 +39,7 @@
                 },
                 columns: [
                     { data: 'id', visible: false },
-                    { data: 'name' },
-                    { data: 'email' },
+                    { data: 'rfc_login' },
                     { data: 'actions' }
                 ]
             })

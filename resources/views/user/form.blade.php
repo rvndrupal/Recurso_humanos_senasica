@@ -11,7 +11,7 @@
 
             <div class="box-body">
                 @if($user->exists)
-                    {{ Form::model($user, ['url' => route('user.update', ['id' => $user->id]), 'method' => 'put']) }}
+                    {{ Form::model($user, ['url' => route('user.update', ['id' => $user->id]), 'method' => 'post']) }}
                 @else
                     {{ Form::model($user, ['url' => route('user.store')]) }}
                 @endif
@@ -26,12 +26,12 @@
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                    {{ Form::label('email', __('Email'), ['class' => 'control-label']) }}
-                    {{ Form::text('email', null, ['class' => ['form-control'], 'id' => 'email']) }}
-                    @if($errors->has('email'))
+                <div class="form-group{{ $errors->has('rfc_login') ? ' has-error' : '' }}">
+                    {{ Form::label('rfc_login', __('RFC'), ['class' => 'control-label']) }}
+                    {{ Form::text('rfc_login', null, ['class' => ['form-control'], 'id' => 'rfc_login']) }}
+                    @if($errors->has('rfc_login'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong>{{ $errors->first('rfc_login') }}</strong>
                         </span>
                     @endif
                 </div>

@@ -78,6 +78,12 @@ return [
 
 
         ],
+
+        'alta' => [
+            'usuarios' => 'c,r',
+        ],
+
+
     ],
     'permission_structure' => [
 
