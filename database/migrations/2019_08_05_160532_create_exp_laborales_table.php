@@ -16,7 +16,7 @@ class CreateExpLaboralesTable extends Migration
         Schema::create('exp_laborales', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');;
             $table->string('den_puesto',60);
             $table->string('ins_puesto',60);
             $table->string('area_puesto',60);

@@ -50,16 +50,31 @@
 
                 <div class="form-group">
                     <ul class="list-unstyled">
+
                         @foreach ($roles as $role )
                         <li>
+                        @if($role->name === "superadministrator")
+                            @permission('read-superadmin')
+                                <label>
+                                {{   Form::checkbox('roles[]', $role->id, null) }}
+                                {{ $role->name }}
+                                <em>( {{ $role->description ?: 'N/A' }})</em>
+                                </label>
+                                @endpermission
+                        @else
                             <label>
                             {{   Form::checkbox('roles[]', $role->id, null) }}
                             {{ $role->name }}
                             <em>( {{ $role->description ?: 'N/A' }})</em>
                             </label>
+                        @endif
+
+
+
                         </li>
 
                         @endforeach
+
 
                     </ul>
                 </div>

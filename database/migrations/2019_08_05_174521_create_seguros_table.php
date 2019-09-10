@@ -16,7 +16,7 @@ class CreateSegurosTable extends Migration
         Schema::create('seguros', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');;
             $table->string('num_seg',60);
             $table->string('enf_seg',5);
             $table->string('cual_enf_seg',300)->nullable();

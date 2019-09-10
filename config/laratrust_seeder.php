@@ -35,8 +35,7 @@ return [
             'categories' => 'c,r,u',
             'tags' => 'c,r,u',
             'user' => 'c,r,u',
-            'role' => 'c,r,u',
-            'permission' => 'c,r,u',
+            // 'role' => 'c,r',
             'usuarios' => 'c,r,u,d',
             'grados' => 'c,r,u',
             'carreras' => 'c,r,u',
@@ -53,35 +52,39 @@ return [
 
 
         ],
-        'normaluser' => [
-            'customers' => 'r',
-            'payment-methods' => 'r',
-            'orders' => 'r',
-            'products' => 'r',
-            'categories' => 'r',
-            'tags' => 'r',
-            'user' => 'r',
-            'role' => 'r',
-            'permission' => 'r',
-            'usuarios' => 'r',
-            'grados' => 'r',
-            'carreras' => 'r',
-            'paises' => 'r',
-            'escuelas' => 'r',
-            'titulos' => 'r',
-            'idiomas' => 'r',
-            'direccionesgenerales' => 'r',
-            'direccionesareas' => 'r',
-            'codigos' => 'r',
-            'niveles' => 'r',
-            'estadocivil' => 'r',
+        // 'normaluser' => [
+        //     'customers' => 'r',
+        //     'payment-methods' => 'r',
+        //     'orders' => 'r',
+        //     'products' => 'r',
+        //     'categories' => 'r',
+        //     'tags' => 'r',
+        //     'user' => 'r',
+        //     'role' => 'r',
+        //     'permission' => 'r',
+        //     'usuarios' => 'r',
+        //     'grados' => 'r',
+        //     'carreras' => 'r',
+        //     'paises' => 'r',
+        //     'escuelas' => 'r',
+        //     'titulos' => 'r',
+        //     'idiomas' => 'r',
+        //     'direccionesgenerales' => 'r',
+        //     'direccionesareas' => 'r',
+        //     'codigos' => 'r',
+        //     'niveles' => 'r',
+        //     'estadocivil' => 'r',
 
 
-        ],
+        // ],
 
         'alta' => [
-            'usuarios' => 'c,r',
+            'usuarios' => 'c,r,u',
         ],
+
+        // 'alta_editar' => [
+        //     'usuarios' => 'c,r,u',
+        // ],
 
 
     ],

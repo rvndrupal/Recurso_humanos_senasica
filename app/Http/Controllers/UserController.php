@@ -21,11 +21,23 @@ class UserController extends Controller
 
 
     public function json () {
-        if (request()->ajax()) {
-            $actions = 'user.datatables.index';
-            return datatables()->of(User::query())->addColumn('actions', $actions)
-                ->rawColumns(['actions'])
-                ->toJson();
+        $user = auth()->user();
+        if($user->id == 1){
+            if (request()->ajax()) {
+
+                $actions = 'user.datatables.index';
+                return datatables()->of(User::query())->addColumn('actions', $actions)
+                    ->rawColumns(['actions'])
+                    ->toJson();
+            }
+        }else{
+            if (request()->ajax()) {
+
+                $actions = 'user.datatables.index';
+                return datatables()->of(User::query()->where('id','!=','1'))->addColumn('actions', $actions)
+                    ->rawColumns(['actions'])
+                    ->toJson();
+            }
         }
     }
 
@@ -37,7 +49,6 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        //dd($roles);
 
         $title = __('Crear Usuario');
         $user = new User;
@@ -130,23 +141,37 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        if (request()->ajax()) {
-            if (auth()->user()->can('delete-user')) {
-                try {
-                    \DB::beginTransaction();
-                    $user = User::find($id);
+        // if (request()->ajax()) {
+        //     if (auth()->user()->can('delete-user')) {
+        //         try {
+        //             \DB::beginTransaction();
+        //             $user = User::find($id);
 
-                    hooks()->add_action('before_delete_user', $user);
-                    $user->delete();
-                    hooks()->add_action('after_delete_category', $id);
-                    \DB::commit();
-                } catch (\Exception $exception) {
-                    \DB::rollBack();
-                    //TODO hacer lo que sea necesario
-                }
-            }
-        } else {
-            abort(401);
+        //             hooks()->add_action('before_delete_user', $user);
+        //             $user->delete();
+        //             hooks()->add_action('after_delete_category', $id);
+        //             \DB::commit();
+        //         } catch (\Exception $exception) {
+        //             \DB::rollBack();
+        //             //TODO hacer lo que sea necesario
+        //         }
+        //     }
+        // } else {
+        //     abort(401);
+        // }
+        if(auth()->id() == 1)
+        {
+            abort("No se puede borrar al SuperAdmin");
         }
+        else{
+            //dd($id);
+            $user = User::find($id);
+            $user->delete();
+            return redirect(route('grados.index'))->with('message', [
+                'success', __("Grado borrado correctamente")
+            ]);
+        }
+
+
     }
 }

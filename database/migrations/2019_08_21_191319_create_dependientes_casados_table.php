@@ -19,7 +19,7 @@ class CreateDependientesCasadosTable extends Migration
             $table->string('ap_dep',50)->default('0');
             $table->string('am_dep',50)->default('0');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');;
             $table->timestamps();
         });
     }

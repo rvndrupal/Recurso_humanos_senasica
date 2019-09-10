@@ -49,7 +49,7 @@
 @endpermission
 
 
-@permission('show-usuarios')
+@permission('read-pdf')
 <a
     href="{{ route('usuarios.pdf', ['id' => $id]) }}"
     title="{{ __('PDF') }}"

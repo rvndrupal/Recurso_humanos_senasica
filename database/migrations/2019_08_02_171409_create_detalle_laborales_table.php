@@ -24,9 +24,9 @@ class CreateDetalleLaboralesTable extends Migration
             $table->unsignedBigInteger('usuarios_id');
             $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->unsignedBigInteger('direcciones_generales_id');
-            $table->foreign('direcciones_generales_id')->references('id')->on('direcciones_generales');
+            $table->foreign('direcciones_generales_id')->references('id')->on('direcciones_generales')->onDelete('cascade');;
             $table->unsignedBigInteger('direcciones_areas_id');
-            $table->foreign('direcciones_areas_id')->references('id')->on('direcciones_areas');
+            $table->foreign('direcciones_areas_id')->references('id')->on('direcciones_areas')->onDelete('cascade');;
             $table->date('fecha_ultimo')->nullable();
             $table->date('fecha_senasica')->nullable();
             $table->string('calle_lab')->nullable();
