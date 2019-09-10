@@ -14,6 +14,8 @@
                                 <tr>
                                     <th>{{ __("ID") }}</th>
                                     <th>{{ __("RFC") }}</th>
+                                    <th>{{ __("ROLES") }}</th>
+
                                     <th width="60">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
@@ -39,6 +41,7 @@
                 },
                 columns: [
                     { data: 'id', visible: false },
+                    { data: 'rfc_login' },
                     { data: 'rfc_login' },
                     { data: 'actions' }
                 ]

@@ -124,6 +124,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/importar/niveles/ejecutar', 'NivelesController@importarNiveles')->name('import.niveles');
     Route::get('/importar/estadocivil', 'EstadoCivilController@cargarEstadoCivil')->name('estadocivil.indexx');
     Route::post('/importar/estadocivil/ejecutar', 'EstadoCivilController@importarEstadoCivil')->name('import.estadocivil');
+    Route::get('/importar/user', 'UserController@cargarUser')->name('user.indexx');
+    Route::post('/importar/user/ejecutar', 'UserController@importarUser')->name('import.user');
+    Route::get('/user/alta', 'UserController@alta')->name('alta.user');
+
 
 });
 

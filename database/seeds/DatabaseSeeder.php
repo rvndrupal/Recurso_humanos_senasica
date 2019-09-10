@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
 
 
+        // factory(App\User::class, 10)->create();
         // factory(App\Usuarios::class, 3)->create();
         //factory(App\Paises::class, 3)->create();
         // factory(App\Escuelas::class, 3)->create();

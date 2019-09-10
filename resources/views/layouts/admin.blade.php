@@ -12,6 +12,7 @@
     @endif
 
     <h1>{{ $title }}</h1>
+    <p style="margin: -29px 0 0 83%; font-size: 22px; font-family: 'Source Sans Pro',sans-serif;">{{ auth()->user()->name }}</p>
 @stop
 
 @push('css')

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -15,6 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
+
+
         $title = __('Usuarios');
         return view('user.index', compact('title'));
     }
@@ -26,7 +30,7 @@ class UserController extends Controller
             if (request()->ajax()) {
 
                 $actions = 'user.datatables.index';
-                return datatables()->of(User::query())->addColumn('actions', $actions)
+                return datatables()->of(User::query()->with('roles'))->addColumn('actions', $actions)
                     ->rawColumns(['actions'])
                     ->toJson();
             }
@@ -34,7 +38,7 @@ class UserController extends Controller
             if (request()->ajax()) {
 
                 $actions = 'user.datatables.index';
-                return datatables()->of(User::query()->where('id','!=','1'))->addColumn('actions', $actions)
+                return datatables()->of(User::query()->with('roles')->where('id','!=','1'))->addColumn('actions', $actions)
                     ->rawColumns(['actions'])
                     ->toJson();
             }
@@ -174,4 +178,21 @@ class UserController extends Controller
 
 
     }
+
+    public function cargarUser()
+    {
+        $title = __('Importar nuevo Usuarios');
+        return view('user.import_user',compact('title'));
+    }
+    public function importarUser()
+    {
+        Excel::import(new UsersImport, request()->file('file'));
+
+        return redirect(route('user.index'))->with('message', [
+            'success', __("Usuarios importados Correctamente")
+        ]);
+    }
+
+
+
 }

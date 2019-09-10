@@ -13,6 +13,7 @@ return [
     |
     */
 
+
     'title' => 'Recursos',
 
     'title_prefix' => 'Recursos - ',
@@ -109,6 +110,7 @@ return [
 
     'menu' => [
         'Sistema de Administración',
+
         [
             'text' => 'Gráficas',
             'url'  => 'admin/charts',
@@ -134,6 +136,7 @@ return [
                     'permission'  => 'create-user',
                     'icon' => 'plus-circle'
                 ],
+
             ],
         ],
 
@@ -310,6 +313,12 @@ return [
                     'text' => 'Nivel',
                     'url'  => 'admin/importar/niveles',
                     'permission'  => 'import-niveles',
+                    'icon' => 'list'
+                ],
+                [
+                    'text' => 'Usuarios',
+                    'url'  => 'admin/importar/user',
+                    'permission'  => 'import-user',
                     'icon' => 'list'
                 ],
 
