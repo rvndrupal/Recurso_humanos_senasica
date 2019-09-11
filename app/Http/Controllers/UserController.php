@@ -7,6 +7,7 @@ use App\User;
 use App\Role;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -17,7 +18,12 @@ class UserController extends Controller
      */
     public function index()
     {
-
+        // $usuarios=User::all();
+        // foreach($usuarios as $user){
+        //     if($user->condicion == 1){
+        //        // $user->attachRole('alta');
+        //     }
+        // }
 
         $title = __('Usuarios');
         return view('user.index', compact('title'));
@@ -30,7 +36,7 @@ class UserController extends Controller
             if (request()->ajax()) {
 
                 $actions = 'user.datatables.index';
-                return datatables()->of(User::query()->with('roles'))->addColumn('actions', $actions)
+                return datatables()->of(User::query())->addColumn('actions', $actions)
                     ->rawColumns(['actions'])
                     ->toJson();
             }
@@ -38,7 +44,7 @@ class UserController extends Controller
             if (request()->ajax()) {
 
                 $actions = 'user.datatables.index';
-                return datatables()->of(User::query()->with('roles')->where('id','!=','1'))->addColumn('actions', $actions)
+                return datatables()->of(User::query()->where('id','!=','1'))->addColumn('actions', $actions)
                     ->rawColumns(['actions'])
                     ->toJson();
             }
@@ -71,6 +77,8 @@ class UserController extends Controller
         $user->password= bcrypt( $request->input("password") );
 
         $user->roles()->sync($request->get('roles'));
+
+        $user->attachRole('alta');
 
         $user->save();
 
@@ -191,6 +199,29 @@ class UserController extends Controller
         return redirect(route('user.index'))->with('message', [
             'success', __("Usuarios importados Correctamente")
         ]);
+    }
+
+
+    public function desactivar($id)
+    {
+        $usuario= User::findOrFail($id);
+        $usuario->condicion='0';
+        $usuario->detachRole('alta');
+        $usuario->save();
+        $title = __('Usuario');
+        // return view('usuarios.index',compact('title'));
+        return Redirect::back();
+    }
+
+    public function activar($id)
+    {
+        $usuario= User::findOrFail($id);
+        $usuario->condicion='1';
+        $usuario->attachRole('alta');
+        $usuario->save();
+        $title = __('Usuarios');
+        // return view('usuarios.index',compact('title'));
+        return Redirect::back();
     }
 
 

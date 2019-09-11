@@ -155,18 +155,18 @@
 
 
 
-                     {
+                        {
                         extend: 'excel',
                         exportOptions: {
                          columns: ':visible'
                         },
 
-                        text: 'PDF',
+                        {{--  text: 'PDF',
                         action: function () {
                             var seleccionado = table.rows( { selected: true } );
 
                             alert(seleccionado);
-                        }
+                        }  --}}
 
                      }
                  ],

@@ -47,11 +47,11 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        // $user = auth()->user();
-        // if($user->roles[0]->name == "alta"){
-        // $this->authorize('pass', Usuarios::class);
-        // }
+        $user = auth()->user();
 
+
+        $usuarios=Usuarios::all();
+        //dd($usuarios[0]->users);
 
         $title = __('Usuarios');
         return view('usuarios.index', compact('title'));
@@ -66,7 +66,10 @@ class UsuariosController extends Controller
             if($user->roles[0]->name == "alta"){
                 $actions = 'usuarios.datatables.index';
                 // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
-                return datatables()->of(Usuarios::query()->where('user_id', auth()->user()->id))->addColumn('actions', $actions)
+                return datatables()->of(Usuarios::query()
+                     ->where('condicion','=','1')
+                    ->where('user_id', auth()->user()->id))
+                    ->addColumn('actions', $actions)
                     ->rawColumns(['actions'])
                     // ->orderBy('nom','ASC')
                     ->toJson();

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('rfc_login')->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('condicion')->default(0);
             $table->timestamps();
         });
     }

@@ -14,9 +14,8 @@
                                 <tr>
                                     <th>{{ __("ID") }}</th>
                                     <th>{{ __("RFC") }}</th>
-                                    <th>{{ __("ROLES") }}</th>
-
-                                    <th width="60">{{ __("Acciones") }}</th>
+                                    <th>{{ __("Estado") }}</th>
+                                    <th width="100">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
                         </table>
@@ -35,6 +34,7 @@
                 lengthMenu: [5, 10, 25, 50, 75, 100, 250, 500],
                 processing: true,
                 serverSide: true,
+                //stateSave: true, //permanezaca en el cambio
                 ajax: '{{ route('user.json') }}',
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
@@ -42,7 +42,17 @@
                 columns: [
                     { data: 'id', visible: false },
                     { data: 'rfc_login' },
-                    { data: 'rfc_login' },
+                    { data: 'condicion',
+                    "render": function (data, type, row) {
+                        if (row.condicion == 1) {
+                            return "<p class='activo_index'>Activo</p>"
+                        }
+                        else
+                        {
+                            return "<p class='desactivado_index'>Desactivado</p>"
+                        }
+                    }
+                 },
                     { data: 'actions' }
                 ]
             })

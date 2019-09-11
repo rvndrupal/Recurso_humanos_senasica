@@ -22,15 +22,37 @@
 @endpermission  --}}
 
 
-@permission('delete-user')
-
+{{--  @permission('delete-user')
 {!! Form::open(['route' => ['user.destroy', 'id' => $id], 'method' => 'DELETE']) !!}
 <button class="btn btn-sm btn-danger eliminar" style="margin: -53px 0 0 39px;">
         <i class="fa fa-trash-alt"></i>
 </button>
 
 {!! Form::close() !!}
+@endpermission  --}}
 
-
-
+@permission('activar-user')
+<a
+    href="{{ route('user.activar', ['id' => $id]) }}"
+    title="{{ __('Activar carnet') }}"
+    data-id="{{ $id }}"
+    class="btn btn-sm btn-success activo">
+    <i class="fa fa-check"></i>
+</a>
 @endpermission
+
+
+@permission('desactivar-user')
+<a
+    href="{{ route('user.desactivar', ['id' => $id]) }}"
+    title="{{ __('Eliminar carnet') }}"
+    data-id="{{ $id }}"
+    class="btn btn-sm btn-danger desactivar"
+>
+    <i class="fa fa-trash-alt"></i>
+</a>
+@endpermission
+
+
+
+

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'password','rfc_login',
+        'name', 'password','rfc_login','condicion',
     ];
 
     /**
@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     public function usuarios()
     {
-        return $this->belongsToMany('App\Usuarios');
+        return $this->belongsTo('App\Usuarios');
     }
 }

@@ -42,21 +42,21 @@ $(".next").click(function(){
 
 
         rules:{
-            // nom:{required:true,minlength:3,maxlength:20,texto: true},
-            // ap:{required:true,minlength:3,maxlength:20,texto: true},
-            // am:{required:true,minlength:3,maxlength:20,texto: true},
-            //  paises_id:{required:true},
-            // rfc:{required:true,minlength:12,maxlength:13},
-            // curp:{required:true,minlength:18,maxlength:18},
-            // correo_per:{required:true,email:true},
-            // correo_ins:{required:true,email:true},
-            // tel_casa:{required:true,minlength:8,maxlength:30,numeros:true},
-            // tel_movil:{required:true,minlength:8,maxlength:30,numeros:true},
-            // fecha_nacimiento:{required:true},
-            // foto:{required:true,imagen:true},
-            // carga_rfc:{required:true,imagen:true},
-            // carga_curp:{required:true,imagen:true},
-            // carga_ife:{required:true,imagen:true},
+            nom:{required:true,minlength:3,maxlength:20,texto: true},
+            ap:{required:true,minlength:3,maxlength:20,texto: true},
+            am:{required:true,minlength:3,maxlength:20,texto: true},
+             paises_id:{required:true},
+            rfc:{required:true,minlength:12,maxlength:13},
+            curp:{required:true,minlength:18,maxlength:18},
+            correo_per:{required:true,email:true},
+            correo_ins:{required:true,email:true},
+            tel_casa:{required:true,minlength:10,maxlength:10,numeros:true},
+            tel_movil:{required:true,minlength:10,maxlength:10,numeros:true},
+            fecha_nacimiento:{required:true},
+            foto:{required:true,imagen:true},
+            carga_rfc:{required:true,imagen:true},
+            carga_curp:{required:true,imagen:true},
+            carga_ife:{required:true,imagen:true},
             // estados_id:{required:true},
             // municipios_id:{required:true},
             // colonias_id:{required:true},
@@ -118,8 +118,8 @@ $(".next").click(function(){
             curp:{required:"Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo 18 caracteres"},
             correo_per:{required:"Es obligatorio"},
             correo_ins:{required:"Es obligatorio"},
-            tel_casa:{required:"Es obligatorio",minlength:"Mínimo 8 caracteres",maxlength:"Máximo 30 caracteres"},
-            tel_movil:{required:"Es obligatorio",minlength:"Mínimo 10 caracteres",maxlength:"Máximo 30 caracteres"},
+            tel_casa:{required:"Es obligatorio",minlength:"Mínimo 10 caracteres",maxlength:"Máximo 10 caracteres"},
+            tel_movil:{required:"Es obligatorio",minlength:"Mínimo 10 caracteres",maxlength:"Máximo 10 caracteres"},
             fecha_nacimiento:{required:"Es obligatorio"},
             foto:{required:"Es obligatorio"},
             carga_rfc:{required:"Es obligatorio"},
@@ -570,7 +570,7 @@ $(".next").click(function(){
 
         // form.valide=true;
 
-        // if (form.valid() == true){
+         if (form.valid() == true){
 
                 if(animating) return false;
                 animating = true;
@@ -605,7 +605,7 @@ $(".next").click(function(){
                     easing: 'easeInOutBack'
                 });
 
-        // }
+        }
 
 
 
