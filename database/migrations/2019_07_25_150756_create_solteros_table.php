@@ -19,7 +19,7 @@ class CreateSolterosTable extends Migration
             $table->string('curp_hijo',50)->default('0');
             $table->string('carga_curp_hijo',400)->default('0');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

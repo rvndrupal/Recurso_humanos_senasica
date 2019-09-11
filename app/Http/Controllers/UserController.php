@@ -171,18 +171,18 @@ class UserController extends Controller
         // } else {
         //     abort(401);
         // }
-        if(auth()->id() == 1)
-        {
-            abort("No se puede borrar al SuperAdmin");
-        }
-        else{
-            //dd($id);
+        // if(auth()->id() == 1)
+        // {
+        //     abort("No se puede borrar al SuperAdmin");
+        // }
+
+
             $user = User::find($id);
             $user->delete();
-            return redirect(route('grados.index'))->with('message', [
-                'success', __("Grado borrado correctamente")
+            return redirect(route('user.index'))->with('message', [
+                'success', __("Usuario borrado correctamente")
             ]);
-        }
+
 
 
     }
@@ -223,6 +223,8 @@ class UserController extends Controller
         // return view('usuarios.index',compact('title'));
         return Redirect::back();
     }
+
+
 
 
 

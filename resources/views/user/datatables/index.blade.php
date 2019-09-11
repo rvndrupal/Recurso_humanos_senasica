@@ -22,14 +22,7 @@
 @endpermission  --}}
 
 
-{{--  @permission('delete-user')
-{!! Form::open(['route' => ['user.destroy', 'id' => $id], 'method' => 'DELETE']) !!}
-<button class="btn btn-sm btn-danger eliminar" style="margin: -53px 0 0 39px;">
-        <i class="fa fa-trash-alt"></i>
-</button>
 
-{!! Form::close() !!}
-@endpermission  --}}
 
 @permission('activar-user')
 <a
@@ -37,7 +30,7 @@
     title="{{ __('Activar carnet') }}"
     data-id="{{ $id }}"
     class="btn btn-sm btn-success activo">
-    <i class="fa fa-check"></i>
+    <i class="fa fa-thumbs-up"></i>
 </a>
 @endpermission
 
@@ -49,9 +42,22 @@
     data-id="{{ $id }}"
     class="btn btn-sm btn-danger desactivar"
 >
-    <i class="fa fa-trash-alt"></i>
+    <i class="fa fa-thumbs-down"></i>
 </a>
 @endpermission
+
+
+@permission('delete-user')
+{!! Form::open(['route' => ['user.destroy', 'id' => $id], 'method' => 'DELETE','onsubmit' => 'return confirm("Esto borrara definitivamente al usuario del Sistema ?")']) !!}
+<button class="btn btn-sm btn-danger eliminar" style="margin: -53px 0 0 140px;">
+        <i class="fa fa-trash-alt borrar_user"></i>
+</button>
+
+{!! Form::close() !!}
+@endpermission
+
+
+<script src="{{ asset('js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
 
 
 

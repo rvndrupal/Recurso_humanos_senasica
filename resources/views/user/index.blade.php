@@ -15,7 +15,7 @@
                                     <th>{{ __("ID") }}</th>
                                     <th>{{ __("RFC") }}</th>
                                     <th>{{ __("Estado") }}</th>
-                                    <th width="100">{{ __("Acciones") }}</th>
+                                    <th width="150">{{ __("Acciones") }}</th>
                                 </tr>
                             </thead>
                         </table>
