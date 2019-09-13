@@ -84,18 +84,28 @@ class UsuariosController extends Controller
         }
     }
 
-    public function indexExportar()
+    public function indexExportar(Request $request)
     {
         $title = __('Usuarios Reportes');
+        $nom=$request->get('nombre');
+        $ap=$request->get('ap');
+        $am=$request->get('am');
+        $fn=$request->get('fecha_nacimiento');
+        $fd=$request->get('fecha_domicilio');
 
-        $usuarios=Usuarios::all();
+
+        $usuarios=Usuarios::orderBy('nom', 'DESC')
+        ->nombre($nom)
+        ->ap($ap)
+        ->am($am)
+        //->whereBetween('fecha_nacimiento', [$fn,$fd])
+        ->fn($fn,$fd)
+        ->paginate(10);
 
 
 
 
-        //dd($usuarios[0]->solteros);
-
-        return view('usuarios.index_exp', compact('title','usuarios'));
+        return view('usuarios.index_exp2', compact('title','usuarios'));
     }
 
     public function expPdf(Request $request, $id){
@@ -1236,4 +1246,6 @@ class UsuariosController extends Controller
         // return view('usuarios.index',compact('title'));
         return Redirect::back();
     }
+
+
 }

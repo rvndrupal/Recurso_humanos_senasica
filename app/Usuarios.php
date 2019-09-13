@@ -102,4 +102,47 @@ class Usuarios extends Model
         return $this->hasMany('App\DependientesCasados');
     }
 
+    //scopes
+    public function scopeNombre($query, $nombre)
+    {
+        if($nombre)
+        {
+            return $query->where('nom', 'LIKE', "%$nombre%");
+        }
+    }
+
+    public function scopeAp($query, $ap)
+    {
+        if($ap)
+        {
+            return $query->where('ap', 'LIKE', "%$ap%");
+        }
+    }
+
+    public function scopeAm($query, $am)
+    {
+        if($am)
+        {
+            return $query->where('am', 'LIKE', "%$am%");
+        }
+    }
+
+    public function scopeFn($query, $fecha_nacimiento, $fecha_domicilio)
+    {
+        if($fecha_nacimiento and $fecha_domicilio)
+        {
+            // return $query->where('fecha_nacimiento', 'LIKE', "%$fecha_nacimiento%");
+            return $query->whereBetween('fecha_nacimiento', [$fecha_nacimiento, $fecha_domicilio]);
+
+        }
+    }
+
+    // public function scopeFd($query, $fecha_domicilio)
+    // {
+    //     if($fecha_domicilio)
+    //     {
+    //         return $query->where('fecha_domicilio', 'LIKE', "%$fecha_domicilio%");
+    //     }
+    // }
+
 }
