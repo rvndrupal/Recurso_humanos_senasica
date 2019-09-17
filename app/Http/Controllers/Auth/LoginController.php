@@ -38,5 +38,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    //para cambiar el registro de login
+    public function username()
+    {
+        // return 'email'; Cambiar a rfc_login
+        return 'rfc_login';
+    }
+
 
 }
