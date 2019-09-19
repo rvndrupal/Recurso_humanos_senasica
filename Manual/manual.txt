@@ -62,3 +62,22 @@ activar-usuarios
   //importar
 
   php artisan make:import UsersImport --model=User
+
+
+  //pasos de Mejoras.
+
+  1.- cambio de login de email a rfc
+  2.- Todo lo que son las importaciones.
+  3.- Cambio form usuarios alta.
+  4.- Borrado lógico y permanente de los usuarios - relación con registro carnet
+  5.- Cambio carga distrito federal a cdmx
+  6.-Sección estado civil cambia a multiples opciones por importación.
+  7.- Sección hijos cambia a nombre curp y el archivo del curp
+  8.- Cambia Familiares Dependientes.
+  9.-Filtrado de Campos  a mostrar admin.
+  10.- mostrar signo + en databales -> (Detalle)
+  11.- Borrado lógico con cambio de rol (Activado).
+  12.-importar a pdf.
+  13.- Toda la actualización de todos los registros.
+  14.- Rfc es unico.
+

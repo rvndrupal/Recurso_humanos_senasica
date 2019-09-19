@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     public function usuarios()
     {
-        return $this->belongsTo('App\Usuarios');
+        return $this->hasOne('App\Usuarios');
     }
 }

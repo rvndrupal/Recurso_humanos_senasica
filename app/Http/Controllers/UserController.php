@@ -25,6 +25,16 @@ class UserController extends Controller
         //     }
         // }
 
+        // $user=User::with('usuarios')->get();
+
+        // //dd($user[3]->usuarios->nom);
+
+        // foreach($user->usuarios as $item){
+        //         dd($item);
+        //      }
+
+
+
         $title = __('Usuarios');
         return view('user.index', compact('title'));
     }
@@ -78,7 +88,7 @@ class UserController extends Controller
 
         $user->roles()->sync($request->get('roles'));
 
-        $user->attachRole('alta');
+        //$user->attachRole('alta');
 
         $user->save();
 
@@ -223,6 +233,7 @@ class UserController extends Controller
         // return view('usuarios.index',compact('title'));
         return Redirect::back();
     }
+
 
 
 

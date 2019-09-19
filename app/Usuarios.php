@@ -102,6 +102,11 @@ class Usuarios extends Model
         return $this->hasMany('App\DependientesCasados');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     //scopes
     public function scopeNombre($query, $nombre)
     {
@@ -127,12 +132,12 @@ class Usuarios extends Model
         }
     }
 
-    public function scopeFn($query, $fecha_nacimiento, $fecha_domicilio)
+    public function scopeFn($query, $fechauno, $fechados)
     {
-        if($fecha_nacimiento and $fecha_domicilio)
+        if($fechauno and $fechados)
         {
             // return $query->where('fecha_nacimiento', 'LIKE', "%$fecha_nacimiento%");
-            return $query->whereBetween('fecha_nacimiento', [$fecha_nacimiento, $fecha_domicilio]);
+            return $query->whereBetween('fecha_nacimiento', [$fechauno, $fechados]);
 
         }
     }

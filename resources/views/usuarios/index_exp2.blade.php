@@ -112,13 +112,15 @@
                 </div>
                 <div class="row">
                     <div class="col-offset-4 col-md-8">
+                        <h3>Buscar por fecha de Nacimiento:  </h3>
+                        <hr>
                         <form action="{{ route('usuarios.index-exportar') }}" method="GET" class="form-inline pull-right">
 
                                 <div class="form-group">
-                                    <input type="date" name="fecha_nacimiento" class="form-control" placeholder="Nombre">
+                                    <input type="date" name="fechauno" class="form-control" placeholder="Nombre">
                                 </div>
                                 <div class="form-group">
-                                    <input type="date" name="fecha_domicilio" class="form-control" placeholder="Apellido paterno">
+                                    <input type="date" name="fechados" class="form-control" placeholder="Apellido paterno">
                                 </div>
 
 

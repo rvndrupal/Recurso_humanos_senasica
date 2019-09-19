@@ -11,16 +11,7 @@
             <div id="categories_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="text-center">
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="1">Nombre</a>
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="2">Ap</a>
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="3">Am</a>
-                            {{--  <a class="toggle-vis btn btn-sm btn-info" data-column="4">Curp</a>  --}}
-                            {{--  <a class="toggle-vis btn btn-sm btn-info" data-column="5">Rfc</a>
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="6">Calle</a>
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="7">Número</a>
-                            <a class="toggle-vis btn btn-sm btn-info" data-column="8">Email personal</a>  --}}
-                        </div>
+
 
                         <table id="usuarios" class="table table-bordered table-hover dataTable" role="grid">
                             <thead>
@@ -29,9 +20,9 @@
                                     <th>{{ __("Nombre") }}</th>
                                     <th>{{ __("Apellido paterno") }}</th>
                                     <th>{{ __("Apellido materno") }}</th>
-                                  {{-- <th>{{ __("Curp") }}</th>
+                                   <th>{{ __("Curp") }}</th>
                                     <th>{{ __("Rfc") }}</th>
-                                    <th>{{ __("Calle") }}</th>
+                                   {{-- <th>{{ __("Calle") }}</th>
                                     <th>{{ __("Número") }}</th>
                                     <th>{{ __("Email personal") }}</th>  --}}
                                     <th>{{ __("Estado") }}</th>
@@ -48,6 +39,17 @@
                                     </tr>
                             </tfoot>  --}}
                         </table>
+
+                        <div class="text-center">
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="1">Nombre</a>
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="2">Ap</a>
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="3">Am</a>
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="4">Curp</a>
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="5">Rfc</a>
+                           {{-- <a class="toggle-vis btn btn-sm btn-info" data-column="6">Calle</a>
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="7">Número</a>
+                            <a class="toggle-vis btn btn-sm btn-info" data-column="8">Email personal</a>  --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,9 +141,9 @@
                     { data: 'nom' },
                     { data: 'ap' },
                     { data: 'am' },
-                  {{--  data: 'curp' },
+                    { data: 'curp' },
                     { data: 'rfc' },
-                    { data: 'calle' },
+                    {{-- { data: 'calle' },
                     { data: 'numero' },
                     { data: 'correo_per' },  --}}
                     { data: 'condicion',

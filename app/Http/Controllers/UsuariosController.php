@@ -22,6 +22,8 @@ use App\Codigos;
 use App\Niveles;
 use App\DependientesCasados;
 
+use Mail;
+
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Illuminate\Http\Request;
@@ -49,9 +51,23 @@ class UsuariosController extends Controller
     {
         $user = auth()->user();
 
+        //dd($user);
 
-        $usuarios=Usuarios::all();
-        //dd($usuarios[0]->users);
+
+         $usuarios=Usuarios::with('user')
+         ->where('user_id', auth()->user()->id)
+         ->get();
+
+         $con=count($usuarios);
+
+         if($user->roles[0]->name == "alta"){
+            if($con >= 1){
+             $user->detachRole('alta');
+             $user->attachRole('Editar_alta');
+            }
+         }
+
+
 
         $title = __('Usuarios');
         return view('usuarios.index', compact('title'));
@@ -63,7 +79,7 @@ class UsuariosController extends Controller
         if (request()->ajax()) {
 
         $user = auth()->user();
-            if($user->roles[0]->name == "alta"){
+            if($user->roles[0]->name == "alta" || $user->roles[0]->name == "Editar_Alta"){
                 $actions = 'usuarios.datatables.index';
                 // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
                 return datatables()->of(Usuarios::query()
@@ -90,8 +106,8 @@ class UsuariosController extends Controller
         $nom=$request->get('nombre');
         $ap=$request->get('ap');
         $am=$request->get('am');
-        $fn=$request->get('fecha_nacimiento');
-        $fd=$request->get('fecha_domicilio');
+        $fu=$request->get('fechauno');
+        $fd=$request->get('fechados');
 
 
         $usuarios=Usuarios::orderBy('nom', 'DESC')
@@ -99,8 +115,8 @@ class UsuariosController extends Controller
         ->ap($ap)
         ->am($am)
         //->whereBetween('fecha_nacimiento', [$fn,$fd])
-        ->fn($fn,$fd)
-        ->paginate(10);
+        ->fn($fu,$fd)
+        ->paginate(5);
 
 
 
@@ -571,6 +587,16 @@ class UsuariosController extends Controller
             ]);
 
          $usuario->save();
+
+         //enviar correo
+        // $data=array(
+        //     'name'=>"Rodrigo villanueva",
+        // );
+
+        //  Mail::send('usuarios.email' ,$data, function($men){
+        //     $men->from('adminsitrador_carnets@gmail.com','Alta del registro de Carnet');
+        //     $men->to('rodrigodrupal1@gmail.com')->subject('Prueba de alta de carnet');
+        // });
 
          $title = __('Usuarios');
 
@@ -1246,6 +1272,9 @@ class UsuariosController extends Controller
         // return view('usuarios.index',compact('title'));
         return Redirect::back();
     }
+
+
+
 
 
 }

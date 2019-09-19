@@ -93,6 +93,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         //exportar pdf
         Route::get('/usuarios-pdf/{id}', 'UsuariosController@expPdf')->name('usuarios.pdf');
 
+        //email
+        // Route::get('/sendemail', 'UsuariosController@enviarEmail')->name('send.email');
+
 
 
     //importar
