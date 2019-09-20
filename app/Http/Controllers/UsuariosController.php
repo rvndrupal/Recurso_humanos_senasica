@@ -56,8 +56,6 @@ class UsuariosController extends Controller
         $user = auth()->user();
 
         //dd($user);
-
-
          $usuarios=Usuarios::with('user')
          ->where('user_id', auth()->user()->id)
          ->get();

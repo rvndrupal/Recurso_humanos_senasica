@@ -134,7 +134,7 @@
                     {
                         "className": 'details-control',
                         "orderable": false,
-                        "data": null,
+                        "data": 1,
                         "defaultContent": ''
                     },
                     {{--  { data: 'id' },  --}}
