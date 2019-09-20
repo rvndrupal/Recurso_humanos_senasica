@@ -22,7 +22,7 @@
 
 
             <h3 class="box-title">{{ __("Exportar Usuarios Avanzado") }}</h3>
-
+            <a href="{{ route('usuarios.exportar-excel') }}" class="btn btn-success pull-right">Exportar</a>
 
 
                 <div class="row">
@@ -52,8 +52,8 @@
                         <hr>
 
 
-                        <table id="usuarios_exp" class="table table-bordered table-hover">
-                            <thead>
+                        <table  class="table able-striped table-dark">
+                            <thead class="thead-dark">
                                 <tr>
                                     <th></th>
                                     <th>{{ __("Id") }}</th>
@@ -61,7 +61,6 @@
                                     <th>{{ __("Apellido paterno") }}</th>
                                     <th>{{ __("Apellido materno") }}</th>
                                     <th>{{ __("Fecha de Nacimiento") }}</th>
-                                    <th>{{ __("Fecha de Domicilio") }}</th>
                                     {{-- <th>{{ __("Rfc") }}</th>
                                     <th>{{ __("Curp") }}</th>
                                     <th>{{ __("Calle") }}</th>
@@ -90,7 +89,7 @@
                                     <td>{{ $user->ap }}</td>
                                     <td>{{ $user->am }}</td>
                                     <td>{{ $user->fecha_nacimiento }}</td>
-                                    <td>{{ $user->fecha_domicilio }}</td>
+
                                     {{-- <td>{{ $user->rfc }}</td>
                                     <td>{{ $user->curp }}</td>
                                     <td>{{ $user->calle }}</td>

@@ -89,6 +89,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         //exportar
         Route::get('/usuarios/index-exportar', 'UsuariosController@indexExportar')->name('usuarios.index-exportar');
         Route::get('/usuarios/exportar', 'UsuariosController@exportar')->name('usuarios.exportar');
+        //exportar cvs
+        Route::get('/usuarios/exportar-excel', 'UsuariosController@exportarExcel')->name('usuarios.exportar-excel');
 
         //exportar pdf
         Route::get('/usuarios-pdf/{id}', 'UsuariosController@expPdf')->name('usuarios.pdf');

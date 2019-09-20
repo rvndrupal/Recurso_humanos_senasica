@@ -24,6 +24,8 @@ use App\DependientesCasados;
 
 use Mail;
 
+use Maatwebsite\Excel\Facades\Excel;
+
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Illuminate\Http\Request;
@@ -35,6 +37,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class UsuariosController extends Controller
 {
+
+
 
     // public function before($user,$ability){
     //     $user = auth()->user();
@@ -1271,6 +1275,18 @@ class UsuariosController extends Controller
         $title = __('Usuarios');
         // return view('usuarios.index',compact('title'));
         return Redirect::back();
+    }
+
+    public function exportarExcel()
+    {
+        Excel::create('Carnet', function($excel){
+            $excel->sheet('carnet', function($sheet){
+                $usuarios=Usuarios::all();
+
+                $sheet->fromArray($usuarios);
+            });
+        });
+
     }
 
 
