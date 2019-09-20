@@ -8,7 +8,7 @@
 
         <div class="box-body">
             @if($niveles->exists)
-                {{ Form::model($niveles, ['url' => route('niveles.update', ['id' => $niveles->id]), 'method' => 'put']) }}
+                {{ Form::model($niveles, ['url' => route('niveles.update', ['id' => $niveles->id]), 'method' => 'POST']) }}
             @else
                 {{ Form::model($niveles, ['url' => route('niveles.store')]) }}
             @endif

@@ -151,7 +151,7 @@
                             if (row.condicion == 1) {
                                 return "<p class='activo_index'>Activo</p>"
                             }
-                            elseif(row.condicion == 0)
+                            else if(row.condicion == 0)
                             {
                                 return "<p class='desactivado_index'>Desactivado</p>"
                             }

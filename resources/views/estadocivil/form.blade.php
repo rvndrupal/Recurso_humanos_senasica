@@ -8,7 +8,7 @@
 
         <div class="box-body">
             @if($estadocivil->exists)
-                {{ Form::model($estadocivil, ['url' => route('estadocivil.update', ['id' => $estadocivil->id]), 'method' => 'put']) }}
+                {{ Form::model($estadocivil, ['url' => route('estadocivil.update', ['id' => $estadocivil->id]), 'method' => 'POST']) }}
             @else
                 {{ Form::model($estadocivil, ['url' => route('estadocivil.store')]) }}
             @endif

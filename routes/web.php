@@ -123,7 +123,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/importar/idiomas/ejecutar', 'IdiomasController@importarIdiomas')->name('import.idiomas');
     Route::get('/importar/direccionesgenerales', 'DireccionesGeneralesController@cargarDireccionesGenerales')->name('direccionesgenerales.indexx');
     Route::post('/importar/direccionesgenerales/ejecutar', 'DireccionesGeneralesController@importarDireccionesGenerales')->name('import.direccionesgenerales');
-    Route::get('/importar/direccionesareas', 'DireccionesAreasController@cargarDireccionesAreas')->name('direccionesareas.index');
+    Route::get('/importar/direccionesareas', 'DireccionesAreasController@cargarDireccionesAreas')->name('direccionesareas.indexx');
     Route::post('/importar/direccionesareas/ejecutar', 'DireccionesAreasController@importarDireccionesAreas')->name('import.direccionesareas');
     Route::get('/importar/codigos', 'CodigosController@cargarCodigos')->name('codigos.indexx');
     Route::post('/importar/codigos/ejecutar', 'CodigosController@importarCodigos')->name('import.codigos');
