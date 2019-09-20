@@ -1,5 +1,10 @@
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+@extends('layouts.admin')
+
+
+@permission('read-exportar')
+@section('content')
+{{--  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet" />
@@ -10,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-
+  --}}
 
 
 
@@ -137,12 +142,12 @@
 
 
 
-{{--  @endsection
+  @endsection
 
-@endpermission  --}}
+@endpermission
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+{{--  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
@@ -153,7 +158,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script src=" //cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>  --}}
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Usuarios;
 use App\Role;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -217,6 +218,7 @@ class UserController extends Controller
         $usuario= User::findOrFail($id);
         $usuario->condicion='0';
         $usuario->detachRole('alta');
+        $usuario->detachRole('Editar_Alta');
         $usuario->save();
         $title = __('Usuario');
         // return view('usuarios.index',compact('title'));
@@ -226,17 +228,28 @@ class UserController extends Controller
     public function activar($id)
     {
         $usuario= User::findOrFail($id);
-        $usuario->condicion='1';
-        $usuario->attachRole('alta');
+
+        $ver=Usuarios::with('user')
+         ->where('user_id', $id)
+         ->get();
+
+         $con=count($ver);
+         //dd($con);
+
+        if($con >= 1){
+            $usuario->attachRole('Editar_alta');
+            $usuario->condicion='1';
+        }
+        else{
+            $usuario->attachRole('alta');
+            $usuario->condicion='1';
+        }
+
         $usuario->save();
         $title = __('Usuarios');
         // return view('usuarios.index',compact('title'));
         return Redirect::back();
     }
-
-
-
-
 
 
 }

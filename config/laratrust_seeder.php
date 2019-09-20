@@ -82,6 +82,10 @@ return [
             'usuarios' => 'c,r,u',
         ],
 
+        'Editar_Alta' => [
+            'usuarios' => 'r,u',
+        ],
+
         // 'alta_editar' => [
         //     'usuarios' => 'c,r,u',
         // ],
