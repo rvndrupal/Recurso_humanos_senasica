@@ -22,13 +22,13 @@
 
 
             <h3 class="box-title">{{ __("Exportar Usuarios Avanzado") }}</h3>
-            <a href="{{ route('usuarios.exportar-excel') }}" class="btn btn-success pull-right">Exportar</a>
+            <a href="{{ route('usuarios.exportar-excel') }}" class="btn btn-success pull-left">Exportar Todos</a>
 
 
                 <div class="row">
                     <div class="col-sm-12">
 
-                        <form action="{{ route('usuarios.index-exportar') }}" method="GET" class="form-inline pull-right">
+                         <form action="{{ route('usuarios.index-exportar') }}" method="GET" class="form-inline pull-right">
 
                             <div class="form-group">
                                 <input type="text" name="nombre" class="form-control" placeholder="Nombre">

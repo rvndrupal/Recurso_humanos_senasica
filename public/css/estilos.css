@@ -502,6 +502,59 @@ div#ui-datepicker-div {
     margin: 0 0 58px 0;
 }
 
+/*foto*/
+.image-upload-foto > input
+{
+    display: none;
+}
+
+.image-upload-foto img
+{
+    width: 100px;
+    cursor: pointer;
+    margin: 0 0 33px 0px;
+    height: 50px;
+}
+
+.img_pre_foto img{
+    /* width: 100px;
+    height: 70px;
+    margin: 0 0 33px 0px; */
+    position: absolute;
+    /* border-radius: 37px; */
+    margin: -37px 0 0 33px;
+    border: 3px solid #00000057;
+    border-radius: 100px;
+}
+
+#img_pre_foto img {
+    width: 120px;
+    height: 120px;
+    margin: -27px 0 0 0;
+    border-radius: 50%;
+    border: 2px gray solid;
+}
+
+#previa_foto img{
+    width: 120px;
+    height: 120px;
+    margin: -27px 0 0 0;
+    border-radius: 50%;
+    border: 2px gray solid;
+}
+
+.foto_texto{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin: 13px 0 0 172px;
+}
+
 /*Activo y descativado"*/
 .desactivado_index {
     background: #dd4b39;

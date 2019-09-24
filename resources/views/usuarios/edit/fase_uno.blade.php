@@ -1,5 +1,5 @@
     {{-- FASE UNO EDITAR --}}
-    <div class="row foto">
+    {{--  <div class="row foto">
             @foreach ($use as $item)
             <div id="previos">
             <img src="/recursos/public/Fotos/Usuarios/{{ $item->foto }}" width="120px" height="120px" alt="">
@@ -19,7 +19,37 @@
                     <input type="hidden" class="form-control"  name="user_id" value="{{ auth()->user()->id }}" >
             </div>
 
+    </div>  --}}
+
+    <div class="row foto">
+            <div class="col-md-2">
+                    @foreach ($use as $item)
+                    <div id="previa_foto">
+                    <img src="/recursos/public/Fotos/Usuarios/{{ $item->foto }}" width="120px" height="120px" alt="">
+                    </div>
+                    <div id="img_pre_foto">
+
+                    </div>
+                    @endforeach
+            </div>
+
+            <div class="col-md-1">
+                    <label class="foto_texto">FOTO</label>
+            </div>
+        <div class="col-md-6">
+                <div class="image-upload-foto">
+                    <label for="file-input-foto">
+                        {{--  importante el cambio for label  --}}
+                        <img src="{{ asset('img/subir2.jpg') }}" alt ="Click aquí para subir curp" title ="Click aquí para subir curp" >
+                    </label>
+                    <input id="file-input-foto" type="file" class="form-control id_curp"  name="foto"/>
+                    <input type="hidden" class="form-control"  name="user_id" value="{{ auth()->user()->id }}" >
+                </div>
+        </div>
+
     </div>
+
+
 
 <div class="row">
     <div class="col-md-4">

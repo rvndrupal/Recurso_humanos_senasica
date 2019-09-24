@@ -4,7 +4,7 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">{{ __("Listado de Paises") }}</h3>
+            <h3 class="box-title">{{ __("Listado de Paises ") }}</h3>
         </div>
         <div class="box-body">
             <div id="categories_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -32,7 +32,7 @@
     <script>
         jQuery(document).ready(function ($) {
             dt = $("#pais").DataTable({    //este es el ide de la tabla para que convierta en datatebles
-                pageLength: 10,
+                pageLength: 5,
                 lengthMenu: [5, 10, 25, 50, 75, 100, 250, 500],
                 processing: true,
                 serverSide: true,

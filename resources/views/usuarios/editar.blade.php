@@ -519,6 +519,23 @@
 
                     //precargas imagenes
 
+                     //foto
+                     function preview_foto(input)
+                     {
+                         if(input.files && input.files[0])
+                         {
+                             var reader=new FileReader();
+                             reader.onload= function(e){
+                                 $('#img_pre_foto').html("<img src='"+e.target.result+"'>");
+                             }
+                             reader.readAsDataURL(input.files[0]);
+                         }
+                     }
+                     $('#file-input-foto').change(function(){
+                         preview_foto(this);
+                         $('#previa_foto').hide();
+                     });
+
                     //precio rfc
                     function preview_rfc(input)
                     {

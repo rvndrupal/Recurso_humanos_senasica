@@ -24,6 +24,9 @@ use App\DependientesCasados;
 
 use Mail;
 
+use App\Exports\UsuariosExport;
+
+
 use Maatwebsite\Excel\Facades\Excel;
 
 use Barryvdh\DomPDF\Facade as PDF;
@@ -1277,13 +1280,7 @@ class UsuariosController extends Controller
 
     public function exportarExcel()
     {
-        Excel::create('Carnet', function($excel){
-            $excel->sheet('carnet', function($sheet){
-                $usuarios=Usuarios::all();
-
-                $sheet->fromArray($usuarios);
-            });
-        });
+        return Excel::download(new UsuariosExport, 'usuarios.xlsx');
 
     }
 

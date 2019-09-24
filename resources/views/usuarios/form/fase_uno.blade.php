@@ -80,7 +80,7 @@
      <div class="col-md-4">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
-                 <span class="input-group-text" id="addon-wrapping">@</span>
+                 <span class="input-group-text" id="addon-wrapping">Correo Personal</span>
              </div>
              <input type="email" class="form-control"  name="correo_per" id="correo_per" placeholder="Correo Personal" aria-label="Username" aria-describedby="addon-wrapping">
          </div>
@@ -88,7 +88,7 @@
      <div class="col-md-4">
          <div class="input-group flex-nowrap">
              <div class="input-group-prepend">
-                 <span class="input-group-text" id="addon-wrapping">@</span>
+                 <span class="input-group-text" id="addon-wrapping">Correo Institucional</span>
              </div>
              <input type="email" class="form-control"  name="correo_ins" id="correo_ins" placeholder="Correo Institucional" aria-label="Username" aria-describedby="addon-wrapping">
          </div>
