@@ -117,6 +117,7 @@
         <div>{{-- div principal --}}
 
         <h2 class="fs-title" style="margin: 81px 0px 0 0;">IDIOMAS</h2>
+        <h5  style="margin: 15px 0px 0 0;">No agregar tu lengua Nativa</h5>
 
         <a href="#" class="add_button2 btn btn-success" style="margin: 0 0 7px 932px;" title="Add field">Agregar Idiomas</a>
 

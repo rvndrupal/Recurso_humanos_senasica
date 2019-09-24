@@ -304,13 +304,13 @@ $(document).ready(function(){
         var i=1;
         $(document).on('click', '#addHijos', function(){
              i++;
-             $('#dynamic_field').append('<tr class="hijos" id="row'+i+'">'+
+             $('#dynamic_field').append('<tr class="hijos recorrer" id="row'+i+'">'+
                  '<td>'+
                         '<div class="input-group flex-nowrap">'+
                                 '<div class="input-group-prepend">'+
                                     '<span class="input-group-text" id="addon-wrapping">Nombre</span>'+
                                 '</div>'+
-                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_hijo[]" id="sol_hijo'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
+                                '<input type="text" class="form-control" data-valor="'+i+'" name="nombre_hijo[]" id="hijoc'+i+'" placeholder="Nombre" aria-label="Nombre" aria-describedby="addon-wrapping">'+
 
                         '</div>'+
                   '</td>'+
@@ -327,7 +327,7 @@ $(document).ready(function(){
 
                   '<td>'+
                         '<div class="col-md-12">'+
-                                '<input type="file" class="form-control"  id="carga_curp_hijo"  name="carga_curp_hijo[]" >'+
+                                '<input type="file" class="form-control" data-valor="'+i+'"  id="carga_curp_hijo'+i+'"  name="carga_curp_hijo[]" >'+
                         '</div>'+
                     '</div>'+
                   '</td>'+
