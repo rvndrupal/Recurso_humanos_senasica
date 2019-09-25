@@ -155,6 +155,33 @@
                       </table>
             </div>
 
+            <div class="row">
+                    <h4>Dependientes</h4>
+                    <hr>
+                    <table class="table">
+                        <thead class="thead-dark">
+
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+
+                          </tr>
+                        </thead>
+                        @foreach($usuario->Descensientes as $item)
+                        <tbody>
+                            <tr>
+                                <td>{{ $item->nombre_des }}</td>
+                                <td>{{ $item->ap_des }}</td>
+                                <td>{{ $item->am_des }}</td>
+
+                            </tr>
+                        </tbody>
+                        @endforeach
+                      </table>
+            </div>
+
+
 
 
 
