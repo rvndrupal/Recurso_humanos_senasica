@@ -125,21 +125,7 @@
                                 <td> <img src="{{ $ruta }}/{{ $usuario->conyuges[0]->carga_curp_coy }}" class="card-img" alt="..." style="width:120px; height:90px; margin: 0px 0 0px 0px;"></td>
                                 @else
                                 <td>No tiene</td>
-
                                 @endif
-
-
-                                {{-- <td>{{ $usuario->conyuges[0]->nombres_coy != "0" ? $usuario->conyuges[0]->nombres_coy : 'No tiene' }}</td>
-                                <td>{{ $usuario->conyuges[0]->primero_coy != "0" ? $usuario->conyuges[0]->primero_coy : 'No tiene' }}</td>
-                                <td>{{ $usuario->conyuges[0]->segundo_coy != "0" ? $usuario->conyuges[0]->segundo_coy : 'No tiene' }}</td>
-                                <td>{{ $usuario->conyuges[0]->curp_coy != "0" ? $usuario->conyuges[0]->curp_coy : 'No tiene' }}</td>
-                                @if($usuario->conyuges[0]->carga_curp_coy != "0")
-                                <td> <img src="{{ $ruta }}/{{ $usuario->conyuges[0]->carga_curp_coy }}" class="card-img" alt="..." style="width:120px; height:90px; margin: 0px 0 0px 0px;"></td>
-                                @else
-                                <td>No tiene</td>
-                                @endif --}}
-
-
                             </tr>
                         </tbody>
                       </table>
@@ -151,18 +137,21 @@
                     <hr>
                     <table class="table">
                         <thead class="thead-dark">
+
                           <tr>
-                            <th scope="col">Hijos</th>
+                            <th scope="col">Hijo</th>
                             <th scope="col">Curp Hijo</th>
 
                           </tr>
                         </thead>
+                        @foreach($usuario->solteros as $item)
                         <tbody>
                             <tr>
-                                <td>{{ $usuario->solteros[0]->nombre_hijo }}  Curp: {{ $usuario->solteros[0]->curp_hijo  }}</td>
-                                <td> <img src="{{ $ruta }}/{{ $usuario->solteros[0]->carga_curp_hijo }}" class="card-img" alt="..." style="width:150px; height:120px; margin: 0px 0 0px 0px;"></td>
+                                <td>{{ $item->nombre_hijo }}  Curp: {{ $item->curp_hijo  }}</td>
+                                <td> <img src="{{ $ruta }}/{{ $item->carga_curp_hijo }}" class="card-img" alt="..." style="width:150px; height:120px; margin: 0px 0 0px 0px;"></td>
                             </tr>
                         </tbody>
+                        @endforeach
                       </table>
             </div>
 
