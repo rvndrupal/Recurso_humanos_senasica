@@ -211,6 +211,9 @@ $(".next").click(function(){
 
 
 
+
+
+
     $('.recorrer input').each(function() {
         // alert($(this).attr('class'));
         //  id=$(this).attr('id');
@@ -548,9 +551,10 @@ $(".next").click(function(){
 
 
         // form.valide=true;
-
-
-
+        $(".escolaridad select").change(function(){
+            form.valid=false;
+            var activar=false;
+        });
 
          if (form.valid() == true){
 
@@ -564,7 +568,10 @@ $(".next").click(function(){
                 $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
                 //show the next fieldset
-                next_fs.show();
+
+                    next_fs.show();
+
+
                 //hide the current fieldset with style
                 current_fs.animate({opacity: 0}, {
                     step: function(now, mx) {
@@ -588,7 +595,6 @@ $(".next").click(function(){
                 });
 
         }
-
 
 
 
