@@ -20,8 +20,8 @@ class UsuariosPolicy
         //
     }
 
-    public function pass(User $user, Usuarios $usuarios){
-        return $user->id === $usuarios->user_id;
+    public function pass(Users $users, Usuarios $usuarios){
+        return $users->id == $usuarios->user_id;
     }
 
     public function admin(User $user, Usuarios $usuarios){

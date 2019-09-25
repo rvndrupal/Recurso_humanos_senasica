@@ -11,6 +11,8 @@ class Usuarios extends Model
 
     // ];
 
+   // protected $table = 'users';
+
     protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','paises_id','calle','numero','estados_id',
     'colonias_id','municipios_id','fecha_domicilio','carga_rfc','carga_curp','carga_ife',
     'correo_per','correo_ins','tel_casa','tel_movil','carga_domicilio','estado_civils_id','user_id'
@@ -19,6 +21,7 @@ class Usuarios extends Model
 
     public function users()
     {
+        // return $this->belongsTo('App\User','users_id');
         return $this->belongsTo('App\User');
     }
 

@@ -63,6 +63,8 @@ class UsuariosController extends Controller
          ->where('user_id', auth()->user()->id)
          ->get();
 
+         //dd($usuarios);
+
          $con=count($usuarios);
 
          if($user->roles[0]->name == "alta"){
@@ -925,6 +927,10 @@ class UsuariosController extends Controller
         //dd($id);
         $title = __('Actualizar');
         $usuario = Usuarios::find($id);
+
+        // dd($usuario);
+
+        // $this->authorize('pass', $usuario);
 
         $usuario->fill($request->all())->save();
 

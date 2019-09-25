@@ -42,7 +42,7 @@ $(".next").click(function(){
 
 
         rules:{
-            // nom:{required:true,minlength:3,maxlength:20,texto: true},
+            nom:{required:true,minlength:3,maxlength:20,texto: true},
             // ap:{required:true,minlength:3,maxlength:20,texto: true},
             // am:{required:true,minlength:3,maxlength:20,texto: true},
             //  paises_id:{required:true},
@@ -57,7 +57,7 @@ $(".next").click(function(){
             // carga_rfc:{required:true,imagen:true},
             // carga_curp:{required:true,imagen:true},
             // carga_ife:{required:true,imagen:true},
-            // estados_id:{required:true},
+             estados_id:{required:true},
             // municipios_id:{required:true},
             // colonias_id:{required:true},
             // calle:{required:true,minlength:5,maxlength:100},
@@ -208,6 +208,7 @@ $(".next").click(function(){
     var exp;
     var exp_A=new Array();
     var carga_curp_A=new Array();
+    var datad;
 
 
 
@@ -283,14 +284,14 @@ $(".next").click(function(){
      //dependientes
 
      $('.dependientes input').each(function() {
-          data=$(this).attr('data-valor');
-        if($('#nombre_des'+data).val()=="")
+          datad=$(this).attr('data-valor');
+        if($('#nombre_des'+datad).val()=="")
         {
-            $('#nombre_des'+data).addClass('is-invalid');
+            $('#nombre_des'+datad).addClass('is-invalid');
             form.valid=false;
         }
         else{
-            $('#nombre_des'+data).rules('add',
+            $('#nombre_des'+datad).rules('add',
             {
                 required: true,texto:true,minlength:3,maxlength:20,
 
@@ -300,13 +301,13 @@ $(".next").click(function(){
               });
         }
 
-        if($('#ap_des'+data).val()=="")
+        if($('#ap_des'+datad).val()=="")
         {
-            $('#ap_des'+data).addClass('is-invalid');
+            $('#ap_des'+datad).addClass('is-invalid');
             form.valid=false;
         }
         else{
-            $('#ap_des'+data).rules('add',
+            $('#ap_des'+datad).rules('add',
                 {
                     required: true,texto:true,minlength:3,maxlength:20,
                     messages: {
@@ -315,13 +316,13 @@ $(".next").click(function(){
             });
         }
 
-        if($('#am_des'+data).val()=="")
+        if($('#am_des'+datad).val()=="")
         {
-            $('#am_des'+data).addClass('is-invalid');
+            $('#am_des'+datad).addClass('is-invalid');
             form.valid=false;
         }
         else{
-            $('#am_des'+data).rules('add',
+            $('#am_des'+datad).rules('add',
                 {
                     required: true,texto:true,minlength:3,maxlength:20,
 
@@ -551,10 +552,7 @@ $(".next").click(function(){
 
 
         // form.valide=true;
-        $(".escolaridad select").change(function(){
-            form.valid=false;
-            var activar=false;
-        });
+
 
          if (form.valid() == true){
 

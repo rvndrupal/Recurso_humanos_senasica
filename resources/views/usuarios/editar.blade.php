@@ -35,7 +35,7 @@
               <div class="sidebar-heading">ADMINISTRACIÓN</div>
               <div class="list-group list-group-flush">
                 <a href="{{ route('home') }}" class="list-group-item list-group-item-action bg-light">Inicio</a>
-                <a href="{{ route('paises.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo pais</a>
+                {{-- <a href="{{ route('paises.create') }}" class="list-group-item list-group-item-action bg-light">Nuevo pais</a>
                 <a href="{{ route('escuelas.create') }}" class="list-group-item list-group-item-action bg-light">Nueva escuela</a>
                 <a href="{{ route('grados.create') }}" class="list-group-item list-group-item-action bg-light">Nueva grado</a>
                 <a href="{{ route('carreras.create') }}" class="list-group-item list-group-item-action bg-light">Nueva carrera</a>
@@ -44,7 +44,7 @@
                 <a href="{{ route('direccionesgenerales.create') }}" class="list-group-item list-group-item-action bg-light">Nueva dirección general</a>
                 <a href="{{ route('direccionesareas.create') }}" class="list-group-item list-group-item-action bg-light">Nueva dirección area</a>
                 <a href="{{ route('codigos.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos códigos</a>
-                <a href="{{ route('niveles.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos nivel</a>
+                <a href="{{ route('niveles.create') }}" class="list-group-item list-group-item-action bg-light">Nuevos nivel</a> --}}
 
               </div>
             </div>

@@ -36,13 +36,144 @@
         </div>
 
 
+        <div class="row">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Calle</th>
+                    <th scope="col">Numero</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="85%">{{ $usuario->calle }}</td>
+                        <td>{{ $usuario->numero }}</td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+
+
+        <div class="row">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Corre Personal</th>
+                        <th scope="col">Correo Institucional</th>
+                        <th scope="col">Tel Casa</th>
+                        <th scope="col">Tel Movil</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $usuario->correo_per }}</td>
+                            <td>{{ $usuario->correo_ins }}</td>
+                            <td>{{ $usuario->tel_casa }}</td>
+                            <td>{{ $usuario->tel_movil }}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Pais</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Municipios</th>
+                            <th scope="col">Colonia</th>
+                            <th scope="col">CP</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $usuario->paises->nombre_pais }}</td>
+                                <td>{{ $usuario->estados->nombre }}</td>
+                                <td>{{ $usuario->municipios->nombre_mun }}</td>
+                                <td>{{ $usuario->colonias->nombre_col }}</td>
+                                <td>{{ $usuario->colonias->codigo_postal }}</td>
+                            </tr>
+                        </tbody>
+                      </table>
+            </div>
+
+            <div class="row">
+                <h4>Estado Civil</h4>
+                <hr>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Estado Civil</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Curp</th>
+                            <th scope="col">Curp</th>
+
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $usuario->estadoCivil->nombre }}</td>
+                                @if(isset($usuario->conyuges[0]->nombres_coy))
+                                <td>{{ $usuario->conyuges[0]->nombres_coy }}</td>
+                                <td>{{ $usuario->conyuges[0]->primero_coy }}</td>
+                                <td>{{ $usuario->conyuges[0]->segundo_coy  }}</td>
+                                <td>{{ $usuario->conyuges[0]->curp_coy }}</td>
+                                <td> <img src="{{ $ruta }}/{{ $usuario->conyuges[0]->carga_curp_coy }}" class="card-img" alt="..." style="width:120px; height:90px; margin: 0px 0 0px 0px;"></td>
+                                @else
+                                <td>No tiene</td>
+
+                                @endif
+
+
+                                {{-- <td>{{ $usuario->conyuges[0]->nombres_coy != "0" ? $usuario->conyuges[0]->nombres_coy : 'No tiene' }}</td>
+                                <td>{{ $usuario->conyuges[0]->primero_coy != "0" ? $usuario->conyuges[0]->primero_coy : 'No tiene' }}</td>
+                                <td>{{ $usuario->conyuges[0]->segundo_coy != "0" ? $usuario->conyuges[0]->segundo_coy : 'No tiene' }}</td>
+                                <td>{{ $usuario->conyuges[0]->curp_coy != "0" ? $usuario->conyuges[0]->curp_coy : 'No tiene' }}</td>
+                                @if($usuario->conyuges[0]->carga_curp_coy != "0")
+                                <td> <img src="{{ $ruta }}/{{ $usuario->conyuges[0]->carga_curp_coy }}" class="card-img" alt="..." style="width:120px; height:90px; margin: 0px 0 0px 0px;"></td>
+                                @else
+                                <td>No tiene</td>
+                                @endif --}}
+
+
+                            </tr>
+                        </tbody>
+                      </table>
+            </div>
+
+
+            <div class="row">
+                    <h4>Hijos</h4>
+                    <hr>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Hijos</th>
+                            <th scope="col">Curp Hijo</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $usuario->solteros[0]->nombre_hijo }}  Curp: {{ $usuario->solteros[0]->curp_hijo  }}</td>
+                                <td> <img src="{{ $ruta }}/{{ $usuario->solteros[0]->carga_curp_hijo }}" class="card-img" alt="..." style="width:150px; height:120px; margin: 0px 0 0px 0px;"></td>
+                            </tr>
+                        </tbody>
+                      </table>
+            </div>
 
 
 
 
 
 
-    </div>
+
+
+    </div> {{-- container --}}
 
 
 
