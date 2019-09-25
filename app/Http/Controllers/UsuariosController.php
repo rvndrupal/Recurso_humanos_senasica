@@ -141,8 +141,23 @@ class UsuariosController extends Controller
         $this->authorize('pass', $usuarios);
         }
         $ruta=public_path();
+
+        $nc=[];
+        $ng=[];
+        foreach($usuario->DetalleEscolaridades as $item=>$v)
+        {
+            $id_car=$usuario->DetalleEscolaridades[$item]->carreras_id;
+            $nom_car=Carreras::select('nom_car')->where('id','=',$id_car)->get();
+            $ncv=$nom_car[0]->nom_car;
+            array_push($nc, $ncv);
+
+            $id_gra=$usuario->DetalleEscolaridades[$item]->grados_id;
+            $nom_gra=Grados::select('nom_gra')->where('id','=',$id_gra)->get();
+            $ngv=$nom_gra[0]->nom_gra;
+            array_push($ng, $ngv);
+        }
         //dd($ruta);
-        $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta'));
+        $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta','nc','ng'));
         return $pdf->download('usuario.pdf');
 
     }

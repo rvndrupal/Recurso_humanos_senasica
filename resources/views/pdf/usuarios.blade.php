@@ -181,6 +181,72 @@
                       </table>
             </div>
 
+            <div class="row">
+                    <h4>Escolaridad</h4>
+                    <hr>
+                    <table class="table">
+                        <thead class="thead-dark">
+
+                          <tr>
+                            <th scope="col">Grado</th>
+                            <th scope="col">Carrera</th>
+                            <th scope="col">Cédula</th>
+                            <th scope="col">Escuela</th>
+
+
+
+
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                {{-- <td>{{ $item->grados_id[0]->carreras->nom_car }}</td> --}}
+                                @foreach($ng as $item)
+                                <td>  {{ $item }}</td><p></p>
+                                @endforeach
+
+                                @foreach($nc as $item)
+                                   <td>  {{ $item }} </td><p></p>
+                                @endforeach
+                                {{-- <td>{{ $item->cedula }}</td>
+                                <td>{{ $item->escuelas_id }}</td> --}}
+
+                            </tr>
+                        </tbody>
+
+                      </table>
+            </div>
+
+            <div class="row">
+                    <h4>Escolaridad</h4>
+                    <hr>
+                    <table class="table">
+                        <thead class="thead-dark">
+
+                          <tr>
+                            <th scope="col">Constancia</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Cédula</th>
+
+
+
+                          </tr>
+                        </thead>
+                        @foreach($usuario->DetalleEscolaridades as $item)
+                        <tbody>
+                            <tr>
+                                <td>{{ $item->titulos_id }}</td>
+                                <td> <img src="{{ $ruta }}/{{ $item->carga_titulo }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
+                                <td> <img src="{{ $ruta }}/{{ $item->carga_cedula }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                      </table>
+            </div>
+
+
+
 
 
 

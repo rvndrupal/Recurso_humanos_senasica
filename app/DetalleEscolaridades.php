@@ -14,5 +14,10 @@ class DetalleEscolaridades extends Model
         return $this->belongsTo('App\Usuarios');
     }
 
+    public function carreras()
+    {
+        return $this->hasMany('App\Carreras');
+    }
+
 
 }
