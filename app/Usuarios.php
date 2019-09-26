@@ -19,7 +19,7 @@ class Usuarios extends Model
 
     ];
 
-    public function users()
+    public function user()
     {
         // return $this->belongsTo('App\User','users_id');
         return $this->belongsTo('App\User');
@@ -105,10 +105,6 @@ class Usuarios extends Model
         return $this->hasMany('App\DependientesCasados');
     }
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 
     //scopes
     public function scopeNombre($query, $nombre)

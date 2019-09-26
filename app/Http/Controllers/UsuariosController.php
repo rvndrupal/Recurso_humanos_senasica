@@ -1019,7 +1019,7 @@ class UsuariosController extends Controller
 
         // dd($usuario);
 
-        // $this->authorize('pass', $usuario);
+         $this->authorize('permisoEditar', $usuario);
 
         $usuario->fill($request->all())->save();
 
@@ -1376,6 +1376,38 @@ class UsuariosController extends Controller
     public function exportarExcel()
     {
         return Excel::download(new UsuariosExport, 'usuarios.xlsx');
+
+    }
+
+    public function index_exp(){
+        $title = __('Usuarios Reportes 3');
+        return view('usuarios.index_exp', compact('title'));
+    }
+
+    public function usuarios_expp(Request $request)
+    {
+        if (request()->ajax()) {
+
+            $user = auth()->user();
+                if($user->roles[0]->name == "alta" || $user->roles[0]->name == "Editar_Alta"){
+                    $actions = 'usuarios.datatables.index2';
+                    // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
+                    return datatables()->of(Usuarios::query()
+                         ->where('condicion','=','1')
+                        ->where('user_id', auth()->user()->id))
+                        ->addColumn('actions', $actions)
+                        ->rawColumns(['actions'])
+                        // ->orderBy('nom','ASC')
+                        ->toJson();
+                }else{
+                    $actions = 'usuarios.datatables.index2';
+                    // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
+                    return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
+                        ->rawColumns(['actions'])
+                        // ->orderBy('nom','ASC')
+                        ->toJson();
+                }
+            }
 
     }
 

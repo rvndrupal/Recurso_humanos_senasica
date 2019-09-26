@@ -98,6 +98,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         //email
         // Route::get('/sendemail', 'UsuariosController@enviarEmail')->name('send.email');
 
+        //EXPORTAR3
+        Route::get('/usuarios/index-exportar3', 'UsuariosController@index_exp')->name('usuarios.index-exportar3');
+        Route::get('/usuarios/exportar3', 'UsuariosController@usuarios_expp')->name('usuarios_exp');
+
 
 
     //importar
