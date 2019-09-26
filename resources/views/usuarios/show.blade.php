@@ -452,9 +452,10 @@
                                 {{ $item }}<p></p>
                                 @endforeach
                             </td>
-                            <td>
+                            <td>{{ $ncopl }}</td>
+                            {{-- <td>
                             {{ $usuario->DetalleLaborales[0]->cod_lab }}<p></p>
-                            </td>
+                            </td> --}}
                             <td>
                             {{ $usuario->DetalleLaborales[0]->calle_lab }}<p></p>
                             </td>

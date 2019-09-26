@@ -144,6 +144,8 @@ class UsuariosController extends Controller
 
         $nc=[];
         $ng=[];
+        $ne=[];
+        $nt=[];
         foreach($usuario->DetalleEscolaridades as $item=>$v)
         {
             $id_car=$usuario->DetalleEscolaridades[$item]->carreras_id;
@@ -155,9 +157,77 @@ class UsuariosController extends Controller
             $nom_gra=Grados::select('nom_gra')->where('id','=',$id_gra)->get();
             $ngv=$nom_gra[0]->nom_gra;
             array_push($ng, $ngv);
+
+            $id_esc=$usuario->DetalleEscolaridades[$item]->escuelas_id;
+            $nom_esc=Escuelas::select('nombre_escuela')->where('id','=',$id_esc)->get();
+            $nev=$nom_esc[0]->nombre_escuela;
+            array_push($ne, $nev);
+
+            $id_titulo=$usuario->DetalleEscolaridades[$item]->titulos_id;
+            $nom_titulo=Titulos::select('nombre_titulo')->where('id','=',$id_titulo)->get();
+            $ntv=$nom_titulo[0]->nombre_titulo;
+            array_push($nt, $ntv);
+        }
+
+        $idi=[];
+        foreach($usuario->DetalleIdiomas as $item=>$v)
+        {
+            $id_idiomas=$usuario->DetalleIdiomas[$item]->idiomas_id;
+            $nom_idi=Idiomas::select('nombre_idioma')->where('id','=',$id_idiomas)->get();
+            $nid=$nom_idi[0]->nombre_idioma;
+            array_push($idi, $nid);
         }
         //dd($ruta);
-        $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta','nc','ng'));
+
+         // DATOS LABORALES
+         $dge=[];
+         $dga=[];
+         $estl=[];
+         $munl=[];
+         $coll=[];
+         $copl=[];
+
+
+             $id_dge=$usuario->DetalleLaborales[0]->direcciones_generales_id;
+             $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
+             $ndge=$nom_dge[0]->nombre_dir_gen;
+             array_push($dge, $ndge);
+
+             $id_dga=$usuario->DetalleLaborales[0]->direcciones_areas_id;
+             $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
+             $ndga=$nom_dga[0]->nombre_dir_are;
+             array_push($dga, $ndga);
+
+             $id_estl=$usuario->DetalleLaborales[0]->est_lab;
+             $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
+             $nestl=$nom_estl[0]->nombre;
+             array_push($estl, $nestl);
+
+             $id_munl=$usuario->DetalleLaborales[0]->mun_lab;
+             $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
+             $nmunl=$nom_munl[0]->nombre_mun;
+             array_push($munl, $nmunl);
+
+             $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+             $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
+             $ncoll=$nom_coll[0]->nombre_col;
+             array_push($coll, $ncoll);
+
+             $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+             $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
+             $ncopl=$nom_cop[0]->codigo_postal;
+
+
+             $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
+             $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
+             $ncodi=$nom_codigo[0]->nom_codigos;
+
+             $nive=$usuario->DetalleLaborales[0]->grado_nivel;
+             $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
+             $nnive=$nom_nivel[0]->nom_niveles;
+
+        $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta','nc','ng','ne','nt','idi','ncodi','nnive','dge','dga',
+        'estl','munl','coll','ncopl'));
         return $pdf->download('usuario.pdf');
 
     }
@@ -807,6 +877,10 @@ class UsuariosController extends Controller
                 $ncoll=$nom_coll[0]->nombre_col;
                 array_push($coll, $ncoll);
 
+                $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+                $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
+                $ncopl=$nom_cop[0]->codigo_postal;
+
                 $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
                 $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
                 $ncodi=$nom_codigo[0]->nom_codigos;
@@ -826,7 +900,7 @@ class UsuariosController extends Controller
            //dd($usuario->DependientesCasados);
 
         return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp'
-        ,'ncodi','nnive','total_Esc','des'));
+        ,'ncodi','nnive','total_Esc','des','ncopl'));
     }
 
     /**

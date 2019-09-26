@@ -131,10 +131,10 @@
                       </table>
             </div>
 
-
+            <h5 style="text-align:center">Hijos</h5>
+            <hr>
             <div class="row">
-                    <h4>Hijos</h4>
-                    <hr>
+
                     <table class="table">
                         <thead class="thead-dark">
 
@@ -155,9 +155,9 @@
                       </table>
             </div>
 
+            <h5 style="text-align:center">Dependientes</h5>
+            <hr>
             <div class="row">
-                    <h4>Dependientes</h4>
-                    <hr>
                     <table class="table">
                         <thead class="thead-dark">
 
@@ -181,36 +181,109 @@
                       </table>
             </div>
 
+            <h5 style="text-align:center">Escolaridad</h5>
+            <hr>
+
             <div class="row">
-                    <h4>Escolaridad</h4>
-                    <hr>
+            Grado:
+            @foreach($ng as $item)
+                {{ $item }},
+            @endforeach
+            </div>
+            <div class="row">
+            Carrera:
+            @foreach($nc as $item)
+            {{ $item }},
+            @endforeach
+            </div>
+            <div class="row">
+            Escuela:
+            @foreach($ne as $item)
+            {{ $item }},
+            @endforeach
+            </div>
+            <div class="row">
+            Título:
+            @foreach($nt as $item)
+            {{ $item }},
+            @endforeach
+            </div>
+
+
+            <h5 style="text-align:center">Escolaridad</h5>
+            <hr>
+            <div class="row">
                     <table class="table">
                         <thead class="thead-dark">
 
                           <tr>
-                            <th scope="col">Grado</th>
-                            <th scope="col">Carrera</th>
+                            <th scope="col">Título</th>
                             <th scope="col">Cédula</th>
-                            <th scope="col">Escuela</th>
+                          </tr>
+                        </thead>
+                        @foreach($usuario->DetalleEscolaridades as $item)
+                        <tbody>
+                            <tr>
+                                <td> <img src="{{ $ruta }}/{{ $item->carga_titulo }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
+                                <td> <img src="{{ $ruta }}/{{ $item->carga_cedula }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                      </table>
+            </div>
 
 
+            <h5 style="text-align:center">Idioma</h5>
+            <hr>
+            <div class="row">
+            Idioma:
+            @foreach($idi as $item)
+            {{ $item }},
+            @endforeach
+            </div>
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Porcentaje</th>
+                            <th scope="col">Certificado</th>
+                          </tr>
+                        </thead>
+                        @foreach($usuario->DetalleIdiomas as $item)
+                        <tbody>
+                            <tr>
+                                <td>{{ $item->nivel_ingles }}</td>
+                                <td> <img src="{{ $ruta }}/{{ $item->carga_certificado }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                      </table>
+            </div>
 
 
+            <h5 style="text-align:center">Datos Laborales</h5>
+            <hr>
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Puesto</th>
+                            <th scope="col">Código</th>
+                            <th scope="col">Nivel</th>
+                            <th scope="col">Dirección General</th>
                           </tr>
                         </thead>
 
                         <tbody>
                             <tr>
-                                {{-- <td>{{ $item->grados_id[0]->carreras->nom_car }}</td> --}}
-                                @foreach($ng as $item)
-                                <td>  {{ $item }}</td><p></p>
+                                @foreach($usuario->DetalleLaborales as $item)
+                                <td> {{ $item->puesto_actual }}</td>
                                 @endforeach
-
-                                @foreach($nc as $item)
-                                   <td>  {{ $item }} </td><p></p>
+                                <td> {{ $ncodi }}</td>
+                                <td>{{ $nnive }}</td>
+                                @foreach ($dge as $item)
+                                <td>{{ $item }}</td>
                                 @endforeach
-                                {{-- <td>{{ $item->cedula }}</td>
-                                <td>{{ $item->escuelas_id }}</td> --}}
 
                             </tr>
                         </tbody>
@@ -219,30 +292,214 @@
             </div>
 
             <div class="row">
-                    <h4>Escolaridad</h4>
-                    <hr>
                     <table class="table">
                         <thead class="thead-dark">
-
                           <tr>
-                            <th scope="col">Constancia</th>
-                            <th scope="col">Título</th>
-                            <th scope="col">Cédula</th>
-
-
-
+                            <th scope="col">Dirección Area</th>
+                            <th scope="col">Fecha Último</th>
+                            <th scope="col">Fecha Senasica</th>
                           </tr>
                         </thead>
-                        @foreach($usuario->DetalleEscolaridades as $item)
+
                         <tbody>
                             <tr>
-                                <td>{{ $item->titulos_id }}</td>
-                                <td> <img src="{{ $ruta }}/{{ $item->carga_titulo }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
-                                <td> <img src="{{ $ruta }}/{{ $item->carga_cedula }}" class="card-img" alt="..." style="width:100px; height:80px; margin: 0px 0 0px 0px;"></td>
+                                @foreach ($dga as $item)
+                                <td>{{ $item }}</td>
+                                @endforeach
+                                @foreach($usuario->DetalleLaborales as $item)
+                                <td> {{ $item->fecha_ultimo }}</td>
+                                <td> {{ $item->fecha_senasica }}</td>
+                                @endforeach
+
                             </tr>
                         </tbody>
-                        @endforeach
+
                       </table>
+            </div>
+
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Municipio</th>
+                            <th scope="col">Colonia</th>
+                            <th scope="col">CP</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                @foreach ($estl as $item)
+                                <td>{{ $item }}</td>
+                                @endforeach
+                                @foreach ($munl as $item)
+                                <td>{{ $item }}</td>
+                                @endforeach
+                                @foreach ($coll as $item)
+                                <td>{{ $item }}</td>
+                                @endforeach
+
+                                <td>{{ $ncopl }}</td>
+
+
+
+                            </tr>
+                        </tbody>
+
+                      </table>
+            </div>
+
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Calle</th>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Fecha Gobierno</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                        @foreach($usuario->DetalleLaborales as $item)
+                        <td> {{ $item->calle_lab }}</td>
+                        <td> {{ $item->num_lab }}</td>
+                        <td> {{ $item->fecha_gobierno }}</td>
+                        @endforeach
+                            </tr>
+                        </tbody>
+
+                      </table>
+            </div>
+
+            <h5 style="text-align:center">Experiencia Laboral</h5>
+            <hr>
+            <div class="row">
+                Puesto:
+                @foreach($usuario->ExpLaborales as $item)
+                {{ $item->den_puesto }},
+                @endforeach
+            </div>
+
+            <div class="row">
+                Empresa:
+                @foreach($usuario->ExpLaborales as $item)
+                {{ $item->ins_puesto }},
+                @endforeach
+            </div>
+
+            <div class="row">
+                Área de Experiencia:
+                @foreach($usuario->ExpLaborales as $item)
+                {{ $item->area_puesto }},
+                @endforeach
+            </div>
+
+            <div class="row">
+                Años de Experiencia:
+                @foreach($usuario->ExpLaborales as $item)
+                {{ $item->anos_puesto }},
+                @endforeach
+            </div>
+
+            <div class="row">
+                Periodo:
+                @foreach($usuario->ExpLaborales as $item)
+                {{ $item->fecha_ing_puesto }} | {{ $item->fecha_baj_puesto }},
+                @endforeach
+            </div>
+
+            <h5 style="text-align:center">Datos del Seguro</h5>
+            <hr>
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Enfermedad</th>
+                            <th scope="col">Cual</th>
+                            <th scope="col">Tipo de Sangre</th>
+                            <th scope="col">Discapacidad</th>
+                            <th scope="col">Cual</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                        @foreach($usuario->Seguros as $item)
+                        <td> {{ $item->num_seg }}</td>
+                        <td  width="10%"> {{ $item->enf_seg }}</td>
+                        <td> {{ $item->cual_enf_seg }}</td>
+                        <td> {{ $item->tipo_seg }}</td>
+                        <td> {{ $item->dis_seg }}</td>
+                        <td> {{ $item->cual_dis_seg }}</td>
+                        @endforeach
+                            </tr>
+                        </tbody>
+
+                      </table>
+            </div>
+
+            <h5 style="text-align:center">Contacto de Emergencia</h5>
+            <hr>
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Aellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Parentesco</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                        @foreach($usuario->Seguros as $item)
+                        <td> {{ $item->nom_seg }}</td>
+                        <td> {{ $item->pri_seg }}</td>
+                        <td> {{ $item->seg_seg }}</td>
+                        <td> {{ $item->par_seg }}</td>
+                        @endforeach
+                            </tr>
+                        </tbody>
+
+                      </table>
+            </div>
+
+            <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Email</th>
+                            <th scope="col">Télefono Casa</th>
+                            <th scope="col">Télefono movil</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                        @foreach($usuario->Seguros as $item)
+                        <td> {{ $item->email_seg }}</td>
+                        <td> {{ $item->tel_seg }}</td>
+                        <td> {{ $item->mov_seg }}</td>
+                        @endforeach
+                            </tr>
+                        </tbody>
+
+                      </table>
+            </div>
+
+
+            <h5 style="text-align:center">Fechas de Registro</h5>
+            <hr>
+            <div class="row">
+                Fecha de Alta: {{ $usuario->created_at }}
+            </div>
+
+            <div class="row">
+                Fecha de Actualización: {{ $usuario->updated_at }}
             </div>
 
 
