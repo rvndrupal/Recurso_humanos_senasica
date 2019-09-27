@@ -42,9 +42,9 @@ $(".next").click(function(){
 
 
         rules:{
-            nom:{required:true,minlength:3,maxlength:20,texto: true},
-            // ap:{required:true,minlength:3,maxlength:20,texto: true},
-            // am:{required:true,minlength:3,maxlength:20,texto: true},
+             nom:{required:true,minlength:3,maxlength:20,texto: true},
+            ap:{required:true,minlength:3,maxlength:20,texto: true},
+            am:{required:true,minlength:3,maxlength:20,texto: true},
             //  paises_id:{required:true},
             // rfc:{required:true,minlength:12,maxlength:13},
             // curp:{required:true,minlength:18,maxlength:18},
@@ -57,7 +57,7 @@ $(".next").click(function(){
             // carga_rfc:{required:true,imagen:true},
             // carga_curp:{required:true,imagen:true},
             // carga_ife:{required:true,imagen:true},
-             estados_id:{required:true},
+            //  estados_id:{required:true},
             // municipios_id:{required:true},
             // colonias_id:{required:true},
             // calle:{required:true,minlength:5,maxlength:100},

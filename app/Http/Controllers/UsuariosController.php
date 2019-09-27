@@ -20,7 +20,8 @@ use App\DetalleLaborales;
 use App\ExpLaborales;
 use App\Codigos;
 use App\Niveles;
-use App\DependientesCasados;
+
+use App\Http\Requests\UsuariosRequest;
 
 use Mail;
 
@@ -330,7 +331,7 @@ class UsuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuariosRequest $request)
     {
         // $rules = array(
         //     'nom'       =>  'required',
