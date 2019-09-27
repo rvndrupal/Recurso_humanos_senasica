@@ -13,7 +13,7 @@ return [
             'user' => 'c,r,u,d',
             'role' => 'c,r,u,d',
             'permission' => 'c,r,u,d',
-            'usuarios' => 'c,r,u,d',
+            'usuarios' => 'c,r,d',
             'grados' => 'c,r,u,d',
             'carreras' => 'c,r,u,d',
             'paises' => 'c,r,u,d',

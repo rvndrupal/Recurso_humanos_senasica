@@ -1001,7 +1001,7 @@ class UsuariosController extends Controller
         return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','grados_A','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
         ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'
-    ,   'enfermo','disca','uid','s_grados'));
+    ,   'enfermo','disca','uid','s_grados','user'));
     }
 
     /**
@@ -1018,8 +1018,11 @@ class UsuariosController extends Controller
         $usuario = Usuarios::find($id);
 
         // dd($usuario);
+        $user = auth()->user();
 
-         $this->authorize('permisoEditar', $usuario);
+        $this->authorize('permisoEditar', $usuario);
+
+
 
         $usuario->fill($request->all())->save();
 

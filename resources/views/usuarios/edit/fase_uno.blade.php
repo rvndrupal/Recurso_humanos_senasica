@@ -44,6 +44,7 @@
                     </label>
                     <input id="file-input-foto" type="file" class="form-control id_curp"  name="foto"/>
                     <input type="hidden" class="form-control"  name="user_id" value="{{ auth()->user()->id }}" >
+
                 </div>
         </div>
 

@@ -80,4 +80,6 @@ activar-usuarios
   12.-importar a pdf.
   13.- Toda la actualización de todos los registros.
   14.- Rfc es unico.
+  15.- Srguridad update solo el usuario.
+
 
