@@ -911,6 +911,11 @@ class UsuariosController extends Controller
      */
     public function edit(Usuarios $usuarios, $id)
     {
+        $validusu=Usuarios::find($id);
+
+        $this->authorize('permisoEditar', $validusu);
+
+
         $use=Usuarios::where('id','=',$id)->get();
         $usuarios= Usuarios::findOrFail($id);
         $user = auth()->user();
