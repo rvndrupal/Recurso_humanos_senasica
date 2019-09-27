@@ -58,7 +58,8 @@ class LaratrustSeeder extends Seeder
                 'name' => ucwords(str_replace('_', ' ', $key)),
                 // 'email' => $key.'@app.com',
                 'rfc_login' =>  $key,
-                'password' => bcrypt('password'),
+                // 'password' => bcrypt('password'),
+                'password' => bcrypt('rorro131319++'),
 
             ]);
 
