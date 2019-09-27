@@ -94,7 +94,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="addon-wrapping">Selecciona una opción</span>
                                 </div>
-                                <select class="form-control" name="estado_civils_id" id="estado_civil" placeholder="Estado civil" >
+                                <select class="form-control" name="estado_civils_id" {{ $errors->has('correo_per') ? ' is-invalid' : '' }} value="{{ old('estado_civils_id') }}" id="estado_civil" placeholder="Estado civil" >
                                     <option value="">Estado civil</option>
                                     @foreach ($estadoCivil as $estado_civil)
                                      <option value="{{ $estado_civil->id }}">{{ $estado_civil->nombre }}</option>

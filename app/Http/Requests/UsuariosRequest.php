@@ -31,9 +31,9 @@ class UsuariosRequest extends FormRequest
                 return [
                     //'nom' => 'required|min:2|unique:products',
                     // 'foto' => 'required|mimes:jpeg,bmp,png,jfif',
-                    'nom' => 'required|min:2',
-                    'ap' => 'required|min:2',
-                    'am' => 'required|min:2',
+                    // 'nom' => 'required|min:2',
+                    // 'ap' => 'required|min:2',
+                    // 'am' => 'required|min:2',
                     // 'paises_id' => 'required',
                     // 'rfc' => 'required|min:12|max:13',
                     // 'curp' => 'required|min:18|max:18',
@@ -41,13 +41,16 @@ class UsuariosRequest extends FormRequest
                     // 'correo_ins' => 'required|email',
                     // 'tel_casa' => 'required|numeric|min:10|max:11',
                     // 'tel_movil' => 'required|numeric|min:10|max:11',
-                    // 'price' => 'required|numeric',
-                    // 'stock' => 'required|numeric',
-                    // 'category_id' => [
-                    //     'required',
-                    //     Rule::exists('categories', 'id')
-                    // ],
-                    // 'tags' => 'required|array',
+                    // 'tel_movil' => 'required|numeric|min:10|max:11',
+
+
+                     'paises_id' => 'required',
+                     'estado_civils_id' => 'required',
+
+
+
+
+
                 ];
             }
             // case 'PUT': {
