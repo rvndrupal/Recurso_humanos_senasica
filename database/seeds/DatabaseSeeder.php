@@ -39,12 +39,16 @@ class DatabaseSeeder extends Seeder
          factory(App\Codigos::class, 10)->create();
          factory(App\Niveles::class, 10)->create();
 
-         factory(App\Usuarios::class, 3)->create();
+         factory(App\Usuarios::class, 5)->create();
 
-         factory(App\Conyuges::class, 3)->create();
-
-
-
+         factory(App\Conyuges::class, 5)->create();
+         factory(App\Solteros::class, 5)->create();
+         factory(App\Descensientes::class, 5)->create();
+         factory(App\DetalleEscolaridades::class, 5)->create();
+         factory(App\DetalleIdiomas::class, 5)->create();
+         factory(App\DetalleLaborales::class, 5)->create();
+         factory(App\ExpLaborales::class, 5)->create();
+         factory(App\Seguros::class, 5)->create();
 
 
 

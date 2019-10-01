@@ -11,7 +11,7 @@ $factory->define(Conyuges::class, function (Faker $faker) {
         'primero_coy' => $faker->text(10),
         'segundo_coy' => $faker->text(10),
         'curp_coy' => $faker->text(13),
-        'carga_curp_coy' => $faker->image('public/Fotos/Usuarios',200, 200, 'business', false),
-        'usuarios_id' 		=> rand(1,3),
+        'carga_curp_coy' => $faker->image('public/CURPCONYUGES',200, 200, 'business', false),
+        'usuarios_id' 		=> rand(1,5),
     ];
 });
