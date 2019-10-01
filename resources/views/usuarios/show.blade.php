@@ -413,7 +413,7 @@
 
           {{-- Datos Laborales --}}
 
-          {{--  <div id="tabs-5">
+           <div id="tabs-5">
 
             <div class="table-responsive-sm">
                 <table class="table" style="margin: 14px 0 0 0;">
@@ -429,6 +429,7 @@
                             <th scope="col">FECHA SENASICA</th>
                             <th scope="col">ESTADO</th>
                             <th scope="col">MUNICIPIO</th>
+                            <th scope="col">COLONIA</th>
                             <th scope="col">COLONIA</th>
                             <th scope="col">CP</th>
                             <th scope="col">CALLE</th>
@@ -486,10 +487,10 @@
                                 @endforeach
                             </td>
                             <td>{{ $ncopl }}</td>
-                            {{-- <td>
+                            <td>
                             {{ $usuario->DetalleLaborales[0]->cod_lab }}<p></p>
-                            </td> --}}
-                            {{--  <td>
+                            </td>
+                            <td>
                             {{ $usuario->DetalleLaborales[0]->calle_lab }}<p></p>
                             </td>
                              <td>
@@ -497,35 +498,21 @@
                             </td>
                             <td>
                             {{ $usuario->DetalleLaborales[0]->fecha_gobierno }}<p></p>
-                            </td>  --}}
-
-
-
-
-
-
-
-
-
-                          {{--  </tr>
+                            </td>
+                          </tr>
                         </tbody>
-                </table>  --}}
-            {{--  </div>  --}}
+                </table>
+            </div>
+         </div>
 
-            {{-- tabla responsive
-
-
-
-         </div>  --}}
-
-        {{-- Datos Laborales --}}
+        {{-- Datos Laborales  hasta aqui ok --}}
 
 
 
 
           {{-- Experiencia  Laborales --}}
 
-          {{--  <div id="tabs-6">
+          <div id="tabs-6">
 
             <div class="table-responsive-sm">
                 <table class="table" style="margin: 14px 0 0 0;">
@@ -586,33 +573,26 @@
 
                             <td>
                             @foreach($usuario->ExpLaborales as $item)
-                            <a href="http://localhost/recursos/public/{{ $item->doc_puesto }} " download="{{ $item->doc_puesto }}">
+                            <a href="http://localhost/recursos/public/DOCPUESTO/{{ $item->doc_puesto }} " download="{{ $item->doc_puesto }}">
                                 <i class="glyphicon glyphicon-download">Arhivos</i><p></p>
                             </a>
                             @endforeach
                             </td>
 
-
-
-
-
-
-
-
                           </tr>
                         </tbody>
                 </table>
             </div>
-        </div>  --}}
+        </div>
 
 
-        {{-- Experiencia Laborales --}}
+        {{-- Experiencia Laborales OK--}}
 
 
 
           {{-- SEGURO SOCIAL --}}
 
-          {{--  <div id="tabs-7">
+          <div id="tabs-7">
 
                 <div class="table-responsive-sm">
                     <table class="table" style="margin: 14px 0 0 0;">
@@ -740,7 +720,7 @@
             </div>
 
 
-        </div>  --}}
+        </div>
 
 
         {{-- tabs --}}
