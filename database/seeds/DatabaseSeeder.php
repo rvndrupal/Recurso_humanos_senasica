@@ -21,19 +21,27 @@ class DatabaseSeeder extends Seeder
         //$this->call(ProductTagSeeder::class);
 
 
+        factory(App\Estados::class, 10)->create();
+        factory(App\EstadoCivil::class, 10)->create();
+         factory(App\User::class, 10)->create();
+         factory(App\Paises::class, 10)->create();
 
-        // factory(App\User::class, 10)->create();
-        // factory(App\Usuarios::class, 3)->create();
-        //factory(App\Paises::class, 3)->create();
-        // factory(App\Escuelas::class, 3)->create();
-        // factory(App\Grados::class, 3)->create();
-        // factory(App\Idiomas::class, 3)->create();
-        //factory(App\Carreras::class, 3)->create();
-        // factory(App\Titulos::class, 3)->create();
-        // factory(App\DireccionesAreas::class, 3)->create();
-        // factory(App\DireccionesGenerales::class, 3)->create();
-        // factory(App\Codigos::class, 10)->create();
-        // factory(App\Niveles::class, 5)->create();
+         factory(App\Municipios::class, 100)->create();
+         factory(App\Colonias::class, 100)->create();
+
+         factory(App\Escuelas::class, 10)->create();
+         factory(App\Grados::class, 10)->create();
+        factory(App\Idiomas::class, 10)->create();
+        factory(App\Carreras::class, 10)->create();
+        factory(App\Titulos::class, 10)->create();
+        factory(App\DireccionesAreas::class, 6)->create();
+        factory(App\DireccionesGenerales::class, 6)->create();
+         factory(App\Codigos::class, 10)->create();
+         factory(App\Niveles::class, 10)->create();
+
+         factory(App\Usuarios::class, 3)->create();
+
+         factory(App\Conyuges::class, 3)->create();
 
 
 

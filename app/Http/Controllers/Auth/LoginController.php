@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -34,9 +35,28 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+
         $this->middleware('guest')->except('logout');
+
+
+
+        // $user = User::find(auth()->id());
+        // if($user)
+        // {
+        // $user->is_logged = false;
+		// $user->save();
+
+		// $this->guard()->logout();
+
+		// $request->session()->invalidate();
+
+		// return $this->loggedOut($request) ?: redirect('/login');
+
+        // }
+
+
     }
 
     //para cambiar el registro de login
@@ -59,11 +79,16 @@ class LoginController extends Controller
         if ($user->is_logged) {
 			$this->guard()->logout(); //cerramos la sesión
 			$request->session()->invalidate();
-			session()->flash('message', ['danger', 'Ya hay un usuario identificado con esta cuenta']);
+            session()->flash('message', ['danger', 'Ya hay un usuario identificado con esta cuenta']);
 			return redirect('/login');
 		} else {
 			$user->is_logged = true;
-			$user->save();
+            $user->save();
+
+            // $data = Session::all(); //usando el Facade
+            // dd($data);
+            // var_dump($data);
+
 		}
 		return redirect($this->redirectPath());
     }
@@ -95,6 +120,7 @@ class LoginController extends Controller
 	 */
 	protected function loggedOut(Request $request)
 	{
+
 		session()->flash('message', ['success', 'Has cerrado sesión correctamente']);
 		return redirect('/login');
 	}

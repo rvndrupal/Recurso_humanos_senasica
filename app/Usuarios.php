@@ -32,7 +32,7 @@ class Usuarios extends Model
 
     public function estados()
     {
-        return $this->belongsTo('App\Estados');
+        return $this->belongsTo('App\Estados','estados_id');
     }
 
     public function colonias()
