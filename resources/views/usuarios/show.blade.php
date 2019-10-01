@@ -65,17 +65,17 @@
                                           <tr>
                                             <th scope="row">1</th>
                                             <td>
-                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}">
+                                                <a href="http://localhost/recursos/public/rfc/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}">
                                                     <i class="glyphicon glyphicon-download">RFC</i>
                                                 </a>
                                             </td>
                                             <td>
-                                            <a href="http://localhost/recursos/public/{{ $usuario->carga_curp }} " download="{{ $usuario->carga_pdf }}{{ "CURP-".$des }}">
+                                            <a href="http://localhost/recursos/public/curp/{{ $usuario->carga_curp }} " download="{{ $usuario->carga_curp }}">
                                                 <i class="glyphicon glyphicon-download">CURP</i>
                                             </a>
                                             </td>
                                             <td>
-                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_ife }} " download="{{ $usuario->carga_ife }}">
+                                                <a href="http://localhost/recursos/public/ife/{{ $usuario->carga_ife }} " download="{{ $usuario->carga_ife }}">
                                                 <i class="glyphicon glyphicon-download">IFE</i>
                                                 </a>
                                             </td>
@@ -120,7 +120,7 @@
                                       <td> {{ $usuario->calle }}</td>
                                       <td> {{ $usuario->numero }}</td>
                                       <td>
-                                        <a href="http://localhost/recursos/public/{{ $usuario->carga_domicilio }} " download="{{ $usuario->carga_domicilio }}">
+                                        <a href="http://localhost/recursos/public/DOMICILIO/{{ $usuario->carga_domicilio }} " download="{{ $usuario->carga_domicilio }}">
                                             <i class="glyphicon glyphicon-download">Comprobante</i>
                                         </a>
                                       </td>
@@ -131,7 +131,13 @@
                           </table>
                   </div>
               </div>
-          </div> {{-- tabs2 --}}
+          </div>
+
+          {{-- tabs2 hasta aqui todo ok--}}
+
+
+
+
 
 
 
@@ -162,7 +168,7 @@
                                                     <h5 class="card-title">{{ $item->curp_coy }}</h5>
                                                 </td>
                                                 <td>
-                                                    <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
+                                                    <a href="http://localhost/recursos/public/CURPCONYUGES/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
                                                         <i class="glyphicon glyphicon-download">Curp</i>
                                                     </a>
                                                 </td>
@@ -176,7 +182,7 @@
                         </div>
                     </div>
 
-                    {{-- hijos --}}
+
                     <hr>
                     <h3>Hijos</h3>
                     <div class="row">
@@ -200,7 +206,7 @@
                                                     <td>{{ $item->nombre_hijo }}</td>
                                                     <td>{{ $item->curp_hijo }}</td>
                                                     <td>
-                                                        <a href="http://localhost/recursos/public/{{ $item->carga_curp_hijo }} " download="{{ $item->carga_curp_hijo }}">
+                                                        <a href="http://localhost/recursos/public/CURPHIJOS/{{ $item->carga_curp_hijo }} " download="{{ $item->carga_curp_hijo }}">
                                                             <i class="glyphicon glyphicon-download">Curp</i>
                                                         </a>
                                                     </td>
@@ -216,7 +222,7 @@
                     <hr>
 
 
-                    {{-- DESCENDIENTES --}}
+
                     <h3>Familiares Dependientes</h3>
                     <div class="row">
                         <div class="col-md-12">
@@ -246,12 +252,18 @@
 
           </div>
 
+          {{-- Todo ok hasta aqui --}}
 
 
 
-          <div id="tabs-4">
 
 
+
+
+
+
+
+           <div id="tabs-4">
             <table class="table" style="margin: 14px 0 0 0;">
                     <thead class="thead-dark">
                       <tr>
@@ -285,13 +297,15 @@
                             @endforeach
                         </td>
                         <td>
-                            @for($i=0; $i<$total_Esc; $i++)
-                                @if($usuario->DetalleEscolaridades[$i]->cedula==0)
-                                <h6>Sin Cédula</h6>
+                            @foreach ($usuario->DetalleEscolaridades as $item)
+                                @if($item->cedula !="0")
+                                {{ $item->cedula }}<p></p>
                                 @else
-                                 {{ $usuario->DetalleEscolaridades[$i]->cedula }}<p></p>
-                                 @endif
-                            @endfor
+                                <h6>Sin Cédula</h6>
+                                @endif
+
+                            @endforeach
+
                         </td>
                         <td>
                             @foreach($ne as $item)
@@ -305,19 +319,20 @@
                             @endforeach
                         </td>
                         <td>
-                        @for($i=0; $i<$total_Esc; $i++)
-                            @if($usuario->DetalleEscolaridades[$i]->cedula==0)
-                                <h6>Sin Título</h6>
-                            @else
-                                <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_titulo }}">
+                        @foreach ($usuario->DetalleEscolaridades as $item)
+                            @if($item->carga_titulo !="0")
+                                <a href="http://localhost/recursos/public/TITULOPROFESIONAL/{{ $item->carga_titulo }} " download="{{ $item->carga_titulo }}">
                                     <i class="glyphicon glyphicon-download">TÍTULO</i>
                                 </a><p></p>
+                            @else
+                            <h6>Sin Título</h6>
                             @endif
-                        @endfor
+
+                        @endforeach
                         </td>
 
                         <td>
-                            @for($i=0; $i<$total_Esc; $i++)
+                            {{--  @for($i=0; $i<$total_Esc; $i++)
                                 @if($usuario->DetalleEscolaridades[$i]->cedula==0)
                                 <h6>Sin Cédula</h6>
                                 @else
@@ -325,7 +340,17 @@
                                     <i class="glyphicon glyphicon-download">CEDULA</i>
                                 </a><p></p>
                                 @endif
-                            @endfor
+                            @endfor  --}}
+                            @foreach ($usuario->DetalleEscolaridades as $item)
+                                @if($item->carga_cedula != "0")
+                                    <a href="http://localhost/recursos/public/CEDULA/{{ $item->carga_cedula }} " download="{{ $item->carga_cedula }}">
+                                        <i class="glyphicon glyphicon-download">CEDULA</i>
+                                    </a><p></p>
+                                @else
+                                <h6>Sin Cédula</h6>
+                                @endif
+
+                            @endforeach
                         </td>
 
 
@@ -333,7 +358,7 @@
                     </tbody>
             </table>
 
-            {{-- idiomas --}}
+
             <table class="table" style="margin: 14px 0 0 0;">
                     <thead class="thead-dark">
                       <tr>
@@ -365,7 +390,7 @@
 
                         <td>
                             @for($i=0; $i<$totalidi; $i++)
-                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleIdiomas[$i]->carga_certificado }} " download="{{ $usuario->DetalleIdiomas[$i]->carga_certificado }}">
+                            <a href="http://localhost/recursos/public/CERT_IDIOMAS/{{ $usuario->DetalleIdiomas[$i]->carga_certificado }} " download="{{ $usuario->DetalleIdiomas[$i]->carga_certificado }}">
                                 <i class="glyphicon glyphicon-download">CERTIFICADO</i>
                             </a><p></p>
                             @endfor
@@ -374,13 +399,21 @@
                     </tbody>
             </table>
 
-          </div>{{-- Escolaridad --}}
+          </div>
+
+          {{-- Escolaridad --}}
+
+
+
+
+
+
 
 
 
           {{-- Datos Laborales --}}
 
-          <div id="tabs-5">
+          {{--  <div id="tabs-5">
 
             <div class="table-responsive-sm">
                 <table class="table" style="margin: 14px 0 0 0;">
@@ -456,7 +489,7 @@
                             {{-- <td>
                             {{ $usuario->DetalleLaborales[0]->cod_lab }}<p></p>
                             </td> --}}
-                            <td>
+                            {{--  <td>
                             {{ $usuario->DetalleLaborales[0]->calle_lab }}<p></p>
                             </td>
                              <td>
@@ -464,7 +497,7 @@
                             </td>
                             <td>
                             {{ $usuario->DetalleLaborales[0]->fecha_gobierno }}<p></p>
-                            </td>
+                            </td>  --}}
 
 
 
@@ -474,21 +507,25 @@
 
 
 
-                          </tr>
+                          {{--  </tr>
                         </tbody>
-                </table>
-            </div>{{-- tabla responsive --}}
+                </table>  --}}
+            {{--  </div>  --}}
+
+            {{-- tabla responsive
 
 
 
-        </div>{{-- Datos Laborales --}}
+         </div>  --}}
+
+        {{-- Datos Laborales --}}
 
 
 
 
           {{-- Experiencia  Laborales --}}
 
-          <div id="tabs-6">
+          {{--  <div id="tabs-6">
 
             <div class="table-responsive-sm">
                 <table class="table" style="margin: 14px 0 0 0;">
@@ -565,17 +602,17 @@
                           </tr>
                         </tbody>
                 </table>
-            </div>{{-- tabla responsive --}}
+            </div>
+        </div>  --}}
 
 
-
-        </div>{{-- Experiencia Laborales --}}
+        {{-- Experiencia Laborales --}}
 
 
 
           {{-- SEGURO SOCIAL --}}
 
-          <div id="tabs-7">
+          {{--  <div id="tabs-7">
 
                 <div class="table-responsive-sm">
                     <table class="table" style="margin: 14px 0 0 0;">
@@ -633,7 +670,7 @@
                               </tr>
                             </tbody>
                     </table>
-                </div>{{-- tabla responsive --}}
+                </div>
 
                 <div class="table-responsive-sm">
                     <h2>CONTACTO DE EMERGENCIA</h2>
@@ -696,20 +733,17 @@
                                   </tr>
                                 </tbody>
                         </table>
-                    </div>{{-- tabla responsive --}}
+                    </div>
 
 
 
             </div>
-            {{-- SEGURO SOCIAL --}}
 
 
+        </div>  --}}
 
 
-
-
-
-        </div>{{-- tabs --}}
+        {{-- tabs --}}
 
 
         </body>

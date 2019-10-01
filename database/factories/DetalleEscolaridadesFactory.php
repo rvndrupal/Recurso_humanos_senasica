@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(DetalleEscolaridades::class, function (Faker $faker) {
     return [
-        'usuarios_id' 		=> rand(1,5),
+        'usuarios_id' => rand(1,5),
         'grados_id' 		=> rand(1,5),
         'carreras_id' 		=> rand(1,5),
         'cedula' 		=>  $faker->text(10),

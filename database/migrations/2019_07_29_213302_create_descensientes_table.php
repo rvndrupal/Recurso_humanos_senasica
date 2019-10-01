@@ -19,7 +19,7 @@ class CreateDescensientesTable extends Migration
             $table->string('ap_des',50)->default('0');
             $table->string('am_des',50)->default('0');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->timestamps();
         });
     }

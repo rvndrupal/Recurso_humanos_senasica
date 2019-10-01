@@ -28,7 +28,7 @@ $factory->define(Usuarios::class, function (Faker $faker) {
         'correo_ins' => $faker->email,
         'tel_casa' => $faker->randomNumber(),
         'tel_movil' => $faker->randomNumber(),
-        'user_id'=> rand(1,5),
+        'user_id'=> $faker->numberBetween(5,14),
         'paises_id'=> rand(1,7),
         'estados_id'=> rand(1,10),
         'colonias_id'=> rand(1,50),

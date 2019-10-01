@@ -796,10 +796,11 @@ class UsuariosController extends Controller
     {
         $title = __('Usuario');
         $user = auth()->user();
-        $usuario= Usuarios::findOrFail($id);
-        if($user->roles[0]->name == "alta"){
-        $this->authorize('pass', $usuario);
-        }
+        $usuario= Usuarios::find($id);
+       // dd($usuario);
+        // if($user->roles[0]->name == "alta"){
+        // $this->authorize('pass', $usuario);
+        // }
 
             $nt=[];//Los valores en array pasados
             $nc=[];
@@ -831,7 +832,7 @@ class UsuariosController extends Controller
                 array_push($ng, $ngv);
             }
 
-            $total=count($ng);
+            // $total=count($ng);
 
             //idiomas
             $idi=[];
@@ -845,63 +846,77 @@ class UsuariosController extends Controller
             $totalidi=count($idi);
 
 
+
+
             // DATOS LABORALES
-            $dge=[];
-            $dga=[];
-            $estl=[];
-            $munl=[];
-            $coll=[];
+            // $dge=[];
+            // $dga=[];
+            // $estl=[];
+            // $munl=[];
+            // $coll=[];
 
 
-                $id_dge=$usuario->DetalleLaborales[0]->direcciones_generales_id;
-                $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
-                $ndge=$nom_dge[0]->nombre_dir_gen;
-                array_push($dge, $ndge);
-
-                $id_dga=$usuario->DetalleLaborales[0]->direcciones_areas_id;
-                $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
-                $ndga=$nom_dga[0]->nombre_dir_are;
-                array_push($dga, $ndga);
-
-                $id_estl=$usuario->DetalleLaborales[0]->est_lab;
-                $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
-                $nestl=$nom_estl[0]->nombre;
-                array_push($estl, $nestl);
-
-                $id_munl=$usuario->DetalleLaborales[0]->mun_lab;
-                $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
-                $nmunl=$nom_munl[0]->nombre_mun;
-                array_push($munl, $nmunl);
-
-                $id_coll=$usuario->DetalleLaborales[0]->col_lab;
-                $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
-                $ncoll=$nom_coll[0]->nombre_col;
-                array_push($coll, $ncoll);
-
-                $id_coll=$usuario->DetalleLaborales[0]->col_lab;
-                $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
-                $ncopl=$nom_cop[0]->codigo_postal;
-
-                $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
-                $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
-                $ncodi=$nom_codigo[0]->nom_codigos;
-
-                $nive=$usuario->DetalleLaborales[0]->grado_nivel;
-                $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
-                $nnive=$nom_nivel[0]->nom_niveles;
 
 
-            $total_Exp=count($usuario->ExpLaborales);
-            $total_Esc=count($usuario->DetalleEscolaridades);
+            //     $id_dge=$usuario->DetalleLaborales[0]->direcciones_generales_id;
+            //     $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
+            //     $ndge=$nom_dge[0]->nombre_dir_gen;
+            //     array_push($dge, $ndge);
 
-            $des=$usuario->nom."-".$usuario->ap."-".$usuario->am;
+            //     $id_dga=$usuario->DetalleLaborales[0]->direcciones_areas_id;
+            //     $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
+            //     $ndga=$nom_dga[0]->nombre_dir_are;
+            //     array_push($dga, $ndga);
+
+            //     $id_estl=$usuario->DetalleLaborales[0]->est_lab;
+            //     $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
+            //     $nestl=$nom_estl[0]->nombre;
+            //     array_push($estl, $nestl);
+
+                // $id_munl=$usuario->DetalleLaborales[0]->mun_lab;
+                // $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
+                // $nmunl=$nom_munl[0]->nombre_mun;
+                // array_push($munl, $nmunl);
+
+                // $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+                // $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
+                // $ncoll=$nom_coll[0]->nombre_col;
+                // array_push($coll, $ncoll);
+
+                // $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+                // $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
+                // $ncopl=$nom_cop[0]->codigo_postal;
+
+                // $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
+                // $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
+                // $ncodi=$nom_codigo[0]->nom_codigos;
+
+                // $nive=$usuario->DetalleLaborales[0]->grado_nivel;
+                // $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
+                // $nnive=$nom_nivel[0]->nom_niveles;
+
+
+            //$total_Exp=count($usuario->ExpLaborales);
+             $total_Esc=count($usuario->DetalleEscolaridades);
+            //dd($total_Esc);
+            //dd($usuario->DetalleEscolaridades[0]->cedula);
+
+            // $des=$usuario->nom."-".$usuario->ap."-".$usuario->am;
 
 
 
            //dd($usuario->DependientesCasados);
 
-        return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp'
-        ,'ncodi','nnive','total_Esc','des','ncopl'));
+        // return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi','dge','dga','munl','estl','coll','total_Exp'
+        // ,'ncodi','nnive','total_Esc','des','ncopl'));
+
+        //  return view('usuarios.show',compact('usuario','title','nc','ng','total','ne','nt','idi','totalidi'
+        // ,'total_Esc','ncodi'));
+
+        return view('usuarios.show',compact('usuario','title','total_Esc','ng','nc','ne','nt','totalidi','idi'));
+
+
+
     }
 
     /**
