@@ -28,11 +28,11 @@ $factory->define(Usuarios::class, function (Faker $faker) {
         'correo_ins' => $faker->email,
         'tel_casa' => $faker->phoneNumber,
         'tel_movil' => $faker->phoneNumber,
-        'user_id'=> $faker->numberBetween(5,14),
+        'user_id'=> $faker->numberBetween(5,20),
         'paises_id'=> rand(1,7),
         'estados_id'=> rand(1,10),
-        'colonias_id'=> rand(1,50),
-        'municipios_id'=> rand(1,50),
+        'colonias_id'=> rand(1,100),
+        'municipios_id'=> rand(1,100),
         'estado_civils_id'=> rand(1,10),
         'condicion' => '1'
 

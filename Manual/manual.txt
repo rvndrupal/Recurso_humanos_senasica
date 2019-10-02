@@ -83,3 +83,7 @@ activar-usuarios
   15.- Srguridad update solo el usuario.
 
 
+
+
+//Para los factory
+Incrementar usuarios

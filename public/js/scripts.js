@@ -28,7 +28,15 @@ $(".next").click(function(){
 
     jQuery.validator.addMethod("imagen", function(value, element) {
     return this.optional(element) ||  /(.jpg|.jpeg|.png|.jfif)$/i.test(value);
-    }, "Formato no valido solo jpg,jpeg,png");
+    }, "Formato no valido solo jpg,jpeg,png,jfif");
+
+    jQuery.validator.addMethod("imagensize", function(value, element) {
+        if(element.files[0].size<=500000){
+            return true;
+        }else{
+            return false;
+        }
+    }, "La imagen debe ser menor ó igual a 500 KB");
 
     jQuery.validator.addMethod("pdf", function(value, element) {
     return this.optional(element) ||  /(.pdf)$/i.test(value);
@@ -53,10 +61,10 @@ $(".next").click(function(){
             // tel_casa:{required:true,minlength:10,maxlength:10,numeros:true},
             // tel_movil:{required:true,minlength:10,maxlength:10,numeros:true},
             // fecha_nacimiento:{required:true},
-            // foto:{required:true,imagen:true},
-            // carga_rfc:{required:true,imagen:true},
-            // carga_curp:{required:true,imagen:true},
-            // carga_ife:{required:true,imagen:true},
+            foto:{required:true,imagen:true,imagensize:true},
+            carga_rfc:{required:true,imagen:true,imagensize:true},
+            carga_curp:{required:true,imagen:true,imagensize:true},
+            carga_ife:{required:true,imagen:true,imagensize:true},
             //  estados_id:{required:true},
             // municipios_id:{required:true},
             // colonias_id:{required:true},
@@ -269,7 +277,7 @@ $(".next").click(function(){
         else{
             $('#carga_curp_hijo'+data).rules('add',
             {
-                required: true,imagen:true,
+                required: true,imagen:true,imagensize:true,
 
                 messages: {
                     required: "Es obligatorio",

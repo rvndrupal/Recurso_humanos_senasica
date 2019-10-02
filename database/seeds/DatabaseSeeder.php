@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
         //$this->call(ProductTagSeeder::class);
 
 
-        factory(App\Estados::class, 10)->create();
+        factory(App\Estados::class, 20)->create();
         factory(App\EstadoCivil::class, 10)->create();
-         factory(App\User::class, 10)->create();
+         factory(App\User::class, 20)->create();
          factory(App\Paises::class, 10)->create();
 
          factory(App\Municipios::class, 100)->create();
@@ -41,17 +41,18 @@ class DatabaseSeeder extends Seeder
 
 
 
-         factory(App\Usuarios::class, 5)->create();
+
+         factory(App\Usuarios::class, 20)->create();
 
 
-         factory(App\Solteros::class, 5)->create();
-         factory(App\Conyuges::class, 5)->create();
-         factory(App\Descensientes::class, 5)->create();
-         factory(App\DetalleEscolaridades::class, 5)->create();
-         factory(App\DetalleIdiomas::class, 5)->create();
-         factory(App\DetalleLaborales::class, 5)->create();
-         factory(App\ExpLaborales::class, 5)->create();
-         factory(App\Seguros::class, 5)->create();
+         factory(App\Solteros::class, 10)->create();
+         factory(App\Conyuges::class, 10)->create();
+         factory(App\Descensientes::class, 10)->create();
+         factory(App\DetalleEscolaridades::class, 10)->create();
+         factory(App\DetalleIdiomas::class, 10)->create();
+         factory(App\DetalleLaborales::class, 10)->create();
+         factory(App\ExpLaborales::class, 10)->create();
+         factory(App\Seguros::class, 10)->create();
 
 
 
