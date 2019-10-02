@@ -10,6 +10,18 @@
 </a>
 @endpermission
 
+@permission('show-usuarios')
+<a
+    href="{{ route('show2', ['id' => $id]) }}"
+    title="{{ __('Ver Seeders') }}"
+    data-id="{{ $id }}"
+    class="btn btn-sm btn-primary"s
+>
+    <i class="fa fa-eye-slash"></i>
+</a>
+@endpermission
+
+
 
 
 @permission('update-usuarios')

@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
             Route::get('/card/action', 'UsuariosController@cardsAction')->name('card.action');
             // Route::get('/show/{id}', 'UsuariosController@show')->name('show');
             Route::get('/show/{id}', "{$route['controller']}@show")->middleware("permission:show-{$route['module']}")->name("{$route['module']}.show");
+
             Route::get('/desactivar/{id}', "{$route['controller']}@desactivar")->middleware("permission:desactivar-{$route['module']}")->name("{$route['module']}.desactivar");
             Route::get('/activar/{id}', "{$route['controller']}@activar")->middleware("permission:activar-{$route['module']}")->name("{$route['module']}.activar");
 
@@ -82,6 +83,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
         });
     }
+
+    //temporal show
+    Route::get('/show2/{id}', "UsuariosController@show2")->name("show2");
 
 
     Route::get('/charts', 'ChartController@index')->middleware('permission:read-charts');

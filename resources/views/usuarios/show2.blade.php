@@ -65,17 +65,17 @@
                                           <tr>
                                             <th scope="row">1</th>
                                             <td>
-                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}">
+                                                <a href="http://localhost/recursos/public/rfc/{{ $usuario->carga_rfc }} " download="{{ $usuario->carga_pdf }}">
                                                     <i class="glyphicon glyphicon-download">RFC</i>
                                                 </a>
                                             </td>
                                             <td>
-                                            <a href="http://localhost/recursos/public/{{ $usuario->carga_curp }} " download="{{ $usuario->carga_curp }}">
+                                            <a href="http://localhost/recursos/public/curp/{{ $usuario->carga_curp }} " download="{{ $usuario->carga_curp }}">
                                                 <i class="glyphicon glyphicon-download">CURP</i>
                                             </a>
                                             </td>
                                             <td>
-                                                <a href="http://localhost/recursos/public/{{ $usuario->carga_ife }} " download="{{ $usuario->carga_ife }}">
+                                                <a href="http://localhost/recursos/public/ife/{{ $usuario->carga_ife }} " download="{{ $usuario->carga_ife }}">
                                                 <i class="glyphicon glyphicon-download">IFE</i>
                                                 </a>
                                             </td>
@@ -120,7 +120,7 @@
                                       <td> {{ $usuario->calle }}</td>
                                       <td> {{ $usuario->numero }}</td>
                                       <td>
-                                        <a href="http://localhost/recursos/public/{{ $usuario->carga_domicilio }} " download="{{ $usuario->carga_domicilio }}">
+                                        <a href="http://localhost/recursos/public/DOMICILIO/{{ $usuario->carga_domicilio }} " download="{{ $usuario->carga_domicilio }}">
                                             <i class="glyphicon glyphicon-download">Comprobante</i>
                                         </a>
                                       </td>
@@ -321,7 +321,7 @@
                         <td>
                         @foreach ($usuario->DetalleEscolaridades as $item)
                             @if($item->carga_titulo !="0")
-                                <a href="http://localhost/recursos/public/{{ $item->carga_titulo }} " download="{{ $item->carga_titulo }}">
+                                <a href="http://localhost/recursos/public/TITULOPROFESIONAL/{{ $item->carga_titulo }} " download="{{ $item->carga_titulo }}">
                                     <i class="glyphicon glyphicon-download">TÍTULO</i>
                                 </a><p></p>
                             @else
@@ -343,7 +343,7 @@
                             @endfor  --}}
                             @foreach ($usuario->DetalleEscolaridades as $item)
                                 @if($item->carga_cedula != "0")
-                                    <a href="http://localhost/recursos/public/{{ $item->carga_cedula }} " download="{{ $item->carga_cedula }}">
+                                    <a href="http://localhost/recursos/public/CEDULA/{{ $item->carga_cedula }} " download="{{ $item->carga_cedula }}">
                                         <i class="glyphicon glyphicon-download">CEDULA</i>
                                     </a><p></p>
                                 @else
@@ -390,7 +390,7 @@
 
                         <td>
                             @for($i=0; $i<$totalidi; $i++)
-                            <a href="http://localhost/recursos/public/{{ $usuario->DetalleIdiomas[$i]->carga_certificado }} " download="{{ $usuario->DetalleIdiomas[$i]->carga_certificado }}">
+                            <a href="http://localhost/recursos/public/CERT_IDIOMAS/{{ $usuario->DetalleIdiomas[$i]->carga_certificado }} " download="{{ $usuario->DetalleIdiomas[$i]->carga_certificado }}">
                                 <i class="glyphicon glyphicon-download">CERTIFICADO</i>
                             </a><p></p>
                             @endfor
@@ -573,7 +573,7 @@
 
                             <td>
                             @foreach($usuario->ExpLaborales as $item)
-                            <a href="http://localhost/recursos/public/{{ $item->doc_puesto }} " download="{{ $item->doc_puesto }}">
+                            <a href="http://localhost/recursos/public/DOCPUESTO/{{ $item->doc_puesto }} " download="{{ $item->doc_puesto }}">
                                 <i class="glyphicon glyphicon-download">Arhivos</i><p></p>
                             </a>
                             @endforeach
