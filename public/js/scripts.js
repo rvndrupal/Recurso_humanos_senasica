@@ -50,9 +50,9 @@ $(".next").click(function(){
 
 
         rules:{
-             nom:{required:true,minlength:3,maxlength:20,texto: true},
-            ap:{required:true,minlength:3,maxlength:20,texto: true},
-            am:{required:true,minlength:3,maxlength:20,texto: true},
+            //  nom:{required:true,minlength:3,maxlength:20,texto: true},
+            // ap:{required:true,minlength:3,maxlength:20,texto: true},
+            // am:{required:true,minlength:3,maxlength:20,texto: true},
             //  paises_id:{required:true},
             // rfc:{required:true,minlength:12,maxlength:13},
             // curp:{required:true,minlength:18,maxlength:18},
@@ -61,10 +61,10 @@ $(".next").click(function(){
             // tel_casa:{required:true,minlength:10,maxlength:10,numeros:true},
             // tel_movil:{required:true,minlength:10,maxlength:10,numeros:true},
             // fecha_nacimiento:{required:true},
-            foto:{required:true,imagen:true,imagensize:true},
-            carga_rfc:{required:true,imagen:true,imagensize:true},
-            carga_curp:{required:true,imagen:true,imagensize:true},
-            carga_ife:{required:true,imagen:true,imagensize:true},
+            // foto:{required:true,imagen:true,imagensize:true},
+            // carga_rfc:{required:true,imagen:true,imagensize:true},
+            // carga_curp:{required:true,imagen:true,imagensize:true},
+            // carga_ife:{required:true,imagen:true,imagensize:true},
             //  estados_id:{required:true},
             // municipios_id:{required:true},
             // colonias_id:{required:true},
@@ -77,7 +77,7 @@ $(".next").click(function(){
             // primero_coy:{required:true,minlength:3,maxlength:20,texto: true},
             // segundo_coy:{required:true,minlength:3,maxlength:20,texto: true},
             // curp_coy:{required:true,minlength:18,maxlength:18},
-            // carga_curp_coy:{required:true,imagen:true},
+            // carga_curp_coy:{required:true,imagen:true,imagensize:true},
             // // 'nombre_hijo_coy[]':{required:true,minlength:3,maxlength:20,texto: true},
             // 'cedula[]':{required:true},
 

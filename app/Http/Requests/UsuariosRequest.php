@@ -30,7 +30,7 @@ class UsuariosRequest extends FormRequest
             case 'POST': {
                 return [
                     //'nom' => 'required|min:2|unique:products',
-                    // 'foto' => 'required|mimes:jpeg,bmp,png,jfif',
+                    'foto' => 'required|mimes:jpeg,bmp,png,jfif|max:500',
                     // 'nom' => 'required|min:2',
                     // 'ap' => 'required|min:2',
                     // 'am' => 'required|min:2',
