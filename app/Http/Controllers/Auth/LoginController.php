@@ -38,23 +38,30 @@ class LoginController extends Controller
     public function __construct(Request $request)
     {
 
+
         $this->middleware('guest')->except('logout');
 
+       $data = $request->session()->all();
 
+        dd($data);
 
         // $user = User::find(auth()->id());
-        // if($user)
-        // {
-        // $user->is_logged = false;
-		// $user->save();
 
-		// $this->guard()->logout();
-
-		// $request->session()->invalidate();
-
-		// return $this->loggedOut($request) ?: redirect('/login');
-
+        // if (auth()->check()) {
+        //     dd($user);
         // }
+
+
+        //  if (!auth()->check()) {
+
+        //    // dd($user);
+        // //  $this->is_logged = false;
+		// //  $this->save();
+
+        //     return redirect()->route('home');
+        // }
+
+
 
 
     }
@@ -120,6 +127,7 @@ class LoginController extends Controller
 	 */
 	protected function loggedOut(Request $request)
 	{
+
 
 		session()->flash('message', ['success', 'Has cerrado sesión correctamente']);
 		return redirect('/login');
