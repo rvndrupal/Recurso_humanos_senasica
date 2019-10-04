@@ -223,7 +223,7 @@ class UsuariosController extends Controller
              $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
              $ncodi=$nom_codigo[0]->nom_codigos;
 
-             $nive=$usuario->DetalleLaborales[0]->grado_nivel;
+             $nive=$usuario->DetalleLaborales[0]->niveles_id;
              $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
              $nnive=$nom_nivel[0]->nom_niveles;
 
@@ -621,7 +621,7 @@ class UsuariosController extends Controller
         $usuario->DetalleLaborales()->create([
             'puesto_actual'=>$request->puesto_actual,
             'codigos_id'=>$request->codigos_id,
-            'grado_nivel'=>$request->grado_nivel,
+            'niveles_id'=>$request->niveles_id,
             'direcciones_generales_id'=>$request->direcciones_generales_id,
             'direcciones_areas_id'=>$request->direcciones_areas_id,
             'fecha_ultimo'=>$request->fecha_ultimo,
@@ -891,7 +891,7 @@ class UsuariosController extends Controller
                 $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
                 $ncodi=$nom_codigo[0]->nom_codigos;
 
-                $nive=$usuario->DetalleLaborales[0]->grado_nivel;
+                $nive=$usuario->DetalleLaborales[0]->niveles_id;
                 $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
                 $nnive=$nom_nivel[0]->nom_niveles;
 
@@ -1018,7 +1018,7 @@ class UsuariosController extends Controller
                 $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
                 $ncodi=$nom_codigo[0]->nom_codigos;
 
-                $nive=$usuario->DetalleLaborales[0]->grado_nivel;
+                $nive=$usuario->DetalleLaborales[0]->niveles_id;
                 $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
                 $nnive=$nom_nivel[0]->nom_niveles;
 
@@ -1113,7 +1113,7 @@ class UsuariosController extends Controller
        $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
        $ncodi=$nom_codigo[0]->nom_codigos;
 
-       $nivel=$use[0]->DetalleLaborales[0]->grado_nivel;
+       $nivel=$use[0]->DetalleLaborales[0]->niveles_id;
        $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nivel)->get();
        $nivell=$nom_nivel[0]->nom_niveles;
 
@@ -1407,7 +1407,7 @@ class UsuariosController extends Controller
         $usuario->DetalleLaborales()->create([
             'puesto_actual'=>$request->puesto_actual,
             'codigos_id'=>$request->codigos_id,
-            'grado_nivel'=>$request->grado_nivel,
+            'niveles_id'=>$request->niveles_id,
             'direcciones_generales_id'=>$request->direcciones_generales_id,
             'direcciones_areas_id'=>$request->direcciones_areas_id,
             'fecha_ultimo'=>$request->fecha_ultimo,

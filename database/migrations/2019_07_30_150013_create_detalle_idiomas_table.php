@@ -16,9 +16,9 @@ class CreateDetalleIdiomasTable extends Migration
         Schema::create('detalle_idiomas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idiomas_id');
-            $table->foreign('idiomas_id')->references('id')->on('idiomas')->onDelete('cascade');;
+            $table->foreign('idiomas_id')->references('id')->on('idiomas');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');;
+            $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->string('nivel_ingles',20)->nullable();
             $table->string('carga_certificado',300)->nullable();
             $table->timestamps();

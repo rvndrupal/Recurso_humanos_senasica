@@ -75,11 +75,18 @@ class DireccionesGeneralesController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $direccionesgenerales = Direccionesgenerales::find($id);
-        $direccionesgenerales->delete();
-        return redirect(route('direccionesgenerales.index'))->with('message', [
-            'success', __("Dirección borrada correctamente")
-        ]);
+        try{
+
+            $direccionesgenerales = Direccionesgenerales::find($id);
+            $direccionesgenerales->delete();
+            return redirect(route('direccionesgenerales.index'))->with('message', [
+                'success', __("Dirección borrada correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('direccionesgenerales.index'))->with('message', [
+                'danger', __("La Dirección general no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
     public function cargarDireccionesGenerales()

@@ -75,11 +75,18 @@ class DireccionesAreasController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $direccionesareas = Direccionesareas::find($id);
-        $direccionesareas->delete();
-        return redirect(route('direccionesareas.index'))->with('message', [
-            'success', __("Dirección borrada correctamente")
-        ]);
+        try{
+
+            $direccionesareas = Direccionesareas::find($id);
+            $direccionesareas->delete();
+            return redirect(route('direccionesareas.index'))->with('message', [
+                'success', __("Dirección borrada correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('direccionesareas.index'))->with('message', [
+                'danger', __("La Dirección en área no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
     public function cargarDireccionesAreas()

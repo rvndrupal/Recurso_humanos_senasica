@@ -79,11 +79,18 @@ class TitulosController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $titulos = Titulos::find($id);
-        $titulos->delete();
-        return redirect(route('titulos.index'))->with('message', [
-            'success', __("Título borrado correctamente")
-        ]);
+        try{
+
+            $titulos = Titulos::find($id);
+            $titulos->delete();
+            return redirect(route('titulos.index'))->with('message', [
+                'success', __("Título borrado correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('titulos.index'))->with('message', [
+                'danger', __("El Título no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
     public function cargarTitulos()

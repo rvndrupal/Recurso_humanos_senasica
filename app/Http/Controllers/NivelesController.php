@@ -75,12 +75,18 @@ class NivelesController extends Controller
 
     public function destroy($id)
     {
-        //dd($id);
-        $niveles = Niveles::find($id);
-        $niveles->delete();
-        return redirect(route('niveles.index'))->with('message', [
-            'success', __("Nivel borrado correctamente")
-        ]);
+        try{
+
+            $niveles = Niveles::find($id);
+            $niveles->delete();
+            return redirect(route('niveles.index'))->with('message', [
+                'success', __("Nivel borrado correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('niveles.index'))->with('message', [
+                'danger', __("El nivel no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
     public function cargarNiveles()

@@ -36,7 +36,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Niveles</span>
                             </div>
-                        <select  name="grado_nivel" class="estados_select" placeholder="niveles">
+                        <select  name="niveles_id" class="estados_select" placeholder="niveles">
                                 <option value="">Niveles</option>
                                 @foreach ($ni as $item)
                                 <option value="{{ $item->id }}"

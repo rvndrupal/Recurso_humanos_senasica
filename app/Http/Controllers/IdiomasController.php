@@ -74,11 +74,18 @@ class IdiomasController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $idiomas = Idiomas::find($id);
-        $idiomas->delete();
-        return redirect(route('idiomas.index'))->with('message', [
-            'success', __("Idioma borrado correctamente")
-        ]);
+        try{
+
+            $idiomas = Idiomas::find($id);
+            $idiomas->delete();
+            return redirect(route('idiomas.index'))->with('message', [
+                'success', __("Idioma borrado correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('idiomas.index'))->with('message', [
+                'danger', __("El idioma no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
     public function cargarIdiomas()

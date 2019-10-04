@@ -20,15 +20,17 @@ class CreateDetalleLaboralesTable extends Migration
             // $table->string('codigo_puesto',60)->nullable();
             $table->unsignedBigInteger('codigos_id');
             $table->foreign('codigos_id')->references('id')->on('codigos');
-            $table->string('grado_nivel',60)->nullable();
+            // $table->string('grado_nivel',60)->nullable();
+            $table->unsignedBigInteger('niveles_id');
+            $table->foreign('niveles_id')->references('id')->on('niveles');
 
 
             $table->unsignedBigInteger('usuarios_id');
             $table->foreign('usuarios_id')->references('id')->on('usuarios');
             $table->unsignedBigInteger('direcciones_generales_id');
-            $table->foreign('direcciones_generales_id')->references('id')->on('direcciones_generales')->onDelete('cascade');;
+            $table->foreign('direcciones_generales_id')->references('id')->on('direcciones_generales');
             $table->unsignedBigInteger('direcciones_areas_id');
-            $table->foreign('direcciones_areas_id')->references('id')->on('direcciones_areas')->onDelete('cascade');;
+            $table->foreign('direcciones_areas_id')->references('id')->on('direcciones_areas');
             $table->date('fecha_ultimo')->nullable();
             $table->date('fecha_senasica')->nullable();
             $table->string('calle_lab')->nullable();
