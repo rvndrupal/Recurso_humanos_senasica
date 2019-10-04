@@ -24,7 +24,7 @@
                         <div class="input-group-prepend">
                         <span class="input-group-text"  id="addon-wrapping">Código puesto</span>
                     </div>
-                    <select  name="codigo_puesto" class="form-control" data-live-search="true" data-size="5" id="codigo_puesto"  placeholder="Código">
+                    <select  name="codigos_id" class="form-control" data-live-search="true" data-size="5" id="codigo_puesto"  placeholder="Código">
                             <option value="">Código</option>
                             @foreach ($co as $item)
                             <option value="{{ $item->id }}">{{ $item->nom_codigos }}</option>

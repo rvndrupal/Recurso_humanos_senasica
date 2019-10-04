@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define(DetalleLaborales::class, function (Faker $faker) {
     return [
         'puesto_actual' => $faker->text(10),
-        'codigo_puesto'=> rand(1,5),
+        'codigos_id'=> rand(1,5),
         'grado_nivel'=> rand(1,6),
         'usuarios_id' => rand(1,5),
         'direcciones_generales_id' => rand(1,5),

@@ -22,7 +22,6 @@ $factory->define(Usuarios::class, function (Faker $faker) {
 
 
         'paises_id' 		=> rand(1,4),
-        'codigos_id' 		=> rand(1,4),
         'calle' => $faker->text(20),
         'numero' => $faker->text(5),
         'correo_per' => $faker->email,

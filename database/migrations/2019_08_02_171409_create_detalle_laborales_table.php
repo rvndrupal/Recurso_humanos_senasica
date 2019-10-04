@@ -17,7 +17,9 @@ class CreateDetalleLaboralesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('puesto_actual',60)->nullable();
-            $table->string('codigo_puesto',60)->nullable();
+            // $table->string('codigo_puesto',60)->nullable();
+            $table->unsignedBigInteger('codigos_id');
+            $table->foreign('codigos_id')->references('id')->on('codigos');
             $table->string('grado_nivel',60)->nullable();
 
 

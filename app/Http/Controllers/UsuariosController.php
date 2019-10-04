@@ -620,7 +620,7 @@ class UsuariosController extends Controller
         //laborales
         $usuario->DetalleLaborales()->create([
             'puesto_actual'=>$request->puesto_actual,
-            'codigo_puesto'=>$request->codigo_puesto,
+            'codigos_id'=>$request->codigos_id,
             'grado_nivel'=>$request->grado_nivel,
             'direcciones_generales_id'=>$request->direcciones_generales_id,
             'direcciones_areas_id'=>$request->direcciones_areas_id,
