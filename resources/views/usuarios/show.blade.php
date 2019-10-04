@@ -332,15 +332,7 @@
                         </td>
 
                         <td>
-                            {{--  @for($i=0; $i<$total_Esc; $i++)
-                                @if($usuario->DetalleEscolaridades[$i]->cedula==0)
-                                <h6>Sin Cédula</h6>
-                                @else
-                                <a href="http://localhost/recursos/public/{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }} " download="{{ $usuario->DetalleEscolaridades[$i]->carga_cedula }}">
-                                    <i class="glyphicon glyphicon-download">CEDULA</i>
-                                </a><p></p>
-                                @endif
-                            @endfor  --}}
+
                             @foreach ($usuario->DetalleEscolaridades as $item)
                                 @if($item->carga_cedula != "0")
                                     <a href="http://localhost/recursos/public/{{ $item->carga_cedula }} " download="{{ $item->carga_cedula }}">

@@ -109,11 +109,18 @@ class CarrerasController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $carrera = Carreras::find($id);
-        $carrera->delete();
-        return redirect(route('carreras.index'))->with('message', [
-            'success', __("Carrera borrada correctamente")
-        ]);
+        try{
+
+            $carrera = Carreras::find($id);
+            $carrera->delete();
+            return redirect(route('carreras.index'))->with('message', [
+                'success', __("Carrera borrada correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('carreras.index'))->with('message', [
+                'danger', __("La carrera no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
 

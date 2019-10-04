@@ -17,7 +17,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Códigos puesto</span>
                             </div>
-                        <select  name="codigo_puesto" class="estados_select" placeholder="Código">
+                        <select  name="codigos_id" class="estados_select" placeholder="Código">
                                 <option value="">Código</option>
                                 @foreach ($cos as $item)
                                 <option value="{{ $item->id }}"

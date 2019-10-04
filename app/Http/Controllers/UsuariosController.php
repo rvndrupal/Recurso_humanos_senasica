@@ -219,7 +219,7 @@ class UsuariosController extends Controller
              $ncopl=$nom_cop[0]->codigo_postal;
 
 
-             $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
+             $codi=$usuario->DetalleLaborales[0]->codigos_id;
              $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
              $ncodi=$nom_codigo[0]->nom_codigos;
 
@@ -887,7 +887,7 @@ class UsuariosController extends Controller
                 $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
                 $ncopl=$nom_cop[0]->codigo_postal;
 
-                $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
+                $codi=$usuario->DetalleLaborales[0]->codigos_id;
                 $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
                 $ncodi=$nom_codigo[0]->nom_codigos;
 
@@ -1014,7 +1014,7 @@ class UsuariosController extends Controller
                 $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
                 $ncopl=$nom_cop[0]->codigo_postal;
 
-                $codi=$usuario->DetalleLaborales[0]->codigo_puesto;
+                $codi=$usuario->DetalleLaborales[0]->codigos_id;
                 $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
                 $ncodi=$nom_codigo[0]->nom_codigos;
 
@@ -1109,7 +1109,7 @@ class UsuariosController extends Controller
        $s_idioma=$use[0]->DetalleIdiomas[0]->idiomas_id;
        $s_ni=$use[0]->DetalleIdiomas[0]->nivel_ingles;
 
-       $codi=$use[0]->DetalleLaborales[0]->codigo_puesto;
+       $codi=$use[0]->DetalleLaborales[0]->codigos_id;
        $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
        $ncodi=$nom_codigo[0]->nom_codigos;
 
@@ -1406,7 +1406,7 @@ class UsuariosController extends Controller
         $usuario->DetalleLaborales()->delete($id);
         $usuario->DetalleLaborales()->create([
             'puesto_actual'=>$request->puesto_actual,
-            'codigo_puesto'=>$request->codigo_puesto,
+            'codigos_id'=>$request->codigos_id,
             'grado_nivel'=>$request->grado_nivel,
             'direcciones_generales_id'=>$request->direcciones_generales_id,
             'direcciones_areas_id'=>$request->direcciones_areas_id,
