@@ -75,11 +75,18 @@ class CodigosController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $codigos = Codigos::find($id);
-        $codigos->delete();
-        return redirect(route('codigos.index'))->with('message', [
-            'success', __("Código borrado correctamente")
-        ]);
+        try{
+
+            $codigos = Codigos::find($id);
+            $codigos->delete();
+            return redirect(route('codigos.index'))->with('message', [
+                'success', __("Código borrado correctamente")
+                ]);
+            } catch(\Illuminate\Database\QueryException $e) {
+                return redirect(route('codigos.index'))->with('message', [
+                    'danger', __("El codigo no se puede borrar, se esta usando")
+                ]);
+            }
     }
 
     public function cargarCodigos()

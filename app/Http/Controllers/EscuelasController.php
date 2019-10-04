@@ -104,11 +104,18 @@ class EscuelasController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $esucela = Escuelas::find($id);
-        $esucela->delete();
-        return redirect(route('escuelas.index'))->with('message', [
-            'success', __("Escuela borrada correctamente")
-        ]);
+        try{
+
+            $esucela = Escuelas::find($id);
+            $esucela->delete();
+            return redirect(route('escuelas.index'))->with('message', [
+                'success', __("Escuela borrada correctamente")
+                ]);
+            }catch(\Illuminate\Database\QueryException $e) {
+                return redirect(route('escuelas.index'))->with('message', [
+                    'danger', __("La escuela no se puede borrar, se esta usando")
+                ]);
+            }
     }
 
     public function cargarEscuelas()

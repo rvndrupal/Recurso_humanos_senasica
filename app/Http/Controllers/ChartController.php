@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Order;
 use App\Product;
+use App\User;
 
 class ChartController extends Controller
 {
@@ -41,6 +42,14 @@ class ChartController extends Controller
             ->groupBy('months')
             ->get();
 
+        $usuarios = User::select(
+            \DB::raw('COUNT(*) as name'),
+            \DB::raw('MONTH(created_at) as months')
+        )
+            ->whereYear('created_at', '=', 2019)
+            ->groupBy('months')
+            ->get();
+
         $data = [];
         foreach ($orders as $order) {
             $data['_orders'][$order['months']] = [
@@ -61,11 +70,19 @@ class ChartController extends Controller
             ];
         }
 
+        foreach ($usuarios as $usuario) {
+            $data['_customers'][$usuario['months']] = [
+                'month' => $usuario['months'],
+                'total' => $usuario['total']
+            ];
+        }
+
         foreach ($period as $date) {
             $month = (int) $date->format('m'); //la magia de los meses en cero
             $data['orders'][] = isset($data['_orders'][$month]) ? $data['_orders'][$month]['total'] : 0;
             $data['products'][] = isset($data['_products'][$month]) ? $data['_products'][$month]['total'] : 0;
             $data['customers'][] = isset($data['_customers'][$month]) ? $data['_customers'][$month]['total'] : 0;
+            $data['usuarios'][] = isset($data['_usuarios'][$month]) ? $data['_usuarios'][$month]['total'] : 0;
          }
 
         $chartjs = app()->chartjs
@@ -103,6 +120,16 @@ class ChartController extends Controller
                     "pointHoverBackgroundColor" => "#fff",
                     "pointHoverBorderColor" => "rgba(220,220,220,1)",
                     'data' => $data['products'],
+                ],
+                [
+                    "label" => __('Usuarios'),
+                    'backgroundColor' => "rgba(208, 125, 125, 0.5)",
+                    'borderColor' => "rgba(38, 185, 154, 0.7)",
+                    "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                    "pointHoverBackgroundColor" => "#fff",
+                    "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                    'data' => $data['usuarios'],
                 ]
             ])
             ->options([]);

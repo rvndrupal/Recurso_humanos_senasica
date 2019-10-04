@@ -117,6 +117,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/importar/pais', 'PaisesController@cargarPais')->name('paises.indexx');
     Route::post('/importar/pais/ejecutar', 'PaisesController@importarPais')->name('import.pais');
 
+
     Route::get('/importar/carreras', 'CarrerasController@cargarCarrera')->name('carreras.indexx');
     Route::post('/importar/carreras/ejecutar', 'CarrerasController@importarCarrera')->name('import.carreras');
     Route::get('/importar/escuelas', 'EscuelasController@cargarEscuelas')->name('escuelas.indexx');

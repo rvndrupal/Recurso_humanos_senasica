@@ -109,11 +109,18 @@ class EstadoCivilController extends Controller
     public function destroy($id)
     {
         //dd($id);
-        $estadocivil = EstadoCivil::find($id);
-        $estadocivil->delete();
-        return redirect(route('estadocivil.index'))->with('message', [
-            'success', __("Estado borrado correctamente")
-        ]);
+        try{
+
+            $estadocivil = EstadoCivil::find($id);
+            $estadocivil->delete();
+            return redirect(route('estadocivil.index'))->with('message', [
+                'success', __("Estado borrado correctamente")
+                ]);
+        }catch(\Illuminate\Database\QueryException $e) {
+            return redirect(route('estadocivil.index'))->with('message', [
+                'danger', __("El estado civil no se puede borrar, se esta usando")
+            ]);
+        }
     }
 
     public function cargarEstadoCivil()

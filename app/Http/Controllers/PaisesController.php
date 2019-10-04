@@ -103,12 +103,20 @@ class PaisesController extends Controller
      */
     public function destroy($id)
     {
-        //dd($id);
-        $pais = Paises::find($id);
-        $pais->delete();
-        return redirect(route('paises.index'))->with('message', [
-            'success', __("Pais borrada correctamente")
-        ]);
+        try {
+            $pais = Paises::find($id);
+            $pais->delete();
+            return redirect(route('paises.index'))->with('message', [
+                'success', __("Pais borrada correctamente")
+            ]);
+            } catch(\Illuminate\Database\QueryException $e) {
+                return redirect(route('paises.index'))->with('message', [
+                    'danger', __("El pais no se puede borrar, se esta usando")
+                ]);
+            }
+
+
+
     }
 
     public function cargarPais()
@@ -124,4 +132,6 @@ class PaisesController extends Controller
             'success', __("Pais importados Correctamente")
         ]);
     }
+
+
 }

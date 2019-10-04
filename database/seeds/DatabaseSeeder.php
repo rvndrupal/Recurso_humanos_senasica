@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
 
 
 
-         factory(App\Usuarios::class, 20)->create();
+         factory(App\Usuarios::class, 5)->create();
 
 
          factory(App\Solteros::class, 10)->create();

@@ -15,7 +15,7 @@ class Usuarios extends Model
 
     protected $fillable = ['nom','ap','am','curp','rfc','condicion','foto','fecha_nacimiento','paises_id','calle','numero','estados_id',
     'colonias_id','municipios_id','fecha_domicilio','carga_rfc','carga_curp','carga_ife',
-    'correo_per','correo_ins','tel_casa','tel_movil','carga_domicilio','estado_civils_id','user_id'
+    'correo_per','correo_ins','tel_casa','tel_movil','carga_domicilio','estado_civils_id','user_id','codigos_id'
 
     ];
 
@@ -28,6 +28,11 @@ class Usuarios extends Model
     public function paises()
     {
         return $this->belongsTo('App\Paises');
+    }
+
+    public function codigos()
+    {
+        return $this->belongsTo('App\Codigos','codigos_id');
     }
 
     public function estados()

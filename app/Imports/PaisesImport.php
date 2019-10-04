@@ -14,6 +14,7 @@ class PaisesImport implements ToModel
     */
     public function model(array $row)
     {
+
         return new Paises([
             'nombre_pais' => $row[0],
             'created_at' => $row[1],
