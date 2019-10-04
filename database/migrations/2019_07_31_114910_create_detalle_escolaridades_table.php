@@ -16,7 +16,7 @@ class CreateDetalleEscolaridadesTable extends Migration
         Schema::create('detalle_escolaridades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->unsignedBigInteger('grados_id');
             $table->foreign('grados_id')->references('id')->on('grados');
             $table->unsignedBigInteger('carreras_id');

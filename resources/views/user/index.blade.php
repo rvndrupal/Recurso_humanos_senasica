@@ -13,6 +13,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __("ID") }}</th>
+                                    <th>{{ __("NOMBRE") }}</th>
                                     <th>{{ __("RFC") }}</th>
                                     <th>{{ __("Estado") }}</th>
                                     <th width="150">{{ __("Acciones") }}</th>
@@ -40,7 +41,8 @@
                     url: '//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
                 },
                 columns: [
-                    { data: 'id', visible: false },
+                    { data: 'id', visible: true },
+                    { data: 'name' },
                     { data: 'rfc_login' },
                     { data: 'condicion',
                     "render": function (data, type, row) {

@@ -18,7 +18,7 @@ class CreateDetalleIdiomasTable extends Migration
             $table->unsignedBigInteger('idiomas_id');
             $table->foreign('idiomas_id')->references('id')->on('idiomas');
             $table->unsignedBigInteger('usuarios_id');
-            $table->foreign('usuarios_id')->references('id')->on('usuarios');
+            $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->string('nivel_ingles',20)->nullable();
             $table->string('carga_certificado',300)->nullable();
             $table->timestamps();

@@ -187,12 +187,22 @@ class UserController extends Controller
         //     abort("No se puede borrar al SuperAdmin");
         // }
 
+            try{
 
-            $user = User::find($id);
-            $user->delete();
-            return redirect(route('user.index'))->with('message', [
-                'success', __("Usuario borrado correctamente")
-            ]);
+                $user = User::find($id);
+                // $user->usuarios->delete();
+
+                $user->delete();
+                //$user->usuarios()->delete();
+
+                return redirect(route('user.index'))->with('message', [
+                    'success', __("Usuario borrado correctamente")
+                    ]);
+            }catch(\Illuminate\Database\QueryException $e) {
+                return redirect(route('user.index'))->with('message', [
+                    'danger', __("El usuario no se puede borrar, ya tiene su carnet")
+                ]);
+            }
 
 
 
