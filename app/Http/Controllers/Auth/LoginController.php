@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -37,29 +39,11 @@ class LoginController extends Controller
      */
     public function __construct(Request $request)
     {
-
+        if (Auth::check()) {
+            dd("estas logueado");
+        }
 
         $this->middleware('guest')->except('logout');
-
-       $data = $request->session()->all();
-
-        dd($data);
-
-        // $user = User::find(auth()->id());
-
-        // if (auth()->check()) {
-        //     dd($user);
-        // }
-
-
-        //  if (!auth()->check()) {
-
-        //    // dd($user);
-        // //  $this->is_logged = false;
-		// //  $this->save();
-
-        //     return redirect()->route('home');
-        // }
 
 
 
@@ -96,7 +80,9 @@ class LoginController extends Controller
             // dd($data);
             // var_dump($data);
 
-		}
+        }
+
+
 		return redirect($this->redirectPath());
     }
 
@@ -114,7 +100,9 @@ class LoginController extends Controller
 
 		$this->guard()->logout();
 
-		$request->session()->invalidate();
+        $request->session()->invalidate();
+
+       // dd($user);
 
 		return $this->loggedOut($request) ?: redirect('/login');
 	}
@@ -128,10 +116,10 @@ class LoginController extends Controller
 	protected function loggedOut(Request $request)
 	{
 
-
 		session()->flash('message', ['success', 'Has cerrado sesión correctamente']);
 		return redirect('/login');
-	}
+    }
+
 
 
 }

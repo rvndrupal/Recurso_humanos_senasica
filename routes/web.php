@@ -95,6 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/usuarios/exportar', 'UsuariosController@exportar')->name('usuarios.exportar');
         //exportar cvs
         Route::get('/usuarios/exportar-excel', 'UsuariosController@exportarExcel')->name('usuarios.exportar-excel');
+        Route::get('/usuarios/exportar-excel2', 'ExcelController@exportarExcel2')->name('usuarios.exportar-excel2');
 
         //exportar pdf
         Route::get('/usuarios-pdf/{id}', 'UsuariosController@expPdf')->name('usuarios.pdf');

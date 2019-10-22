@@ -1531,6 +1531,8 @@ class UsuariosController extends Controller
 
     }
 
+
+
     public function index_exp(){
         $title = __('Usuarios Reportes 3');
         return view('usuarios.index_exp', compact('title'));

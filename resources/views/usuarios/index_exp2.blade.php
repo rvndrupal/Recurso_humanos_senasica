@@ -23,6 +23,9 @@
 
             <h3 class="box-title">{{ __("Exportar Usuarios Avanzado") }}</h3>
             <a href="{{ route('usuarios.exportar-excel') }}" class="btn btn-success pull-left">Exportar Todos</a>
+            <a href="{{ route('usuarios.exportar-excel2') }}" class="btn btn-success pull-left">Exportar Todos Dos</a>
+
+
 
 
                 <div class="row">
