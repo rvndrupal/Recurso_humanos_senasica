@@ -15,11 +15,11 @@ class CreateConyugesTable extends Migration
     {
         Schema::create('conyuges', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombres_coy',80);
-            $table->string('primero_coy',80);
-            $table->string('segundo_coy',80);
-            $table->string('curp_coy',80);
-            $table->string('carga_curp_coy',300);
+            $table->string('nombres_coy',80)->nullable();
+            $table->string('primero_coy',80)->nullable();
+            $table->string('segundo_coy',80)->nullable();
+            $table->string('curp_coy',80)->nullable();
+            $table->string('carga_curp_coy',300)->nullable();
             $table->unsignedBigInteger('usuarios_id');
             $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();

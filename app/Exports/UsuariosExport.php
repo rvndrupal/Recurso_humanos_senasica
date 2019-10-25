@@ -74,6 +74,8 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         $salidaCoy=[];
         $apCoy=[];
         $salidaAp=[];
+        $conyuge=[];
+        $conyugeS=[];
 
         foreach($usuarios->solteros as $coy)
         {
@@ -83,12 +85,39 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
 
         $salidaNC=implode(" ",$coyArray);
 
+        //conyuges
+         if($usuarios->conyuges != null){
+                $ifc="Nombre: ".$usuarios->conyuges[0]->nombres_coy." Apelllido Paterno: ".$usuarios->conyuges[0]->primero_coy." Apellido Materno: ".$usuarios->conyuges[0]->segundo_coy." Curp: ".$usuarios->conyuges[0]->curp_coy;
+                array_push($conyuge,$ifc);
+                $conyugeS=implode(" ",$conyuge);
+            }
+            else
+            {
+                $conyugeS=['estado' => 'Soltero(a)'];
+            }
+
 
         return [
             $usuarios->id,
             $usuarios->nom,
             $usuarios->ap,
             $usuarios->am,
+            $usuarios->paises->nombre_pais,
+            $usuarios->rfc,
+            $usuarios->curp,
+            $usuarios->correo_per,
+            $usuarios->correo_ins,
+            $usuarios->tel_casa,
+            $usuarios->tel_movil,
+            $usuarios->fecha_nacimiento,
+            $usuarios->estados->nombre,
+            $usuarios->municipios->nombre_mun,
+            $usuarios->colonias->nombre_col,
+            $usuarios->colonias->codigo_postal,
+            $usuarios->fecha_domicilio,
+            $usuarios->estadoCivil->nombre,
+            $conyugeS,
+
             $salidaNC
 
         ];
@@ -101,6 +130,21 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             'Nombre',
             'Ap',
             'Am',
+            'Pais',
+            'Rfc',
+            'Curp',
+            'Correo Personal',
+            'Correo Institucional',
+            'Teléfono Casa',
+            'Teléfono Movil',
+            'Fecha de Nacimiento',
+            'Estado',
+            'Municipio',
+            'Colonia',
+            'Código Postal',
+            'Fecha Domicilio',
+            'Estado Civil',
+            'Información Conyuge',
             'Información Hijos',
 
         ];

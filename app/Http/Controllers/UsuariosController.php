@@ -465,29 +465,25 @@ class UsuariosController extends Controller
                 $segundo=$request->segundo_coy;
                 $curp=$request->curp_coy;
                 $curp_carga=$request->carga_curp_coy;
-
-                //dd($curp_carga);
-
-                if($nom==""){$nom=0;}else{$nom=$request->nombres_coy;}
-                if($primero==""){$primero=0;}else{$primero=$request->primero_coy;}
-                if($segundo==""){$segundo=0;}else{$segundo=$request->segundo_coy;}
-                if($curp==""){$curp=0;}else{$curp=$request->curp_coy;}
-                if($curp_carga==""){$curp_carga=0;}else{
                 $filenamewithExt =$curp_carga->getClientOriginalName();
                 $curp_carga=$request->carga_curp_coy->storeAs('CURPCONYUGES',$filenamewithExt);
-                }
+                
+         }else{
+            $nom=NULL;
+            $primero=NULL;
+            $segundo=NULL;
+            $curp=NULL;
+            $curp_carga=NULL;
+         }
 
-
-
-                $usuario->conyuges()->create([
+         $usuario->conyuges()->create([
                     'nombres_coy'=>$nom,
                     'primero_coy'=>$primero,
                     'segundo_coy'=>$segundo,
                     'curp_coy'=>$curp,
                     'carga_curp_coy'=>$curp_carga
 
-                ]);
-         }
+        ]);
 
         //  if(isset($request->nombre_hijo_coy))
         //  {
