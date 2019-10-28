@@ -85,16 +85,25 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
 
         $salidaNC=implode(" ",$coyArray);
 
+       
+
         //conyuges
-         if($usuarios->conyuges != null){
-                $ifc="Nombre: ".$usuarios->conyuges[0]->nombres_coy." Apelllido Paterno: ".$usuarios->conyuges[0]->primero_coy." Apellido Materno: ".$usuarios->conyuges[0]->segundo_coy." Curp: ".$usuarios->conyuges[0]->curp_coy;
-                array_push($conyuge,$ifc);
-                $conyugeS=implode(" ",$conyuge);
-            }
-            else
-            {
-                $conyugeS=['estado' => 'Soltero(a)'];
-            }
+        foreach ($usuarios->conyuges as $conyu) {    
+
+            //dump($conyu);
+
+             if(is_null($conyu)){
+                   
+                     $conyugeS=['estado' => 'Soltero(a)'];
+                }
+                else
+                {
+                     $ifc="Nombre: ".$conyu->nombres_coy." Ap: ".$conyu->primero_coy." Am: ".$conyu->segundo_coy." Curp: ".$conyu->curp_coy;
+                    array_push($conyuge,$ifc);
+                    $conyugeS=implode(" ",$conyuge);
+                   
+                }
+        }
 
 
         return [
