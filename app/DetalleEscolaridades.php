@@ -23,8 +23,12 @@ class DetalleEscolaridades extends Model
         return $this->belongsTo('App\Grados','grados_id');
     }
 
-     public function escuelas(){
+    public function escuelas(){
         return $this->belongsTo('App\Escuelas','escuelas_id');
+    }
+
+    public function titulos(){
+        return $this->belongsTo('App\Titulos','titulos_id');
     }
 
 

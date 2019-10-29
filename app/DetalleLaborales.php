@@ -14,4 +14,27 @@ class DetalleLaborales extends Model
     {
         return $this->belongsTo('App\Usuarios');
     }
+
+    public function codigos()
+    {
+        return $this->belongsTo('App\Codigos','codigos_id');
+    }
+
+    public function niveles()
+    {
+        return $this->belongsTo('App\Niveles','niveles_id');
+    }
+
+    public function direccionesg()
+    {
+        return $this->belongsTo('App\DireccionesGenerales','direcciones_generales_id');
+    }
+
+    public function direccionesa()
+    {
+        return $this->belongsTo('App\DireccionesAreas','direcciones_areas_id');
+    }
+
+
+
 }

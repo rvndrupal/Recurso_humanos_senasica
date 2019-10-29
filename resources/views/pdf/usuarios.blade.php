@@ -276,9 +276,10 @@
 
                         <tbody>
                             <tr>
-                                @foreach($usuario->DetalleLaborales as $item)
-                                <td> {{ $item->puesto_actual }}</td>
+                                @foreach ($usuario->DetalleLaborales as $lab)                                  
+                                <td> {{ $lab->puesto_actual }}</td>
                                 @endforeach
+                               
                                 <td> {{ $ncodi }}</td>
                                 <td>{{ $nnive }}</td>
                                 @foreach ($dge as $item)
@@ -306,10 +307,12 @@
                                 @foreach ($dga as $item)
                                 <td>{{ $item }}</td>
                                 @endforeach
-                                @foreach($usuario->DetalleLaborales as $item)
-                                <td> {{ $item->fecha_ultimo }}</td>
-                                <td> {{ $item->fecha_senasica }}</td>
+                                
+                                @foreach ($usuario->DetalleLaborales as $lab)    
+                                <td> {{ $lab->fecha_ultimo }}</td>
+                                <td> {{ $lab->fecha_senasica }}</td>
                                 @endforeach
+                                
 
                             </tr>
                         </tbody>
@@ -362,11 +365,12 @@
 
                         <tbody>
                             <tr>
-                        @foreach($usuario->DetalleLaborales as $item)
-                        <td> {{ $item->calle_lab }}</td>
-                        <td> {{ $item->num_lab }}</td>
-                        <td> {{ $item->fecha_gobierno }}</td>
+                         @foreach ($usuario->DetalleLaborales as $lab) 
+                        <td> {{ $lab->calle_lab }}</td>
+                        <td> {{ $lab->num_lab }}</td>
+                        <td> {{ $lab->fecha_gobierno }}</td>
                         @endforeach
+                        
                             </tr>
                         </tbody>
 

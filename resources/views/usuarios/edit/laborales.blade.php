@@ -1,14 +1,16 @@
 <div class="container">
         <div class="row">
-    @foreach ($use[0]->DetalleLaborales as $itemm)
+    {{-- @foreach ($use[0]->DetalleLaborales as $itemm) --}}
             <div class="col-md-4">
+                 @foreach ($usuarios->DetalleLaborales as $lab) 
                     <div class="input-group flex-nowrap">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="addon-wrapping">Puesto Actual</span>
                             </div>
                         <input type="text" class="form-control" name="puesto_actual" id="puesto_actual" placeholder="Puesto actual"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->puesto_actual }}">
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $lab->puesto_actual }}">
                     </div>
+                @endforeach
             </div>
 
 
@@ -88,23 +90,27 @@
 
 
             <div class="col-md-4">
+                 @foreach ($usuarios->DetalleLaborales as $lab) 
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha ingreso</span>
                         </div>
                         <input type="date" class="form-control" name="fecha_ultimo" id="fecha_ultimo" placeholder="Último puesto"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->fecha_ultimo }}">
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $lab->fecha_ultimo }}">
                     </div>
+                @endforeach
             </div>
 
             <div class="col-md-4">
+                 @foreach ($usuarios->DetalleLaborales as $lab) 
                     <div class="input-group flex-nowrap">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="addon-wrapping">Fecha Senasica</span>
                         </div>
                         <input type="date" class="form-control" name="fecha_senasica" id="fecha_senasica" placeholder="Senasica"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->fecha_senasica }}">
+                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{  $lab->fecha_senasica}}">
                     </div>
+                    @endforeach
             </div>
 
 
@@ -164,49 +170,52 @@
                 </div>
             </div>
 
-
-            <div class="col-md-2">
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend" id="colonias_cps">
-                            <span class="input-group-text" id="addon-wrapping">CP</span>
-                        </div>
-                        <input type="text" class="form-control" name="cod_lab" id="cod_lab" placeholder="Senasica"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->cod_lab }}" disabled>
-                    </div>
-            </div>
-
-            <div class="col-md-6">
-                    <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Calle</span>
+        @foreach ($usuarios->DetalleLaborales as $lab) 
+                <div class="col-md-2">
+                     
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend" id="colonias_cps">
+                                <span class="input-group-text" id="addon-wrapping">CP</span>
                             </div>
-                        <input type="text" class="form-control" name="calle_lab" id="calle_lab"    placeholder="Calle"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->calle_lab }}">
-                    </div>
-            </div>
-
-            <div class="col-md-3">
-                    <div class="input-group flex-nowrap">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="addon-wrapping">Numero</span>
-                            </div>
-                        <input type="text" class="form-control" name="num_lab" id="num_lab"    placeholder="numero"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->num_lab }}">
-                    </div>
-            </div>
-
-            <div class="col-md-5">
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping">Fecha ingreso</span>
+                            <input type="text" class="form-control" name="cod_lab" id="cod_lab" placeholder="Senasica"
+                            aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $lab->cod_lab }}" disabled>
                         </div>
-                        <input type="date" class="form-control" name="fecha_gobierno" id="fecha_gobierno" placeholder="Gobierno"
-                        aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $itemm->fecha_gobierno }}">
-                    </div>
-            </div>
+                        
+                </div>
+
+                <div class="col-md-6">
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Calle</span>
+                                </div>
+                            <input type="text" class="form-control" name="calle_lab" id="calle_lab"    placeholder="Calle"
+                            aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $lab->calle_lab }}">
+                        </div>
+                </div>
+
+                <div class="col-md-3">
+                        <div class="input-group flex-nowrap">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="addon-wrapping">Numero</span>
+                                </div>
+                            <input type="text" class="form-control" name="num_lab" id="num_lab"    placeholder="numero"
+                            aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $lab->num_lab }}">
+                        </div>
+                </div>
+
+                <div class="col-md-5">
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">Fecha ingreso</span>
+                            </div>
+                            <input type="date" class="form-control" name="fecha_gobierno" id="fecha_gobierno" placeholder="Gobierno"
+                            aria-label="Nombre" aria-describedby="addon-wrapping" value="{{ $lab->fecha_gobierno }}">
+                        </div>
+                </div>
+        @endforeach
 
 
-@endforeach
+{{-- @endforeach --}}
 
 
 

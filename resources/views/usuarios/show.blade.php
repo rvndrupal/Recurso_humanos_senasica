@@ -437,9 +437,11 @@
                             <th scope="row">
                                1
                             </th>
+                            @foreach ($usuario->DetalleLaborales as $lab) 
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->puesto_actual }}<p></p>
+                            {{ $lab->puesto_actual }}<p></p>
                             </td>
+                            @endforeach
 
                             <td>
                             {{ $ncodi }}<p></p>
@@ -457,12 +459,14 @@
                                 {{ $item }}<p></p>
                                 @endforeach
                             </td>
+                            @foreach ($usuario->DetalleLaborales as $lab) 
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->fecha_ultimo }}<p></p>
-                            </td>
+                            {{ $lab->fecha_ultimo }}<p></p>
+                            </td>                           
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->fecha_senasica }}<p></p>
+                            {{ $lab->fecha_senasica }}<p></p>
                             </td>
+                             @endforeach
                             <td>
                                 @foreach($estl as $item)
                                 {{ $item }}<p></p>
@@ -479,18 +483,20 @@
                                 @endforeach
                             </td>
                             <td>{{ $ncopl }}</td>
+                             @foreach ($usuario->DetalleLaborales as $lab) 
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->cod_lab }}<p></p>
+                            {{ $lab->cod_lab }}<p></p>
                             </td>
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->calle_lab }}<p></p>
+                            {{ $lab->calle_lab }}<p></p>
                             </td>
                              <td>
-                            {{ $usuario->DetalleLaborales[0]->num_lab }}<p></p>
+                            {{ $lab->num_lab }}<p></p>
                             </td>
                             <td>
-                            {{ $usuario->DetalleLaborales[0]->fecha_gobierno }}<p></p>
+                            {{ $lab->fecha_gobierno }}<p></p>
                             </td>
+                            @endforeach
                           </tr>
                         </tbody>
                 </table>

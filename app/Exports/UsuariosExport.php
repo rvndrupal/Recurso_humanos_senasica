@@ -82,6 +82,10 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
 
         $escuela=[];
         $escuelaS=[];
+        $idioma=[];
+        $idiomaS=[];
+        $laborales=[];
+        $laboralesS=[];
 
         foreach($usuarios->solteros as $coy)
         {
@@ -139,12 +143,40 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
 
             if(isset($esc->cedula)){$cedula=$esc->cedula;}else{$cedula="Sin Cédula";}
 
-            $vesc="|| Escolaridad-> Grado: ".$esc->grados->nom_gra." | Carrera: ".$esc->carreras->nom_car." | Cedula: ".$cedula." | Escuela: ".$esc->escuelas->nombre_escuela;
+            $vesc="|| Escolaridad-> Grado: ".$esc->grados->nom_gra." | Carrera: ".$esc->carreras->nom_car." | Cedula: ".$cedula." | Escuela: ".$esc->escuelas->nombre_escuela.
+            "| Títulos: ". $esc->titulos->nombre_titulo;
 
             array_push($escuela,$vesc);
             $escuelaS=implode(" ",$escuela);              
         }
 
+        //Idiomas.
+        foreach ($usuarios->DetalleIdiomas as $idi) {
+
+            $idiv="|| Idioma: ".$idi->idiomas->nombre_idioma."| Nivel: ".$idi->nivel_ingles;
+            array_push($idioma,$idiv);
+            $idiomaS=implode(" ",$idioma);
+        }
+
+        //Laborales.
+        //
+        //dd()
+      
+        foreach ($usuarios->DetalleLaborales as $labo)
+        {
+
+        $labv=" || Puesto: ".$labo->puesto_actual."| Código: ".$labo->codigos->nom_codigos."| Nivel: ".$labo->niveles->nom_niveles."| Dirección General: ".
+        $labo->direccionesg->nombre_dir_gen."| Dirección Area: ".$labo->direccionesa->nombre_dir_are.
+        "| Fecha ultimo: ".$labo->fecha_ultimo."| Fecha Senasica: ".$labo->fecha_senasica."| Calle: ".$labo->calle_lab."| Num: ".$labo->num_lab;
+
+        array_push($laborales,$labv);
+        $laboralesS=implode(" ",$laborales);
+        
+        }
+        
+            
+       
+        
 
 
 
@@ -171,8 +203,11 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             $conyugeS,
             $salidaNC,
             $depenS,
-            $escuelaS
-
+            $escuelaS,
+            $idiomaS,
+            $laboralesS
+            
+    
         ];
     }
 
@@ -200,7 +235,9 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             'Información Conyuge',
             'Información Hijos',
             'Información Dependientes',
-            "Escuela"
+            "Escuela",
+            "Idiomas",
+            "Laborales"
 
         ];
     }

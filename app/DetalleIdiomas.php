@@ -12,4 +12,9 @@ class DetalleIdiomas extends Model
     {
         return $this->belongsTo('App\Usuarios');
     }
+
+    public function idiomas()
+    {
+        return $this->belongsTo('App\Idiomas','idiomas_id');
+    }
 }

@@ -188,44 +188,47 @@ class UsuariosController extends Controller
          $coll=[];
          $copl=[];
 
-
-             $id_dge=$usuario->DetalleLaborales[0]->direcciones_generales_id;
+            foreach ($usuarios->DetalleLaborales as $labo)
+            {
+             $id_dge=$labo->direcciones_generales_id;
              $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
              $ndge=$nom_dge[0]->nombre_dir_gen;
              array_push($dge, $ndge);
 
-             $id_dga=$usuario->DetalleLaborales[0]->direcciones_areas_id;
+             $id_dga=$labo->direcciones_areas_id;
              $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
              $ndga=$nom_dga[0]->nombre_dir_are;
              array_push($dga, $ndga);
 
-             $id_estl=$usuario->DetalleLaborales[0]->est_lab;
+             $id_estl=$labo->est_lab;
              $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
              $nestl=$nom_estl[0]->nombre;
              array_push($estl, $nestl);
 
-             $id_munl=$usuario->DetalleLaborales[0]->mun_lab;
+             $id_munl=$labo->mun_lab;
              $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
              $nmunl=$nom_munl[0]->nombre_mun;
              array_push($munl, $nmunl);
 
-             $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+             $id_coll=$labo->col_lab;
              $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
              $ncoll=$nom_coll[0]->nombre_col;
              array_push($coll, $ncoll);
 
-             $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+             $id_coll=$labo->col_lab;
              $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
              $ncopl=$nom_cop[0]->codigo_postal;
 
 
-             $codi=$usuario->DetalleLaborales[0]->codigos_id;
+             $codi=$labo->codigos_id;
              $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
              $ncodi=$nom_codigo[0]->nom_codigos;
 
-             $nive=$usuario->DetalleLaborales[0]->niveles_id;
+             $nive=$labo->niveles_id;
              $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
              $nnive=$nom_nivel[0]->nom_niveles;
+
+         }
 
         $pdf=PDF::loadView('pdf.usuarios',compact('usuario','ruta','nc','ng','ne','nt','idi','ncodi','nnive','dge','dga',
         'estl','munl','coll','ncopl'));
@@ -603,7 +606,7 @@ class UsuariosController extends Controller
             'col_lab'=>$request->col_lab,
             'fecha_gobierno'=>$request->fecha_gobierno,
             'mun_lab'=>$request->mun_lab,
-            'est_lab'=>$request->est_lab,
+            'est_lab'=>$request->estados_id,
             'cod_lab'=>$request->cod_lab,
             ]);
 
@@ -829,43 +832,45 @@ class UsuariosController extends Controller
 
 
 
-
-                $id_dge=$usuario->DetalleLaborales[0]->direcciones_generales_id;
+                foreach ($usuario->DetalleLaborales as $lab) 
+                {  
+                $id_dge=$lab->direcciones_generales_id;
                 $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
                 $ndge=$nom_dge[0]->nombre_dir_gen;
                 array_push($dge, $ndge);
 
-                $id_dga=$usuario->DetalleLaborales[0]->direcciones_areas_id;
+                $id_dga=$lab->direcciones_areas_id;
                 $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
                 $ndga=$nom_dga[0]->nombre_dir_are;
                 array_push($dga, $ndga);
 
-                $id_estl=$usuario->DetalleLaborales[0]->est_lab;
+                $id_estl=$lab->est_lab;
                 $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
                 $nestl=$nom_estl[0]->nombre;
                 array_push($estl, $nestl);
 
-                $id_munl=$usuario->DetalleLaborales[0]->mun_lab;
+                $id_munl=$lab->mun_lab;
                 $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
                 $nmunl=$nom_munl[0]->nombre_mun;
                 array_push($munl, $nmunl);
 
-                $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+                $id_coll=$lab->col_lab;
                 $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
                 $ncoll=$nom_coll[0]->nombre_col;
                 array_push($coll, $ncoll);
 
-                $id_coll=$usuario->DetalleLaborales[0]->col_lab;
+                $id_coll=$lab->col_lab;
                 $nom_cop=Colonias::select('codigo_postal')->where('id','=',$id_coll)->get();
                 $ncopl=$nom_cop[0]->codigo_postal;
 
-                $codi=$usuario->DetalleLaborales[0]->codigos_id;
+                $codi=$lab->codigos_id;
                 $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
                 $ncodi=$nom_codigo[0]->nom_codigos;
 
-                $nive=$usuario->DetalleLaborales[0]->niveles_id;
+                $nive=$lab->niveles_id;
                 $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nive)->get();
                 $nnive=$nom_nivel[0]->nom_niveles;
+                }
 
 
             $total_Exp=count($usuario->ExpLaborales);
@@ -1081,33 +1086,42 @@ class UsuariosController extends Controller
        $s_idioma=$use[0]->DetalleIdiomas[0]->idiomas_id;
        $s_ni=$use[0]->DetalleIdiomas[0]->nivel_ingles;
 
-       $codi=$use[0]->DetalleLaborales[0]->codigos_id;
+      // dd($use[0]->DetalleLaborales);
+
+
+       foreach ($usuarios->DetalleLaborales as $lab) 
+       {
+
+       $codi=$lab->codigos_id;
        $nom_codigo=Codigos::select('nom_codigos')->where('id','=',$codi)->get();
        $ncodi=$nom_codigo[0]->nom_codigos;
 
-       $nivel=$use[0]->DetalleLaborales[0]->niveles_id;
+       //dd($ncodi);
+
+       $nivel=$lab->niveles_id;
        $nom_nivel=Niveles::select('nom_niveles')->where('id','=',$nivel)->get();
        $nivell=$nom_nivel[0]->nom_niveles;
 
-       $id_dge=$use[0]->DetalleLaborales[0]->direcciones_generales_id;
+       $id_dge=$lab->direcciones_generales_id;
        $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
        $ndge=$nom_dge[0]->nombre_dir_gen;
 
-       $id_dga=$use[0]->DetalleLaborales[0]->direcciones_areas_id;
+       $id_dga=$lab->direcciones_areas_id;
        $nom_dga=DireccionesAreas::select('nombre_dir_are')->where('id','=',$id_dga)->get();
        $ndga=$nom_dga[0]->nombre_dir_are;
 
-       $id_estl=$use[0]->DetalleLaborales[0]->est_lab;
+       $id_estl=$lab->est_lab;
        $nom_estl=Estados::select('nombre')->where('id','=',$id_estl)->get();
        $nestl=$nom_estl[0]->nombre;
 
-       $id_munl=$use[0]->DetalleLaborales[0]->mun_lab;
+       $id_munl=$lab->mun_lab;
        $nom_munl=Municipios::select('nombre_mun')->where('id','=',$id_munl)->get();
        $nmunl=$nom_munl[0]->nombre_mun;
 
-       $id_coll=$use[0]->DetalleLaborales[0]->col_lab;
+       $id_coll=$lab->col_lab;
        $nom_coll=Colonias::select('nombre_col')->where('id','=',$id_coll)->get();
        $ncoll=$nom_coll[0]->nombre_col;
+       }
 
        $enfermo=$use[0]->Seguros[0]->enf_seg;
        $disca=$use[0]->Seguros[0]->dis_seg;
@@ -1119,7 +1133,7 @@ class UsuariosController extends Controller
        //dd($use[0]->DetalleEscolaridades);
 
 
-        return view('usuarios.editar',compact('use','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
+        return view('usuarios.editar',compact('use','usuarios','paiss','sel_pais','rfc_sub','estadoss','s_est','muns','s_mun','cols','s_col'
         ,'estCS','s_civ','s_opv','opcCiv','gradoss','grados_A','carrerass','s_carreras','escuelass','s_escuelas','tituloss','s_tt'
         ,'idiomass','s_idioma','s_ni','cos','ncodi','ni','nivell','dg','ndge','da','ndga','estadoss','nestl','muns','nmunl','cols','ncoll'
     ,   'enfermo','disca','uid','s_grados','user'));
