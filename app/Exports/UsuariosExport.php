@@ -76,15 +76,28 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         $salidaAp=[];
         $conyuge=[];
         $conyugeS=[];
+        $depen=[];
+        $depenS=[];
+        $salidaNC=[];
+
+        $escuela=[];
+        $escuelaS=[];
 
         foreach($usuarios->solteros as $coy)
         {
+            if(is_null($coy))
+            {
+                $salidaNC=['Nombre' => '', 'Curp: ' => ''];
+            }else{
+
             $nomCom="Nombre: ".$coy->nombre_hijo."  Curp: ".$coy->curp_hijo." | ";
-            array_push($coyArray,$nomCom);
+            array_push($coyArray,$nomCom);  
+             $salidaNC=implode(" ",$coyArray);           
+            }
         }
+       
 
-        $salidaNC=implode(" ",$coyArray);
-
+       
        
 
         //conyuges
@@ -104,6 +117,36 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
                    
                 }
         }
+
+
+
+
+        foreach ($usuarios->Descensientes as $dep) {
+            if(is_null($dep)){
+                   
+                     $depenS=['estado' => 'sin'];
+                }
+                else
+                {
+                     $vdep="Nombre: ".$dep->nombre_des." Ap: ".$dep->ap_des." Am: ".$dep->am_des;
+                    array_push($depen,$vdep);
+                    $depenS=implode(" ",$depen);  
+                }
+        }
+
+        //escolaridad
+        foreach ($usuarios->DetalleEscolaridades as $esc) {
+
+            if(isset($esc->cedula)){$cedula=$esc->cedula;}else{$cedula="Sin Cédula";}
+
+            $vesc="|| Escolaridad-> Grado: ".$esc->grados->nom_gra." | Carrera: ".$esc->carreras->nom_car." | Cedula: ".$cedula." | Escuela: ".$esc->escuelas->nombre_escuela;
+
+            array_push($escuela,$vesc);
+            $escuelaS=implode(" ",$escuela);              
+        }
+
+
+
 
 
         return [
@@ -126,8 +169,9 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             $usuarios->fecha_domicilio,
             $usuarios->estadoCivil->nombre,
             $conyugeS,
-
-            $salidaNC
+            $salidaNC,
+            $depenS,
+            $escuelaS
 
         ];
     }
@@ -155,6 +199,8 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             'Estado Civil',
             'Información Conyuge',
             'Información Hijos',
+            'Información Dependientes',
+            "Escuela"
 
         ];
     }

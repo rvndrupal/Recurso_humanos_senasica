@@ -222,124 +222,130 @@ $(".next").click(function(){
 
 
 
-
-    $('.recorrer input').each(function() {
-        // alert($(this).attr('class'));
-        //  id=$(this).attr('id');
-          cla=$(this).attr('class');//par el error
-          //deja la pura palabra is-invalid
-
-
-          data=$(this).attr('data-valor');//el numero
+    //hijos
+    // $('.recorrer input').each(function() {
+    //     // alert($(this).attr('class'));
+    //     //  id=$(this).attr('id');
+    //       cla=$(this).attr('class');//par el error
+    //       //deja la pura palabra is-invalid
 
 
-
-        if($('#hijoc'+data).val()=="")
-        {
-            $('#hijoc'+data).addClass('is-invalid');
-            form.valid=false;
-        }
-        else{
-            $('#hijoc'+data).rules('add',
-            {
-                required: true,texto:true,minlength:3,maxlength:20,
-
-                messages: {
-                    required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
-                }
-
-              });
-        }
-
-        if($('#curp_hijo'+data).val()=="")
-        {
-            $('#curp_hijo'+data).addClass('is-invalid');
-            form.valid=false;
-        }
-        else{
-            $('#curp_hijo'+data).rules('add',
-                {
-                    required: true,texto:true,minlength:18,maxlength:18,
-
-                    messages: {
-                        required: "Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo de 18 caracteres"
-                    }
-
-            });
-
-        }
-
-        if($('#carga_curp_hijo'+data).val()=="")
-        {
-            $('#carga_curp_hijo'+data).addClass('is-invalid');
-            form.valid=false;
-        }
-        else{
-            $('#carga_curp_hijo'+data).rules('add',
-            {
-                required: true,imagen:true,imagensize:true,
-
-                messages: {
-                    required: "Es obligatorio",
-                }
-
-            });
-         }
+    //       data=$(this).attr('data-valor');//el numero
 
 
-     });
+
+    //     if($('#hijoc'+data).val()=="")
+    //     {
+    //         $('#hijoc'+data).addClass('is-invalid');
+    //         form.valid=false;
+    //     }
+    //     else{
+    //         $('#hijoc'+data).rules('add',
+    //         {
+    //             required: true,texto:true,minlength:3,maxlength:20,
+
+    //             messages: {
+    //                 required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
+    //             }
+
+    //           });
+    //     }
+
+    //     if($('#curp_hijo'+data).val()=="")
+    //     {
+    //         $('#curp_hijo'+data).addClass('is-invalid');
+    //         form.valid=false;
+    //     }
+    //     else{
+    //         $('#curp_hijo'+data).rules('add',
+    //             {
+    //                 required: true,texto:true,minlength:18,maxlength:18,
+
+    //                 messages: {
+    //                     required: "Es obligatorio",minlength:"Mínimo 18 caracteres",maxlength:"Máximo de 18 caracteres"
+    //                 }
+
+    //         });
+
+    //     }
+
+    //     if($('#carga_curp_hijo'+data).val()=="")
+    //     {
+    //         $('#carga_curp_hijo'+data).addClass('is-invalid');
+    //         form.valid=false;
+    //     }
+    //     else{
+    //         $('#carga_curp_hijo'+data).rules('add',
+    //         {
+    //             required: true,imagen:true,imagensize:true,
+
+    //             messages: {
+    //                 required: "Es obligatorio",
+    //             }
+
+    //         });
+    //      }
+
+    //  });
+
+
+
+
+
+
 
      //dependientes
 
-     $('.dependientes input').each(function() {
-          datad=$(this).attr('data-valor');
-        if($('#nombre_des'+datad).val()=="")
-        {
-            $('#nombre_des'+datad).addClass('is-invalid');
-            form.valid=false;
-        }
-        else{
-            $('#nombre_des'+datad).rules('add',
-            {
-                required: true,texto:true,minlength:3,maxlength:20,
+     // $('.dependientes input').each(function() {
+     //      datad=$(this).attr('data-valor');
+     //    if($('#nombre_des'+datad).val()=="")
+     //    {
+     //        $('#nombre_des'+datad).addClass('is-invalid');
+     //        form.valid=false;
+     //    }
+     //    else{
+     //        $('#nombre_des'+datad).rules('add',
+     //        {
+     //            required: true,texto:true,minlength:3,maxlength:20,
 
-                messages: {
-                    required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
-                }
-              });
-        }
+     //            messages: {
+     //                required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
+     //            }
+     //          });
+     //    }
 
-        if($('#ap_des'+datad).val()=="")
-        {
-            $('#ap_des'+datad).addClass('is-invalid');
-            form.valid=false;
-        }
-        else{
-            $('#ap_des'+datad).rules('add',
-                {
-                    required: true,texto:true,minlength:3,maxlength:20,
-                    messages: {
-                        required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
-                    }
-            });
-        }
+     //    if($('#ap_des'+datad).val()=="")
+     //    {
+     //        $('#ap_des'+datad).addClass('is-invalid');
+     //        form.valid=false;
+     //    }
+     //    else{
+     //        $('#ap_des'+datad).rules('add',
+     //            {
+     //                required: true,texto:true,minlength:3,maxlength:20,
+     //                messages: {
+     //                    required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
+     //                }
+     //        });
+     //    }
 
-        if($('#am_des'+datad).val()=="")
-        {
-            $('#am_des'+datad).addClass('is-invalid');
-            form.valid=false;
-        }
-        else{
-            $('#am_des'+datad).rules('add',
-                {
-                    required: true,texto:true,minlength:3,maxlength:20,
+     //    if($('#am_des'+datad).val()=="")
+     //    {
+     //        $('#am_des'+datad).addClass('is-invalid');
+     //        form.valid=false;
+     //    }
+     //    else{
+     //        $('#am_des'+datad).rules('add',
+     //            {
+     //                required: true,texto:true,minlength:3,maxlength:20,
 
-                    messages: {
-                        required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
-                    }
-            });
-        }
-     });
+     //                messages: {
+     //                    required: "Es obligatorio",minlength:"Mínimo 3 caracteres",maxlength:"Máximo de 20 caracteres"
+     //                }
+     //        });
+     //    }
+     // });
+     
 
 
 //ESCOLARIDAD VALIDAR

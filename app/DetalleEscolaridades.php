@@ -16,7 +16,15 @@ class DetalleEscolaridades extends Model
 
     public function carreras()
     {
-        return $this->hasMany('App\Carreras');
+        return $this->belongsTo('App\Carreras','carreras_id');
+    }
+
+    public function grados(){
+        return $this->belongsTo('App\Grados','grados_id');
+    }
+
+     public function escuelas(){
+        return $this->belongsTo('App\Escuelas','escuelas_id');
     }
 
 

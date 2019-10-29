@@ -21,7 +21,7 @@ class CreateDetalleEscolaridadesTable extends Migration
             $table->foreign('grados_id')->references('id')->on('grados');
             $table->unsignedBigInteger('carreras_id');
             $table->foreign('carreras_id')->references('id')->on('carreras');
-            $table->string('cedula',150)->default('0');
+            $table->string('cedula',150)->nullable();
             $table->unsignedBigInteger('escuelas_id');
             $table->foreign('escuelas_id')->references('id')->on('escuelas');
             $table->unsignedBigInteger('titulos_id');

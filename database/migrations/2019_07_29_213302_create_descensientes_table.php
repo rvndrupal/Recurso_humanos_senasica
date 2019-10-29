@@ -15,9 +15,9 @@ class CreateDescensientesTable extends Migration
     {
         Schema::create('descensientes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre_des',50)->default('0');
-            $table->string('ap_des',50)->default('0');
-            $table->string('am_des',50)->default('0');
+            $table->string('nombre_des',50)->nullable();
+            $table->string('ap_des',50)->nullable();
+            $table->string('am_des',50)->nullable();
             $table->unsignedBigInteger('usuarios_id');
             $table->foreign('usuarios_id')->references('id')->on('usuarios')->onDelete('cascade');
             $table->timestamps();
