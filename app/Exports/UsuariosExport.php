@@ -15,7 +15,7 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\FromQuery;
-
+use PhpParser\Node\Stmt\Foreach_;
 
 // class UsuariosExport implements FromCollection,WithHeadings
 // {
@@ -89,7 +89,9 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         $idiomaS=[];
         $laborales=[];
         $laboralesS=[];
-        $busES=[];
+        $expl=[];
+        $explS=[];
+
 
         foreach($usuarios->solteros as $coy)
         {
@@ -189,6 +191,16 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         $laboralesS=implode(" ",$laborales);
         }
 
+        //experiencia Laboral
+
+        foreach($usuarios->ExpLaborales as $exp)
+        {
+            $expV=" | Puesto: ".$exp->den_puesto." | Institución: ".$exp->ins_puesto." | Area: ".$exp->area_puesto." | Años: ".$exp->anos_puesto.
+            " | Fecha Ingreso: ".$exp->fecha_ing_puesto." | Fecha Salida: ".$exp->fecha_baj_puesto;
+
+            array_push($expl,$expV);
+            $explS=implode(" ", $expl);
+        }
 
 
 
@@ -220,8 +232,8 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             $depenS,
             $escuelaS,
             $idiomaS,
-            $laboralesS
-
+            $laboralesS,
+            $explS
 
         ];
     }
@@ -252,7 +264,9 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             'Información Dependientes',
             "Escuela",
             "Idiomas",
-            "Laborales"
+            "Datos Laborales",
+            "Experiencia Laboral"
+
 
         ];
     }
