@@ -91,6 +91,10 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         $laboralesS=[];
         $expl=[];
         $explS=[];
+        $segl=[];
+        $seglS=[];
+        $conl=[];
+        $conlS=[];
 
 
         foreach($usuarios->solteros as $coy)
@@ -202,6 +206,25 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             $explS=implode(" ", $expl);
         }
 
+        //Datos del Seguro y contacto de emergencia.
+        foreach($usuarios->Seguros as $seg){
+            $segV=" | Numero: ".$seg->num_seg." | Enfermedad: ".$seg->enf_seg." | Cual enfermedad: ".$seg->cual_enf_seg." | Tipo de Sangre: ".$seg->tipo_seg.
+            " | Discapacidad: ".$seg->dis_seg." | Cual discapacidad: ".$seg->cual_dis_seg ;
+
+            array_push($segl,$segV);
+            $seglS=implode(" ", $segl);
+        }
+
+        foreach($usuarios->Seguros as $con){
+
+            $conV=" | Nombre: ".$con->nom_seg." | Ap: ".$con->pri_seg." | Am: ".$con->seg_seg." | Parentesco: ".$con->par_seg.
+            " | Email: ".$con->email_seg." | Télefono: ".$con->tel_seg." | Celular: ".$con->mov_seg;
+
+            array_push($conl,$conV);
+            $conlS=implode(" ", $conl);
+
+
+        }
 
 
 
@@ -233,7 +256,9 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             $escuelaS,
             $idiomaS,
             $laboralesS,
-            $explS
+            $explS,
+            $seglS,
+            $conlS
 
         ];
     }
@@ -265,7 +290,9 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             "Escuela",
             "Idiomas",
             "Datos Laborales",
-            "Experiencia Laboral"
+            "Experiencia Laboral",
+            "Datos de Seguridad Social",
+            "Datos del contacto"
 
 
         ];
