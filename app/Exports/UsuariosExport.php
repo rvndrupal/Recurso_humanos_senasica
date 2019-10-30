@@ -3,6 +3,9 @@
 namespace App\Exports;
 
 use App\Usuarios;
+use App\Estados;
+use App\Municipios;
+use App\Colonias;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -86,6 +89,7 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         $idiomaS=[];
         $laborales=[];
         $laboralesS=[];
+        $busES=[];
 
         foreach($usuarios->solteros as $coy)
         {
@@ -95,22 +99,22 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             }else{
 
             $nomCom="Nombre: ".$coy->nombre_hijo."  Curp: ".$coy->curp_hijo." | ";
-            array_push($coyArray,$nomCom);  
-             $salidaNC=implode(" ",$coyArray);           
+            array_push($coyArray,$nomCom);
+             $salidaNC=implode(" ",$coyArray);
             }
         }
-       
 
-       
-       
+
+
+
 
         //conyuges
-        foreach ($usuarios->conyuges as $conyu) {    
+        foreach ($usuarios->conyuges as $conyu) {
 
             //dump($conyu);
 
              if(is_null($conyu)){
-                   
+
                      $conyugeS=['estado' => 'Soltero(a)'];
                 }
                 else
@@ -118,7 +122,7 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
                      $ifc="Nombre: ".$conyu->nombres_coy." Ap: ".$conyu->primero_coy." Am: ".$conyu->segundo_coy." Curp: ".$conyu->curp_coy;
                     array_push($conyuge,$ifc);
                     $conyugeS=implode(" ",$conyuge);
-                   
+
                 }
         }
 
@@ -127,14 +131,14 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
 
         foreach ($usuarios->Descensientes as $dep) {
             if(is_null($dep)){
-                   
+
                      $depenS=['estado' => 'sin'];
                 }
                 else
                 {
                      $vdep="Nombre: ".$dep->nombre_des." Ap: ".$dep->ap_des." Am: ".$dep->am_des;
                     array_push($depen,$vdep);
-                    $depenS=implode(" ",$depen);  
+                    $depenS=implode(" ",$depen);
                 }
         }
 
@@ -147,7 +151,7 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             "| Títulos: ". $esc->titulos->nombre_titulo;
 
             array_push($escuela,$vesc);
-            $escuelaS=implode(" ",$escuela);              
+            $escuelaS=implode(" ",$escuela);
         }
 
         //Idiomas.
@@ -161,22 +165,33 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
         //Laborales.
         //
         //dd()
-      
+
         foreach ($usuarios->DetalleLaborales as $labo)
         {
+        $numE=$labo->est_lab;
+        $busE=Estados::where('id','=',$numE)->select('nombre')->get();
+
+        $numM=$labo->mun_lab;
+        $busM=Municipios::where('id',$numM)->select('nombre_mun')->get();
+
+        $colM=$labo->col_lab;
+        $colM=Colonias::where('id',$colM)->select('nombre_col','codigo_postal')->get();
+
+
+
 
         $labv=" || Puesto: ".$labo->puesto_actual."| Código: ".$labo->codigos->nom_codigos."| Nivel: ".$labo->niveles->nom_niveles."| Dirección General: ".
         $labo->direccionesg->nombre_dir_gen."| Dirección Area: ".$labo->direccionesa->nombre_dir_are.
-        "| Fecha ultimo: ".$labo->fecha_ultimo."| Fecha Senasica: ".$labo->fecha_senasica."| Calle: ".$labo->calle_lab."| Num: ".$labo->num_lab;
+        "| Fecha ultimo: ".$labo->fecha_ultimo."| Fecha Senasica: ".$labo->fecha_senasica."| Calle: ".$labo->calle_lab."| Num: ".$labo->num_lab.
+        "| Estado: ".$busE[0]->nombre."| Municipio: ".$busM[0]->nombre_mun."| Colonia: ".$colM[0]->nombre_col."| CP: ".$colM[0]->codigo_postal;
 
         array_push($laborales,$labv);
         $laboralesS=implode(" ",$laborales);
-        
         }
-        
-            
-       
-        
+
+
+
+
 
 
 
@@ -206,8 +221,8 @@ class UsuariosExport implements FromCollection, WithMapping, WithHeadings
             $escuelaS,
             $idiomaS,
             $laboralesS
-            
-    
+
+
         ];
     }
 
