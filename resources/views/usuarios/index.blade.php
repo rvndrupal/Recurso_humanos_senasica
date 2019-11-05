@@ -22,9 +22,8 @@
                                     <th>{{ __("Apellido materno") }}</th>
                                    <th>{{ __("Curp") }}</th>
                                     <th>{{ __("Rfc") }}</th>
-                                   {{-- <th>{{ __("Calle") }}</th>
-                                    <th>{{ __("Número") }}</th>
-                                    <th>{{ __("Email personal") }}</th>  --}}
+                                    <th>{{ __("User_id") }}</th>
+
                                     <th>{{ __("Estado") }}</th>
                                     <th width="170">{{ __("Acciones") }}</th>
                                 </tr>
@@ -143,9 +142,7 @@
                     { data: 'am' },
                     { data: 'curp' },
                     { data: 'rfc' },
-                    {{-- { data: 'calle' },
-                    { data: 'numero' },
-                    { data: 'correo_per' },  --}}
+                    { data: 'user_id' },
                     { data: 'condicion',
                         "render": function (data, type, row) {
                             if (row.condicion == 1) {

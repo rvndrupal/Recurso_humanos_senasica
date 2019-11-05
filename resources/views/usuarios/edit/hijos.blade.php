@@ -1,6 +1,6 @@
 @foreach ($use[0]->solteros as $item=>$v)
 
-<tr class="hijos" id="row{{ $loop->index+1 }}">
+<tr class="hijos" id="rowh{{ $loop->index+1 }}">
     <td>
            <div class="input-group flex-nowrap">
                    <div class="input-group-prepend">
@@ -61,7 +61,7 @@
 
 
 
-    <td><button type="button" name="remove" id="{{ $loop->index+1 }}" class="btn btn-danger btn_remove">X</button></td>
+    <td><button type="button" name="remove" id="{{ $loop->index+1 }}" class="btn btn-danger btn_removeh">X</button></td>
 </tr>
 @endforeach
 

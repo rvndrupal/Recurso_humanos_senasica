@@ -100,7 +100,9 @@ class UsuariosController extends Controller
             }else{
                 $actions = 'usuarios.datatables.index';
                 // return datatables()->of(Usuarios::query()->where('condicion','=','1'))->addColumn('actions', $actions) funciona
-                return datatables()->of(Usuarios::query())->addColumn('actions', $actions)
+                return datatables()->of(Usuarios::query())
+                    ->with('user')
+                    ->addColumn('actions', $actions)
                     ->rawColumns(['actions'])
                     // ->orderBy('nom','ASC')
                     ->toJson();
@@ -458,13 +460,14 @@ class UsuariosController extends Controller
                 $curp_carga=$request->carga_curp_coy;
                 $filenamewithExt =$curp_carga->getClientOriginalName();
                 $curp_carga=$request->carga_curp_coy->storeAs('CURPCONYUGES',$filenamewithExt);
-                
+
          }else{
             $nom=NULL;
             $primero=NULL;
             $segundo=NULL;
             $curp=NULL;
             $curp_carga=NULL;
+            $filenamewithExt=NULL;
          }
 
          $usuario->conyuges()->create([
@@ -476,7 +479,7 @@ class UsuariosController extends Controller
 
         ]);
 
-       
+
 
         if(isset($request->nombre_des))
          {
@@ -484,12 +487,12 @@ class UsuariosController extends Controller
                 {
                     $nom=$request->nombre_des[$item];
                     $ap=$request->ap_des[$item];
-                    $am=$request->am_des[$item];                    //dd($edad);  
+                    $am=$request->am_des[$item];                    //dd($edad);
                 }
         }else{
                     $nom=NULL;
                     $ap=NULL;
-                    $am=NULL;   
+                    $am=NULL;
         }
 
          $usuario->Descensientes()->create([
@@ -497,7 +500,7 @@ class UsuariosController extends Controller
                 'ap_des'=>$ap,
                 'am_des'=>$am
                 ]);
-        
+
 
 
 
@@ -538,7 +541,7 @@ class UsuariosController extends Controller
                     $cedula=NULL;
                  }
 
-                             
+
                 $carga_titulo=$request->carga_titulo[$item];
                 $carga_cedula=$request->carga_cedula[$item];
                     if($carga_titulo != 0)
@@ -832,8 +835,8 @@ class UsuariosController extends Controller
 
 
 
-                foreach ($usuario->DetalleLaborales as $lab) 
-                {  
+                foreach ($usuario->DetalleLaborales as $lab)
+                {
                 $id_dge=$lab->direcciones_generales_id;
                 $nom_dge=DireccionesGenerales::select('nombre_dir_gen')->where('id','=',$id_dge)->get();
                 $ndge=$nom_dge[0]->nombre_dir_gen;
@@ -1089,7 +1092,7 @@ class UsuariosController extends Controller
       // dd($use[0]->DetalleLaborales);
 
 
-       foreach ($usuarios->DetalleLaborales as $lab) 
+       foreach ($usuarios->DetalleLaborales as $lab)
        {
 
        $codi=$lab->codigos_id;
@@ -1240,8 +1243,37 @@ class UsuariosController extends Controller
                 }
         }
 
+        //Solteros Opcion2
+        // if(isset($request->nombre_hijo) and isset($request->curp_hijo) )
+        // {
+        //         foreach($request->nombre_hijo as $item=>$v)
+        //         {
+        //             $nom_hijo=$request->nombre_hijo[$item];
+        //             $curp_hijo=$request->curp_hijo[$item];
+        //             $cch=$request->carga_curp_hijo[$item];
+        //             $file_curp_hijo =$cch->getClientOriginalName();
+        //             $cch=$request->carga_curp_hijo[$item]->storeAs('CURPHIJOS',$file_curp_hijo);
+        //         }
+        // }else{
+        //     $nom_hijo=NULL;
+        //     $curp_hijo=NULL;
+        //     $cch=NULL;
+
+        // }
+
+        //     $usuario->solteros()->create([
+        //             'nombre_hijo'=>$nom_hijo,
+        //             'curp_hijo'=>$curp_hijo,
+        //             'carga_curp_hijo'=>$cch
+        //             ]);
+
+
+
+
+
         //conyuges
         $usuario->conyuges()->delete($id);
+
         if(isset($request->nombres_coy))
         {
                 $rcoy=$request->rec_curp_coy;
@@ -1249,16 +1281,8 @@ class UsuariosController extends Controller
                 $primero=$request->primero_coy;
                 $segundo=$request->segundo_coy;
                 $curp=$request->curp_coy;
+                // $curp_carga=$request->carga_curp_coy;
                 $ccoy=(isset($request->carga_curp_coy))?"true" : "false";
-                //$curp_carga=$request->carga_curp_coy;
-
-                //dd($curp_carga);
-
-                if($nom==""){$nom=0;}else{$nom=$request->nombres_coy;}
-                if($primero==""){$primero=0;}else{$primero=$request->primero_coy;}
-                if($segundo==""){$segundo=0;}else{$segundo=$request->segundo_coy;}
-                if($curp==""){$curp=0;}else{$curp=$request->curp_coy;}
-
                 if($ccoy=="true")
                 {
                     $ccoy=$request->carga_curp_coy;
@@ -1268,17 +1292,28 @@ class UsuariosController extends Controller
                 else if($ccoy=="false")
                 {
                     $ccoy=$rcoy;
+                    $filenamewithExt=NULL;
                 }
 
-                $usuario->conyuges()->create([
+
+         }else{
+            $nom=NULL;
+            $primero=NULL;
+            $segundo=NULL;
+            $curp=NULL;
+            $curp_carga=NULL;
+
+         }
+
+         $usuario->conyuges()->create([
                     'nombres_coy'=>$nom,
                     'primero_coy'=>$primero,
                     'segundo_coy'=>$segundo,
                     'curp_coy'=>$curp,
                     'carga_curp_coy'=>$ccoy
 
-                ]);
-         }
+        ]);
+
 
 
          //borramos dependientes y se vuelve a crear

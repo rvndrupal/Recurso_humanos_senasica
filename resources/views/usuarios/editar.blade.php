@@ -355,7 +355,7 @@
                 });
                 $(document).on('click', '.btn_removeh', function(){
                      var button_id = $(this).attr("id");
-                     $('#row'+button_id+'').remove();
+                     $('#rowh'+button_id+'').remove();
                 });
 
 
@@ -366,7 +366,7 @@
                 var i=1;
                 $(document).on('click', '#addDependientes', function(){
                      i++;
-                     $('#dependientes').append('<tr class="dependientes" id="row'+i+'">'+
+                     $('#dependientes').append('<tr class="dependientes" id="rowd'+i+'">'+
                          '<td>'+
                                 '<div class="input-group flex-nowrap">'+
                                         '<div class="input-group-prepend">'+
@@ -398,7 +398,9 @@
                 });
                 $(document).on('click', '.btn_remove', function(){
                      var button_id = $(this).attr("id");
-                     $('#row'+button_id+'').remove();
+
+                        $('#rowd'+button_id+'').remove();
+
                 });
 
 
