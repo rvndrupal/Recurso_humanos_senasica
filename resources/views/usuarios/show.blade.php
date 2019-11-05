@@ -168,7 +168,7 @@
                                                     <h5 class="card-title">{{ $item->curp_coy }}</h5>
                                                 </td>
                                                 <td>
-                                                    <a href="http://localhost/recursos/public/CURPCONYUGES/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
+                                                    <a href="http://localhost/recursos/public/{{ $item->carga_curp_coy }} " download="{{ $item->carga_curp_coy }}">
                                                         <i class="glyphicon glyphicon-download">Curp</i>
                                                     </a>
                                                 </td>
@@ -206,7 +206,7 @@
                                                     <td>{{ $item->nombre_hijo }}</td>
                                                     <td>{{ $item->curp_hijo }}</td>
                                                     <td>
-                                                        <a href="http://localhost/recursos/public/CURPHIJOS/{{ $item->carga_curp_hijo }} " download="{{ $item->carga_curp_hijo }}">
+                                                        <a href="http://localhost/recursos/public/{{ $item->carga_curp_hijo }} " download="{{ $item->carga_curp_hijo }}">
                                                             <i class="glyphicon glyphicon-download">Curp</i>
                                                         </a>
                                                     </td>
@@ -437,7 +437,7 @@
                             <th scope="row">
                                1
                             </th>
-                            @foreach ($usuario->DetalleLaborales as $lab) 
+                            @foreach ($usuario->DetalleLaborales as $lab)
                             <td>
                             {{ $lab->puesto_actual }}<p></p>
                             </td>
@@ -459,10 +459,10 @@
                                 {{ $item }}<p></p>
                                 @endforeach
                             </td>
-                            @foreach ($usuario->DetalleLaborales as $lab) 
+                            @foreach ($usuario->DetalleLaborales as $lab)
                             <td>
                             {{ $lab->fecha_ultimo }}<p></p>
-                            </td>                           
+                            </td>
                             <td>
                             {{ $lab->fecha_senasica }}<p></p>
                             </td>
@@ -483,7 +483,7 @@
                                 @endforeach
                             </td>
                             <td>{{ $ncopl }}</td>
-                             @foreach ($usuario->DetalleLaborales as $lab) 
+                             @foreach ($usuario->DetalleLaborales as $lab)
                             <td>
                             {{ $lab->cod_lab }}<p></p>
                             </td>
